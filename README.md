@@ -4,8 +4,7 @@
 
 🧪 Quickly experiment with Solidity using a frontend that adapts to your smart contract:
 
-![image](https://user-images.githubusercontent.com/2653167/124158108-c14ca380-da56-11eb-967e-69cde37ca8eb.png)
-
+<img src="https://user-images.githubusercontent.com/14002941/159148803-f6c167af-a549-4d3e-8ef7-797e3568defe.jpeg" alt="sample scaffold-eth expo app" width="207" height="448" />
 
 # 🏄‍♂️ Quick Start
 
