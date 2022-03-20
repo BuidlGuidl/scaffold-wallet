@@ -1,4 +1,4 @@
-# 🏗 Scaffold-ETH
+# 🏗 Scaffold-ETH + Expo
 
 > everything you need to build on Ethereum! 🚀
 
@@ -11,37 +11,37 @@
 
 Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
-> clone/fork 🏗 scaffold-eth:
+> clone/fork 🏗 scaffold-eth-expo:
 
 ```bash
-git clone https://github.com/scaffold-eth/scaffold-eth.git
+git clone https://github.com/scaffold-eth/scaffold-eth-expo.git
 ```
 
 > install and start your 👷‍ Hardhat chain:
 
 ```bash
-cd scaffold-eth
+cd scaffold-eth-expo
 yarn install
 yarn chain
 ```
 
-> in a second terminal window, start your 📱 frontend:
+> in a second terminal window, 🛰 deploy your contract:
 
 ```bash
-cd scaffold-eth
-yarn start
+cd scaffold-eth-expo
+yarn deploy
 ```
 
-> in a third terminal window, 🛰 deploy your contract:
+> in a third terminal window, start your 📱 Expo App:
 
 ```bash
-cd scaffold-eth
-yarn deploy
+cd scaffold-eth-expo
+yarn start
 ```
 
 🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
 
-📝 Edit your frontend `App.jsx` in `packages/react-app/src`
+📝 Edit your frontend `App.js` in `packages/expo-app`
 
 💼 Edit your deployment scripts in `packages/hardhat/deploy`
 
