@@ -4,13 +4,13 @@
   "keywords": [
     "ethereum",
     "react",
+    "react-native",
     "uniswap",
     "workspaces",
     "yarn"
   ],
   "private": true,
   "scripts": {
-    "prettier": "yarn workspace @scaffold-eth/react-app prettier",
     "chain": "yarn workspace @scaffold-eth/hardhat chain",
     "fork": "yarn workspace @scaffold-eth/hardhat fork",
     "node": "yarn workspace @scaffold-eth/hardhat chain",
@@ -23,10 +23,6 @@
     "accounts": "yarn workspace @scaffold-eth/hardhat accounts",
     "balance": "yarn workspace @scaffold-eth/hardhat balance",
     "send": "yarn workspace @scaffold-eth/hardhat send",
-    "ipfs": "yarn workspace @scaffold-eth/react-app ipfs",
-    "surge": "yarn workspace @scaffold-eth/react-app surge",
-    "s3": "yarn workspace @scaffold-eth/react-app s3",
-    "ship": "yarn workspace @scaffold-eth/react-app ship",
     "generate": "yarn workspace @scaffold-eth/hardhat generate",
     "account": "yarn workspace @scaffold-eth/hardhat account",
     "mineContractAddress": "cd packages/hardhat && npx hardhat mineContractAddress",
@@ -45,8 +41,6 @@
     "graph-deploy-local": "yarn workspace @scaffold-eth/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 scaffold-eth/your-contract",
     "graph-ship-local": "yarn graph-prepare && yarn graph-codegen && yarn graph-deploy-local",
     "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
-    "theme": "yarn workspace @scaffold-eth/react-app theme",
-    "watch-theme": "yarn workspace @scaffold-eth/react-app watch",
     "postinstall": "husky install"
   },
   "workspaces": {
