@@ -12,7 +12,8 @@
   "dependencies": {
     "@babel/runtime": "^7.17.8",
     "@ethersproject/shims": "^5.6.0",
-    "eth-hooks": "^4.0.45",
+    "@uniswap/sdk": "^3.0.3",
+    "eth-hooks": "2.3.16",
     "ethers": "^5.6.1",
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
