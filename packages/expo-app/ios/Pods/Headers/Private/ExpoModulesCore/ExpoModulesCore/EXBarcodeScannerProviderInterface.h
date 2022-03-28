@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/BarcodeScanner/EXBarcodeScannerProviderInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/BarcodeScanner/EXBarcodeScannerProviderInterface.h

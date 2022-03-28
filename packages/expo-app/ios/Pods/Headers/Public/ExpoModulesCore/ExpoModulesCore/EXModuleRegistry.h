@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/ModuleRegistry/EXModuleRegistry.h
+../../../../../../node_modules/expo-modules-core/ios/ModuleRegistry/EXModuleRegistry.h

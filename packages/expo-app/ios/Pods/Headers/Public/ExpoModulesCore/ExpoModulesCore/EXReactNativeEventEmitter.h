@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Services/EXReactNativeEventEmitter.h
+../../../../../../node_modules/expo-modules-core/ios/Services/EXReactNativeEventEmitter.h

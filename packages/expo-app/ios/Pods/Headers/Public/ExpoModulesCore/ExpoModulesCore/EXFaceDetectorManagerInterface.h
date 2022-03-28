@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/FaceDetector/EXFaceDetectorManagerInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/FaceDetector/EXFaceDetectorManagerInterface.h

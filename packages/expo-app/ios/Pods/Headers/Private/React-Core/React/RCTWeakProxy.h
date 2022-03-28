@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/React/Base/RCTWeakProxy.h
+../../../../../../node_modules/react-native/React/Base/RCTWeakProxy.h

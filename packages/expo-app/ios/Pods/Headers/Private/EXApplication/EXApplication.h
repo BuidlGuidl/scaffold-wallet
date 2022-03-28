@@ -1,1 +1,1 @@
-../../../../../../../node_modules/expo-application/ios/EXApplication/EXApplication.h
+../../../../../node_modules/expo-application/ios/EXApplication/EXApplication.h

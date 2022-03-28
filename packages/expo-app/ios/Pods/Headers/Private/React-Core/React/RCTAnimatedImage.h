@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/Libraries/Image/RCTAnimatedImage.h
+../../../../../../node_modules/react-native/Libraries/Image/RCTAnimatedImage.h

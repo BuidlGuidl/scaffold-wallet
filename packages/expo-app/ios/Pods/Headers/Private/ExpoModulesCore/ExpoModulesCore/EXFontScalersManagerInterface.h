@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/Font/EXFontScalersManagerInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/Font/EXFontScalersManagerInterface.h

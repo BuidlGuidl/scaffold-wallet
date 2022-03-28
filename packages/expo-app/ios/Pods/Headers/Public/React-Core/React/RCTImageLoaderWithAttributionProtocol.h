@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/Libraries/Image/RCTImageLoaderWithAttributionProtocol.h
+../../../../../../node_modules/react-native/Libraries/Image/RCTImageLoaderWithAttributionProtocol.h

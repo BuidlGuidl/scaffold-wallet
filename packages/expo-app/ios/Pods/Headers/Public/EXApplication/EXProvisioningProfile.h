@@ -1,1 +1,1 @@
-../../../../../../../node_modules/expo-application/ios/EXApplication/EXProvisioningProfile.h
+../../../../../node_modules/expo-application/ios/EXApplication/EXProvisioningProfile.h

@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/React/Base/RCTRedBoxSetEnabled.h
+../../../../../../node_modules/react-native/React/Base/RCTRedBoxSetEnabled.h

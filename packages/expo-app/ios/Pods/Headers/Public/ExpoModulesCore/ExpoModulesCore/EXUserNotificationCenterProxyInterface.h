@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/Permissions/EXUserNotificationCenterProxyInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/Permissions/EXUserNotificationCenterProxyInterface.h

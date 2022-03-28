@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Protocols/EXInternalModule.h
+../../../../../../node_modules/expo-modules-core/ios/Protocols/EXInternalModule.h

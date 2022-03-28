@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/Sensors/EXMagnetometerInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/Sensors/EXMagnetometerInterface.h

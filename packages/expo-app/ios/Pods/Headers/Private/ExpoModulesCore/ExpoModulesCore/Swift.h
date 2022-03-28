@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Swift.h
+../../../../../../node_modules/expo-modules-core/ios/Swift.h

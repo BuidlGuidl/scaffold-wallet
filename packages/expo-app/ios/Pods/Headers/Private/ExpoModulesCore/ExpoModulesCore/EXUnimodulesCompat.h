@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/EXUnimodulesCompat.h
+../../../../../../node_modules/expo-modules-core/ios/EXUnimodulesCompat.h

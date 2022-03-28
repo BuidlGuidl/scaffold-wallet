@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Services/Permissions/EXPermissionsService.h
+../../../../../../node_modules/expo-modules-core/ios/Services/Permissions/EXPermissionsService.h

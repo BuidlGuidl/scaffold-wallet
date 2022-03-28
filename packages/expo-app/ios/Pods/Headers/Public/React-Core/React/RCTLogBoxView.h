@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/React/CoreModules/RCTLogBoxView.h
+../../../../../../node_modules/react-native/React/CoreModules/RCTLogBoxView.h

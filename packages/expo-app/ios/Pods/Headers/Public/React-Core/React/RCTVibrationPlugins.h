@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/Libraries/Vibration/RCTVibrationPlugins.h
+../../../../../../node_modules/react-native/Libraries/Vibration/RCTVibrationPlugins.h

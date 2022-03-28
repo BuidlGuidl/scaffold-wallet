@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Services/EXReactNativeAdapter.h
+../../../../../../node_modules/expo-modules-core/ios/Services/EXReactNativeAdapter.h

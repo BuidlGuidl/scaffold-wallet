@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Services/EXReactFontManager.h
+../../../../../../node_modules/expo-modules-core/ios/Services/EXReactFontManager.h

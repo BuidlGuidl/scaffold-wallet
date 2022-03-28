@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/React/CoreModules/RCTAlertController.h
+../../../../../../node_modules/react-native/React/CoreModules/RCTAlertController.h

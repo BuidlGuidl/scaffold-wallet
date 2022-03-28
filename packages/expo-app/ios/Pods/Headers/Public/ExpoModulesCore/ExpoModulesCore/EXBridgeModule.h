@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/EXBridgeModule.h
+../../../../../../node_modules/expo-modules-core/ios/EXBridgeModule.h

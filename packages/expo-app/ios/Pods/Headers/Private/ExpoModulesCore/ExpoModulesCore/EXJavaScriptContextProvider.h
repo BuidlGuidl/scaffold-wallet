@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Protocols/EXJavaScriptContextProvider.h
+../../../../../../node_modules/expo-modules-core/ios/Protocols/EXJavaScriptContextProvider.h

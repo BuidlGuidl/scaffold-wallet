@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/Permissions/EXPermissionsInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/Permissions/EXPermissionsInterface.h

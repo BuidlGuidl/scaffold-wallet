@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/Libraries/Image/RCTImageLoaderLoggable.h
+../../../../../../node_modules/react-native/Libraries/Image/RCTImageLoaderLoggable.h

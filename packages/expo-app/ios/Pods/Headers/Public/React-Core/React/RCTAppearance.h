@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/react-native/React/CoreModules/RCTAppearance.h
+../../../../../../node_modules/react-native/React/CoreModules/RCTAppearance.h

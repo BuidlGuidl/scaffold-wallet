@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/Interfaces/Sensors/EXDeviceMotionInterface.h
+../../../../../../node_modules/expo-modules-core/ios/Interfaces/Sensors/EXDeviceMotionInterface.h

@@ -1,1 +1,1 @@
-../../../../../../../../node_modules/expo-modules-core/ios/AppDelegates/EXAppDelegateWrapper.h
+../../../../../../node_modules/expo-modules-core/ios/AppDelegates/EXAppDelegateWrapper.h
