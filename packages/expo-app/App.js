@@ -61,6 +61,7 @@ export default function App() {
 
   // On App load, check async storage for an existing wallet, else generate a 🔥 burner wallet.
   const [userSigner, setUserSigner] = useState();
+  const [wallet, setWallet] = useState();
   useEffect(() => {
     console.log('useEffect App');
     const loadAccountAndNetwork = async () => {
@@ -72,11 +73,14 @@ export default function App() {
         const privateKey = generatedWallet._signingKey().privateKey;
         await AsyncStorage.setItem('metaPrivateKey', privateKey)
         signer = generatedWallet.connect(localProvider);
+        setWallet(generatedWallet)
         setUserSigner(generatedWallet);
         setAddress(generatedWallet.address)
+        generatedWallet.provider.sendTransaction()
       } else {
         const existingWallet = new ethers.Wallet(pk);
         signer = existingWallet.connect(localProvider);
+        setWallet(existingWallet)
         setUserSigner(existingWallet);
         setAddress(existingWallet.address)
       }
@@ -102,7 +106,9 @@ export default function App() {
   // Just plug in different 🛰 providers to get your balance on different chains:
   const yourMainnetBalance = useBalance(mainnetProvider, address);
 
+  const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
+  const [wallectConnectConnector, setWallectConnectConnector] = useState()
 
   const connect = () => {
     console.log('connect', walletConnectUrl);
@@ -120,6 +126,9 @@ export default function App() {
           },
         }
       );
+
+      setWallectConnectConnector(connector)
+
       // Subscribe to session requests
       connector.on("session_request", (error, payload) => {
         if (error) throw error
@@ -136,14 +145,8 @@ export default function App() {
         if (error) throw error
         console.log("call_request", payload);
 
-        if (payload.method === "personal_sign") {
-
-          // let result = await userProviderAndSigner.provider.send(payload.method, payload.params)
-          // console.log('approved!!');
-          // connector.approveRequest({
-          //   id: payload.id,
-          //   result: result
-          // });
+        if (payload.method === "eth_sendTransaction") {
+          setPendingTransaction(payload)
         }
       });
 
@@ -173,6 +176,38 @@ export default function App() {
       <Button
         onPress={connect}
         title="Wallet Connect" />
+
+      {pendingTransaction && <View>
+        <Text>Send Transaction?</Text>
+        <Text>{JSON.stringify(pendingTransaction.params, null, 2)}</Text>
+        <Button
+          onPress={async () => {
+            const payload = pendingTransaction
+            console.log('payload', payload);
+            console.log('to', targetNetwork.rpcUrl);
+            if (payload.method === "eth_sendTransaction") {
+
+              const signer = wallet.connect(localProvider);
+
+              try {
+                const result = await signer.provider.send(payload.method, payload.params)
+                console.log(result);
+                wallectConnectConnector.approveRequest({
+                  id: payload.id,
+                  result,
+                });
+              } catch (error) {
+                console.log(wallet, signer);
+                console.log('error', error);
+                wallectConnectConnector.rejectRequest({
+                  error,
+                  id: payload.id,
+                });
+              }
+            }
+          }}
+          title="Send Transaction" />
+      </View>}
 
       <StatusBar style="auto" />
     </View>
