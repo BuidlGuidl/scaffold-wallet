@@ -16,6 +16,7 @@ target 'expoapp' do
     :hermes_enabled => podfile_properties['expo.jsEngine'] == 'hermes'
   )
 
+  pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
   # Uncomment to opt-in to using Flipper
   #
   # if !ENV['CI']

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
@@ -17,7 +17,10 @@ import { useUserProviderAndSigner } from "eth-hooks/useUserProviderAndSigner";
 import { useStaticJsonRPC } from "./hooks";
 import WalletConnect from "@walletconnect/client";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import RNPickerSelect from "react-native-picker-select";
 import { ethers } from "ethers";
+import AddressDisplay from "./components/AddressDisplay";
+import TokenDisplay from "./components/TokenDisplay";
 
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -35,7 +38,6 @@ const providers = [
 export default function App() {
   const networkOptions = [initialNetwork.name, "mainnet", "rinkeby"];
 
-  const [injectedProvider, setInjectedProvider] = useState();
   const [address, setAddress] = useState();
   const [selectedNetwork, setSelectedNetwork] = useState(networkOptions[0]);
 
@@ -84,6 +86,13 @@ export default function App() {
     }
     loadAccountAndNetwork()
   }, [])
+
+  const options = [];
+  for (const id in NETWORKS) {
+    options.push(
+      { label: NETWORKS[id].name, value: NETWORKS[id].name, color: NETWORKS[id].color }
+    );
+  }
 
   // You can warn the user if you would like them to be on a specific network
   const localChainId =
@@ -199,12 +208,34 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.text]}>
-        Using Burner 🔥 Wallet with Address {address}
-      </Text>
+      <StatusBar style="auto" />
+      <RNPickerSelect
+        value={selectedNetwork}
+        onValueChange={async (value) => {
+          await AsyncStorage.setItem('network', value)
+          setSelectedNetwork(value)
+        }}
+        items={options}
+        style={pickerSelectStyles}
+
+      />
+      <AddressDisplay address={address} />
+      <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
+      <View style={{ alignItems: 'center' }}>
+        <TouchableOpacity
+          style={{ width: 80, height: 36, justifyContent: 'center' }}
+        // onPress={sendTxn}
+        >
+          <Text
+            style={styles.textButton}>
+            Send
+          </Text>
+        </TouchableOpacity>
+      </View>
       <TextInput
         placeholder="Wallet Connect Url"
         style={{
+          marginTop: 24,
           borderWidth: 1,
           width: '100%',
           height: 36
@@ -222,35 +253,60 @@ export default function App() {
           title="Connect" />}
 
 
-      {pendingTransaction && <View>
-        <Text>Send Transaction?</Text>
-        <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-          <Button
-            onPress={confirmTransaction}
-            title="Confirm" />
-          <Button
-            onPress={cancelTransaction}
-            title="Cancel" />
-        </View>
-      </View>}
-
-      <StatusBar style="auto" />
+      {pendingTransaction &&
+        <View style={{ borderTopWidth: 1, borderColor: "#aaa", marginTop: 16, paddingTop: 8 }}>
+          <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
+          <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <Button
+              onPress={confirmTransaction}
+              title="Confirm" />
+            <Button
+              onPress={cancelTransaction}
+              title="Cancel" />
+          </View>
+        </View>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
+    flexDirection: 'column',
     alignItems: "center",
     paddingHorizontal: 30,
-    justifyContent: "center",
+    backgroundColor: "#fff",
+    height: '100%'
   },
   text: {
     fontSize: 16,
     textAlign: "center",
     marginBottom: 40,
   },
+  textButton: {
+    color: '#0E76FD',
+    fontSize: 18,
+    fontWeight: "600",
+    textAlign: "center",
+  },
+});
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    marginHorizontal: '20%',
+    width: '60%',
+    height: 36,
+    fontSize: 20,
+    fontWeight: '500',
+    textAlign: 'center',
+    marginTop: 32,
+    color: 'black',
+    // backgroundColor: '#eee'
+  },
+  iconContainer: {
+    top: 46,
+    right: 100,
+  },
+  chevronDown: {
+    color: '#fff'
+  }
 });
