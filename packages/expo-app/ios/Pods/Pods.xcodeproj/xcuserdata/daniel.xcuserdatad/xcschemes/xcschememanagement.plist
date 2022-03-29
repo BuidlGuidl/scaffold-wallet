@@ -89,6 +89,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RNCClipboard.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNCPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RNOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
