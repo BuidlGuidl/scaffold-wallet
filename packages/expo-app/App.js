@@ -60,28 +60,22 @@ export default function App() {
   const gasPrice = useGasPrice(targetNetwork, "fast");
 
   // On App load, check async storage for an existing wallet, else generate a 🔥 burner wallet.
-  const [userSigner, setUserSigner] = useState();
+
   const [wallet, setWallet] = useState();
   useEffect(() => {
     console.log('useEffect App');
     const loadAccountAndNetwork = async () => {
       // FIXME: REFACTOR TO USE SECURE STORAGE
       const pk = await AsyncStorage.getItem('metaPrivateKey')
-      let signer;
       if (!pk) {
         const generatedWallet = ethers.Wallet.createRandom();
         const privateKey = generatedWallet._signingKey().privateKey;
         await AsyncStorage.setItem('metaPrivateKey', privateKey)
-        signer = generatedWallet.connect(localProvider);
         setWallet(generatedWallet)
-        setUserSigner(generatedWallet);
         setAddress(generatedWallet.address)
-        generatedWallet.provider.sendTransaction()
       } else {
         const existingWallet = new ethers.Wallet(pk);
-        signer = existingWallet.connect(localProvider);
         setWallet(existingWallet)
-        setUserSigner(existingWallet);
         setAddress(existingWallet.address)
       }
 
@@ -95,10 +89,10 @@ export default function App() {
   const localChainId =
     localProvider && localProvider._network && localProvider._network.chainId;
   const selectedChainId =
-    userSigner &&
-    userSigner.provider &&
-    userSigner.provider._network &&
-    userSigner.provider._network.chainId;
+    wallet &&
+    wallet.provider &&
+    wallet.provider._network &&
+    wallet.provider._network.chainId;
 
   // 🏗 scaffold-eth is full of handy hooks like this one to get your balance:
   const yourLocalBalance = useBalance(localProvider, address);
@@ -158,6 +152,51 @@ export default function App() {
 
   }
 
+  const disconnect = () => {
+    setWalletConnectUrl(undefined);
+    wallectConnectConnector.killSession()
+    setWallectConnectConnector(undefined)
+  }
+  const confirmTransaction = async () => {
+    const payload = pendingTransaction
+    console.log('to', targetNetwork.rpcUrl);
+    if (payload.method === "eth_sendTransaction") {
+      const signer = wallet.connect(localProvider);
+      try {
+        const { to, from, data, value } = payload.params[0]
+        const tx = {
+          from,
+          to,
+          gasPrice: ethers.utils.parseUnits("20", "gwei"),
+          value,
+          data
+        }
+
+        const result = await signer.sendTransaction(tx)
+        console.log('txn successful');
+        // const result = await signer.provider.send(payload.method, payload.params)
+        console.log('hash', result.hash);
+
+        wallectConnectConnector.approveRequest({
+          id: payload.id,
+          result: result.hash,
+        });
+        console.log('walletconnector request approved');
+        setPendingTransaction(undefined)
+      } catch (error) {
+        // console.log(wallet, signer);
+        console.log('error', error);
+        wallectConnectConnector.rejectRequest({
+          error,
+          id: payload.id,
+        });
+      }
+    }
+  }
+  const cancelTransaction = () => {
+    setPendingTransaction(undefined)
+  }
+
   return (
     <View style={styles.container}>
       <Text style={[styles.text]}>
@@ -172,41 +211,28 @@ export default function App() {
         }}
         onChangeText={setWalletConnectUrl}
         value={walletConnectUrl}
+        editable={!wallectConnectConnector}
       />
-      <Button
-        onPress={connect}
-        title="Wallet Connect" />
+      {wallectConnectConnector ?
+        <Button
+          onPress={disconnect}
+          title="Disconnect" /> :
+        <Button
+          onPress={connect}
+          title="Connect" />}
+
 
       {pendingTransaction && <View>
         <Text>Send Transaction?</Text>
-        <Text>{JSON.stringify(pendingTransaction.params, null, 2)}</Text>
-        <Button
-          onPress={async () => {
-            const payload = pendingTransaction
-            console.log('payload', payload);
-            console.log('to', targetNetwork.rpcUrl);
-            if (payload.method === "eth_sendTransaction") {
-
-              const signer = wallet.connect(localProvider);
-
-              try {
-                const result = await signer.provider.send(payload.method, payload.params)
-                console.log(result);
-                wallectConnectConnector.approveRequest({
-                  id: payload.id,
-                  result,
-                });
-              } catch (error) {
-                console.log(wallet, signer);
-                console.log('error', error);
-                wallectConnectConnector.rejectRequest({
-                  error,
-                  id: payload.id,
-                });
-              }
-            }
-          }}
-          title="Send Transaction" />
+        <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <Button
+            onPress={confirmTransaction}
+            title="Confirm" />
+          <Button
+            onPress={cancelTransaction}
+            title="Cancel" />
+        </View>
       </View>}
 
       <StatusBar style="auto" />
