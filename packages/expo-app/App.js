@@ -21,6 +21,7 @@ import RNPickerSelect from "react-native-picker-select";
 import { ethers } from "ethers";
 import AddressDisplay from "./components/AddressDisplay";
 import TokenDisplay from "./components/TokenDisplay";
+import QRCode from 'react-native-qrcode-svg';
 
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -108,6 +109,8 @@ export default function App() {
 
   // Just plug in different 🛰 providers to get your balance on different chains:
   const yourMainnetBalance = useBalance(mainnetProvider, address);
+
+  const [showQRScreen, setShowQRScreen] = useState(false);
 
   const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
@@ -206,8 +209,8 @@ export default function App() {
     setPendingTransaction(undefined)
   }
 
-  return (
-    <View style={styles.container}>
+  const HomeScreen = () => {
+    return <View style={styles.container}>
       <StatusBar style="auto" />
       <RNPickerSelect
         value={selectedNetwork}
@@ -219,7 +222,7 @@ export default function App() {
         style={pickerSelectStyles}
 
       />
-      <AddressDisplay address={address} />
+      <AddressDisplay address={address} showQR={() => setShowQRScreen(true)} />
       <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
       <View style={{ alignItems: 'center' }}>
         <TouchableOpacity
@@ -266,6 +269,38 @@ export default function App() {
               title="Cancel" />
           </View>
         </View>}
+    </View>
+  }
+
+  const QRScreen = (props) => {
+    return <TouchableOpacity
+      onPress={props.hide}
+      style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#333", flexDirection: 'column', justifyContent: 'center' }}>
+      <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
+        <QRCode
+          size={280}
+          quietZone={5}
+          value={props.address}
+        />
+      </View>
+      <Text style={{
+        marginVertical: 32,
+        marginHorizontal: 32,
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: "600",
+        textAlign: "center",
+      }}>
+        {props.address}
+      </Text>
+    </TouchableOpacity>
+  }
+
+  return (
+    <View>
+      <HomeScreen />
+      {showQRScreen && <QRScreen address={address} hide={() => setShowQRScreen(false)} />}
     </View>
   );
 }

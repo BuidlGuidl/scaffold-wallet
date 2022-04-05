@@ -27,7 +27,8 @@ export default function AddressDisplay(props) {
                 // onPress={fetchCopiedText}
                 >
                     <Text
-                        style={styles.textButton}>
+                        style={styles.textButton}
+                        onPress={props.showQR}>
                         View QR
                     </Text>
                 </TouchableOpacity>

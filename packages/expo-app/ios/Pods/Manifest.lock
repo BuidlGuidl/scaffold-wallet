@@ -299,6 +299,8 @@ PODS:
     - React-Core
   - RNOS (1.2.6):
     - React
+  - RNSVG (12.3.0):
+    - React-Core
   - TcpSockets (3.3.2):
     - React
   - Yoga (1.14.0)
@@ -348,6 +350,7 @@ DEPENDENCIES:
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - RNOS (from `../node_modules/react-native-os`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - TcpSockets (from `../node_modules/react-native-tcp`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -440,6 +443,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-picker/picker"
   RNOS:
     :path: "../node_modules/react-native-os"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   TcpSockets:
     :path: "../node_modules/react-native-tcp"
   Yoga:
@@ -489,6 +494,7 @@ SPEC CHECKSUMS:
   RNCClipboard: cc054ad1e8a33d2a74cd13e565588b4ca928d8fd
   RNCPicker: 0991c56da7815c0cf946d6f63cf920b25296e5f6
   RNOS: 6f2f9a70895bbbfbdad7196abd952e7b01d45027
+  RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   TcpSockets: 14306fb79f9750ea7d2ddd02d8bed182abb01797
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
