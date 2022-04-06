@@ -72,5 +72,7 @@
     <string>Light</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
+    <key>NSCameraUsageDescription</key>
+    <string>$(PRODUCT_NAME) requires camera permissions.</string>
   </dict>
 </plist>

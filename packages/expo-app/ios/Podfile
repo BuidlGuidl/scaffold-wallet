@@ -17,6 +17,7 @@ target 'expoapp' do
   )
 
   pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
+  pod 'Permission-Camera', :path => "../node_modules/react-native-permissions/ios/Camera"
   # Uncomment to opt-in to using Flipper
   #
   # if !ENV['CI']

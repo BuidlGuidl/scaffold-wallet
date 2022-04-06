@@ -21,7 +21,8 @@ import RNPickerSelect from "react-native-picker-select";
 import { ethers } from "ethers";
 import AddressDisplay from "./components/AddressDisplay";
 import TokenDisplay from "./components/TokenDisplay";
-import QRCode from 'react-native-qrcode-svg';
+import QRScannerScreen from "./screens/QRScannerScreen";
+import QRDisplayScreen from "./screens/QRScreen";
 
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -111,7 +112,7 @@ export default function App() {
   const yourMainnetBalance = useBalance(mainnetProvider, address);
 
   const [showQRScreen, setShowQRScreen] = useState(false);
-
+  const [showQRScanner, setShowQRScanner] = useState(false);
   const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
   const [wallectConnectConnector, setWallectConnectConnector] = useState()
@@ -212,19 +213,23 @@ export default function App() {
   const HomeScreen = () => {
     return <View style={styles.container}>
       <StatusBar style="auto" />
-      <RNPickerSelect
-        value={selectedNetwork}
-        onValueChange={async (value) => {
-          await AsyncStorage.setItem('network', value)
-          setSelectedNetwork(value)
-        }}
-        items={options}
-        style={pickerSelectStyles}
+      <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <Text></Text>
+        <RNPickerSelect
+          value={selectedNetwork}
+          onValueChange={async (value) => {
+            await AsyncStorage.setItem('network', value)
+            setSelectedNetwork(value)
+          }}
+          items={options}
+          style={pickerSelectStyles}
 
-      />
+        />
+
+      </View>
       <AddressDisplay address={address} showQR={() => setShowQRScreen(true)} />
       <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
-      <View style={{ alignItems: 'center' }}>
+      {/* <View style={{ alignItems: 'center' }}>
         <TouchableOpacity
           style={{ width: 80, height: 36, justifyContent: 'center' }}
         // onPress={sendTxn}
@@ -234,7 +239,12 @@ export default function App() {
             Send
           </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
+      {!wallectConnectConnector && <View style={{ marginTop: 24, alignItems: 'center' }}>
+        <Button
+          onPress={() => setShowQRScanner(true)}
+          title="Scan QR" />
+      </View>}
       <TextInput
         placeholder="Wallet Connect Url"
         style={{
@@ -247,6 +257,7 @@ export default function App() {
         value={walletConnectUrl}
         editable={!wallectConnectConnector}
       />
+
       {wallectConnectConnector ?
         <Button
           onPress={disconnect}
@@ -272,35 +283,11 @@ export default function App() {
     </View>
   }
 
-  const QRScreen = (props) => {
-    return <TouchableOpacity
-      onPress={props.hide}
-      style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#333", flexDirection: 'column', justifyContent: 'center' }}>
-      <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-
-        <QRCode
-          size={280}
-          quietZone={5}
-          value={props.address}
-        />
-      </View>
-      <Text style={{
-        marginVertical: 32,
-        marginHorizontal: 32,
-        color: '#fff',
-        fontSize: 18,
-        fontWeight: "600",
-        textAlign: "center",
-      }}>
-        {props.address}
-      </Text>
-    </TouchableOpacity>
-  }
-
   return (
     <View>
       <HomeScreen />
-      {showQRScreen && <QRScreen address={address} hide={() => setShowQRScreen(false)} />}
+      {showQRScreen && <QRDisplayScreen address={address} hide={() => setShowQRScreen(false)} />}
+      {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} />}
     </View>
   );
 }
