@@ -1,18 +1,17 @@
 
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-
+import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 
 export default function AddressDisplay(props) {
 
-    const toast = props.toast
-
+    const { setShowWalletScreen } = props
     const address = props.address || ''
-
-
 
     let displayAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
     return (
         <View style={styles.container}>
+            <Button
+                onPress={() => setShowWalletScreen(true)}
+                title="Manage" />
             <Text style={styles.text}>
                 {displayAddress}
             </Text>
@@ -40,7 +39,7 @@ export default function AddressDisplay(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 36,
+        marginTop: 24,
         marginBottom: 12
     },
     text: {

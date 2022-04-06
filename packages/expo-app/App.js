@@ -10,9 +10,7 @@ import { NETWORKS, ALCHEMY_KEY } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
 import { useBalance } from "eth-hooks/useBalance";
-import { useGasPrice } from "eth-hooks/useGasPrice";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
-import { useUserProviderAndSigner } from "eth-hooks/useUserProviderAndSigner";
 // import { Transactor, Web3ModalSetup } from "./helpers";
 import { useStaticJsonRPC } from "./hooks";
 import WalletConnect from "@walletconnect/client";
@@ -23,6 +21,7 @@ import AddressDisplay from "./components/AddressDisplay";
 import TokenDisplay from "./components/TokenDisplay";
 import QRScannerScreen from "./screens/QRScannerScreen";
 import QRDisplayScreen from "./screens/QRScreen";
+import WalletsScreen from "./screens/WalletsScreen";
 
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -60,9 +59,6 @@ export default function App() {
   /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
   const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
 
-  /* 🔥 This hook will get the price of Gas from ⛽️ EtherGasStation */
-  const gasPrice = useGasPrice(targetNetwork, "fast");
-
   // On App load, check async storage for an existing wallet, else generate a 🔥 burner wallet.
 
   const [wallet, setWallet] = useState();
@@ -70,11 +66,12 @@ export default function App() {
     console.log('useEffect App');
     const loadAccountAndNetwork = async () => {
       // FIXME: REFACTOR TO USE SECURE STORAGE
-      const pk = await AsyncStorage.getItem('metaPrivateKey')
+      const pk = await AsyncStorage.getItem('activePrivateKey')
       if (!pk) {
         const generatedWallet = ethers.Wallet.createRandom();
         const privateKey = generatedWallet._signingKey().privateKey;
-        await AsyncStorage.setItem('metaPrivateKey', privateKey)
+        await AsyncStorage.setItem('activePrivateKey', privateKey)
+        await AsyncStorage.setItem('privateKeyList', JSON.stringify([privateKey]))
         setWallet(generatedWallet)
         setAddress(generatedWallet.address)
       } else {
@@ -111,8 +108,11 @@ export default function App() {
   // Just plug in different 🛰 providers to get your balance on different chains:
   const yourMainnetBalance = useBalance(mainnetProvider, address);
 
-  const [showQRScreen, setShowQRScreen] = useState(false);
+  // Different Screens
+  const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
   const [showQRScanner, setShowQRScanner] = useState(false);
+  const [showWalletScreen, setShowWalletScreen] = useState(false);
+
   const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
   const [wallectConnectConnector, setWallectConnectConnector] = useState()
@@ -214,7 +214,6 @@ export default function App() {
     return <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-        <Text></Text>
         <RNPickerSelect
           value={selectedNetwork}
           onValueChange={async (value) => {
@@ -225,9 +224,8 @@ export default function App() {
           style={pickerSelectStyles}
 
         />
-
       </View>
-      <AddressDisplay address={address} showQR={() => setShowQRScreen(true)} />
+      <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
       <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
       {/* <View style={{ alignItems: 'center' }}>
         <TouchableOpacity
@@ -283,10 +281,12 @@ export default function App() {
     </View>
   }
 
+
   return (
     <View>
       <HomeScreen />
-      {showQRScreen && <QRDisplayScreen address={address} hide={() => setShowQRScreen(false)} />}
+      {showWalletScreen && <WalletsScreen address={address} hide={() => setShowWalletScreen(false)} setWallet={setWallet} setAddress={setAddress} />}
+      {showQRDisplayScreen && <QRDisplayScreen address={address} hide={() => setShowQRDisplayScreen(false)} />}
       {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} />}
     </View>
   );
