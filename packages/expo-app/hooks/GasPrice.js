@@ -22,6 +22,6 @@ export default function useGasPrice(targetNetwork, speed) {
     }
   };
 
-  usePoller(loadGasPrice, 4200);
+  usePoller(loadGasPrice, 10000);
   return gasPrice;
 }

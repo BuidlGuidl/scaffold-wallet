@@ -23,12 +23,12 @@ import TokenDisplay from "./components/TokenDisplay";
 import QRScannerScreen from "./screens/QRScannerScreen";
 import QRDisplayScreen from "./screens/QRScreen";
 import WalletsScreen from "./screens/WalletsScreen";
+import useGasPrice from "./hooks/GasPrice";
 
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 const DEBUG = true;
-const USE_BURNER_WALLET = true; // toggle burner wallet feature
 
 // 🛰 providers
 const providers = [
@@ -45,11 +45,8 @@ export default function App() {
 
   const targetNetwork = NETWORKS[selectedNetwork];
 
-  // 🔭 block explorer URL
-  const blockExplorer = targetNetwork.blockExplorer;
-
   // load all your providers
-  const localProvider = new ethers.providers.StaticJsonRpcProvider(targetNetwork.rpcUrl, targetNetwork.chainId) //useStaticJsonRPC([targetNetwork.rpcUrl]);
+  const localProvider = useStaticJsonRPC([targetNetwork.rpcUrl]);
   const mainnetProvider = useStaticJsonRPC(providers);
 
   if (DEBUG) console.log(`Using ${selectedNetwork} network`);
@@ -59,6 +56,9 @@ export default function App() {
 
   /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
   const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
+
+  /* 🔥 This hook will get the price of Gas from ⛽️ Etherscan */
+  const gasPrice = useGasPrice(targetNetwork, "fast");
 
   // On App load, check async storage for an existing wallet, else generate a 🔥 burner wallet.
 
@@ -95,20 +95,8 @@ export default function App() {
     );
   }
 
-  // You can warn the user if you would like them to be on a specific network
-  const localChainId =
-    localProvider && localProvider._network && localProvider._network.chainId;
-  const selectedChainId =
-    wallet &&
-    wallet.provider &&
-    wallet.provider._network &&
-    wallet.provider._network.chainId;
-
   // 🏗 scaffold-eth is full of handy hooks like this one to get your balance:
   const yourLocalBalance = useBalance(localProvider, address);
-
-  // Just plug in different 🛰 providers to get your balance on different chains:
-  const yourMainnetBalance = useBalance(mainnetProvider, address);
 
   // Different Screens
   const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
@@ -124,14 +112,12 @@ export default function App() {
     if (walletConnectUrl) {
       const connector = new WalletConnect(
         {
-          // Required
           uri: walletConnectUrl,
-          // Required
           clientMeta: {
-            description: "WalletConnect Developer App",
-            url: "https://walletconnect.org",
-            icons: ["https://walletconnect.org/walletconnect-logo.png"],
-            name: "WalletConnect",
+            description: "Forkable web wallet for small/quick transactions.",
+            url: "https://punkwallet.io",
+            icons: ["https://punkwallet.io/punk.png"],
+            name: "🧑‍🎤 PunkWallet.io",
           },
         }
       );
@@ -144,8 +130,8 @@ export default function App() {
         console.log("session_request", payload);
 
         connector.approveSession({
-          accounts: [address],     // required
-          chainId: targetNetwork.chainId               // required
+          accounts: [address],
+          chainId: targetNetwork.chainId
         })
       });
 
@@ -172,6 +158,7 @@ export default function App() {
     wallectConnectConnector.killSession()
     setWallectConnectConnector(undefined)
   }
+
   const confirmTransaction = async () => {
     const payload = pendingTransaction
     const method = payload.method
@@ -185,7 +172,7 @@ export default function App() {
         const tx = {
           from,
           to,
-          gasPrice: ethers.utils.parseUnits("20", "gwei"),
+          gasPrice: gasPrice,
           value,
           data
         }
@@ -228,6 +215,7 @@ export default function App() {
       }
     }
   }
+
   const cancelTransaction = () => {
     const payload = pendingTransaction
     wallectConnectConnector.rejectRequest({
@@ -305,9 +293,9 @@ export default function App() {
               title="Cancel" />
           </View>
         </View>}
+      {!pendingTransaction && <Text style={{ position: 'absolute', bottom: 24, fontSize: 14, fontWeight: '500' }}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
     </View>
   }
-
 
   return (
     <View>
@@ -349,7 +337,6 @@ const pickerSelectStyles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 24,
     color: 'black',
-    // backgroundColor: '#eee'
   },
   iconContainer: {
     top: 46,
