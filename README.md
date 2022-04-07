@@ -2,6 +2,8 @@
 
 > everything you need to build an Ethereum Wallet with Scaffold-Eth and React Native! 🚀
 
+<img width="426" alt="Screenshot 2022-04-07 at 4 59 16 PM" src="https://user-images.githubusercontent.com/4507317/162162203-dc81a9ef-194f-4292-9c0d-a87dbae09090.png">
+
 ## Overview
 
 This repo is meant to be a open-source code base for building out Ethereum Wallets with Scaffold-Eth and React Native.
