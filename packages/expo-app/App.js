@@ -228,7 +228,7 @@ export default function App() {
   const HomeScreen = () => {
     return <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ marginTop: 20, width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
         <RNPickerSelect
           value={selectedNetwork}
           onValueChange={async (value) => {
@@ -237,7 +237,6 @@ export default function App() {
           }}
           items={options}
           style={pickerSelectStyles}
-
         />
       </View>
       <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
