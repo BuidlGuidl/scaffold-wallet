@@ -1,90 +1,51 @@
-# 🏗 Scaffold-ETH + Expo
+# 🏗 Punk Wallet React Native
 
-> everything you need to build on Ethereum! 🚀
+> everything you need to build an Ethereum Wallet with Scaffold-Eth and React Native! 🚀
 
-🧪 Quickly experiment with Solidity using a frontend that adapts to your smart contract:
+## Overview
 
-<img src="https://user-images.githubusercontent.com/14002941/159148803-f6c167af-a549-4d3e-8ef7-797e3568defe.jpeg" alt="sample scaffold-eth expo app" width="207" height="448" />
+This repo is meant to be a open-source code base for building out Ethereum Wallets with Scaffold-Eth and React Native.
+
+It uses an ejected Expo / RN base with minimal external dependencies. The wallet itself is intended to be minimalist, connecting to DApps with WalletConnect to sign transactions.
+
+Currently being developed for iOS first.
 
 # 🏄‍♂️ Quick Start
 
 Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
-> clone/fork 🏗 scaffold-eth-expo:
+> clone/fork the repo:
 
 ```bash
 git clone https://github.com/scaffold-eth/scaffold-eth-expo.git
 ```
 
-> install and start your 👷‍ Hardhat chain:
+> install all dependencies:
 
 ```bash
-cd scaffold-eth-expo
+cd scaffold-eth-expo/expo-app
 yarn install
-yarn chain
 ```
 
-> in a second terminal window, 🛰 deploy your contract:
+> shim missing browser dependencies on mobile:
 
 ```bash
-cd scaffold-eth-expo
-yarn deploy
+yarn hack
 ```
 
-> in a third terminal window, start your 📱 Expo App:
+> install ios pods:
 
 ```bash
-cd scaffold-eth-expo
-yarn start
+npx pod-install
 ```
 
-🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+> To run app on a local ios simulator:
 
-📝 Edit your frontend `App.js` in `packages/expo-app`
+```bash
+yarn ios
+```
 
-💼 Edit your deployment scripts in `packages/hardhat/deploy`
-
-📱 Open http://localhost:3000 to see the app
-
-# 📚 Documentation
-
-Documentation, tutorials, challenges, and many more resources, visit: [docs.scaffoldeth.io](https://docs.scaffoldeth.io)
-
-# 🔭 Learning Solidity
-
-📕 Read the docs: https://docs.soliditylang.org
-
-📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `YourContract.sol` in **🏗 scaffold-eth**
-
-- [Primitive Data Types](https://solidity-by-example.org/primitives/)
-- [Mappings](https://solidity-by-example.org/mapping/)
-- [Structs](https://solidity-by-example.org/structs/)
-- [Modifiers](https://solidity-by-example.org/function-modifier/)
-- [Events](https://solidity-by-example.org/events/)
-- [Inheritance](https://solidity-by-example.org/inheritance/)
-- [Payable](https://solidity-by-example.org/payable/)
-- [Fallback](https://solidity-by-example.org/fallback/)
-
-📧 Learn the [Solidity globals and units](https://solidity.readthedocs.io/en/v0.6.6/units-and-global-variables.html)
-
-# 🛠 Buidl
-
-Check out all the [active branches](https://github.com/scaffold-eth/scaffold-eth/branches/active), [open issues](https://github.com/scaffold-eth/scaffold-eth/issues), and join/fund the 🏰 [BuidlGuidl](https://BuidlGuidl.com)!
-
-  
- - 🚤  [Follow the full Ethereum Speed Run](https://medium.com/@austin_48503/%EF%B8%8Fethereum-dev-speed-run-bd72bcba6a4c)
-
-
- - 🎟  [Create your first NFT](https://github.com/scaffold-eth/scaffold-eth/tree/simple-nft-example)
- - 🥩  [Build a staking smart contract](https://github.com/scaffold-eth/scaffold-eth/tree/challenge-1-decentralized-staking)
- - 🏵  [Deploy a token and vendor](https://github.com/scaffold-eth/scaffold-eth/tree/challenge-2-token-vendor)
- - 🎫  [Extend the NFT example to make a "buyer mints" marketplace](https://github.com/scaffold-eth/scaffold-eth/tree/buyer-mints-nft)
- - 🎲  [Learn about commit/reveal](https://github.com/scaffold-eth/scaffold-eth/tree/commit-reveal-with-frontend)
- - ✍️  [Learn how ecrecover works](https://github.com/scaffold-eth/scaffold-eth/tree/signature-recover)
- - 👩‍👩‍👧‍👧  [Build a multi-sig that uses off-chain signatures](https://github.com/scaffold-eth/scaffold-eth/tree/meta-multi-sig)
- - ⏳  [Extend the multi-sig to stream ETH](https://github.com/scaffold-eth/scaffold-eth/tree/streaming-meta-multi-sig)
- - ⚖️  [Learn how a simple DEX works](https://medium.com/@austin_48503/%EF%B8%8F-minimum-viable-exchange-d84f30bd0c90)
- - 🦍  [Ape into learning!](https://github.com/scaffold-eth/scaffold-eth/tree/aave-ape)
+Alternatively, to test on an iOS device (requires Apple Developer Account) open and run the project with XCode.
 
 # 💌 P.S.
 
@@ -93,6 +54,7 @@ Check out all the [active branches](https://github.com/scaffold-eth/scaffold-eth
 📣 Make sure you update the `InfuraID` before you go to production. Huge thanks to [Infura](https://infura.io/) for our special account that fields 7m req/day!
 
 # 🏃💨 Speedrun Ethereum
+
 Register as a builder [here](https://speedrunethereum.com) and start on some of the challenges and build a portfolio.
 
 # 💬 Support Chat
@@ -102,7 +64,3 @@ Join the telegram [support chat 💬](https://t.me/joinchat/KByvmRe5wkR-8F_zz6Aj
 ---
 
 🙏 Please check out our [Gitcoin grant](https://gitcoin.co/grants/2851/scaffold-eth) too!
-
-### Automated with Gitpod
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/scaffold-eth/scaffold-eth)

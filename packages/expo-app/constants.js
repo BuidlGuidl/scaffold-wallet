@@ -15,7 +15,7 @@ export const NETWORKS = {
     color: "#666666",
     chainId: 31337,
     blockExplorer: "",
-    rpcUrl: "http://" + (global.window ? window.location.hostname : "localhost") + ":8545",
+    rpcUrl: "http://localhost" + ":8545",
   },
   mainnet: {
     name: "mainnet",
@@ -119,14 +119,14 @@ export const NETWORKS = {
     color: "#f01a37",
     chainId: 31337,
     blockExplorer: "",
-    rpcUrl: "http://" + (global.window ? window.location.hostname : "localhost") + ":9545",
+    rpcUrl: "http://localhost:9545",
   },
   localOptimism: {
     name: "localOptimism",
     color: "#f01a37",
     chainId: 420,
     blockExplorer: "",
-    rpcUrl: "http://" + (global.window ? window.location.hostname : "localhost") + ":8545",
+    rpcUrl: "http://localhost:8545",
     gasPrice: 0,
   },
   kovanOptimism: {
@@ -210,3 +210,11 @@ export const NETWORK = chainId => {
     }
   }
 };
+
+// RPC Call Methods. From Rainbow https://github.com/rainbow-me/rainbow/blob/develop/src/utils/signingMethods.ts
+export const SEND_TRANSACTION = 'eth_sendTransaction';
+export const PERSONAL_SIGN = 'personal_sign';
+export const SIGN = 'eth_sign';
+export const SIGN_TRANSACTION = 'eth_signTransaction';
+export const SIGN_TYPED_DATA = 'eth_signTypedData';
+export const SIGN_TYPED_DATA_V4 = 'eth_signTypedData_v4';
