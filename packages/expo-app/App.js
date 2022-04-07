@@ -6,7 +6,7 @@ import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "rea
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
 import "@ethersproject/shims";
-import { NETWORKS, ALCHEMY_KEY } from "./constants";
+import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTION, SIGN } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
 import { useBalance } from "eth-hooks/useBalance";
@@ -17,6 +17,7 @@ import WalletConnect from "@walletconnect/client";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNPickerSelect from "react-native-picker-select";
 import { ethers } from "ethers";
+import { arrayify } from '@ethersproject/bytes';
 import AddressDisplay from "./components/AddressDisplay";
 import TokenDisplay from "./components/TokenDisplay";
 import QRScannerScreen from "./screens/QRScannerScreen";
@@ -48,7 +49,7 @@ export default function App() {
   const blockExplorer = targetNetwork.blockExplorer;
 
   // load all your providers
-  const localProvider = useStaticJsonRPC([targetNetwork.rpcUrl]);
+  const localProvider = new ethers.providers.StaticJsonRpcProvider(targetNetwork.rpcUrl, targetNetwork.chainId) //useStaticJsonRPC([targetNetwork.rpcUrl]);
   const mainnetProvider = useStaticJsonRPC(providers);
 
   if (DEBUG) console.log(`Using ${selectedNetwork} network`);
@@ -72,6 +73,7 @@ export default function App() {
         const privateKey = generatedWallet._signingKey().privateKey;
         await AsyncStorage.setItem('activePrivateKey', privateKey)
         await AsyncStorage.setItem('privateKeyList', JSON.stringify([privateKey]))
+        const signer = generatedWallet.connect(localProvider);
         setWallet(generatedWallet)
         setAddress(generatedWallet.address)
       } else {
@@ -152,9 +154,9 @@ export default function App() {
         if (error) throw error
         console.log("call_request", payload);
 
-        if (payload.method === "eth_sendTransaction") {
-          setPendingTransaction(payload)
-        }
+        // if (payload.method === "eth_sendTransaction") {
+        setPendingTransaction(payload)
+        // }
       });
 
       connector.on("disconnect", (error, payload) => {
@@ -172,8 +174,11 @@ export default function App() {
   }
   const confirmTransaction = async () => {
     const payload = pendingTransaction
-    console.log('to', targetNetwork.rpcUrl);
-    if (payload.method === "eth_sendTransaction") {
+    const method = payload.method
+    console.log('confirmTransaction', targetNetwork.rpcUrl, payload);
+
+    // Handle Sending / Signing a transaction
+    if (method === SEND_TRANSACTION || method === SIGN_TRANSACTION) {
       const signer = wallet.connect(localProvider);
       try {
         const { to, from, data, value } = payload.params[0]
@@ -185,16 +190,20 @@ export default function App() {
           data
         }
 
-        const result = await signer.sendTransaction(tx)
-        console.log('txn successful');
-        // const result = await signer.provider.send(payload.method, payload.params)
-        console.log('hash', result.hash);
+        let hash
+        if (method === SEND_TRANSACTION) {
+          hash = await signer.sendTransaction(tx)
+          console.log('Transaction Sent');
+        } else {
+          hash = await signer.signTransaction(tx)
+          console.log('Transaction Signed');
+        }
 
         wallectConnectConnector.approveRequest({
           id: payload.id,
-          result: result.hash,
+          result: hash,
         });
-        console.log('walletconnector request approved');
+        console.log('Sent ApproveRequest back to Wallet Connect');
         setPendingTransaction(undefined)
       } catch (error) {
         // console.log(wallet, signer);
@@ -205,8 +214,26 @@ export default function App() {
         });
       }
     }
+    else {
+      if (method === PERSONAL_SIGN || method === SIGN) {
+        // Personal Sign uses first param signing
+        const message = method === PERSONAL_SIGN ? payload.params?.[0] : payload.params?.[1]
+        const result = await wallet.signMessage(arrayify(message));
+        console.log(result);
+        await wallectConnectConnector.approveRequest({ id: payload.id, result });
+        setPendingTransaction(undefined)
+      } else {
+        // TODO SIGN TYPED DATA
+        console.log('Unsupported Method');
+      }
+    }
   }
   const cancelTransaction = () => {
+    const payload = pendingTransaction
+    wallectConnectConnector.rejectRequest({
+      id: payload.id,
+      error: { message: "Transaction rejected by user" },
+    });
     setPendingTransaction(undefined)
   }
 
@@ -246,7 +273,7 @@ export default function App() {
       <TextInput
         placeholder="Wallet Connect Url"
         style={{
-          marginTop: 24,
+          marginTop: 16,
           borderWidth: 1,
           width: '100%',
           height: 36
@@ -266,7 +293,7 @@ export default function App() {
 
 
       {pendingTransaction &&
-        <View style={{ borderTopWidth: 1, borderColor: "#aaa", marginTop: 16, paddingTop: 8 }}>
+        <View style={{ borderTopWidth: 1, borderColor: "#aaa", paddingTop: 8 }}>
           <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
           <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
@@ -320,7 +347,7 @@ const pickerSelectStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
     textAlign: 'center',
-    marginTop: 32,
+    marginTop: 24,
     color: 'black',
     // backgroundColor: '#eee'
   },

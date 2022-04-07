@@ -53,7 +53,7 @@ export default function AddressDisplay(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 24,
+        marginTop: 8,
         marginBottom: 12
     },
     text: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         width: '100%',
-        marginBottom: 24
+        marginBottom: 12
     },
     textButton: {
         fontSize: 18,

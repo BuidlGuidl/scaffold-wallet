@@ -210,3 +210,11 @@ export const NETWORK = chainId => {
     }
   }
 };
+
+// RPC Call Methods. From Rainbow https://github.com/rainbow-me/rainbow/blob/develop/src/utils/signingMethods.ts
+export const SEND_TRANSACTION = 'eth_sendTransaction';
+export const PERSONAL_SIGN = 'personal_sign';
+export const SIGN = 'eth_sign';
+export const SIGN_TRANSACTION = 'eth_signTransaction';
+export const SIGN_TYPED_DATA = 'eth_signTypedData';
+export const SIGN_TYPED_DATA_V4 = 'eth_signTypedData_v4';
