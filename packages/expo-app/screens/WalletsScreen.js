@@ -3,7 +3,10 @@
 import { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { ethers } from "ethers";
+import Clipboard from '@react-native-clipboard/clipboard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
 
 const WalletsScreen = (props) => {
     const { setWallet, setAddress } = props
@@ -11,6 +14,14 @@ const WalletsScreen = (props) => {
     const [wallets, setWallets] = useState([]);
     const [privateKeyList, setPrivateKeyList] = useState([]);
     const [reveal, setReveal] = useState(false);
+    const [copied, setCopied] = useState(false);
+
+    const copyToClipboard = (key) => {
+        setCopied(true)
+        Clipboard.setString(key);
+
+        setTimeout(() => setCopied(false), 1000)
+    };
 
     useEffect(() => {
         const loadAllAccounts = async () => {
@@ -79,18 +90,28 @@ const WalletsScreen = (props) => {
             <View style={{ width: '80%', marginHorizontal: 32 }}>
                 {wallets.map((wl, index) => {
                     let displayAddress = `${wl.address.slice(0, 6)}...${wl.address.slice(-4)}`;
-                    return <View style={{ marginVertical: 14 }} key={index}>
+                    return <View style={{ marginVertical: 16 }} key={index}>
                         {wl.address === props.address ?
                             <View>
-                                <Text style={{ fontSize: 20 }}>{displayAddress} (Active)</Text>
+                                <Text style={{ fontSize: 24, fontWeight: '500' }}>{displayAddress} (Active)</Text>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                     {<Button title={reveal ? "Hide Private Key" : "Reveal Private Key"} color="#c92a2a" onPress={() => setReveal(!reveal)} />}
                                     <Button title="Delete" color="#c92a2a" onPress={() => deleteWallet(index)} />
                                 </View>
-                                {reveal && <Text style={{ margin: 12 }}>{privateKeyList[index]}</Text>}
+                                {reveal && <View>
+                                    <Text style={{ margin: 8, fontSize: 24, backgroundColor: '#ddd', padding: 12 }}>{privateKeyList[index]}</Text>
+                                    <TouchableOpacity
+                                        onPress={() => copyToClipboard(privateKeyList[index])}>
+                                        <Text
+                                            style={{ marginTop: 8, fontSize: 20, textAlign: 'center' }}>
+                                            <FontAwesomeIcon name="copy" size={18} />
+                                            {copied ? ' Copied' : ' Copy'}
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>}
                             </View> :
                             <TouchableOpacity onPress={() => switchToWallet(index)}>
-                                <Text style={{ fontSize: 20 }}>{displayAddress}</Text>
+                                <Text style={{ fontSize: 24, fontWeight: '500' }}>{displayAddress}</Text>
                             </TouchableOpacity>
                         }
                     </View>
