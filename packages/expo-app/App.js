@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
 
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
@@ -266,7 +266,7 @@ export default function App() {
 
       <View style={styles.main}>
         <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
-        {/* <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} /> */}
+        <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
         <View style={{ alignItems: 'center' }}>
           <Button
             onPress={() => setShowSendScreen(true)}
@@ -280,19 +280,11 @@ export default function App() {
 
         <TextInput
           placeholder="Wallet Connect Url"
-          style={{
-            marginTop: 16,
-            borderWidth: 1,
-            width: '100%',
-            height: 36
-          }}
+          style={{ width: '100%', marginTop: 16, paddingHorizontal: 4, borderWidth: 1, height: 36 }}
           onChangeText={setWalletConnectUrl}
           value={walletConnectUrl}
           editable={!wallectConnectConnector}
         />
-
-
-
         {wallectConnectConnector ?
           <Button
             onPress={disconnect}
@@ -317,18 +309,18 @@ export default function App() {
           </View>}
 
       </View>
-      {!pendingTransaction && <Text style={styles.gas}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
+      {(!pendingTransaction && !showQRDisplayScreen) && <Text style={styles.gas}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
     </View>
   }
 
   return (
-    <View>
+    <SafeAreaView>
       <HomeScreen />
       {showSendScreen && <SendScreen address={address} hide={() => setShowSendScreen(false)} balance={yourLocalBalance} price={price} gasPrice={gasPrice} setShowQRScanner={setShowQRScanner} toAddress={toAddress} setToAddress={setToAddress} sendEth={sendEth} />}
       {showWalletScreen && <WalletsScreen address={address} hide={() => setShowWalletScreen(false)} setWallet={setWallet} setAddress={setAddress} />}
       {showQRDisplayScreen && <QRDisplayScreen address={address} hide={() => setShowQRDisplayScreen(false)} />}
       {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} connect={connect} setToAddress={setToAddress} />}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -341,7 +333,6 @@ const styles = StyleSheet.create({
   },
   header: {
     width: '100%',
-    marginTop: 40,
     paddingHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -349,7 +340,7 @@ const styles = StyleSheet.create({
   },
   main: {
     width: '100%',
-    marginTop: 24,
+    paddingTop: 16,
     paddingHorizontal: 30,
   },
   text: {
