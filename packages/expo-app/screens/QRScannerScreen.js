@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 import { Text, TouchableOpacity, View } from "react-native";
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
@@ -10,11 +11,17 @@ const QRScannerScreen = (props) => {
         // Handle WC QR
         if (data && data.indexOf("wc:") === 0) {
             props.setWalletConnectUrl(data)
+            props.connect(data)
             props.hide()
         }
         // Handle Address QRs
         else if (data && data.indexOf("ethereum:") === 0) {
-            //TODO
+            const cleanAddress = data.slice(9)
+            props.setToAddress(cleanAddress)
+            props.hide()
+        } else if (data && ethers.utils.isAddress(data)) {
+            props.setToAddress(data)
+            props.hide()
         }
 
     }

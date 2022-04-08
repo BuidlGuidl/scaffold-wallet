@@ -1,0 +1,103 @@
+
+
+import { useState, useEffect } from "react";
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ethers } from "ethers";
+import AntIcon from 'react-native-vector-icons/AntDesign';
+
+const SendScreen = (props) => {
+
+    const { address, balance, price, gasPrice, setShowQRScanner, toAddress, setToAddress, sendEth } = props
+    const [loading, setLoading] = useState(false);
+    const [amount, setAmount] = useState(0);
+
+    const formattedEthBalance = Math.round(ethers.utils.formatEther(balance) * 1e4) / 1e4
+
+    const transferCostInETH = Number(ethers.utils.formatEther(gasPrice * 21000))
+    const transferCostInUSD = (transferCostInETH * price).toFixed(2)
+    let displayAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
+    let insufficientFunds = false
+    if (amount && gasPrice && balance) {
+        insufficientFunds = (Number(amount) + transferCostInETH) > formattedEthBalance
+    }
+
+    const validToAddress = toAddress ? ethers.utils.isAddress(address) : false
+    const validAmount = !isNaN(amount)
+    return <View
+        onPress={props.hide}
+        style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#fff", flexDirection: 'column', paddingHorizontal: 20 }}>
+
+        <Text style={{
+            marginVertical: 40,
+            marginHorizontal: 32,
+            fontSize: 20,
+            fontWeight: "600",
+            textAlign: "center",
+        }}>
+            Send
+        </Text>
+
+        <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ flex: 1, fontSize: 22, fontWeight: '500' }}>To:</Text>
+            <TextInput
+                placeholder="address"
+                style={{
+                    flex: 9,
+                    borderBottomWidth: 1,
+                    height: 36,
+                    fontSize: 18, paddingRight: 28
+                }}
+                onChangeText={setToAddress}
+                value={toAddress}
+            />
+            <TouchableOpacity onPress={() => setShowQRScanner(true)} style={{ marginLeft: -24 }}>
+                <AntIcon name="scan1" size={24} />
+            </TouchableOpacity>
+        </View>
+        <View style={{ width: '100%', marginTop: 16, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ fontSize: 18 }}>Wallet Balance {formattedEthBalance} ETH</Text>
+        </View>
+
+
+
+        <View style={{ width: '100%', marginTop: 16, flexDirection: 'row', alignItems: 'center' }}>
+            <TextInput
+                style={{ flex: 2, fontSize: 50 }}
+                value={amount}
+                keyboardType='numeric'
+                maxLength={8}
+                onChangeText={setAmount}
+                placeholder="0.0"
+            />
+            <Text style={{ flex: 1, fontSize: 36, textAlign: 'right', fontWeight: '500' }}>ETH</Text>
+        </View>
+        <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Text style={{ fontSize: 22 }}>~{(amount * price).toFixed(2)} USD</Text>
+            <Text style={{ fontSize: 16 }}>Est. Fee ${transferCostInUSD}</Text>
+        </View>
+
+        <View style={{ marginTop: 48, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
+            <TouchableOpacity style={{ backgroundColor: '#0084ff', paddingVertical: 16, borderRadius: 32, width: '100%' }}
+                disabled={insufficientFunds || !validToAddress || !validAmount}
+                onPress={() => {
+                    setLoading(true)
+                    sendEth(amount, toAddress)
+                    setLoading(false)
+                    props.hide()
+                }}>
+                <Text style={{ fontSize: 21, fontWeight: '500', color: '#fff', textAlign: 'center' }}>
+                    {insufficientFunds ? 'Insufficient funds' : 'Confirm'}
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ paddingVertical: 16, width: '100%', marginTop: 8 }}
+                onPress={props.hide}>
+                <Text style={{ fontSize: 21, fontWeight: '500', color: '#0084ff', textAlign: 'center' }}>
+                    Cancel
+                </Text>
+            </TouchableOpacity>
+        </View>
+
+    </View>
+}
+
+export default SendScreen

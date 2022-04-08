@@ -61,8 +61,7 @@ export default function AddressDisplay(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 8,
-        marginBottom: 12
+        marginTop: 8
     },
     addressRow: {
         flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 16

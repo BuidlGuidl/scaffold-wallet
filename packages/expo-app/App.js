@@ -9,23 +9,25 @@ import "@ethersproject/shims";
 import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTION, SIGN } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
+import { ethers } from "ethers";
+import { arrayify } from '@ethersproject/bytes';
 import { useBalance } from "eth-hooks/useBalance";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
-// import { Transactor, Web3ModalSetup } from "./helpers";
 import { useStaticJsonRPC } from "./hooks";
+import useGasPrice from "./hooks/GasPrice";
 import WalletConnect from "@walletconnect/client";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNPickerSelect from "react-native-picker-select";
-import { ethers } from "ethers";
-import { arrayify } from '@ethersproject/bytes';
-import AddressDisplay from "./components/AddressDisplay";
-import TokenDisplay from "./components/TokenDisplay";
+import AntIcon from 'react-native-vector-icons/AntDesign';
+
+// Screens and Components
 import QRScannerScreen from "./screens/QRScannerScreen";
 import QRDisplayScreen from "./screens/QRScreen";
 import WalletsScreen from "./screens/WalletsScreen";
-import useGasPrice from "./hooks/GasPrice";
-import FontAwesomeIcon from 'react-native-vector-icons/AntDesign';
-/// 📡 What chain are your contracts deployed to?
+import SendScreen from "./screens/SendScreen";
+import TokenDisplay from "./components/TokenDisplay";
+import AddressDisplay from "./components/AddressDisplay";
+
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 const DEBUG = true;
@@ -96,17 +98,31 @@ export default function App() {
   const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
   const [showQRScanner, setShowQRScanner] = useState(false);
   const [showWalletScreen, setShowWalletScreen] = useState(false);
+  const [showSendScreen, setShowSendScreen] = useState(false);
 
+
+  const [toAddress, setToAddress] = useState();
   const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
   const [wallectConnectConnector, setWallectConnectConnector] = useState()
 
-  const connect = () => {
-    console.log('connect', walletConnectUrl);
-    if (walletConnectUrl) {
+  const sendEth = async (ethAmount, to) => {
+    const signer = wallet.connect(localProvider);
+    await signer.sendTransaction({
+      to: to,
+      gasPrice: gasPrice,
+      value: ethers.utils.parseEther(ethAmount),
+      data: "0x"
+    });
+    console.log('Send successful!');
+  }
+
+  const connect = (url) => {
+    console.log('connect', url);
+    if (url) {
       const connector = new WalletConnect(
         {
-          uri: walletConnectUrl,
+          uri: url,
           clientMeta: {
             description: "Forkable web wallet for small/quick transactions.",
             url: "https://punkwallet.io",
@@ -219,6 +235,7 @@ export default function App() {
     setPendingTransaction(undefined)
   }
 
+
   const HomeScreen = () => {
     return <View style={styles.container}>
       <StatusBar style="auto" />
@@ -242,29 +259,23 @@ export default function App() {
           }}
         />
         <TouchableOpacity onPress={() => setShowQRScanner(true)}>
-          <FontAwesomeIcon name="scan1" size={20} />
+          <AntIcon name="scan1" size={24} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.main}>
         <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
         <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
-        {/* <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity
-          style={{ width: 80, height: 36, justifyContent: 'center' }}
-        // onPress={sendTxn}
-        >
-          <Text
-            style={styles.textButton}>
-            Send
-          </Text>
-        </TouchableOpacity>
-      </View> */}
-        {!wallectConnectConnector && <View style={{ marginTop: 24, alignItems: 'center' }}>
+        <View style={{ alignItems: 'center' }}>
+          <Button
+            onPress={() => setShowSendScreen(true)}
+            title="Send" />
+        </View>
+        {/* {!wallectConnectConnector && <View style={{ marginTop: 24, alignItems: 'center' }}>
           <Button
             onPress={() => setShowQRScanner(true)}
             title="Scan QR" />
-        </View>}
+        </View>} */}
 
         <TextInput
           placeholder="Wallet Connect Url"
@@ -286,7 +297,7 @@ export default function App() {
             onPress={disconnect}
             title="Disconnect" /> :
           <Button
-            onPress={connect}
+            onPress={() => connect(walletConnectUrl)}
             title="Connect" />}
 
 
@@ -305,16 +316,17 @@ export default function App() {
           </View>}
 
       </View>
-      {!pendingTransaction && <Text style={{ position: 'absolute', bottom: 16, fontSize: 14, fontWeight: '500' }}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
+      {!pendingTransaction && <Text style={styles.gas}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
     </View>
   }
 
   return (
     <View>
       <HomeScreen />
+      {showSendScreen && <SendScreen address={address} hide={() => setShowSendScreen(false)} balance={yourLocalBalance} price={price} gasPrice={gasPrice} setShowQRScanner={setShowQRScanner} toAddress={toAddress} setToAddress={setToAddress} sendEth={sendEth} />}
       {showWalletScreen && <WalletsScreen address={address} hide={() => setShowWalletScreen(false)} setWallet={setWallet} setAddress={setAddress} />}
       {showQRDisplayScreen && <QRDisplayScreen address={address} hide={() => setShowQRDisplayScreen(false)} />}
-      {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} />}
+      {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} connect={connect} setToAddress={setToAddress} />}
     </View>
   );
 }
@@ -328,8 +340,8 @@ const styles = StyleSheet.create({
   },
   header: {
     width: '100%',
-    marginTop: 24,
-    paddingHorizontal: 12,
+    marginTop: 40,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -350,4 +362,10 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
   },
+  gas: {
+    position: 'absolute',
+    bottom: 16,
+    fontSize: 16,
+    fontWeight: '500'
+  }
 });
