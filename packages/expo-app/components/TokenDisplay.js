@@ -32,6 +32,7 @@ export default function TokenDisplay(props) {
 const styles = StyleSheet.create({
     row: {
         display: 'flex',
+        paddingHorizontal: 20,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',

@@ -74,5 +74,11 @@
     <false/>
     <key>NSCameraUsageDescription</key>
     <string>$(PRODUCT_NAME) requires camera permissions.</string>
+    <key>UIAppFonts</key>
+    <array>
+      <string>AntDesign.ttf</string>
+      <string>Feather.ttf</string>
+      <string>FontAwesome.ttf</string>
+    </array>
   </dict>
 </plist>

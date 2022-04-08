@@ -54,6 +54,7 @@
     "react-native-svg": "^12.3.0",
     "react-native-tcp": "^3.3.2",
     "react-native-udp": "^2.7.0",
+    "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
     "readable-stream": "^1.0.33",
     "rn-nodeify": "^10.3.0",

@@ -24,7 +24,7 @@ import QRScannerScreen from "./screens/QRScannerScreen";
 import QRDisplayScreen from "./screens/QRScreen";
 import WalletsScreen from "./screens/WalletsScreen";
 import useGasPrice from "./hooks/GasPrice";
-
+import FontAwesomeIcon from 'react-native-vector-icons/AntDesign';
 /// 📡 What chain are your contracts deployed to?
 const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -49,11 +49,6 @@ export default function App() {
   const localProvider = useStaticJsonRPC([targetNetwork.rpcUrl]);
   const mainnetProvider = useStaticJsonRPC(providers);
 
-  if (DEBUG) console.log(`Using ${selectedNetwork} network`);
-
-  // 🛰 providers
-  if (DEBUG) console.log("📡 Connecting to Mainnet Ethereum");
-
   /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
   const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
 
@@ -73,7 +68,6 @@ export default function App() {
         const privateKey = generatedWallet._signingKey().privateKey;
         await AsyncStorage.setItem('activePrivateKey', privateKey)
         await AsyncStorage.setItem('privateKeyList', JSON.stringify([privateKey]))
-        const signer = generatedWallet.connect(localProvider);
         setWallet(generatedWallet)
         setAddress(generatedWallet.address)
       } else {
@@ -228,7 +222,8 @@ export default function App() {
   const HomeScreen = () => {
     return <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={{ marginTop: 20, width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={styles.header}>
+        <Text></Text>
         <RNPickerSelect
           value={selectedNetwork}
           onValueChange={async (value) => {
@@ -236,12 +231,25 @@ export default function App() {
             setSelectedNetwork(value)
           }}
           items={options}
-          style={pickerSelectStyles}
+          style={{
+            inputIOS: {
+              height: 36,
+              fontSize: 20,
+              fontWeight: '500',
+              textAlign: 'center',
+              color: 'black',
+            }
+          }}
         />
+        <TouchableOpacity onPress={() => setShowQRScanner(true)}>
+          <FontAwesomeIcon name="scan1" size={20} />
+        </TouchableOpacity>
       </View>
-      <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
-      <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
-      {/* <View style={{ alignItems: 'center' }}>
+
+      <View style={styles.main}>
+        <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
+        <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
+        {/* <View style={{ alignItems: 'center' }}>
         <TouchableOpacity
           style={{ width: 80, height: 36, justifyContent: 'center' }}
         // onPress={sendTxn}
@@ -252,47 +260,52 @@ export default function App() {
           </Text>
         </TouchableOpacity>
       </View> */}
-      {!wallectConnectConnector && <View style={{ marginTop: 24, alignItems: 'center' }}>
-        <Button
-          onPress={() => setShowQRScanner(true)}
-          title="Scan QR" />
-      </View>}
-      <TextInput
-        placeholder="Wallet Connect Url"
-        style={{
-          marginTop: 16,
-          borderWidth: 1,
-          width: '100%',
-          height: 36
-        }}
-        onChangeText={setWalletConnectUrl}
-        value={walletConnectUrl}
-        editable={!wallectConnectConnector}
-      />
-
-      {wallectConnectConnector ?
-        <Button
-          onPress={disconnect}
-          title="Disconnect" /> :
-        <Button
-          onPress={connect}
-          title="Connect" />}
-
-
-      {pendingTransaction &&
-        <View style={{ borderTopWidth: 1, borderColor: "#aaa", paddingTop: 8 }}>
-          <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
-          <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-            <Button
-              onPress={confirmTransaction}
-              title="Confirm" />
-            <Button
-              onPress={cancelTransaction}
-              title="Cancel" />
-          </View>
+        {!wallectConnectConnector && <View style={{ marginTop: 24, alignItems: 'center' }}>
+          <Button
+            onPress={() => setShowQRScanner(true)}
+            title="Scan QR" />
         </View>}
-      {!pendingTransaction && <Text style={{ position: 'absolute', bottom: 24, fontSize: 14, fontWeight: '500' }}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
+
+        <TextInput
+          placeholder="Wallet Connect Url"
+          style={{
+            marginTop: 16,
+            borderWidth: 1,
+            width: '100%',
+            height: 36
+          }}
+          onChangeText={setWalletConnectUrl}
+          value={walletConnectUrl}
+          editable={!wallectConnectConnector}
+        />
+
+
+
+        {wallectConnectConnector ?
+          <Button
+            onPress={disconnect}
+            title="Disconnect" /> :
+          <Button
+            onPress={connect}
+            title="Connect" />}
+
+
+        {pendingTransaction &&
+          <View style={{ borderTopWidth: 1, borderColor: "#aaa", paddingTop: 8 }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
+            <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+              <Button
+                onPress={confirmTransaction}
+                title="Confirm" />
+              <Button
+                onPress={cancelTransaction}
+                title="Cancel" />
+            </View>
+          </View>}
+
+      </View>
+      {!pendingTransaction && <Text style={{ position: 'absolute', bottom: 16, fontSize: 14, fontWeight: '500' }}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
     </View>
   }
 
@@ -310,9 +323,21 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     alignItems: "center",
-    paddingHorizontal: 30,
     backgroundColor: "#fff",
     height: '100%'
+  },
+  header: {
+    width: '100%',
+    marginTop: 24,
+    paddingHorizontal: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  main: {
+    width: '100%',
+    marginTop: 24,
+    paddingHorizontal: 30,
   },
   text: {
     fontSize: 16,
@@ -325,23 +350,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
   },
-});
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    marginHorizontal: '20%',
-    width: '60%',
-    height: 36,
-    fontSize: 20,
-    fontWeight: '500',
-    textAlign: 'center',
-    marginTop: 24,
-    color: 'black',
-  },
-  iconContainer: {
-    top: 46,
-    right: 100,
-  },
-  chevronDown: {
-    color: '#fff'
-  }
 });

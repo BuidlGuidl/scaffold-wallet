@@ -2,6 +2,8 @@
 import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 import Clipboard from '@react-native-clipboard/clipboard';
 import { useState } from "react";
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+
 export default function AddressDisplay(props) {
 
     const { setShowWalletScreen } = props
@@ -24,17 +26,21 @@ export default function AddressDisplay(props) {
 
     return (
         <View style={styles.container}>
-            <Button
-                onPress={() => setShowWalletScreen(true)}
-                title="Manage" />
-            <Text style={styles.text}>
-                {displayAddress}
-            </Text>
+            <TouchableOpacity style={styles.addressRow}
+                onPress={() => setShowWalletScreen(true)}>
+                <Text style={styles.text}>
+                    {displayAddress}
+                </Text>
+                <FontAwesomeIcon name="chevron-down" size={20} />
+            </TouchableOpacity>
+
+
             <View style={styles.section}>
                 <TouchableOpacity onPress={copyToClipboard}>
                     <Text
                         style={styles.textButton}>
-                        {copied ? 'Copied' : 'Copy Address'}
+                        <FontAwesomeIcon name="copy" size={18} />
+                        {copied ? ' Copied' : ' Copy Address'}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -42,7 +48,9 @@ export default function AddressDisplay(props) {
                 >
                     <Text
                         style={styles.textButton}>
-                        View QR
+
+                        <FontAwesomeIcon name="qrcode" size={18} />
+                        {' '}View QR
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -56,11 +64,13 @@ const styles = StyleSheet.create({
         marginTop: 8,
         marginBottom: 12
     },
+    addressRow: {
+        flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 16
+    },
     text: {
+        marginRight: 8,
         fontSize: 28,
         fontWeight: "600",
-        textAlign: "center",
-        marginBottom: 16,
     },
     section: {
         flexDirection: 'row',
