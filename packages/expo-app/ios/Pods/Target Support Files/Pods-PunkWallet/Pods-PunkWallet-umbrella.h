@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_expoappVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_expoappVersionString[];
+FOUNDATION_EXPORT double Pods_PunkWalletVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_PunkWalletVersionString[];
 

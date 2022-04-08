@@ -28,7 +28,7 @@ import SendScreen from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
 
-const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 const DEBUG = true;
 
@@ -189,7 +189,8 @@ export default function App() {
 
         let hash
         if (method === SEND_TRANSACTION) {
-          hash = await signer.sendTransaction(tx)
+          hash = (await signer.sendTransaction(tx)).hash
+          console.log(hash);
           console.log('Transaction Sent');
         } else {
           hash = await signer.signTransaction(tx)
@@ -265,7 +266,7 @@ export default function App() {
 
       <View style={styles.main}>
         <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
-        <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
+        {/* <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} /> */}
         <View style={{ alignItems: 'center' }}>
           <Button
             onPress={() => setShowSendScreen(true)}

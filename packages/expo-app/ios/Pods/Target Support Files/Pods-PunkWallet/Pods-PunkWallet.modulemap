@@ -1,0 +1,6 @@
+module Pods_PunkWallet {
+  umbrella header "Pods-PunkWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

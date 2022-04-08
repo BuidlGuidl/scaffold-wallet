@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2737E15CB9B173560634C9DBD20300ED"
-               BuildableName = "libPods-expoapp.a"
-               BlueprintName = "Pods-expoapp"
+               BlueprintIdentifier = "EA6B21019F18E11A4BC9602AFB955E59"
+               BuildableName = "libPods-PunkWallet.a"
+               BlueprintName = "Pods-PunkWallet"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
