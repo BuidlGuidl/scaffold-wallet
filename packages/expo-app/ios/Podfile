@@ -15,7 +15,8 @@ target 'PunkWallet' do
     :path => config[:reactNativePath],
     :hermes_enabled => podfile_properties['expo.jsEngine'] == 'hermes'
   )
-
+  
+  pod 'react-native-restart', :path => '../node_modules/react-native-restart'
   pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
   pod 'Permission-Camera', :path => "../node_modules/react-native-permissions/ios/Camera"
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'

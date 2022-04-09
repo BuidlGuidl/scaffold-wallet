@@ -19,6 +19,7 @@ import WalletConnect from "@walletconnect/client";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNPickerSelect from "react-native-picker-select";
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import RNRestart from 'react-native-restart';
 
 // Screens and Components
 import QRScannerScreen from "./screens/QRScannerScreen";
@@ -132,12 +133,15 @@ export default function App() {
         }
       );
 
+      // Check if connection is already established
+      if (!connector.connected) connector.createSession();
+
       setWallectConnectConnector(connector)
 
       // Subscribe to session requests
       connector.on("session_request", (error, payload) => {
-        if (error) throw error
         console.log("session_request", payload);
+        if (error) throw error
 
         connector.approveSession({
           accounts: [address],
@@ -147,26 +151,35 @@ export default function App() {
 
       // Subscribe to call requests
       connector.on("call_request", async (error, payload) => {
-        if (error) throw error
         console.log("call_request", payload);
+        if (error) throw error
 
         // if (payload.method === "eth_sendTransaction") {
         setPendingTransaction(payload)
         // }
       });
 
-      connector.on("disconnect", (error, payload) => {
-        if (error) throw error
+      connector.on("disconnect", async (error, payload) => {
         console.log("disconnect", payload);
+        if (error) console.log(error);;
+
+        setWalletConnectUrl(undefined)
+        setWallectConnectConnector(undefined)
+
+        // Force reload the JS bundle to clear WC stuff
+        RNRestart.Restart();
       });
     }
-
   }
 
-  const disconnect = () => {
-    setWalletConnectUrl(undefined);
-    wallectConnectConnector.killSession()
-    setWallectConnectConnector(undefined)
+  const disconnect = async () => {
+    try {
+      await wallectConnectConnector.killSession()
+    } catch (err) {
+      console.log('killSession failed', err);
+      // Force reload the JS bundle to clear WC stuff
+      RNRestart.Restart();
+    }
   }
 
   const confirmTransaction = async () => {
