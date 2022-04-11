@@ -3,13 +3,14 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 import Clipboard from '@react-native-clipboard/clipboard';
 import { useState } from "react";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { truncateAddress } from "../helpers/utils";
 
 export default function AddressDisplay(props) {
 
     const { setShowWalletScreen } = props
     const address = props.address || ''
 
-    let displayAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
+    let displayAddress = truncateAddress(address);
 
     const [copied, setCopied] = useState(false);
 

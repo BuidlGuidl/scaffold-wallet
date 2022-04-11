@@ -1,12 +1,11 @@
 
 
 import { useState, useEffect } from "react";
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, Text, TouchableOpacity, View } from "react-native";
 import { ethers } from "ethers";
 import Clipboard from '@react-native-clipboard/clipboard';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-
+import { generateNewPrivateKeyAndWallet, loadAllPrivateKeys, switchActiveWallet, truncateAddress, updatePrivateKeys } from "../helpers/utils";
 
 const WalletsScreen = (props) => {
     const { setWallet, setAddress } = props
@@ -25,9 +24,7 @@ const WalletsScreen = (props) => {
 
     useEffect(() => {
         const loadAllAccounts = async () => {
-            // FIXME: REFACTOR TO USE SECURE STORAGE
-            const pks = JSON.parse(await AsyncStorage.getItem('privateKeyList'))
-            setPrivateKeyList(pks)
+            const pks = await loadAllPrivateKeys()
             const walletList = pks.map(pk => new ethers.Wallet(pk))
             setWallets(walletList)
         }
@@ -35,40 +32,29 @@ const WalletsScreen = (props) => {
     }, []);
 
     const generateNewWallet = async () => {
-        const generatedWallet = ethers.Wallet.createRandom();
-        const newPrivateKey = generatedWallet._signingKey().privateKey;
-        await AsyncStorage.setItem('activePrivateKey', newPrivateKey)
+        const { generatedWallet, pks } = await generateNewPrivateKeyAndWallet()
         setWallet(generatedWallet)
         setAddress(generatedWallet.address)
-
-        // Add new pk to the existing list
-        const pks = JSON.parse(await AsyncStorage.getItem('privateKeyList'))
-        pks.push(newPrivateKey)
-        await AsyncStorage.setItem('privateKeyList', JSON.stringify(pks))
         setPrivateKeyList(pks)
         const walletList = pks.map(pk => new ethers.Wallet(pk))
         setWallets(walletList)
     }
 
     const switchToWallet = async (index) => {
-        console.log(index, privateKeyList);
-        const pk = privateKeyList[index];
-
-        await AsyncStorage.setItem('activePrivateKey', pk)
-        const existingWallet = new ethers.Wallet(pk);
+        console.log('switch', index, privateKeyList, privateKeyList[index]);
+        const existingWallet = await switchActiveWallet(privateKeyList[index])
         setWallet(existingWallet)
         setAddress(existingWallet.address)
     }
 
     const deleteWallet = async (index) => {
         const pks = privateKeyList.filter(item => item !== privateKeyList[index])
-        await AsyncStorage.setItem('privateKeyList', JSON.stringify(pks))
+        await updatePrivateKeys(pks)
         setPrivateKeyList(pks)
         const walletList = pks.map(pk => new ethers.Wallet(pk))
         setWallets(walletList)
 
-        await AsyncStorage.setItem('activePrivateKey', pks[0])
-        const existingWallet = new ethers.Wallet(pks[0]);
+        const existingWallet = await switchActiveWallet(pks[0])
         setWallet(existingWallet)
         setAddress(existingWallet.address)
     }
@@ -89,7 +75,7 @@ const WalletsScreen = (props) => {
 
             <View style={{ width: '80%', marginHorizontal: 32 }}>
                 {wallets.map((wl, index) => {
-                    let displayAddress = `${wl.address.slice(0, 6)}...${wl.address.slice(-4)}`;
+                    let displayAddress = truncateAddress(wl.address);
                     return <View style={{ marginVertical: 16 }} key={index}>
                         {wl.address === props.address ?
                             <View>

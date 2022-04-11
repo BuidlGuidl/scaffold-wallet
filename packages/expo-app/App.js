@@ -28,6 +28,7 @@ import WalletsScreen from "./screens/WalletsScreen";
 import SendScreen from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
+import { loadOrGenerateWallet } from "./helpers/utils";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -64,20 +65,10 @@ export default function App() {
   useEffect(() => {
     console.log('useEffect App');
     const loadAccountAndNetwork = async () => {
-      // FIXME: REFACTOR TO USE SECURE STORAGE
-      const pk = await AsyncStorage.getItem('activePrivateKey')
-      if (!pk) {
-        const generatedWallet = ethers.Wallet.createRandom();
-        const privateKey = generatedWallet._signingKey().privateKey;
-        await AsyncStorage.setItem('activePrivateKey', privateKey)
-        await AsyncStorage.setItem('privateKeyList', JSON.stringify([privateKey]))
-        setWallet(generatedWallet)
-        setAddress(generatedWallet.address)
-      } else {
-        const existingWallet = new ethers.Wallet(pk);
-        setWallet(existingWallet)
-        setAddress(existingWallet.address)
-      }
+
+      const activeWallet = await loadOrGenerateWallet()
+      setWallet(activeWallet)
+      setAddress(activeWallet.address)
 
       const cachedNetwork = await AsyncStorage.getItem('network')
       if (cachedNetwork) setSelectedNetwork(cachedNetwork)

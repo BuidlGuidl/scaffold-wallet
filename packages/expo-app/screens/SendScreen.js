@@ -15,7 +15,6 @@ const SendScreen = (props) => {
 
     const transferCostInETH = Number(ethers.utils.formatEther(gasPrice * 21000))
     const transferCostInUSD = (transferCostInETH * price).toFixed(2)
-    let displayAddress = `${address.slice(0, 6)}...${address.slice(-4)}`;
     let insufficientFunds = false
     if (amount && gasPrice && balance) {
         insufficientFunds = (Number(amount) + transferCostInETH) > formattedEthBalance
