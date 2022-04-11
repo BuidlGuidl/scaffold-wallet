@@ -1,12 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
 
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
 import "@ethersproject/shims";
-import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTION, SIGN } from "./constants";
+import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTION, SIGN, DROPDOWN_NETWORK_OPTIONS } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
 import { ethers } from "ethers";
@@ -29,10 +28,9 @@ import SendScreen from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
 import { loadOrGenerateWallet } from "./helpers/utils";
+import { GasTracker } from "./components/GasTracker";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
-
-const DEBUG = true;
 
 // 🛰 providers
 const providers = [
@@ -42,6 +40,7 @@ const providers = [
 ];
 
 export default function App() {
+
   const networkOptions = [initialNetwork.name, "mainnet", "rinkeby"];
 
   const [address, setAddress] = useState();
@@ -54,37 +53,10 @@ export default function App() {
   const mainnetProvider = useStaticJsonRPC(providers);
 
   /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
-  const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
-
+  const price = useExchangeEthPrice(targetNetwork, mainnetProvider, 60000);
   /* 🔥 This hook will get the price of Gas from ⛽️ Etherscan */
-  const gasPrice = useGasPrice(targetNetwork, "fast");
-
-  // On App load, check async storage for an existing wallet, else generate a 🔥 burner wallet.
-
-  const [wallet, setWallet] = useState();
-  useEffect(() => {
-    console.log('useEffect App');
-    const loadAccountAndNetwork = async () => {
-
-      const activeWallet = await loadOrGenerateWallet()
-      setWallet(activeWallet)
-      setAddress(activeWallet.address)
-
-      const cachedNetwork = await AsyncStorage.getItem('network')
-      if (cachedNetwork) setSelectedNetwork(cachedNetwork)
-    }
-    loadAccountAndNetwork()
-  }, [])
-
-  const options = [];
-  for (const id in NETWORKS) {
-    options.push(
-      { label: NETWORKS[id].name, value: NETWORKS[id].name, color: NETWORKS[id].color }
-    );
-  }
-
-  // 🏗 scaffold-eth is full of handy hooks like this one to get your balance:
-  const yourLocalBalance = useBalance(localProvider, address);
+  const gasPrice = useGasPrice(targetNetwork, 10000);
+  const yourLocalBalance = useBalance(localProvider, address, 10000);
 
   // Different Screens
   const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
@@ -92,7 +64,7 @@ export default function App() {
   const [showWalletScreen, setShowWalletScreen] = useState(false);
   const [showSendScreen, setShowSendScreen] = useState(false);
 
-
+  const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
   const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
@@ -240,86 +212,104 @@ export default function App() {
     setPendingTransaction(undefined)
   }
 
+  // On App Load useEffect, check async storage for an existing wallet, else generate a 🔥 burner wallet.
+  useEffect(() => {
+    console.log('useEffect App');
+    const loadAccountAndNetwork = async () => {
 
-  const HomeScreen = () => {
-    return <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.header}>
-        <Text></Text>
-        <RNPickerSelect
-          value={selectedNetwork}
-          onValueChange={async (value) => {
-            await AsyncStorage.setItem('network', value)
-            setSelectedNetwork(value)
-          }}
-          items={options}
-          style={{
-            inputIOS: {
-              height: 36,
-              fontSize: 20,
-              fontWeight: '500',
-              textAlign: 'center',
-              color: 'black',
-            }
-          }}
-        />
-        <TouchableOpacity onPress={() => setShowQRScanner(true)}>
-          <AntIcon name="scan1" size={24} />
-        </TouchableOpacity>
-      </View>
+      const activeWallet = await loadOrGenerateWallet()
+      setWallet(activeWallet)
+      setAddress(activeWallet.address)
 
-      <View style={styles.main}>
-        <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
-        <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
-        <View style={{ alignItems: 'center' }}>
-          <Button
-            onPress={() => setShowSendScreen(true)}
-            title="Send" />
-        </View>
-        {/* {!wallectConnectConnector && <View style={{ marginTop: 24, alignItems: 'center' }}>
-          <Button
-            onPress={() => setShowQRScanner(true)}
-            title="Scan QR" />
-        </View>} */}
+      const cachedNetwork = await AsyncStorage.getItem('network')
+      if (cachedNetwork) setSelectedNetwork(cachedNetwork)
+    }
+    loadAccountAndNetwork()
+  }, [])
 
-        <TextInput
-          placeholder="Wallet Connect Url"
-          style={{ width: '100%', marginTop: 16, paddingHorizontal: 4, borderWidth: 1, height: 36 }}
-          onChangeText={setWalletConnectUrl}
-          value={walletConnectUrl}
-          editable={!wallectConnectConnector}
-        />
-        {wallectConnectConnector ?
-          <Button
-            onPress={disconnect}
-            title="Disconnect" /> :
-          <Button
-            onPress={() => connect(walletConnectUrl)}
-            title="Connect" />}
+  // Auto connect Wallet Connect if url matches WC format
+  useEffect(() => {
+    const url = walletConnectUrl;
+    if (url && url.indexOf("wc:") === 0 && url.indexOf("bridge=") !== -1 && url.indexOf("&key=") !== -1) {
+      connect(url)
+    }
+  }, [walletConnectUrl])
 
-
-        {pendingTransaction &&
-          <View style={{ borderTopWidth: 1, borderColor: "#aaa", paddingTop: 8 }}>
-            <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
-            <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-              <Button
-                onPress={confirmTransaction}
-                title="Confirm" />
-              <Button
-                onPress={cancelTransaction}
-                title="Cancel" />
-            </View>
-          </View>}
-
-      </View>
-      {(!pendingTransaction && !showQRDisplayScreen) && <Text style={styles.gas}>{typeof gasPrice === "undefined" ? 0 : parseInt(ethers.utils.formatUnits(gasPrice, 'gwei'))} Gwei</Text>}
-    </View>
-  }
-
+  const gasPriceInGwei = gasPrice ? parseInt(ethers.utils.formatUnits(gasPrice, 'gwei')) : 0
   return (
     <SafeAreaView>
-      <HomeScreen />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text></Text>
+          <RNPickerSelect
+            value={selectedNetwork}
+            onValueChange={async (value) => {
+              await AsyncStorage.setItem('network', value)
+              setSelectedNetwork(value)
+            }}
+            items={DROPDOWN_NETWORK_OPTIONS}
+            style={{
+              inputIOS: {
+                height: 36,
+                fontSize: 20,
+                fontWeight: '500',
+                textAlign: 'center',
+                color: 'black',
+              }
+            }}
+          />
+          <TouchableOpacity onPress={() => setShowQRScanner(true)}>
+            <AntIcon name="scan1" size={24} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.main}>
+          <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
+          <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
+          <View style={{ alignItems: 'center' }}>
+            <Button
+              onPress={() => setShowSendScreen(true)}
+              title="Send ETH" />
+          </View>
+
+          <View style={{ marginTop: 0, alignItems: 'center' }}>
+            <TextInput
+              placeholder="Wallet Connect Url"
+              style={{ width: '100%', marginTop: 16, paddingHorizontal: 4, borderWidth: 1, height: 40, fontSize: 18 }}
+              onChangeText={setWalletConnectUrl}
+              value={walletConnectUrl}
+            // editable={false}
+            />
+
+            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+              {wallectConnectConnector ?
+                <Button
+                  onPress={disconnect}
+                  title="Disconnect" /> :
+                <Button
+                  onPress={() => connect(walletConnectUrl)}
+                  disabled={!walletConnectUrl}
+                  title="Connect" />
+              }
+            </View>
+          </View>
+
+          {pendingTransaction &&
+            <View style={{ borderTopWidth: 1, borderColor: "#aaa", paddingTop: 8 }}>
+              <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
+              <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                <Button
+                  onPress={confirmTransaction}
+                  title="Confirm" />
+                <Button
+                  onPress={cancelTransaction}
+                  title="Cancel" />
+              </View>
+            </View>}
+
+        </View>
+        {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />}
+      </View>
       {showSendScreen && <SendScreen address={address} hide={() => setShowSendScreen(false)} balance={yourLocalBalance} price={price} gasPrice={gasPrice} setShowQRScanner={setShowQRScanner} toAddress={toAddress} setToAddress={setToAddress} sendEth={sendEth} />}
       {showWalletScreen && <WalletsScreen address={address} hide={() => setShowWalletScreen(false)} setWallet={setWallet} setAddress={setAddress} />}
       {showQRDisplayScreen && <QRDisplayScreen address={address} hide={() => setShowQRDisplayScreen(false)} />}
@@ -357,11 +347,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     textAlign: "center",
-  },
-  gas: {
-    position: 'absolute',
-    bottom: 16,
-    fontSize: 16,
-    fontWeight: '500'
   }
 });

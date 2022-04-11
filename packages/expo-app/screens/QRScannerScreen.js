@@ -11,7 +11,6 @@ const QRScannerScreen = (props) => {
         // Handle WC QR
         if (data && data.indexOf("wc:") === 0) {
             props.setWalletConnectUrl(data)
-            props.connect(data)
             props.hide()
         }
         // Handle Address QRs

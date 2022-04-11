@@ -43,8 +43,9 @@ const SendScreen = (props) => {
                 style={{
                     flex: 9,
                     borderBottomWidth: 1,
+                    borderBottomColor: '#ccc',
                     height: 36,
-                    fontSize: 18, paddingRight: 28
+                    fontSize: 18, paddingRight: 28, paddingLeft: 8
                 }}
                 onChangeText={setToAddress}
                 value={toAddress}
@@ -77,7 +78,7 @@ const SendScreen = (props) => {
 
         <View style={{ marginTop: 48, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
             <TouchableOpacity style={{ backgroundColor: '#0084ff', paddingVertical: 16, borderRadius: 32, width: '100%' }}
-                disabled={insufficientFunds || !validToAddress || !validAmount}
+                disabled={insufficientFunds || !validToAddress || !validAmount || !loading}
                 onPress={() => {
                     setLoading(true)
                     sendEth(amount, toAddress)

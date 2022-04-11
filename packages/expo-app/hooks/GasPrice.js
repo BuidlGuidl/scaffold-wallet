@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ETHERSCAN_KEY } from "../constants";
 import { ethers } from "ethers";
 
-export default function useGasPrice(targetNetwork, speed) {
+export default function useGasPrice(targetNetwork, pollingInterval) {
   const [gasPrice, setGasPrice] = useState();
   const loadGasPrice = async () => {
     if (targetNetwork.gasPrice) {
@@ -22,6 +22,6 @@ export default function useGasPrice(targetNetwork, speed) {
     }
   };
 
-  usePoller(loadGasPrice, 10000);
+  usePoller(loadGasPrice, pollingInterval);
   return gasPrice;
 }

@@ -211,6 +211,13 @@ export const NETWORK = chainId => {
   }
 };
 
+export const DROPDOWN_NETWORK_OPTIONS = [];
+for (const id in NETWORKS) {
+  DROPDOWN_NETWORK_OPTIONS.push(
+    { label: NETWORKS[id].name, value: NETWORKS[id].name, color: NETWORKS[id].color }
+  );
+}
+
 // RPC Call Methods. From Rainbow https://github.com/rainbow-me/rainbow/blob/develop/src/utils/signingMethods.ts
 export const SEND_TRANSACTION = 'eth_sendTransaction';
 export const PERSONAL_SIGN = 'personal_sign';
