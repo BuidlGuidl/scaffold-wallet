@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, Image } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, Image, StatusBar } from "react-native";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
@@ -43,6 +42,7 @@ const providers = [
 ];
 
 export default function App() {
+  StatusBar.setBarStyle('dark-content', false);
 
   const networkOptions = [initialNetwork.name, "mainnet", "rinkeby"];
 
@@ -271,7 +271,6 @@ export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <StatusBar style="auto" />
         <View style={styles.header}>
           <Text></Text>
           <RNPickerSelect
