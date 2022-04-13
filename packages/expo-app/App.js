@@ -59,7 +59,7 @@ export default function App() {
   const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
   /* 🔥 This hook will get the price of Gas from ⛽️ Etherscan */
   const gasPrice = useGasPrice(targetNetwork, 10000);
-  const yourLocalBalance = useBalance(localProvider, address, 10000);
+  const yourLocalBalance = useBalance(localProvider, address);
 
   // Different Screens and functions to show/hide
   // Note the useCallback to prevent excessive re-eval/rendering in child components since so much state is in App.js
@@ -80,6 +80,8 @@ export default function App() {
   const hideSend = useCallback(() => setShowSendScreen(false), [])
 
   const [showTransactionScreen, setShowTransactionScreen] = useState(false);
+  const showTransaction = useCallback(() => setShowTransactionScreen(true), [])
+  const hideTransaction = useCallback(() => setShowTransactionScreen(false), [])
 
 
   const [wallet, setWallet] = useState();
@@ -89,6 +91,8 @@ export default function App() {
   const [wallectConnectConnector, setWallectConnectConnector] = useState()
   const [walletConnectParams, setWalletConnectParams] = useState();
   const [walletConnectNetwork, setWalletConnectNetwork] = useState();
+
+  const refreshApp = () => RNRestart.Restart()
 
   const sendEth = async (ethAmount, to) => {
     const signer = wallet.connect(localProvider);
@@ -157,7 +161,7 @@ export default function App() {
         setWallectConnectNetwork(undefined)
 
         // Force reload the JS bundle to clear WC stuff
-        RNRestart.Restart();
+        refreshApp();
       });
     }
   }
@@ -166,9 +170,10 @@ export default function App() {
     try {
       await wallectConnectConnector.killSession()
     } catch (err) {
-      console.log('killSession failed', err);
+      console.log('killSession failed', err)
+
       // Force reload the JS bundle to clear WC stuff
-      RNRestart.Restart();
+      refreshApp()
     }
   }
 
@@ -228,7 +233,6 @@ export default function App() {
         console.log('Unsupported Method');
       }
     }
-    setShowTransactionScreen(false)
   }
 
   const cancelTransaction = () => {
@@ -269,10 +273,13 @@ export default function App() {
   const WCUrl = walletConnectParams ? walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '') : ''
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
+    <View>
+      <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Text></Text>
+          {/* <TouchableOpacity onPress={refreshApp}>
+            <FontAwesomeIcon name="refresh" size={18} />
+          </TouchableOpacity> */}
           <RNPickerSelect
             value={selectedNetwork}
             onValueChange={async (value) => {
@@ -336,7 +343,7 @@ export default function App() {
 
         </View>
         {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />}
-      </View>
+      </SafeAreaView>
 
       {showSendScreen &&
         <SendScreen address={address}
@@ -358,6 +365,7 @@ export default function App() {
           pendingTransaction={pendingTransaction}
           walletConnectParams={walletConnectParams}
           network={walletConnectNetwork}
+          hideTransaction={hideTransaction}
           confirmTransaction={confirmTransaction}
           cancelTransaction={cancelTransaction}
         />}
@@ -367,7 +375,7 @@ export default function App() {
       {showQRDisplayScreen && <QRDisplayScreen address={address} hide={hideQR} />}
 
       {showQRScanner && <QRScannerScreen hide={hideScanner} setWalletConnectUrl={setWalletConnectUrl} connect={connect} setToAddress={setToAddress} />}
-    </SafeAreaView>
+    </View>
   );
 }
 
