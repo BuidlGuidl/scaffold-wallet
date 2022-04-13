@@ -26,6 +26,7 @@ const WalletsScreen = (props) => {
         const loadAllAccounts = async () => {
             const pks = await loadAllPrivateKeys()
             const walletList = pks.map(pk => new ethers.Wallet(pk))
+            setPrivateKeyList(pks)
             setWallets(walletList)
         }
         loadAllAccounts()
