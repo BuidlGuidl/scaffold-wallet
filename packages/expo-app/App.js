@@ -92,7 +92,7 @@ export default function App() {
         {
           uri: url,
           clientMeta: {
-            description: "Forkable web wallet for small/quick transactions.",
+            description: "Forkable Mobile Wallet for small/quick transactions.",
             url: "https://punkwallet.io",
             icons: ["https://punkwallet.io/punk.png"],
             name: "🧑‍🎤 PunkWallet.io",
@@ -127,10 +127,8 @@ export default function App() {
         console.log("call_request", payload);
         if (error) throw error
 
-        // if (payload.method === "eth_sendTransaction") {
         setPendingTransaction(payload)
         setShowTransactionScreen(true)
-        // }
       });
 
       connector.on("disconnect", async (error, payload) => {
@@ -285,7 +283,7 @@ export default function App() {
               title="Send ETH" />
           </View>
 
-          <View style={{ marginTop: 0, alignItems: 'center' }}>
+          <View style={{ marginTop: 16, alignItems: 'center' }}>
             <TextInput
               placeholder="Wallet Connect Url"
               style={{ width: '100%', marginTop: 16, paddingHorizontal: 4, borderWidth: 1, height: 40, fontSize: 18 }}

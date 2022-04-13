@@ -20,10 +20,6 @@ export default function AddressDisplay(props) {
 
         setTimeout(() => setCopied(false), 1000)
     };
-    const fetchCopiedText = async () => {
-        const text = await Clipboard.getString();
-        console.log(text);
-    };
 
     return (
         <View style={styles.container}>
@@ -62,7 +58,7 @@ export default function AddressDisplay(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 8
+        marginTop: 16
     },
     addressRow: {
         flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 16
