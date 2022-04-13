@@ -7,7 +7,7 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
 
 const SendScreen = (props) => {
 
-    const { address, balance, price, gasPrice, setShowQRScanner, toAddress, setToAddress, sendEth } = props
+    const { address, balance, price, gasPrice, showScanner, toAddress, setToAddress, sendEth } = props
     const [loading, setLoading] = useState(false);
     const [amount, setAmount] = useState(0);
 
@@ -50,7 +50,7 @@ const SendScreen = (props) => {
                 onChangeText={setToAddress}
                 value={toAddress}
             />
-            <TouchableOpacity onPress={() => setShowQRScanner(true)} style={{ marginLeft: -24 }}>
+            <TouchableOpacity onPress={showScanner} style={{ marginLeft: -24 }}>
                 <AntIcon name="scan1" size={24} />
             </TouchableOpacity>
         </View>

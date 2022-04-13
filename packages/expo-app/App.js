@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
-
+import { StatusBar } from "expo-status-bar";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
@@ -31,6 +31,7 @@ import { loadOrGenerateWallet } from "./helpers/utils";
 import { GasTracker } from "./components/GasTracker";
 import TransactionScreen from "./screens/TransactionScreen";
 import PunkBlockie from "./components/PunkBlockie";
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -60,12 +61,26 @@ export default function App() {
   const gasPrice = useGasPrice(targetNetwork, 10000);
   const yourLocalBalance = useBalance(localProvider, address, 10000);
 
-  // Different Screens
-  const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
+  // Different Screens and functions to show/hide
+  // Note the useCallback to prevent excessive re-eval/rendering in child components since so much state is in App.js
   const [showQRScanner, setShowQRScanner] = useState(false);
+  const showScanner = useCallback(() => setShowQRScanner(true), [])
+  const hideScanner = useCallback(() => setShowQRScanner(false), [])
+
   const [showWalletScreen, setShowWalletScreen] = useState(false);
+  const showWallet = useCallback(() => setShowWalletScreen(true), [])
+  const hideWallet = useCallback(() => setShowWalletScreen(false), [])
+
+  const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
+  const showQR = useCallback(() => setShowQRDisplayScreen(true), [])
+  const hideQR = useCallback(() => setShowQRDisplayScreen(false), [])
+
   const [showSendScreen, setShowSendScreen] = useState(false);
+  const showSend = useCallback(() => setShowSendScreen(true), [])
+  const hideSend = useCallback(() => setShowSendScreen(false), [])
+
   const [showTransactionScreen, setShowTransactionScreen] = useState(false);
+
 
   const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
@@ -252,6 +267,7 @@ export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        <StatusBar style="auto" />
         <View style={styles.header}>
           <Text></Text>
           <RNPickerSelect
@@ -271,38 +287,40 @@ export default function App() {
               }
             }}
           />
-          <TouchableOpacity onPress={() => setShowQRScanner(true)}>
+          <TouchableOpacity onPress={showScanner}>
             <AntIcon name="scan1" size={24} />
           </TouchableOpacity>
         </View>
         <View style={styles.main}>
-          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><PunkBlockie address={address} punkSize={280} /></View>
-          <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
+          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><PunkBlockie address={address} punkSize={300} /></View>
+
+          <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
-          <View style={{ alignItems: 'center' }}>
-            <Button
-              onPress={() => setShowSendScreen(true)}
-              title="Send ETH" />
+
+          <View style={{ marginTop: 12, alignItems: 'center' }}>
+            <TouchableOpacity onPress={showSend}>
+              <Text style={styles.textButton}><FontAwesomeIcon name="send" size={18} />{' '}Send</Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={{ marginTop: 16, alignItems: 'center' }}>
+          <View style={{ marginTop: 24, alignItems: 'center' }}>
             <TextInput
               placeholder="Wallet Connect Url"
               style={{ width: '100%', marginTop: 16, paddingHorizontal: 4, borderWidth: 1, height: 40, fontSize: 18 }}
               onChangeText={setWalletConnectUrl}
               value={walletConnectUrl}
-            // editable={false}
+            // editable={false} 
             />
 
-            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <View style={{ width: '100%', marginTop: 12, flexDirection: 'row', justifyContent: 'space-evenly' }}>
               {wallectConnectConnector ?
-                <Button
-                  onPress={disconnect}
-                  title="Disconnect" /> :
-                <Button
-                  onPress={() => connect(walletConnectUrl)}
-                  disabled={!walletConnectUrl}
-                  title="Connect" />
+                <TouchableOpacity onPress={disconnect}>
+                  <Text style={[styles.textButton, { color: 'red' }]}><FontAwesomeIcon name="close" size={18} />{' '}Disconnect</Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity onPress={() => connect(walletConnectUrl)}>
+                  <Text style={styles.textButton}><FontAwesomeIcon name="plug" size={18} />{' '}Connect</Text>
+                </TouchableOpacity>
               }
             </View>
           </View>
@@ -310,7 +328,18 @@ export default function App() {
         </View>
         {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />}
       </View>
-      {showSendScreen && <SendScreen address={address} hide={() => setShowSendScreen(false)} balance={yourLocalBalance} price={price} gasPrice={gasPrice} setShowQRScanner={setShowQRScanner} toAddress={toAddress} setToAddress={setToAddress} sendEth={sendEth} />}
+
+      {showSendScreen &&
+        <SendScreen address={address}
+          hide={hideSend}
+          balance={yourLocalBalance}
+          price={price}
+          gasPrice={gasPrice}
+          showScanner={showScanner}
+          toAddress={toAddress}
+          setToAddress={setToAddress}
+          sendEth={sendEth} />}
+
       {showTransactionScreen &&
         <TransactionScreen
           address={address}
@@ -323,9 +352,12 @@ export default function App() {
           confirmTransaction={confirmTransaction}
           cancelTransaction={cancelTransaction}
         />}
-      {showWalletScreen && <WalletsScreen address={address} hide={() => setShowWalletScreen(false)} setWallet={setWallet} setAddress={setAddress} />}
-      {showQRDisplayScreen && <QRDisplayScreen address={address} hide={() => setShowQRDisplayScreen(false)} />}
-      {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} connect={connect} setToAddress={setToAddress} />}
+
+      {showWalletScreen && <WalletsScreen address={address} hide={hideWallet} setWallet={setWallet} setAddress={setAddress} />}
+
+      {showQRDisplayScreen && <QRDisplayScreen address={address} hide={hideQR} />}
+
+      {showQRScanner && <QRScannerScreen hide={hideScanner} setWalletConnectUrl={setWalletConnectUrl} connect={connect} setToAddress={setToAddress} />}
     </SafeAreaView>
   );
 }
@@ -346,7 +378,7 @@ const styles = StyleSheet.create({
   },
   main: {
     width: '100%',
-    paddingTop: 8,
+    paddingTop: 16,
     paddingHorizontal: 30,
   },
   text: {
@@ -356,7 +388,7 @@ const styles = StyleSheet.create({
   },
   textButton: {
     color: '#0E76FD',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "600",
     textAlign: "center",
   }

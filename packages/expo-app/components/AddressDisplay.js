@@ -1,13 +1,13 @@
 
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 import Clipboard from '@react-native-clipboard/clipboard';
 import { useState } from "react";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { truncateAddress } from "../helpers/utils";
 
-export default function AddressDisplay(props) {
-
-    const { setShowWalletScreen } = props
+const AddressDisplay = (props) => {
+    console.log('render AddressDisplay');
     const address = props.address || ''
 
     let displayAddress = truncateAddress(address);
@@ -24,7 +24,7 @@ export default function AddressDisplay(props) {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.addressRow}
-                onPress={() => setShowWalletScreen(true)}>
+                onPress={props.showWallet}>
                 <Text style={styles.text}>
                     {displayAddress}
                 </Text>
@@ -58,7 +58,7 @@ export default function AddressDisplay(props) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 8
+        marginTop: 12
     },
     addressRow: {
         flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 16
@@ -80,3 +80,5 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
 });
+
+export default React.memo(AddressDisplay)

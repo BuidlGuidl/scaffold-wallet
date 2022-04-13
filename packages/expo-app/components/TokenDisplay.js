@@ -1,10 +1,9 @@
-
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { ethers } from "ethers";
 
-
-export default function TokenDisplay(props) {
-
+function TokenDisplay(props) {
+    console.log('render TokenDisplay');
     const formattedTokenBalance = Math.round(ethers.utils.formatEther(props.tokenBalance) * 1e4) / 1e4
     const formattedDollarBalance = (Number(ethers.utils.formatEther(props.tokenBalance)) * props.tokenPrice).toFixed(2)
     // TODO: Lookup tokenlist
@@ -54,3 +53,5 @@ const styles = StyleSheet.create({
     tokenBalance: { fontSize: 20 },
     dollarBalance: { fontSize: 24 }
 });
+
+export default React.memo(TokenDisplay)
