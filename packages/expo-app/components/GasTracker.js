@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 
 export const GasTracker = React.memo((props) => {
-    return <Text style={{ position: 'absolute', bottom: 16, fontSize: 16, fontWeight: '500' }}>
+    return <Text style={{ position: 'absolute', bottom: 8, fontSize: 18, fontWeight: '600' }}>
         {props.gasPriceInGwei} Gwei
     </Text>
 })

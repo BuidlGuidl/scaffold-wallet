@@ -6,10 +6,9 @@ const QRDisplayScreen = (props) => {
         onPress={props.hide}
         style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#333", flexDirection: 'column', justifyContent: 'center' }}>
         <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-
             <QRCode
-                size={280}
-                quietZone={5}
+                size={300}
+                quietZone={8}
                 value={props.address}
             />
         </View>
@@ -17,7 +16,7 @@ const QRDisplayScreen = (props) => {
             marginVertical: 32,
             marginHorizontal: 32,
             color: '#fff',
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: "600",
             textAlign: "center",
         }}>
