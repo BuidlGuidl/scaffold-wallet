@@ -44,7 +44,7 @@ const providers = [
 export default function App() {
   StatusBar.setBarStyle('dark-content', false);
 
-  const networkOptions = [initialNetwork.name, "mainnet", "rinkeby"];
+  const networkOptions = [initialNetwork.name, "ethereum", "rinkeby"];
 
   const [address, setAddress] = useState();
   const [selectedNetwork, setSelectedNetwork] = useState(networkOptions[0]);
@@ -290,7 +290,7 @@ export default function App() {
             style={{
               inputIOS: {
                 height: 36,
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: '500',
                 textAlign: 'center',
                 color: 'black',

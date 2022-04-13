@@ -12,14 +12,14 @@ export const ALCHEMY_KEY = "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
 export const NETWORKS = {
   localhost: {
     name: "localhost",
-    color: "#666666",
+    color: "#f01a37",
     chainId: 31337,
     blockExplorer: "",
     rpcUrl: "http://localhost" + ":8545",
   },
-  mainnet: {
-    name: "mainnet",
-    color: "#ff8b9e",
+  ethereum: {
+    name: "ethereum",
+    color: "#333333",
     chainId: 1,
     rpcUrl: `https://mainnet.infura.io/v3/${INFURA_ID}`,
     blockExplorer: "https://etherscan.io/",
@@ -34,7 +34,7 @@ export const NETWORKS = {
   },
   rinkeby: {
     name: "rinkeby",
-    color: "#e0d068",
+    color: "#50a0ea",
     chainId: 4,
     rpcUrl: `https://rinkeby.infura.io/v3/${INFURA_ID}`,
     faucet: "https://faucet.rinkeby.io/",
