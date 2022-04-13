@@ -29,6 +29,7 @@ import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
 import { loadOrGenerateWallet } from "./helpers/utils";
 import { GasTracker } from "./components/GasTracker";
+import TransactionScreen from "./screens/TransactionScreen";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -53,7 +54,7 @@ export default function App() {
   const mainnetProvider = useStaticJsonRPC(providers);
 
   /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
-  const price = useExchangeEthPrice(targetNetwork, mainnetProvider, 60000);
+  const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
   /* 🔥 This hook will get the price of Gas from ⛽️ Etherscan */
   const gasPrice = useGasPrice(targetNetwork, 10000);
   const yourLocalBalance = useBalance(localProvider, address, 10000);
@@ -63,12 +64,15 @@ export default function App() {
   const [showQRScanner, setShowQRScanner] = useState(false);
   const [showWalletScreen, setShowWalletScreen] = useState(false);
   const [showSendScreen, setShowSendScreen] = useState(false);
+  const [showTransactionScreen, setShowTransactionScreen] = useState(false);
 
   const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
   const [pendingTransaction, setPendingTransaction] = useState();
   const [walletConnectUrl, setWalletConnectUrl] = useState()
   const [wallectConnectConnector, setWallectConnectConnector] = useState()
+  const [walletConnectParams, setWalletConnectParams] = useState();
+  const [walletConnectNetwork, setWalletConnectNetwork] = useState();
 
   const sendEth = async (ethAmount, to) => {
     const signer = wallet.connect(localProvider);
@@ -106,6 +110,12 @@ export default function App() {
         console.log("session_request", payload);
         if (error) throw error
 
+
+        if (payload.params && payload.params.length > 0) {
+          setWalletConnectParams(payload.params[0])
+          setWalletConnectNetwork(targetNetwork)
+        }
+
         connector.approveSession({
           accounts: [address],
           chainId: targetNetwork.chainId
@@ -119,6 +129,7 @@ export default function App() {
 
         // if (payload.method === "eth_sendTransaction") {
         setPendingTransaction(payload)
+        setShowTransactionScreen(true)
         // }
       });
 
@@ -128,6 +139,8 @@ export default function App() {
 
         setWalletConnectUrl(undefined)
         setWallectConnectConnector(undefined)
+        setWalletConnectParams(undefined)
+        setWallectConnectNetwork(undefined)
 
         // Force reload the JS bundle to clear WC stuff
         RNRestart.Restart();
@@ -162,7 +175,7 @@ export default function App() {
           value,
           data
         }
-
+        console.log('tx', tx);
         let hash
         if (method === SEND_TRANSACTION) {
           hash = (await signer.sendTransaction(tx)).hash
@@ -201,6 +214,7 @@ export default function App() {
         console.log('Unsupported Method');
       }
     }
+    setShowTransactionScreen(false)
   }
 
   const cancelTransaction = () => {
@@ -293,24 +307,22 @@ export default function App() {
             </View>
           </View>
 
-          {pendingTransaction &&
-            <View style={{ borderTopWidth: 1, borderColor: "#aaa", paddingTop: 8 }}>
-              <Text style={{ fontSize: 18, fontWeight: "600", textAlign: 'center' }}>Transaction Request</Text>
-              <Text>{JSON.stringify(pendingTransaction.params[0], null, 2)}</Text>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                <Button
-                  onPress={confirmTransaction}
-                  title="Confirm" />
-                <Button
-                  onPress={cancelTransaction}
-                  title="Cancel" />
-              </View>
-            </View>}
-
         </View>
         {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />}
       </View>
       {showSendScreen && <SendScreen address={address} hide={() => setShowSendScreen(false)} balance={yourLocalBalance} price={price} gasPrice={gasPrice} setShowQRScanner={setShowQRScanner} toAddress={toAddress} setToAddress={setToAddress} sendEth={sendEth} />}
+      {showTransactionScreen &&
+        <TransactionScreen
+          address={address}
+          balance={yourLocalBalance}
+          price={price}
+          gasPrice={gasPrice}
+          pendingTransaction={pendingTransaction}
+          walletConnectParams={walletConnectParams}
+          network={walletConnectNetwork}
+          confirmTransaction={confirmTransaction}
+          cancelTransaction={cancelTransaction}
+        />}
       {showWalletScreen && <WalletsScreen address={address} hide={() => setShowWalletScreen(false)} setWallet={setWallet} setAddress={setAddress} />}
       {showQRDisplayScreen && <QRDisplayScreen address={address} hide={() => setShowQRDisplayScreen(false)} />}
       {showQRScanner && <QRScannerScreen hide={() => setShowQRScanner(false)} setWalletConnectUrl={setWalletConnectUrl} connect={connect} setToAddress={setToAddress} />}
