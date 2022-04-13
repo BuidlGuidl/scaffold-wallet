@@ -77,11 +77,11 @@ const SendScreen = (props) => {
         </View>
 
         <View style={{ marginTop: 48, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
-            <TouchableOpacity style={{ backgroundColor: '#0084ff', paddingVertical: 16, borderRadius: 32, width: '100%' }}
-                disabled={insufficientFunds || !validToAddress || !validAmount || !loading}
-                onPress={() => {
+            <TouchableOpacity style={{ backgroundColor: loading ? 'gray' : '#0084ff', paddingVertical: 16, borderRadius: 32, width: '100%' }}
+                disabled={insufficientFunds || !validToAddress || !validAmount || loading}
+                onPress={async () => {
                     setLoading(true)
-                    sendEth(amount, toAddress)
+                    await sendEth(amount, toAddress)
                     setLoading(false)
                     props.hide()
                 }}>
