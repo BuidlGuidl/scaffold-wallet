@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
+import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
@@ -263,7 +263,11 @@ export default function App() {
     }
   }, [walletConnectUrl])
 
+
   const gasPriceInGwei = gasPrice ? parseInt(ethers.utils.formatUnits(gasPrice, 'gwei')) : 0
+  const WCIcon = walletConnectParams ? walletConnectParams.peerMeta.icons[0] : null
+  const WCUrl = walletConnectParams ? walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '') : ''
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -312,11 +316,17 @@ export default function App() {
             // editable={false} 
             />
 
-            <View style={{ width: '100%', marginTop: 12, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <View style={{ width: '100%', marginTop: 12, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               {wallectConnectConnector ?
-                <TouchableOpacity onPress={disconnect}>
-                  <Text style={[styles.textButton, { color: 'red' }]}><FontAwesomeIcon name="close" size={18} />{' '}Disconnect</Text>
-                </TouchableOpacity>
+                <>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    {WCIcon && <Image style={{ width: 36, height: 36, marginRight: 4 }} source={{ uri: WCIcon }} />}
+                    <Text style={[styles.textButton, { color: 'green' }]}>{WCUrl}</Text>
+                  </View>
+                  <TouchableOpacity onPress={disconnect}>
+                    <Text style={[styles.textButton, { marginTop: 12, color: 'red' }]}><FontAwesomeIcon name="close" size={18} />{' '}Disconnect</Text>
+                  </TouchableOpacity>
+                </>
                 :
                 <TouchableOpacity onPress={() => connect(walletConnectUrl)}>
                   <Text style={styles.textButton}><FontAwesomeIcon name="plug" size={18} />{' '}Connect</Text>
