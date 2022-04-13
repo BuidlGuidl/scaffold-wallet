@@ -6,6 +6,7 @@ import { ethers } from "ethers";
 import Clipboard from '@react-native-clipboard/clipboard';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { generateNewPrivateKeyAndWallet, loadAllPrivateKeys, switchActiveWallet, truncateAddress, updatePrivateKeys } from "../helpers/utils";
+import PunkBlockie from "../components/PunkBlockie";
 
 const WalletsScreen = (props) => {
     const { setWallet, setAddress } = props
@@ -77,10 +78,13 @@ const WalletsScreen = (props) => {
             <View style={{ width: '80%', marginHorizontal: 32 }}>
                 {wallets.map((wl, index) => {
                     let displayAddress = truncateAddress(wl.address);
-                    return <View style={{ marginVertical: 16 }} key={index}>
+                    return <View style={{ marginVertical: 12 }} key={index}>
                         {wl.address === props.address ?
                             <View>
-                                <Text style={{ fontSize: 24, fontWeight: '500' }}>{displayAddress} (Active)</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+                                    <PunkBlockie address={wl.address} punkSize={200} />
+                                    <Text style={{ fontSize: 24, fontWeight: '500', marginLeft: 8 }}>{displayAddress} (Active)</Text>
+                                </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                     {<Button title={reveal ? "Hide Private Key" : "Reveal Private Key"} color="#c92a2a" onPress={() => setReveal(!reveal)} />}
                                     <Button title="Delete" color="#c92a2a" onPress={() => deleteWallet(index)} />
@@ -97,8 +101,9 @@ const WalletsScreen = (props) => {
                                     </TouchableOpacity>
                                 </View>}
                             </View> :
-                            <TouchableOpacity onPress={() => switchToWallet(index)}>
-                                <Text style={{ fontSize: 24, fontWeight: '500' }}>{displayAddress}</Text>
+                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'flex-end' }} onPress={() => switchToWallet(index)}>
+                                <PunkBlockie address={wl.address} punkSize={200} />
+                                <Text style={{ fontSize: 24, fontWeight: '500', marginLeft: 8 }}>{displayAddress}</Text>
                             </TouchableOpacity>
                         }
                     </View>

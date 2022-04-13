@@ -30,6 +30,7 @@ import AddressDisplay from "./components/AddressDisplay";
 import { loadOrGenerateWallet } from "./helpers/utils";
 import { GasTracker } from "./components/GasTracker";
 import TransactionScreen from "./screens/TransactionScreen";
+import PunkBlockie from "./components/PunkBlockie";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -275,6 +276,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View style={styles.main}>
+          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><PunkBlockie address={address} punkSize={280} /></View>
           <AddressDisplay address={address} showQR={() => setShowQRDisplayScreen(true)} setShowWalletScreen={setShowWalletScreen} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
           <View style={{ alignItems: 'center' }}>
@@ -344,7 +346,7 @@ const styles = StyleSheet.create({
   },
   main: {
     width: '100%',
-    paddingTop: 16,
+    paddingTop: 8,
     paddingHorizontal: 30,
   },
   text: {
