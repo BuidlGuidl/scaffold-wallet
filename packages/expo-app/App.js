@@ -29,7 +29,7 @@ import AddressDisplay from "./components/AddressDisplay";
 import { loadOrGenerateWallet } from "./helpers/utils";
 import { GasTracker } from "./components/GasTracker";
 import TransactionScreen from "./screens/TransactionScreen";
-import PunkBlockie from "./components/PunkBlockie";
+import Blockie from "./components/Blockie";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -302,7 +302,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View style={styles.main}>
-          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><PunkBlockie address={address} punkSize={300} /></View>
+          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><Blockie address={address} size={50} /></View>
 
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />

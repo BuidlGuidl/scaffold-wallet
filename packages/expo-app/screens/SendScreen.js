@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { ethers } from "ethers";
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import Blockie from "../components/Blockie";
 
 const SendScreen = (props) => {
 
@@ -38,14 +39,15 @@ const SendScreen = (props) => {
 
         <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center' }}>
             <Text style={{ flex: 1, fontSize: 22, fontWeight: '500' }}>To:</Text>
+            {(validToAddress && toAddress.length === 42) && <Blockie address={toAddress} size={24} />}
             <TextInput
                 placeholder="address"
                 style={{
-                    flex: 9,
+                    flex: 7,
                     borderBottomWidth: 1,
                     borderBottomColor: '#ccc',
                     height: 36,
-                    fontSize: 18, paddingRight: 28, paddingLeft: 8
+                    fontSize: 18, paddingRight: 28, marginLeft: 4
                 }}
                 onChangeText={setToAddress}
                 value={toAddress}
