@@ -285,11 +285,11 @@ export default function App() {
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
 
-          <View style={{ marginTop: 12, alignItems: 'center' }}>
+          {/* <View style={{ marginTop: 12, alignItems: 'center' }}>
             <TouchableOpacity onPress={showSend}>
               <Text style={styles.textButton}><FontAwesomeIcon name="send" size={18} />{' '}Send</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
 
           <View style={{ marginTop: 24, alignItems: 'center' }}>
             <TextInput
@@ -301,7 +301,7 @@ export default function App() {
             />
 
             <View style={{ width: '100%', marginTop: 12, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-              {wallectConnectConnector ?
+              {wallectConnectConnector &&
                 <>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     {WCIcon && <Image style={{ width: 36, height: 36, marginRight: 4 }} source={{ uri: WCIcon }} />}
@@ -311,18 +311,18 @@ export default function App() {
                     <Text style={[styles.textButton, { marginTop: 12, color: 'red' }]}><FontAwesomeIcon name="close" size={18} />{' '}Disconnect</Text>
                   </TouchableOpacity>
                 </>
-                :
-                <TouchableOpacity onPress={() => connect(walletConnectUrl)}>
-                  <Text style={styles.textButton}><FontAwesomeIcon name="plug" size={18} />{' '}Connect</Text>
-                </TouchableOpacity>
+                // :
+                // <TouchableOpacity onPress={() => connect(walletConnectUrl)}>
+                //   <Text style={styles.textButton}><FontAwesomeIcon name="plug" size={18} />{' '}Connect</Text>
+                // </TouchableOpacity>
               }
             </View>
           </View>
 
         </View>
-        <FloatingButton onPress={showScanner} right={30}>
-          <AntIcon name="scan1" size={30} color='#fff' />
-        </FloatingButton>
+
+        {/* Bottom Bar */}
+
         <View style={{ position: 'absolute', bottom: 32, left: 30 }}>
           <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
             <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 2 }}>
@@ -339,12 +339,14 @@ export default function App() {
                 inputIOS: { fontSize: 28 }
               }}
             />
-
           </View>
-
         </View>
-
-        {/* {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />} */}
+        <FloatingButton onPress={showSend} right={110}>
+          <FontAwesomeIcon name="send" size={24} color='#fff' />
+        </FloatingButton>
+        <FloatingButton onPress={showScanner} right={30}>
+          <AntIcon name="scan1" size={30} color='#fff' />
+        </FloatingButton>
       </SafeAreaView>
 
       {showSendScreen &&
