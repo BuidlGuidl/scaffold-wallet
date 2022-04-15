@@ -253,8 +253,8 @@ export default function App() {
       setWallet(activeWallet)
       setAddress(activeWallet.address)
 
-      // const cachedNetwork = await AsyncStorage.getItem('network')
-      // if (cachedNetwork) setSelectedNetwork(cachedNetwork)
+      const cachedNetwork = await AsyncStorage.getItem('network')
+      if (cachedNetwork) setSelectedNetwork(cachedNetwork)
     }
     loadAccountAndNetwork()
   }, [])
@@ -341,12 +341,13 @@ export default function App() {
             />
           </View>
         </View>
-        <FloatingButton onPress={showSend} right={120}>
-          <FontAwesomeIcon name="send" size={24} color='#fff' />
-        </FloatingButton>
-        <FloatingButton onPress={showScanner} right={30}>
+        <FloatingButton onPress={showScanner} right={120}>
           <AntIcon name="scan1" size={30} color='#fff' />
         </FloatingButton>
+        <FloatingButton onPress={showSend} right={30}>
+          <FontAwesomeIcon name="send" size={24} color='#fff' />
+        </FloatingButton>
+
       </SafeAreaView>
 
       {showSendScreen &&
