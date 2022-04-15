@@ -302,8 +302,6 @@ export default function App() {
           </TouchableOpacity>
         </View>
         <View style={styles.main}>
-          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><Blockie address={address} size={50} /></View>
-
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
 
