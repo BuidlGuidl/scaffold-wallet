@@ -29,8 +29,8 @@ import AddressDisplay from "./components/AddressDisplay";
 import { loadOrGenerateWallet } from "./helpers/utils";
 import { GasTracker } from "./components/GasTracker";
 import TransactionScreen from "./screens/TransactionScreen";
-import Blockie from "./components/Blockie";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { FloatingButton } from "./components/FloatingButton";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -253,8 +253,8 @@ export default function App() {
       setWallet(activeWallet)
       setAddress(activeWallet.address)
 
-      const cachedNetwork = await AsyncStorage.getItem('network')
-      if (cachedNetwork) setSelectedNetwork(cachedNetwork)
+      // const cachedNetwork = await AsyncStorage.getItem('network')
+      // if (cachedNetwork) setSelectedNetwork(cachedNetwork)
     }
     loadAccountAndNetwork()
   }, [])
@@ -280,26 +280,6 @@ export default function App() {
           {/* <TouchableOpacity onPress={refreshApp}>
             <FontAwesomeIcon name="refresh" size={18} />
           </TouchableOpacity> */}
-          <RNPickerSelect
-            value={selectedNetwork}
-            onValueChange={async (value) => {
-              await AsyncStorage.setItem('network', value)
-              setSelectedNetwork(value)
-            }}
-            items={DROPDOWN_NETWORK_OPTIONS}
-            style={{
-              inputIOS: {
-                height: 36,
-                fontSize: 24,
-                fontWeight: '500',
-                textAlign: 'center',
-                color: 'black',
-              }
-            }}
-          />
-          <TouchableOpacity onPress={showScanner}>
-            <AntIcon name="scan1" size={24} />
-          </TouchableOpacity>
         </View>
         <View style={styles.main}>
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
@@ -340,7 +320,31 @@ export default function App() {
           </View>
 
         </View>
-        {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />}
+        <FloatingButton onPress={showScanner} right={30}>
+          <AntIcon name="scan1" size={30} color='#fff' />
+        </FloatingButton>
+        <View style={{ position: 'absolute', bottom: 32, left: 30 }}>
+          <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+            <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 2 }}>
+              {gasPriceInGwei} Gwei
+            </Text>
+            <RNPickerSelect
+              value={selectedNetwork}
+              onValueChange={async (value) => {
+                await AsyncStorage.setItem('network', value)
+                setSelectedNetwork(value)
+              }}
+              items={DROPDOWN_NETWORK_OPTIONS}
+              style={{
+                inputIOS: { fontSize: 28 }
+              }}
+            />
+
+          </View>
+
+        </View>
+
+        {/* {(!pendingTransaction && !showQRDisplayScreen) && <GasTracker gasPriceInGwei={gasPriceInGwei} />} */}
       </SafeAreaView>
 
       {showSendScreen &&
@@ -406,5 +410,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     textAlign: "center",
-  }
+  },
 });
