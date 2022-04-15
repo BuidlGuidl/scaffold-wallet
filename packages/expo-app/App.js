@@ -323,9 +323,9 @@ export default function App() {
 
         {/* Bottom Bar */}
 
-        <View style={{ position: 'absolute', bottom: 32, left: 30 }}>
+        <View style={{ position: 'absolute', bottom: 48, left: 30 }}>
           <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-            <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 2 }}>
+            <Text style={{ fontSize: 18, fontWeight: '700' }}>
               {gasPriceInGwei} Gwei
             </Text>
             <RNPickerSelect
@@ -336,12 +336,12 @@ export default function App() {
               }}
               items={DROPDOWN_NETWORK_OPTIONS}
               style={{
-                inputIOS: { fontSize: 28 }
+                inputIOS: { fontSize: 32 }
               }}
             />
           </View>
         </View>
-        <FloatingButton onPress={showSend} right={110}>
+        <FloatingButton onPress={showSend} right={120}>
           <FontAwesomeIcon name="send" size={24} color='#fff' />
         </FloatingButton>
         <FloatingButton onPress={showScanner} right={30}>
