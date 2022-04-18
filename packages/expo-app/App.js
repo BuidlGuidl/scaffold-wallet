@@ -27,10 +27,11 @@ import SendScreen from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
 import { loadOrGenerateWallet } from "./helpers/utils";
-import { GasTracker } from "./components/GasTracker";
 import TransactionScreen from "./screens/TransactionScreen";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { FloatingButton } from "./components/FloatingButton";
+import { TransactionsDisplay } from "./components/TransactionsDisplay";
+import { updateStorageTransaction } from "./helpers/Transactions";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -80,9 +81,8 @@ export default function App() {
   const hideSend = useCallback(() => setShowSendScreen(false), [])
 
   const [showTransactionScreen, setShowTransactionScreen] = useState(false);
-  const showTransaction = useCallback(() => setShowTransactionScreen(true), [])
+  // const showTransaction = useCallback(() => setShowTransactionScreen(true), [])
   const hideTransaction = useCallback(() => setShowTransactionScreen(false), [])
-
 
   const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
@@ -96,12 +96,17 @@ export default function App() {
 
   const sendEth = async (ethAmount, to) => {
     const signer = wallet.connect(localProvider);
-    await signer.sendTransaction({
+
+    const testGasPrice = new ethers.BigNumber.from('1500000000') //1.5gwei
+    // console.log('sendEth gasPrice', ethers.BigNumber.from(gasPrice).toString());
+    const txn = await signer.sendTransaction({
       to: to,
-      gasPrice: gasPrice,
       value: ethers.utils.parseEther(ethAmount),
       data: "0x"
+      // maxFeePerGas: testGasPrice,
+      // gasLimit: 21000,
     });
+    await updateStorageTransaction(txn)
     console.log('Send successful!');
   }
 
@@ -197,7 +202,9 @@ export default function App() {
         console.log('tx', tx);
         let hash
         if (method === SEND_TRANSACTION) {
-          hash = (await signer.sendTransaction(tx)).hash
+          const updatedTxn = await signer.sendTransaction(tx)
+          await updateStorageTransaction(updatedTxn)
+          hash = updatedTxn.hash
           console.log(hash);
           console.log('Transaction Sent');
         } else {
@@ -276,20 +283,17 @@ export default function App() {
     <View>
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <Text></Text>
           {/* <TouchableOpacity onPress={refreshApp}>
             <FontAwesomeIcon name="refresh" size={18} />
           </TouchableOpacity> */}
+          <Text></Text>
         </View>
+
         <View style={styles.main}>
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
 
-          {/* <View style={{ marginTop: 12, alignItems: 'center' }}>
-            <TouchableOpacity onPress={showSend}>
-              <Text style={styles.textButton}><FontAwesomeIcon name="send" size={18} />{' '}Send</Text>
-            </TouchableOpacity>
-          </View> */}
+
 
           <View style={{ marginTop: 24, alignItems: 'center' }}>
             <TextInput
@@ -319,10 +323,10 @@ export default function App() {
             </View>
           </View>
 
+          <TransactionsDisplay provider={localProvider} gasPrice={gasPrice} wallet={wallet} address={address} />
         </View>
 
         {/* Bottom Bar */}
-
         <View style={{ position: 'absolute', bottom: 48, left: 30 }}>
           <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
             <Text style={{ fontSize: 18, fontWeight: '700' }}>
@@ -341,13 +345,12 @@ export default function App() {
             />
           </View>
         </View>
-        <FloatingButton onPress={showScanner} right={120}>
-          <AntIcon name="scan1" size={30} color='#fff' />
-        </FloatingButton>
-        <FloatingButton onPress={showSend} right={30}>
+        <FloatingButton onPress={showSend} right={120}>
           <FontAwesomeIcon name="send" size={24} color='#fff' />
         </FloatingButton>
-
+        <FloatingButton onPress={showScanner} right={30}>
+          <AntIcon name="scan1" size={30} color='#fff' />
+        </FloatingButton>
       </SafeAreaView>
 
       {showSendScreen &&
