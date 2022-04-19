@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "PunkWallet.app"
-               BlueprintName = "PunkWallet"
-               ReferencedContainer = "container:PunkWallet.xcodeproj">
+               BuildableName = "ScaffoldWallet.app"
+               BlueprintName = "ScaffoldWallet"
+               ReferencedContainer = "container:ScaffoldWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,15 +35,15 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "expoappTests.xctest"
                BlueprintName = "expoappTests"
-               ReferencedContainer = "container:PunkWallet.xcodeproj">
+               ReferencedContainer = "container:ScaffoldWallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PunkWallet.app"
-            BlueprintName = "PunkWallet"
-            ReferencedContainer = "container:PunkWallet.xcodeproj">
+            BuildableName = "ScaffoldWallet.app"
+            BlueprintName = "ScaffoldWallet"
+            ReferencedContainer = "container:ScaffoldWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PunkWallet.app"
-            BlueprintName = "PunkWallet"
-            ReferencedContainer = "container:PunkWallet.xcodeproj">
+            BuildableName = "ScaffoldWallet.app"
+            BlueprintName = "ScaffoldWallet"
+            ReferencedContainer = "container:ScaffoldWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
