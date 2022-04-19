@@ -1,6 +1,6 @@
 import axios from "axios";
 import { usePoller } from "eth-hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ETHERSCAN_KEY, NETWORKS } from "../constants";
 import { ethers } from "ethers";
 
@@ -36,6 +36,7 @@ export default function useGasPrice(targetNetwork, localProvider, pollingInterva
     }
   };
 
+  useEffect(() => { loadGasPrice() }, [localProvider])
   usePoller(loadGasPrice, pollingInterval);
   return gasPrice;
 }

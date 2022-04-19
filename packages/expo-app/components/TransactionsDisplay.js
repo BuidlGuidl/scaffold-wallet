@@ -58,7 +58,6 @@ export const TransactionsDisplay = (props) => {
         // console.log('currentNonce', currentNonce);
 
         let transactions = await getStorageTransactions();
-        console.log('storedTransactions length', Object.keys(transactions).length);
         let transactionArray = []
         let invalidNonces = []
         Object.keys(transactions).forEach(key => {
@@ -103,7 +102,7 @@ export const TransactionsDisplay = (props) => {
     return <View style={{ marginTop: 24 }}>
         {unconfirmedTransactions.map(txn => {
             const maxFeePerGasInGwei = Number(ethers.utils.formatUnits(txn.maxFeePerGas, 'gwei')).toFixed(1)
-            return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }} key={txn.nonce}>
+            return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }} key={txn.nonce}>
                 <View>
                     <Text style={{ fontSize: 16 }}>Transaction <Text style={{ fontWeight: '600' }}>#{txn.nonce}</Text> Pending</Text>
                     <Text style={{ fontSize: 16 }}>maxFeePerGas: <Text style={{ fontWeight: '600' }}>{maxFeePerGasInGwei} Gwei</Text></Text>
