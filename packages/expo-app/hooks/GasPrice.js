@@ -1,15 +1,15 @@
 import axios from "axios";
 import { usePoller } from "eth-hooks";
 import { useState } from "react";
-import { ETHERSCAN_KEY } from "../constants";
+import { ETHERSCAN_KEY, NETWORKS } from "../constants";
 import { ethers } from "ethers";
 
-export default function useGasPrice(targetNetwork, pollingInterval) {
+export default function useGasPrice(targetNetwork, localProvider, pollingInterval) {
   const [gasPrice, setGasPrice] = useState();
+
   const loadGasPrice = async () => {
-    if (targetNetwork.gasPrice) {
-      setGasPrice(targetNetwork.gasPrice);
-    } else {
+    // Use Etherscan for Mainnet gas estimation
+    if (targetNetwork.name === NETWORKS.ethereum.name) {
       axios
         .get("https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + ETHERSCAN_KEY)
         .then(response => {
@@ -19,6 +19,20 @@ export default function useGasPrice(targetNetwork, pollingInterval) {
           }
         })
         .catch(error => console.log(error));
+    }
+    // For all others chains / testnets use ethers gasPrice estimation
+    else if (localProvider) {
+      {
+        localProvider
+          .getGasPrice()
+          .then(newGasPrice => {
+            if (newGasPrice !== gasPrice) {
+              setGasPrice(newGasPrice);
+            }
+          })
+      }
+    } else if (targetNetwork.gasPrice) {
+      setGasPrice(targetNetwork.gasPrice);
     }
   };
 

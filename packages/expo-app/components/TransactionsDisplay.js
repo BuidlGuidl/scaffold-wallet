@@ -7,9 +7,7 @@ import { getStorageTransactions, setStorageTransactions, updateStorageTransactio
 export const TransactionsDisplay = (props) => {
     const { provider, wallet, address } = props
 
-
     const [unconfirmedTransactions, setUnconfirmedTransactions] = useState([]);
-
 
     const updateGasPrice = (gasPrice, speedUpPercentage) => {
         if (!gasPrice) return gasPrice
@@ -52,12 +50,12 @@ export const TransactionsDisplay = (props) => {
     }
 
     const pollUnconfirmedTransactions = async () => {
-        console.log('pollUnconfirmedTransactions', address);
+        // console.log('pollUnconfirmedTransactions', address);
 
         if (!provider || !address) return
         // Get current nonce
         const currentNonce = await provider.getTransactionCount(address)
-        console.log('currentNonce', currentNonce);
+        // console.log('currentNonce', currentNonce);
 
         let transactions = await getStorageTransactions();
         console.log('storedTransactions length', Object.keys(transactions).length);

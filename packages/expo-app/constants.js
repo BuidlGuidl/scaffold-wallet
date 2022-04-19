@@ -64,10 +64,10 @@ export const NETWORKS = {
     rpcUrl: `https://mainnet.optimism.io`,
   },
   arbitrum: {
-    name: "Arbitrum",
+    name: "arbitrum",
     color: "#50a0ea",
     chainId: 42161,
-    blockExplorer: "https://explorer.arbitrum.io/#/",
+    blockExplorer: "https://arbiscan.io/",
     rpcUrl: `https://arb1.arbitrum.io/rpc`,
     gasPrice: 0,
   },
@@ -115,7 +115,7 @@ export const NETWORKS = {
   //   rpcUrl: `http://localhost:7545`,
   // },
   rinkebyArbitrum: {
-    name: "Arbitrum Testnet",
+    name: "rinkebyArbitrum",
     color: "#50a0ea",
     chainId: 421611,
     blockExplorer: "https://rinkeby-explorer.arbitrum.io/#/",
