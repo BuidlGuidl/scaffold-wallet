@@ -287,17 +287,15 @@ export default function App() {
     <View>
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          {/* <TouchableOpacity onPress={refreshApp}>
-            <FontAwesomeIcon name="refresh" size={18} />
-          </TouchableOpacity> */}
           <Text></Text>
+          <TouchableOpacity onPress={refreshApp}>
+            <FontAwesomeIcon name="refresh" size={18} />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.main}>
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
           <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
-
-
 
           <View style={{ marginTop: 24, alignItems: 'center' }}>
             <TextInput
@@ -336,19 +334,23 @@ export default function App() {
             <Text style={{ fontSize: 18, fontWeight: '700' }}>
               {gasPriceInGwei} Gwei
             </Text>
-            <RNPickerSelect
-              value={selectedNetwork}
-              onValueChange={async (value) => {
-                await AsyncStorage.setItem('network', value)
-                setSelectedNetwork(value)
-                // Clear unconfirmed transactions
-                await updateStorageTransaction({})
-              }}
-              items={DROPDOWN_NETWORK_OPTIONS}
-              style={{
-                inputIOS: { fontSize: 32 }
-              }}
-            />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <RNPickerSelect
+                value={selectedNetwork}
+                onValueChange={async (value) => {
+                  await AsyncStorage.setItem('network', value)
+                  setSelectedNetwork(value)
+                  // Clear unconfirmed transactions
+                  await updateStorageTransaction({})
+                }}
+                items={DROPDOWN_NETWORK_OPTIONS}
+                style={{
+                  inputIOS: { fontSize: 32, backgroundColor: '#fff', paddingRight: 16 }
+
+                }}
+              />
+              <FontAwesomeIcon name="chevron-down" size={16} style={{ marginLeft: -12 }} />
+            </View>
           </View>
         </View>
         <FloatingButton onPress={showSend} right={120}>
@@ -402,6 +404,7 @@ const styles = StyleSheet.create({
   },
   header: {
     width: '100%',
+    marginTop: 12,
     paddingHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -409,7 +412,7 @@ const styles = StyleSheet.create({
   },
   main: {
     width: '100%',
-    paddingTop: 16,
+    // paddingTop: 16,
     paddingHorizontal: 30,
   },
   text: {

@@ -79,7 +79,7 @@ const AddressDisplay = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 24
+        marginTop: 12
     },
     blockieRow: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
     addressRow: {
