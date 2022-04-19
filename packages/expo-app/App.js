@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, Image, StatusBar } from "react-native";
+import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, View, Linking, Image, StatusBar } from "react-native";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
@@ -278,16 +278,19 @@ export default function App() {
     }
   }, [walletConnectUrl])
 
-
-  const gasPriceInGwei = gasPrice ? parseInt(ethers.utils.formatUnits(gasPrice, 'gwei')) : 0
+  const gasPriceInGwei = gasPrice ? parseFloat(ethers.utils.formatUnits(gasPrice, 'gwei')).toFixed(1) : 0
   const WCIcon = walletConnectParams ? walletConnectParams.peerMeta.icons[0] : null
   const WCUrl = walletConnectParams ? walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '') : ''
+
+  const openBlockExplorer = () => Linking.openURL(`${targetNetwork.blockExplorer}address/${address}`)
 
   return (
     <View>
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <Text></Text>
+          <TouchableOpacity onPress={openBlockExplorer}>
+            <Text style={{ fontWeight: '600', fontSize: 16 }}>Explorer</Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={refreshApp}>
             <FontAwesomeIcon name="refresh" size={18} />
           </TouchableOpacity>
