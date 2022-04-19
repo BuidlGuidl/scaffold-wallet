@@ -58,7 +58,7 @@ export default function App() {
 
   /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
   const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
-  /* 🔥 This hook will get the price of Gas from ⛽️ Etherscan */
+  /* 🔥 This hook will get the price of Gas from ethers / Etherscan */
   const gasPrice = useGasPrice(targetNetwork, localProvider, 10000);
   const yourLocalBalance = useBalance(localProvider, address);
 

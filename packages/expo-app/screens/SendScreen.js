@@ -23,6 +23,14 @@ const SendScreen = (props) => {
 
     const validToAddress = toAddress ? ethers.utils.isAddress(address) : false
     const validAmount = !isNaN(amount)
+
+    const send = async () => {
+        setLoading(true)
+        await sendEth(amount, toAddress)
+        setLoading(false)
+        props.hide()
+    }
+
     return <View
         onPress={props.hide}
         style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#fff", flexDirection: 'column', paddingHorizontal: 20 }}>
@@ -81,12 +89,7 @@ const SendScreen = (props) => {
         <View style={{ marginTop: 48, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
             <TouchableOpacity style={{ backgroundColor: loading ? 'gray' : '#0084ff', paddingVertical: 16, borderRadius: 32, width: '100%' }}
                 disabled={insufficientFunds || !validToAddress || !validAmount || loading}
-                onPress={async () => {
-                    setLoading(true)
-                    await sendEth(amount, toAddress)
-                    setLoading(false)
-                    props.hide()
-                }}>
+                onPress={send}>
                 <Text style={{ fontSize: 21, fontWeight: '500', color: '#fff', textAlign: 'center' }}>
                     {insufficientFunds ? 'Insufficient funds' : 'Confirm'}
                 </Text>
