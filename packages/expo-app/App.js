@@ -96,16 +96,23 @@ export default function App() {
 
   const sendEth = async (ethAmount, to) => {
     const signer = wallet.connect(localProvider);
-    // const testGasPrice = new ethers.BigNumber.from('30000000000') //30gwei
-    const txConfig = {
-      gasPrice: gasPrice,
-      to: to,
-      value: ethers.utils.parseEther(ethAmount),
+
+    try {
+      // const testGasPrice = new ethers.BigNumber.from('30000000000') //30gwei
+      const txConfig = {
+        gasPrice: gasPrice,
+        gasLimit: 21000,
+        to: to,
+        value: ethers.utils.parseEther(ethAmount),
+      }
+      console.log(txConfig);
+      const txn = await signer.sendTransaction(txConfig);
+      await updateStorageTransaction(txn)
+      console.log('Send successful!');
+    } catch (err) {
+      console.log('error', err);
     }
-    console.log(txConfig);
-    const txn = await signer.sendTransaction(txConfig);
-    await updateStorageTransaction(txn)
-    console.log('Send successful!');
+
   }
 
   const connect = (url) => {
@@ -216,9 +223,8 @@ export default function App() {
         });
         console.log('Sent ApproveRequest back to Wallet Connect');
         setPendingTransaction(undefined)
-      } catch (error) {
-        // console.log(wallet, signer);
-        console.log('error', error);
+      } catch (err) {
+        console.log('error', err);
         wallectConnectConnector.rejectRequest({
           error,
           id: payload.id,
@@ -321,7 +327,7 @@ export default function App() {
             </View>
           </View>
 
-          <TransactionsDisplay provider={localProvider} gasPrice={gasPrice} wallet={wallet} address={address} />
+          <TransactionsDisplay provider={localProvider} wallet={wallet} address={address} pendingTransaction={pendingTransaction} />
         </View>
 
         {/* Bottom Bar */}

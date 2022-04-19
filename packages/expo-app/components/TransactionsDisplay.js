@@ -1,11 +1,11 @@
 import { usePoller } from 'eth-hooks';
 import { ethers } from 'ethers';
-import React, { useState, useEffect } from 'react';
-import { Button, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { getStorageTransactionByNonce, getStorageTransactions, setStorageTransactions, updateStorageTransaction } from '../helpers/Transactions';
+import React, { useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { getStorageTransactions, setStorageTransactions, updateStorageTransaction } from '../helpers/Transactions';
 
 export const TransactionsDisplay = (props) => {
-    const { provider, gasPrice, wallet, address } = props
+    const { provider, wallet, address } = props
 
 
     const [unconfirmedTransactions, setUnconfirmedTransactions] = useState([]);
