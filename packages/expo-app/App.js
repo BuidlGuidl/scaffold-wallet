@@ -96,16 +96,14 @@ export default function App() {
 
   const sendEth = async (ethAmount, to) => {
     const signer = wallet.connect(localProvider);
-
-    const testGasPrice = new ethers.BigNumber.from('1500000000') //1.5gwei
-    // console.log('sendEth gasPrice', ethers.BigNumber.from(gasPrice).toString());
-    const txn = await signer.sendTransaction({
+    // const testGasPrice = new ethers.BigNumber.from('30000000000') //30gwei
+    const txConfig = {
+      gasPrice: gasPrice,
       to: to,
       value: ethers.utils.parseEther(ethAmount),
-      data: "0x"
-      // maxFeePerGas: testGasPrice,
-      // gasLimit: 21000,
-    });
+    }
+    console.log(txConfig);
+    const txn = await signer.sendTransaction(txConfig);
     await updateStorageTransaction(txn)
     console.log('Send successful!');
   }
@@ -337,6 +335,8 @@ export default function App() {
               onValueChange={async (value) => {
                 await AsyncStorage.setItem('network', value)
                 setSelectedNetwork(value)
+                // Clear unconfirmed transactions
+                await updateStorageTransaction({})
               }}
               items={DROPDOWN_NETWORK_OPTIONS}
               style={{

@@ -21,6 +21,7 @@ export const getStorageTransactionByNonce = async (nonce) => {
 }
 
 export const updateStorageTransaction = async (txn) => {
+    console.log('updateTxn', txn);
     let transactions = await getStorageTransactions();
     transactions[txn.nonce] = txn;
 
