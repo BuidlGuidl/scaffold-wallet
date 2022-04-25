@@ -18,10 +18,10 @@ export const loadOrGenerateWallet = async () => {
         const newWalletAddress = generatedWallet.address
         const newPrivateKey = generatedWallet._signingKey().privateKey;
 
+        await AsyncStorage.setItem('publicKeyList', JSON.stringify([newWalletAddress]))
+
         await saveKeychainValue('activePrivateKey', newPrivateKey, accessControlOptions)
         await saveKeychainValue(newWalletAddress, newPrivateKey, accessControlOptions)
-        console.log('set publicKeyList', [newWalletAddress]);
-        await AsyncStorage.setItem('publicKeyList', JSON.stringify([newWalletAddress]))
 
         return generatedWallet
     } else {
@@ -50,10 +50,30 @@ export const generateNewPrivateKeyAndWallet = async () => {
         await AsyncStorage.setItem('publicKeyList', JSON.stringify(walletAddresses))
 
         return { generatedWallet, walletAddresses }
-    } catch (error) {
-
+    } catch (err) {
+        console.log(err);
     }
+}
 
+export const saveImportedWallet = async (importedWallet) => {
+    try {
+        const accessControlOptions = await getAccessControlOptions();
+        const walletAddress = importedWallet.address
+        const privateKey = importedWallet._signingKey().privateKey;
+
+        // Save new key to keychain
+        await saveKeychainValue('activePrivateKey', privateKey, accessControlOptions)
+        await saveKeychainValue(privateKey, privateKey, accessControlOptions)
+
+        // Add new wallet address to the existing list
+        const walletAddresses = await loadAllWalletAddresses()
+        walletAddresses.push(walletAddress)
+        await AsyncStorage.setItem('publicKeyList', JSON.stringify(walletAddresses))
+
+        return walletAddresses
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 export const switchActiveWallet = async (walletAddress) => {

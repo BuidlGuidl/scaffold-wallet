@@ -389,7 +389,7 @@ export default function App() {
           cancelTransaction={cancelTransaction}
         />}
 
-      {showWalletScreen && <WalletsScreen address={address} hide={hideWallet} setWallet={setWallet} setAddress={setAddress} />}
+      {showWalletScreen && <WalletsScreen address={address} hide={hideWallet} wallet={wallet} setWallet={setWallet} setAddress={setAddress} />}
 
       {showQRDisplayScreen && <QRDisplayScreen address={address} hide={hideQR} />}
 
