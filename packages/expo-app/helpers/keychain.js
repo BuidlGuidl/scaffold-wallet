@@ -3,17 +3,11 @@ import {
     ACCESSIBLE,
     AUTHENTICATION_TYPE,
     canImplyAuthentication,
-    getAllInternetCredentials,
-    getAllInternetCredentialsKeys,
     getInternetCredentials,
-    getSupportedBiometryType,
-    hasInternetCredentials,
-    Options,
-    resetInternetCredentials,
-    Result,
     setInternetCredentials,
-    UserCredentials,
 } from 'react-native-keychain';
+
+import DeviceInfo from 'react-native-device-info';
 
 export async function loadKeychainValue(key) {
     try {
@@ -40,7 +34,8 @@ export async function getAccessControlOptions() {
             authenticationType: AUTHENTICATION_TYPE.DEVICE_PASSCODE_OR_BIOMETRICS,
         });
 
-        let isSimulator = false;
+        // Set to true to disable biometrics
+        let isSimulator = await DeviceInfo.isEmulator();
         if (canAuthenticate && !isSimulator) {
             res = {
                 accessControl: ACCESS_CONTROL.USER_PRESENCE,
