@@ -1,0 +1,6 @@
+module Pods_ScaffoldWallet {
+  umbrella header "Pods-ScaffoldWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1330"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EA6B21019F18E11A4BC9602AFB955E59"
-               BuildableName = "libPods-PunkWallet.a"
-               BlueprintName = "Pods-PunkWallet"
+               BlueprintIdentifier = "C65C717270D55D7179A8CB6B01846C1E"
+               BuildableName = "libRNKeychain.a"
+               BlueprintName = "RNKeychain"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

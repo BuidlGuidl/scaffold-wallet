@@ -1,6 +1,7 @@
 
 import { ethers } from "ethers";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAccessControlOptions, loadKeychainValue, saveKeychainValue } from './keychain'
 
 export const truncateAddress = (address) => {
     if (!address) return ''
@@ -8,44 +9,65 @@ export const truncateAddress = (address) => {
 }
 
 export const loadOrGenerateWallet = async () => {
-    // FIXME: REFACTOR TO USE SECURE STORAGE
-    const pk = await AsyncStorage.getItem('activePrivateKey')
+    console.log('loadOrGenerateWallet');
+    const accessControlOptions = await getAccessControlOptions();
+
+    const pk = await loadKeychainValue('activePrivateKey')
     if (!pk) {
         const generatedWallet = ethers.Wallet.createRandom();
-        const privateKey = generatedWallet._signingKey().privateKey;
-        await AsyncStorage.setItem('activePrivateKey', privateKey)
-        await AsyncStorage.setItem('privateKeyList', JSON.stringify([privateKey]))
+        const newWalletAddress = generatedWallet.address
+        const newPrivateKey = generatedWallet._signingKey().privateKey;
+
+        await saveKeychainValue('activePrivateKey', newPrivateKey, accessControlOptions)
+        await saveKeychainValue(newWalletAddress, newPrivateKey, accessControlOptions)
+        console.log('set publicKeyList', [newWalletAddress]);
+        await AsyncStorage.setItem('publicKeyList', JSON.stringify([newWalletAddress]))
+
         return generatedWallet
     } else {
         const existingWallet = new ethers.Wallet(pk);
         return existingWallet
     }
 }
-export const loadAllPrivateKeys = async () => {
-    // FIXME: REFACTOR TO USE SECURE STORAGE
-    const pks = JSON.parse(await AsyncStorage.getItem('privateKeyList'))
-    return pks
+export const loadAllWalletAddresses = async () => {
+    const addresses = JSON.parse(await AsyncStorage.getItem('publicKeyList'))
+    return addresses
 }
 
 export const generateNewPrivateKeyAndWallet = async () => {
-    const generatedWallet = ethers.Wallet.createRandom();
-    const newPrivateKey = generatedWallet._signingKey().privateKey;
-    await AsyncStorage.setItem('activePrivateKey', newPrivateKey)
+    try {
+        const accessControlOptions = await getAccessControlOptions();
+        const generatedWallet = ethers.Wallet.createRandom();
+        const newWalletAddress = generatedWallet.address
+        const newPrivateKey = generatedWallet._signingKey().privateKey;
+        await saveKeychainValue('activePrivateKey', newPrivateKey, accessControlOptions)
 
-    // Add new pk to the existing list
-    const pks = JSON.parse(await AsyncStorage.getItem('privateKeyList'))
-    pks.push(newPrivateKey)
-    await AsyncStorage.setItem('privateKeyList', JSON.stringify(pks))
+        await saveKeychainValue(newWalletAddress, newPrivateKey, accessControlOptions)
 
-    return { generatedWallet, pks }
+        // Add new wallet address to the existing list
+        const walletAddresses = await loadAllWalletAddresses()
+        walletAddresses.push(newWalletAddress)
+        await AsyncStorage.setItem('publicKeyList', JSON.stringify(walletAddresses))
+
+        return { generatedWallet, walletAddresses }
+    } catch (error) {
+
+    }
+
 }
 
-export const switchActiveWallet = async (pk) => {
-    await AsyncStorage.setItem('activePrivateKey', pk)
+export const switchActiveWallet = async (walletAddress) => {
+    const accessControlOptions = await getAccessControlOptions();
+
+    // Get private key from keychain
+    const pk = await loadKeychainValue(walletAddress)
+
+    // Save as active private key
+    await saveKeychainValue('activePrivateKey', pk, accessControlOptions)
     return new ethers.Wallet(pk);
 }
 
-export const updatePrivateKeys = async (pks) => {
-    await AsyncStorage.setItem('privateKeyList', JSON.stringify(pks))
+export const updateWalletAddresses = async (walletAddresses) => {
+    await AsyncStorage.setItem('publicKeyList', JSON.stringify(walletAddresses))
 }
 
