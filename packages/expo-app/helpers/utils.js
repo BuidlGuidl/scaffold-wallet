@@ -63,7 +63,7 @@ export const saveImportedWallet = async (importedWallet) => {
 
         // Save new key to keychain
         await saveKeychainValue('activePrivateKey', privateKey, accessControlOptions)
-        await saveKeychainValue(privateKey, privateKey, accessControlOptions)
+        await saveKeychainValue(walletAddress, privateKey, accessControlOptions)
 
         // Add new wallet address to the existing list
         const walletAddresses = await loadAllWalletAddresses()
