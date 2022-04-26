@@ -20,7 +20,6 @@ export default function useExchangePrice(targetNetwork, mainnetProvider, pollTim
 
         const priceOfETHinDAI = parseFloat(route.midPrice.toSignificant(6));
 
-        // setPrice(priceOfETHinDAI);
         if (targetNetwork.nativeCurrency && targetNetwork.nativeCurrency.uniswap) {
           let contractAddress = targetNetwork.nativeCurrency.uniswap
           const TOKEN = new Token(mainnetProvider.network ? mainnetProvider.network.chainId : 1, contractAddress, 18);

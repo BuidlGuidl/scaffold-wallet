@@ -9,7 +9,6 @@ import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTIO
 import "./helpers/windows";
 import { ethers } from "ethers";
 import { arrayify } from '@ethersproject/bytes';
-import { useBalance } from "eth-hooks/useBalance";
 import { useStaticJsonRPC } from "./hooks";
 import useGasPrice from "./hooks/GasPrice";
 import WalletConnect from "@walletconnect/client";
@@ -32,8 +31,9 @@ import { FloatingButton } from "./components/FloatingButton";
 import { TransactionsDisplay } from "./components/TransactionsDisplay";
 import { updateStorageTransaction } from "./helpers/Transactions";
 import useExchangePrice from "./hooks/ExchangePrice";
+import useBalance from "./hooks/Balance";
 
-const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 🛰 providers
 const providers = [
@@ -45,10 +45,8 @@ const providers = [
 export default function App() {
   StatusBar.setBarStyle('dark-content', false);
 
-  const networkOptions = [initialNetwork.name, "ethereum", "rinkeby"];
-
   const [address, setAddress] = useState();
-  const [selectedNetwork, setSelectedNetwork] = useState(networkOptions[0]);
+  const [selectedNetwork, setSelectedNetwork] = useState(initialNetwork.name);
 
   const targetNetwork = NETWORKS[selectedNetwork];
 
@@ -58,9 +56,9 @@ export default function App() {
 
   /* 💵 This hook will get the price of the native token from 🦄 Uniswap: */
   const price = useExchangePrice(targetNetwork, mainnetProvider);
-  /* 🔥 This hook will get the price of Gas from ethers / Etherscan */
-  const gasPrice = useGasPrice(targetNetwork, localProvider, 15000);
-  const yourLocalBalance = useBalance(localProvider, address);
+  /* 🔥 This hook will get the price of Gas from ethers or Etherscan */
+  const gasPrice = useGasPrice(targetNetwork, 10000);
+  const yourLocalBalance = useBalance(targetNetwork, address, 10000);
 
   // Different Screens and functions to show/hide
   // Note the useCallback to prevent excessive re-eval/rendering in child components since so much state is in App.js
