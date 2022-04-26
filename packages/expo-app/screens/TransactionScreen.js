@@ -7,7 +7,7 @@ import { truncateAddress } from "../helpers/utils";
 import { PERSONAL_SIGN, SEND_TRANSACTION, SIGN_TRANSACTION } from "../constants";
 
 const TransactionScreen = (props) => {
-    const { address, balance, price, gasPrice, pendingTransaction, hideTransaction, walletConnectParams, network } = props
+    const { address, tokenSymbol, balance, price, gasPrice, pendingTransaction, hideTransaction, walletConnectParams, network } = props
 
     const WCUrl = walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '')
     const WCIcon = walletConnectParams.peerMeta.icons[0]
@@ -88,7 +88,7 @@ const TransactionScreen = (props) => {
                 </View>
                 <View style={{ flexDirection: 'column', alignItems: 'flex-end' }}>
                     <Text style={[styles.rowTitle]}>Balance</Text>
-                    <Text style={[styles.rowData]}>{formattedEthBalance.toFixed(2)} ETH</Text>
+                    <Text style={[styles.rowData]}>{formattedEthBalance.toFixed(2)} {tokenSymbol}</Text>
                 </View>
             </View>
 
@@ -114,7 +114,7 @@ const TransactionScreen = (props) => {
                     </View>
 
                     {/* Transaction Value and Estimated Gas */}
-                    <Text style={{ marginTop: 20, fontSize: 44, fontWeight: '500', textAlign: 'center' }}>{amount} ETH</Text>
+                    <Text style={{ marginTop: 20, fontSize: 44, fontWeight: '500', textAlign: 'center' }}>{amount} {tokenSymbol}</Text>
                     <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <Text style={[{ fontSize: 24 }]}>~{(amount * price).toFixed(2)} USD</Text>
                         <Text style={[{ fontSize: 20 }]}>Est. Fee ${transferCostInUSD}</Text>

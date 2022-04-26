@@ -10,7 +10,6 @@ import "./helpers/windows";
 import { ethers } from "ethers";
 import { arrayify } from '@ethersproject/bytes';
 import { useBalance } from "eth-hooks/useBalance";
-import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 import { useStaticJsonRPC } from "./hooks";
 import useGasPrice from "./hooks/GasPrice";
 import WalletConnect from "@walletconnect/client";
@@ -32,6 +31,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { FloatingButton } from "./components/FloatingButton";
 import { TransactionsDisplay } from "./components/TransactionsDisplay";
 import { updateStorageTransaction } from "./helpers/Transactions";
+import useExchangePrice from "./hooks/ExchangePrice";
 
 const initialNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -56,8 +56,8 @@ export default function App() {
   const localProvider = useStaticJsonRPC([targetNetwork.rpcUrl]);
   const mainnetProvider = useStaticJsonRPC(providers);
 
-  /* 💵 This hook will get the price of ETH from 🦄 Uniswap: */
-  const price = useExchangeEthPrice(targetNetwork, mainnetProvider);
+  /* 💵 This hook will get the price of the native token from 🦄 Uniswap: */
+  const price = useExchangePrice(targetNetwork, mainnetProvider);
   /* 🔥 This hook will get the price of Gas from ethers / Etherscan */
   const gasPrice = useGasPrice(targetNetwork, localProvider, 15000);
   const yourLocalBalance = useBalance(localProvider, address);
@@ -284,6 +284,9 @@ export default function App() {
 
   const openBlockExplorer = () => Linking.openURL(`${targetNetwork.blockExplorer}address/${address}`)
 
+  const nativeTokenName = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.name : 'Ether'
+  const nativeTokenSymbol = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.symbol : 'ETH'
+  const nativeTokenLogo = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.logoURI : 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png'
   return (
     <View>
       <SafeAreaView style={styles.container}>
@@ -298,7 +301,7 @@ export default function App() {
 
         <View style={styles.main}>
           <AddressDisplay address={address} showQR={showQR} showWallet={showWallet} />
-          <TokenDisplay tokenBalance={yourLocalBalance} tokenName={'Ether'} tokenSymbol={'ETH'} tokenPrice={price} />
+          <TokenDisplay tokenBalance={yourLocalBalance} tokenName={nativeTokenName} tokenSymbol={nativeTokenSymbol} tokenLogo={nativeTokenLogo} tokenPrice={price} />
 
           <View style={{ marginTop: 24, alignItems: 'center' }}>
             <TextInput
@@ -366,6 +369,7 @@ export default function App() {
 
       {showSendScreen &&
         <SendScreen address={address}
+          tokenSymbol={nativeTokenSymbol}
           hide={hideSend}
           balance={yourLocalBalance}
           price={price}
@@ -378,6 +382,7 @@ export default function App() {
       {showTransactionScreen &&
         <TransactionScreen
           address={address}
+          tokenSymbol={nativeTokenSymbol}
           balance={yourLocalBalance}
           price={price}
           gasPrice={gasPrice}

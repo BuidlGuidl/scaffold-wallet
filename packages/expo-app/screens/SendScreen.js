@@ -8,7 +8,7 @@ import Blockie from "../components/Blockie";
 
 const SendScreen = (props) => {
 
-    const { address, balance, price, gasPrice, showScanner, toAddress, setToAddress, sendEth } = props
+    const { address, tokenSymbol, balance, price, gasPrice, showScanner, toAddress, setToAddress, sendEth } = props
     const [loading, setLoading] = useState(false);
     const [amount, setAmount] = useState(0);
 
@@ -65,7 +65,7 @@ const SendScreen = (props) => {
             </TouchableOpacity>
         </View>
         <View style={{ width: '100%', marginTop: 16, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 18 }}>Wallet Balance {formattedEthBalance} ETH</Text>
+            <Text style={{ fontSize: 18 }}>Wallet Balance {formattedEthBalance} {tokenSymbol}</Text>
         </View>
 
 
@@ -79,7 +79,7 @@ const SendScreen = (props) => {
                 onChangeText={setAmount}
                 placeholder="0.0"
             />
-            <Text style={{ flex: 1, fontSize: 36, textAlign: 'right', fontWeight: '500' }}>ETH</Text>
+            <Text style={{ flex: 1, fontSize: 36, textAlign: 'right', fontWeight: '500' }}>{tokenSymbol}</Text>
         </View>
         <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <Text style={{ fontSize: 22 }}>~{(amount * price).toFixed(2)} USD</Text>
