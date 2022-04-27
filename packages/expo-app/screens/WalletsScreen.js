@@ -108,7 +108,7 @@ const WalletsScreen = (props) => {
                 <View style={{ width: '80%', marginHorizontal: 32 }}>
                     {walletAddresses.map((walletAddress, index) => {
                         let displayAddress = truncateAddress(walletAddress);
-                        return <View style={{ marginVertical: 16 }} key={index}>
+                        return <View style={{ marginVertical: 18 }} key={index}>
                             {walletAddress === props.address ?
                                 <View>
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
@@ -140,17 +140,20 @@ const WalletsScreen = (props) => {
                     })}
                 </View>
 
-                <View style={{ marginTop: 48 }}>
-
+                <View style={{ marginTop: 12, flexDirection: 'column' }}>
                     <Button
                         onPress={generateNewWallet}
                         title="Generate New Wallet" />
-                    <Button
-                        onPress={toggleShowImport}
-                        title="Import Private Key" />
-                    <Button
-                        onPress={props.hide}
-                        title="Close" />
+                    <View style={{ marginTop: 4 }}>
+                        <Button
+                            onPress={toggleShowImport}
+                            title="Import Private Key" />
+                    </View>
+                    <View style={{ marginTop: 4 }}>
+                        <Button
+                            onPress={props.hide}
+                            title="Close" />
+                    </View>
                 </View>
             </View>
             :
@@ -190,9 +193,11 @@ const WalletsScreen = (props) => {
                             onPress={importWallet}
                             title="Import" />
                     }
-                    <Button
-                        onPress={toggleShowImport}
-                        title="Cancel" />
+                    <View style={{ marginTop: 4 }}>
+                        <Button
+                            onPress={toggleShowImport}
+                            title="Cancel" />
+                    </View>
                 </View>
             </View>
         }
