@@ -48,6 +48,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) requires camera permissions.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>$(PRODUCT_NAME) Authentication with TouchId or FaceID</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -79,7 +81,5 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSFaceIDUsageDescription</key>
-	<string>$(PRODUCT_NAME) Authentication with TouchId or FaceID</string>
 </dict>
 </plist>
