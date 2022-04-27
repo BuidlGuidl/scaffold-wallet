@@ -54,9 +54,9 @@ export default function App() {
   const localProvider = useStaticJsonRPC([targetNetwork.rpcUrl]);
   const mainnetProvider = useStaticJsonRPC(providers);
 
-  /* 💵 This hook will get the price of the native token from 🦄 Uniswap: */
-  const price = useExchangePrice(targetNetwork, mainnetProvider);
-  /* 🔥 This hook will get the price of Gas from ethers or Etherscan */
+  // NOTE: These are custom hooks built on top of eth-hooks 
+  // for finer control of over network changes and intervals
+  const price = useExchangePrice(targetNetwork, mainnetProvider, 30000);
   const gasPrice = useGasPrice(targetNetwork, 10000);
   const yourLocalBalance = useBalance(targetNetwork, address, 10000);
 
