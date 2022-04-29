@@ -9,11 +9,11 @@ export const truncateAddress = (address) => {
 }
 
 export const loadOrGenerateWallet = async () => {
-    console.log('loadOrGenerateWallet');
     const accessControlOptions = await getAccessControlOptions();
 
-    const pk = await loadKeychainValue('activePrivateKey')
-    if (!pk) {
+    // Check for wallet addresses in AsyncStorage
+    const walletAddresses = await loadAllWalletAddresses()
+    if (walletAddresses.length === 0) {
         const generatedWallet = ethers.Wallet.createRandom();
         const newWalletAddress = generatedWallet.address
         const newPrivateKey = generatedWallet._signingKey().privateKey;
@@ -25,13 +25,14 @@ export const loadOrGenerateWallet = async () => {
 
         return generatedWallet
     } else {
+        const pk = await loadKeychainValue('activePrivateKey')
         const existingWallet = new ethers.Wallet(pk);
         return existingWallet
     }
 }
 export const loadAllWalletAddresses = async () => {
     const addresses = JSON.parse(await AsyncStorage.getItem('publicKeyList'))
-    return addresses
+    return addresses || []
 }
 
 export const generateNewPrivateKeyAndWallet = async () => {
