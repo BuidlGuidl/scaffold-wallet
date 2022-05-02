@@ -98,10 +98,10 @@ export default function App() {
     const signer = wallet.connect(localProvider);
 
     try {
-      // const testGasPrice = new ethers.BigNumber.from('30000000000') //30gwei
+      // const testGasPrice = new ethers.BigNumber.from('4000000000') //4gwei
       const txConfig = {
         gasPrice: gasPrice,
-        gasLimit: 21000,
+        // gasLimit: 21000, // Gas limit breaks send on Arbitrum for some reason
         to: to,
         value: ethers.utils.parseEther(ethAmount),
       }
