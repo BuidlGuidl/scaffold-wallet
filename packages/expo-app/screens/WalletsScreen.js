@@ -85,7 +85,7 @@ const WalletsScreen = (props) => {
         await updateWalletAddresses(walletList)
         setWalletAddresses(walletList)
 
-        const existingWallet = await switchActiveWallet(walletAddresses[0])
+        const existingWallet = await switchActiveWallet(walletList[0])
         setWallet(existingWallet)
         setAddress(existingWallet.address)
     }
