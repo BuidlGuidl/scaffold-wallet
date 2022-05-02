@@ -4,7 +4,7 @@ import { SafeAreaView, Button, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
 import "@ethersproject/shims";
-import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTION, SIGN, DROPDOWN_NETWORK_OPTIONS } from "./constants";
+import { NETWORKS, ALCHEMY_KEY, SEND_TRANSACTION, PERSONAL_SIGN, SIGN_TRANSACTION, SIGN, DROPDOWN_NETWORK_OPTIONS, SIGN_TYPED_DATA_V4, SIGN_TYPED_DATA } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
 import { ethers } from "ethers";
@@ -16,6 +16,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNPickerSelect from "react-native-picker-select";
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import RNRestart from 'react-native-restart';
+import { signTypedData } from '@metamask/eth-sig-util';
+import { toBuffer } from 'ethereumjs-util';
 
 // Screens and Components
 import QRScannerScreen from "./screens/QRScannerScreen";
@@ -189,11 +191,10 @@ export default function App() {
     const payload = pendingTransaction
     const method = payload.method
     console.log('confirmTransaction', targetNetwork.rpcUrl, payload);
-
-    // Handle Sending / Signing a transaction
-    if (method === SEND_TRANSACTION || method === SIGN_TRANSACTION) {
-      const signer = wallet.connect(localProvider);
-      try {
+    try {
+      // ============= Handle Sending / Signing a transaction ============= 
+      if (method === SEND_TRANSACTION || method === SIGN_TRANSACTION) {
+        const signer = wallet.connect(localProvider);
         const { to, from, data, value } = payload.params[0]
         const tx = {
           from,
@@ -221,26 +222,46 @@ export default function App() {
         });
         console.log('Sent ApproveRequest back to Wallet Connect');
         setPendingTransaction(undefined)
-      } catch (err) {
-        console.log('error', err);
-        wallectConnectConnector.rejectRequest({
-          error,
-          id: payload.id,
-        });
       }
-    }
-    else {
-      if (method === PERSONAL_SIGN || method === SIGN) {
-        // Personal Sign uses first param signing
+      // ============= Handle Personal Sign and Sign ============= 
+      else if (method === PERSONAL_SIGN || method === SIGN) {
         const message = method === PERSONAL_SIGN ? payload.params?.[0] : payload.params?.[1]
         const result = await wallet.signMessage(arrayify(message));
         console.log(result);
         await wallectConnectConnector.approveRequest({ id: payload.id, result });
         setPendingTransaction(undefined)
+      }
+      // ============= Handle TypedData Signing =============
+      // Adapted from Rainbow's Signing Code 
+      // https://github.com/rainbow-me/rainbow/blob/develop/src/model/wallet.ts#L386
+      else if (method === SIGN_TYPED_DATA || method === SIGN_TYPED_DATA_V4) {
+        const message = payload.params?.[1]
+        let parsedData = message;
+        if (typeof message === 'string') {
+          parsedData = JSON.parse(message);
+        }
+        let version = 'V1';
+        if (typeof parsedData === 'object' && (parsedData.types || parsedData.primaryType || parsedData.domain)) {
+          version = 'V4';
+        }
+        const result = signTypedData({
+          data: parsedData,
+          privateKey: toBuffer(wallet.privateKey),
+          version: version,
+        })
+
+        await wallectConnectConnector.approveRequest({ id: payload.id, result });
+        setPendingTransaction(undefined)
       } else {
-        // TODO SIGN TYPED DATA
         console.log('Unsupported Method');
       }
+    } catch (err) {
+      console.log('error', err);
+      wallectConnectConnector.rejectRequest({
+        error: { message: `${method} failed` },
+        id: payload.id,
+      });
+      setPendingTransaction(undefined)
     }
   }
 
