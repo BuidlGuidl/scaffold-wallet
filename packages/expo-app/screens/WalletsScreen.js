@@ -11,6 +11,7 @@ import { ethers } from "ethers";
 const WalletsScreen = (props) => {
     const { wallet, setWallet, setAddress } = props
 
+    const [loading, setLoading] = useState(false);
     const [walletAddresses, setWalletAddresses] = useState([]);
     const [reveal, setReveal] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -45,10 +46,12 @@ const WalletsScreen = (props) => {
     }, []);
 
     const generateNewWallet = async () => {
+        setLoading(true)
         const { generatedWallet, walletAddresses: walletList } = await generateNewPrivateKeyAndWallet()
         setWallet(generatedWallet)
         setAddress(generatedWallet.address)
         setWalletAddresses(walletList)
+        setLoading(false)
     }
 
     const importWallet = async () => {
@@ -143,7 +146,10 @@ const WalletsScreen = (props) => {
                 <View style={{ marginTop: 12, flexDirection: 'column' }}>
                     <Button
                         onPress={generateNewWallet}
-                        title="Generate New Wallet" />
+                        title={loading ? "Generating..." : "Generate New Wallet"}
+                        disabled={loading}
+                    />
+
                     <View style={{ marginTop: 4 }}>
                         <Button
                             onPress={toggleShowImport}
