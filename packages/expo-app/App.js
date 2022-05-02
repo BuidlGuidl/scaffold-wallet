@@ -285,6 +285,9 @@ export default function App() {
   const nativeTokenName = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.name : 'Ether'
   const nativeTokenSymbol = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.symbol : 'ETH'
   const nativeTokenLogo = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.logoURI : 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png'
+
+  const dropdownArrowIcon = () => <FontAwesomeIcon name="chevron-down" size={16} />
+
   return (
     <View>
       <SafeAreaView style={styles.container}>
@@ -349,11 +352,12 @@ export default function App() {
                 }}
                 items={DROPDOWN_NETWORK_OPTIONS}
                 style={{
-                  inputIOS: { fontSize: 32, backgroundColor: '#fff', paddingRight: 16 }
-
+                  inputIOS: { fontSize: 32, paddingRight: 22 },
+                  iconContainer: { top: 10 },
                 }}
+                placeholder={{}}
+                Icon={dropdownArrowIcon}
               />
-              <FontAwesomeIcon name="chevron-down" size={16} style={{ marginLeft: -12 }} />
             </View>
           </View>
         </View>
