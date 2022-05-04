@@ -7,6 +7,22 @@ export const truncateAddress = (address) => {
     if (!address) return ''
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
+export const extractJSONRPCMessage = (rawString) => {
+    const start = rawString.indexOf(`(body="`)
+    const end = rawString.indexOf(`}}`)
+
+    if (start > -1 && end > -1) {
+        const JSONstring = rawString.slice(start + 7, end + 2).replaceAll('\\', '')
+        try {
+            const res = JSON.parse(JSONstring)
+            return `Error: ${res.error.message}`
+        } catch (error) {
+            return JSONstring.slice(0, 60)
+        }
+    } else {
+        return rawString.slice(0, 60)
+    }
+}
 
 export const loadOrGenerateWallet = async () => {
     const accessControlOptions = await getAccessControlOptions();
