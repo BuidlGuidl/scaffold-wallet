@@ -1,8 +1,6 @@
-
-
-import { useState, useEffect } from "react";
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, SafeAreaView } from "react-native";
-import { ethers } from "ethers";
+import { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, SafeAreaView } from "react-native";
+import { BigNumber, utils } from "ethers";
 import { truncateAddress } from "../helpers/utils";
 import { PERSONAL_SIGN, SEND_TRANSACTION, SIGN_TRANSACTION } from "../constants";
 
@@ -21,12 +19,14 @@ const TransactionScreen = (props) => {
     const isTransaction = (method === SEND_TRANSACTION || method === SIGN_TRANSACTION)
 
     let amount = 0
-    if (params.value) amount = Number(ethers.utils.formatEther(new ethers.BigNumber.from(params.value)))
+    if (params.value) amount = Number(utils.formatEther(BigNumber.from(params.value)))
 
-    const formattedEthBalance = Math.round(ethers.utils.formatEther(balance) * 1e4) / 1e4
+    const formattedEthBalance = Math.round(utils.formatEther(balance) * 1e4) / 1e4
     const contractAddress = params.to ? truncateAddress(params.to) : ''
-    const gas = params.gas ? new ethers.BigNumber.from(params.gas).toNumber() : 0
-    const transferCostInETH = Number(ethers.utils.formatEther(gasPrice * gas))
+    const gas = params.gas ? BigNumber.from(params.gas) : BigNumber.from("0x0")
+
+    const transferCostInETH = Number(utils.formatEther(gas.mul(gasPrice)))
+
     const transferCostInUSD = (transferCostInETH * price).toFixed(2)
     let insufficientFunds = false
     if (isTransaction && gasPrice && balance) {
