@@ -13,7 +13,7 @@ export const FloatingButton = (props) => {
             alignItems: 'center',
             justifyContent: 'center',
             right: props.right,
-            bottom: 48,
+            bottom: 40,
             borderRadius: 35
         }}>
         {props.children}

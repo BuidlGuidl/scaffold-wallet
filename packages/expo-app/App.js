@@ -307,7 +307,7 @@ export default function App() {
   const nativeTokenSymbol = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.symbol : 'ETH'
   const nativeTokenLogo = targetNetwork.nativeCurrency ? targetNetwork.nativeCurrency.logoURI : 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png'
 
-  const dropdownArrowIcon = () => <FontAwesomeIcon name="chevron-down" size={16} />
+  const dropdownArrowIcon = () => <FontAwesomeIcon name="chevron-down" size={20} />
 
   return (
     <View>
@@ -357,9 +357,9 @@ export default function App() {
         </View>
 
         {/* Bottom Bar */}
-        <View style={{ position: 'absolute', bottom: 48, left: 30 }}>
+        <View style={{ position: 'absolute', bottom: 40, left: 20 }}>
           <View style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-            <Text style={{ fontSize: 18, fontWeight: '700' }}>
+            <Text style={{ fontSize: 20, fontWeight: '700' }}>
               {gasPriceInGwei} Gwei
             </Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -373,8 +373,9 @@ export default function App() {
                 }}
                 items={DROPDOWN_NETWORK_OPTIONS}
                 style={{
-                  inputIOS: { fontSize: 32, paddingRight: 22 },
-                  iconContainer: { top: 10 },
+                  inputIOS: { fontSize: 34, marginRight: 12 },
+                  inputIOSContainer: { marginTop: -24, paddingTop: 24, paddingRight: 24 },
+                  iconContainer: { top: 34, paddingRight: 12 },
                 }}
                 placeholder={{}}
                 Icon={dropdownArrowIcon}
@@ -382,10 +383,10 @@ export default function App() {
             </View>
           </View>
         </View>
-        <FloatingButton onPress={showSend} right={120}>
+        <FloatingButton onPress={showSend} right={110}>
           <FontAwesomeIcon name="send" size={24} color='#fff' />
         </FloatingButton>
-        <FloatingButton onPress={showScanner} right={30}>
+        <FloatingButton onPress={showScanner} right={20}>
           <AntIcon name="scan1" size={30} color='#fff' />
         </FloatingButton>
       </SafeAreaView>
