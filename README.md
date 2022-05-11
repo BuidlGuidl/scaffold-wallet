@@ -1,10 +1,8 @@
-# 🏗 Punk Wallet React Native
+# 🏗 Scaffold Wallet React Native
 
 > everything you need to build an Ethereum Wallet with Scaffold-Eth and React Native! 🚀
 
-<img width="300" alt="ss1" src="https://user-images.githubusercontent.com/4507317/163157288-6eb0963e-d712-43d4-ab28-ae1f8046a342.png">
-<img width="300" alt="ss2" src="https://user-images.githubusercontent.com/4507317/163157299-43c44d9d-a5e8-491e-90f0-e9ea351759a5.png">
-
+<img width="1590" alt="image" src="https://user-images.githubusercontent.com/4507317/167762848-6d95c1d7-0d29-416d-b8c0-368a0bccf60d.png">
 
 ## Overview
 
@@ -50,6 +48,22 @@ yarn ios
 ```
 
 Alternatively, to test on an iOS device (requires Apple Developer Account) open and run the project with XCode.
+
+# Features
+- Multiple Network Support (Ethereum / Optimism / Arbitrum / Gnosis / Polygon)
+- Testnet Support ( Kovan / Rinkeby / Ropsten / Goerli / Mumbai)
+- Wallet Generation / Import / Export
+- Keychain Storage of Private Keys w/ Biometrics
+- Wallet Connect
+- Sending / Signing Transactions 
+- Pending Transaction Speed up
+- QR Scanning
+
+# TODOs
+- Transaction Cancel
+- Transaction History
+- Push Notifications
+
 
 # 💌 P.S.
 
