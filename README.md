@@ -19,7 +19,7 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](htt
 > clone/fork the repo:
 
 ```bash
-git clone https://github.com/scaffold-eth/scaffold-eth-expo.git
+git clone https://github.com/danielkhoo/scaffold-eth-react-native-wallet.git
 ```
 
 > install all dependencies:
