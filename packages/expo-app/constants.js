@@ -1,8 +1,8 @@
 // MY INFURA_ID, SWAP IN YOURS FROM https://infura.io/dashboard/ethereum
-export const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
+export const INFURA_ID = "95ff362df12840c98fa418bcd4b27c8a";
 
 // MY ETHERSCAN_ID, SWAP IN YOURS FROM https://etherscan.io/myapikey
-export const ETHERSCAN_KEY = "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
+export const ETHERSCAN_KEY = "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8";
 
 // BLOCKNATIVE ID FOR Notify.js:
 export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
@@ -10,13 +10,6 @@ export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
 export const ALCHEMY_KEY = "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
 
 export const NETWORKS = {
-  // localhost: {
-  //   name: "localhost",
-  //   color: "#f01a37",
-  //   chainId: 31337,
-  //   blockExplorer: "",
-  //   rpcUrl: "http://localhost" + ":8545",
-  // },
   ethereum: {
     name: "ethereum",
     color: "#333333",
@@ -29,7 +22,8 @@ export const NETWORKS = {
     color: "#f01a37",
     chainId: 10,
     blockExplorer: "https://optimistic.etherscan.io/",
-    rpcUrl: `https://mainnet.optimism.io`,
+    rpcUrl: `https://opt-mainnet.g.alchemy.com/v2/gzr_xuzv2SPwbPchC9Z41qmfodlDglKp`,
+    // rpcUrl: `https://mainnet.optimism.io`,
   },
   arbitrum: {
     name: "arbitrum",
@@ -94,59 +88,6 @@ export const NETWORKS = {
     faucet: "https://faucet.polygon.technology/",
     blockExplorer: "https://mumbai.polygonscan.com/",
   },
-  // localArbitrum: {
-  //   name: "localArbitrum",
-  //   color: "#50a0ea",
-  //   chainId: 153869338190755,
-  //   blockExplorer: "",
-  //   rpcUrl: `http://localhost:8547`,
-  // },
-  // localArbitrumL1: {
-  //   name: "localArbitrumL1",
-  //   color: "#50a0ea",
-  //   chainId: 44010,
-  //   blockExplorer: "",
-  //   rpcUrl: `http://localhost:7545`,
-  // },
-  // rinkebyArbitrum: {
-  //   name: "rinkebyArbitrum",
-  //   color: "#50a0ea",
-  //   chainId: 421611,
-  //   blockExplorer: "https://rinkeby-explorer.arbitrum.io/#/",
-  //   rpcUrl: `https://rinkeby.arbitrum.io/rpc`,
-  // },
-  // localOptimismL1: {
-  //   name: "localOptimismL1",
-  //   color: "#f01a37",
-  //   chainId: 31337,
-  //   blockExplorer: "",
-  //   rpcUrl: "http://localhost:9545",
-  // },
-  // localOptimism: {
-  //   name: "localOptimism",
-  //   color: "#f01a37",
-  //   chainId: 420,
-  //   blockExplorer: "",
-  //   rpcUrl: "http://localhost:8545",
-  //   gasPrice: 0,
-  // },
-  // kovanOptimism: {
-  //   name: "kovanOptimism",
-  //   color: "#f01a37",
-  //   chainId: 69,
-  //   blockExplorer: "https://kovan-optimistic.etherscan.io/",
-  //   rpcUrl: `https://kovan.optimism.io`,
-  //   gasPrice: 0,
-  // },
-  // localAvalanche: {
-  //   name: "localAvalanche",
-  //   color: "#666666",
-  //   chainId: 43112,
-  //   blockExplorer: "",
-  //   rpcUrl: `http://localhost:9650/ext/bc/C/rpc`,
-  //   gasPrice: 225000000000,
-  // },
-
   // mainnetAvalanche: {
   //   name: "mainnetAvalanche",
   //   color: "#666666",
