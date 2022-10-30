@@ -179,7 +179,7 @@
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = E6Z39934HH;
+						DevelopmentTeam = S965UYWD4P;
 						LastSwiftMigration = 1250;
 					};
 				};
@@ -349,7 +349,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = expoapp/expoapp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E6Z39934HH;
+				DEVELOPMENT_TEAM = S965UYWD4P;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -364,7 +364,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.punkwallet;
+				PRODUCT_BUNDLE_IDENTIFIER = eth.scaffoldwallet;
 				PRODUCT_NAME = ScaffoldWallet;
 				SWIFT_OBJC_BRIDGING_HEADER = "expoapp/expoapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -383,7 +383,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = expoapp/expoapp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = E6Z39934HH;
+				DEVELOPMENT_TEAM = S965UYWD4P;
 				INFOPLIST_FILE = expoapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -393,7 +393,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.punkwallet;
+				PRODUCT_BUNDLE_IDENTIFIER = eth.scaffoldwallet;
 				PRODUCT_NAME = ScaffoldWallet;
 				SWIFT_OBJC_BRIDGING_HEADER = "expoapp/expoapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
