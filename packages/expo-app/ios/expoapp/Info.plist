@@ -47,9 +47,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires camera permissions.</string>
+	<string>$(PRODUCT_NAME) requires camera permissions to scan QR codes for addresses</string>
 	<key>NSFaceIDUsageDescription</key>
-	<string>$(PRODUCT_NAME) Authentication with TouchId or FaceID</string>
+	<string>$(PRODUCT_NAME) requires Authentication with TouchId or FaceID for securing wallet private keys</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
