@@ -2901,7 +2901,7 @@
 		0963C8BC79A4937EEFECB5DD20EDF1F5 /* EXRCTBridgeDelegateInterceptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EXRCTBridgeDelegateInterceptor.m; sourceTree = "<group>"; };
 		0973AD2000EF6646CC7DFE76FFF9437F /* EXSplashScreenViewProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXSplashScreenViewProvider.h; path = EXSplashScreen/EXSplashScreenViewProvider.h; sourceTree = "<group>"; };
 		09A5C28448B7D9C55F43D7E36637DAF2 /* JsArgumentHelpers-inl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JsArgumentHelpers-inl.h"; sourceTree = "<group>"; };
-		09B5856105EF7C6447B9EC57E7E36B34 /* EXKeepAwake */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = EXKeepAwake; path = libEXKeepAwake.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		09B5856105EF7C6447B9EC57E7E36B34 /* libEXKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEXKeepAwake.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F4692468D5F41ECAD5C55314740561 /* RCTTouchHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTTouchHandler.h; sourceTree = "<group>"; };
 		0A0B0989DE0FE833408CF16294C20BD1 /* cached-powers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "cached-powers.h"; path = "double-conversion/cached-powers.h"; sourceTree = "<group>"; };
 		0A2660EC182CFC2FBE3E9B70423EC923 /* RCTDevLoadingView.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTDevLoadingView.mm; sourceTree = "<group>"; };
@@ -2911,7 +2911,7 @@
 		0A90ABB61BECD32DEC47835FCCC6BA0B /* EXLegacyAppDelegateWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXLegacyAppDelegateWrapper.h; sourceTree = "<group>"; };
 		0A9EAACBC995CD914496CB1CB359C4FB /* EXMagnetometerUncalibratedInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXMagnetometerUncalibratedInterface.h; sourceTree = "<group>"; };
 		0AB174B3A15113158A5188A714DFE46D /* react-native-udp-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "react-native-udp-prefix.pch"; sourceTree = "<group>"; };
-		0AE30817DC70B7BDE99523E2FB47404C /* EXApplication */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = EXApplication; path = libEXApplication.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AE30817DC70B7BDE99523E2FB47404C /* libEXApplication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEXApplication.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF84FADEADD527B672952EEC63924D8 /* React-jsi-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "React-jsi-dummy.m"; sourceTree = "<group>"; };
 		0B36FA004B1716D3F00D33A48575E7FD /* RCTShadowView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTShadowView.h; sourceTree = "<group>"; };
 		0B6CAD1E92AAED83069CD27CB95C5D5A /* RCTFont.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTFont.mm; sourceTree = "<group>"; };
@@ -3013,7 +3013,7 @@
 		18F2BBA1D088C4C52ADE06F66829C99D /* RCTWrapperViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTWrapperViewController.m; sourceTree = "<group>"; };
 		1923D20A8339854CCC0652C3F063DD82 /* UninitializedMemoryHacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UninitializedMemoryHacks.h; path = folly/memory/UninitializedMemoryHacks.h; sourceTree = "<group>"; };
 		1925C33717AD2973B831E87E61F94A70 /* RCTBundleURLProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTBundleURLProvider.h; sourceTree = "<group>"; };
-		1936453FF2A7E3A13063C4917C4D5598 /* RCT-Folly */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "RCT-Folly"; path = "libRCT-Folly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1936453FF2A7E3A13063C4917C4D5598 /* libRCT-Folly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRCT-Folly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		193C7EB90174EE973BA53F96A6D0AE02 /* CameraFocusSquare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CameraFocusSquare.m; path = ios/RCT/CameraFocusSquare.m; sourceTree = "<group>"; };
 		194965120D76D67D97DC8C3AF79B77CD /* PromiseArgumentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PromiseArgumentType.swift; sourceTree = "<group>"; };
 		195789FE0158D2180B2F9EF6F7063EA9 /* RCTKeyCommands.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTKeyCommands.m; sourceTree = "<group>"; };
@@ -3055,7 +3055,7 @@
 		1D61DDAB6B170E761DCB72FD02E68530 /* RCTTextViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTTextViewManager.m; sourceTree = "<group>"; };
 		1DA2857A7392BAE43C25F5E876579A18 /* CppAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CppAttributes.h; path = folly/CppAttributes.h; sourceTree = "<group>"; };
 		1DC48F1336D40FBEF5E551C45443F214 /* RCTSettingsManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTSettingsManager.mm; sourceTree = "<group>"; };
-		1DC66AC6FB5802B9BA94177EDB54263D /* RNCPicker */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNCPicker; path = libRNCPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC66AC6FB5802B9BA94177EDB54263D /* libRNCPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNCPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEB81EC6C4F3B7AC479633B822CD1C2 /* React-perflogger-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "React-perflogger-prefix.pch"; sourceTree = "<group>"; };
 		1E07315B73A093DF9C7AC210CFE9402E /* json.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = json.h; path = folly/json.h; sourceTree = "<group>"; };
 		1E39BE751F3784E06AB5CEFBCDB29096 /* SysFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SysFile.h; path = folly/portability/SysFile.h; sourceTree = "<group>"; };
@@ -3070,7 +3070,7 @@
 		2084F06C0BCCEE34D01487741BB4A61B /* React-RCTAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-RCTAnimation.debug.xcconfig"; sourceTree = "<group>"; };
 		20F19FB5E8398016C7E24FBE64E80021 /* ExpoModulesCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ExpoModulesCore.debug.xcconfig; sourceTree = "<group>"; };
 		21E029FC7CA5098FF1C58C3235FE34D8 /* Util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Util.h; path = folly/container/detail/Util.h; sourceTree = "<group>"; };
-		220361FF3B2778F8F38C2C4DCC5B49FD /* EXConstants */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = EXConstants; path = libEXConstants.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		220361FF3B2778F8F38C2C4DCC5B49FD /* libEXConstants.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEXConstants.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2206B4F011E3D356EF446869165BBB5F /* react-native-restart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "react-native-restart.release.xcconfig"; sourceTree = "<group>"; };
 		221716B86FE1B8CBA753F270A8D7D3A4 /* RCTUIManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTUIManager.h; sourceTree = "<group>"; };
 		2243779F4793DEFF5141180DF54B07A4 /* Instance.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; path = Instance.cpp; sourceTree = "<group>"; };
@@ -3095,7 +3095,7 @@
 		253A3407B889E503044BECEF208C04BB /* RCTDeviceInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTDeviceInfo.h; path = React/CoreModules/RCTDeviceInfo.h; sourceTree = "<group>"; };
 		256F27BFF4FD5D60243F46D3687B022C /* React-RCTNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "React-RCTNetwork-prefix.pch"; sourceTree = "<group>"; };
 		257280BD43F4C7C40FF95D05307CCA55 /* RNSVGBezierElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGBezierElement.h; sourceTree = "<group>"; };
-		2577F299FCB0A19824FE989BE77B8E8F /* React-jsinspector */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-jsinspector"; path = "libReact-jsinspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2577F299FCB0A19824FE989BE77B8E8F /* libReact-jsinspector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-jsinspector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E62811091E429D1D35E18F02862057 /* Math.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Math.h; path = folly/Math.h; sourceTree = "<group>"; };
 		25F6FB8EA08BF31E2FFF715DDBD6E109 /* EXSplashScreen.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; path = EXSplashScreen.xcframework; sourceTree = "<group>"; };
 		25F9F658E992F5A109C599CA1766EAED /* React-callinvoker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "React-callinvoker.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -3104,7 +3104,7 @@
 		26655A82E79CB94D47A893DDFF28B102 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		26849A82E0248F2177FFCA3FB28DF593 /* RNSVGTSpan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGTSpan.h; sourceTree = "<group>"; };
 		2691FACB7CD36122A404995468A7A33C /* Pods-ScaffoldWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ScaffoldWallet.debug.xcconfig"; sourceTree = "<group>"; };
-		269BE773C9482484B70949A40F4EA525 /* React-RCTSettings */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTSettings"; path = "libReact-RCTSettings.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		269BE773C9482484B70949A40F4EA525 /* libReact-RCTSettings.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTSettings.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B211F9D8656A386A2EF492FA02E307 /* RNCWKProcessPoolManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNCWKProcessPoolManager.m; path = apple/RNCWKProcessPoolManager.m; sourceTree = "<group>"; };
 		26F7F2F1061CD6D43830768E58E149A5 /* RCTFileReaderModule.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTFileReaderModule.mm; sourceTree = "<group>"; };
 		271BEE8FD1C3938D39547B0ADB9FF37B /* SysMembarrier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SysMembarrier.h; path = folly/portability/SysMembarrier.h; sourceTree = "<group>"; };
@@ -3131,8 +3131,8 @@
 		2A41CC325F3374CC7F58FC2B39396A51 /* MallocImpl.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = MallocImpl.cpp; path = folly/memory/detail/MallocImpl.cpp; sourceTree = "<group>"; };
 		2AA34E54C4668198313BDEAA0702FCEF /* Chrono.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Chrono.h; path = folly/Chrono.h; sourceTree = "<group>"; };
 		2AD620E6EE877FBD278A7559E4D8D32C /* RCTActivityIndicatorViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTActivityIndicatorViewManager.m; sourceTree = "<group>"; };
-		2AE9C51AC524FAF90F73601566183A95 /* react-native-restart */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "react-native-restart"; path = "libreact-native-restart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B15C85B4A3938B4B5731F022B40C0CA /* TcpSockets */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = TcpSockets; path = libTcpSockets.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AE9C51AC524FAF90F73601566183A95 /* libreact-native-restart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libreact-native-restart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B15C85B4A3938B4B5731F022B40C0CA /* libTcpSockets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTcpSockets.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1C9B2B94E64A546D0B0BEE67F2943E /* threadsafe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = threadsafe.h; sourceTree = "<group>"; };
 		2B224916CBB6C87D8833480F7A8E9BDF /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		2B3B87D5EB3FAD7B9FB5008FAF7AA05A /* RNOS.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RNOS.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -3212,7 +3212,7 @@
 		370CBEECBBA6737327476B74E069AE38 /* EXKeepAwake-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EXKeepAwake-prefix.pch"; sourceTree = "<group>"; };
 		370ECF4C96D79B98A70A4F28EB6B2D74 /* MoveWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MoveWrapper.h; path = folly/MoveWrapper.h; sourceTree = "<group>"; };
 		371124941378364061A9AAAF0AEDC6D9 /* stl_logging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stl_logging.h; path = src/glog/stl_logging.h; sourceTree = "<group>"; };
-		37592FDAD45752511010F4B06AC57355 /* React-cxxreact */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-cxxreact"; path = "libReact-cxxreact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37592FDAD45752511010F4B06AC57355 /* libReact-cxxreact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-cxxreact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3766533D9607C2268B53B21E2C78F3E9 /* RCTBaseTextInputShadowView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTBaseTextInputShadowView.m; sourceTree = "<group>"; };
 		3787075CDA1AEA7FEE3D2DBE72F1FBFB /* EXFileSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EXFileSystem.release.xcconfig; sourceTree = "<group>"; };
 		37B26345A9D6AD5C6EC0B5AC4DB55B75 /* RNSensorOrientationChecker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSensorOrientationChecker.m; path = ios/RN/RNSensorOrientationChecker.m; sourceTree = "<group>"; };
@@ -3249,7 +3249,7 @@
 		3C620149AC671B71CD43815EC83758B3 /* RNSVGBrush.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNSVGBrush.m; sourceTree = "<group>"; };
 		3C9163021905FB64269D004C24AEFFDA /* RNSVGDefsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGDefsManager.h; sourceTree = "<group>"; };
 		3C9D0AE3646FE28EC7B887E82C10A50A /* RNGetRandomValues.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNGetRandomValues.h; path = ios/RNGetRandomValues.h; sourceTree = "<group>"; };
-		3CA7A9404CCDD6BA22C97F8348CE3209 /* glog */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = glog; path = libglog.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CA7A9404CCDD6BA22C97F8348CE3209 /* libglog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglog.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC5D5266B63E1FA45EDDC466AAE23D1 /* PolyException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PolyException.h; path = folly/PolyException.h; sourceTree = "<group>"; };
 		3CD365CF8A60A833E34349CAAC25DD9F /* RNSVGRadialGradient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNSVGRadialGradient.m; sourceTree = "<group>"; };
 		3D395D7A7770F7CB67AE9E1B480CB839 /* EXConstants-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EXConstants-dummy.m"; sourceTree = "<group>"; };
@@ -3411,8 +3411,8 @@
 		56B3F50D941A971ACBAD752F1891E069 /* TcpSocketClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TcpSocketClient.m; path = ios/TcpSocketClient.m; sourceTree = "<group>"; };
 		56E55531BA883B8A8C38458BBC3CA310 /* jsi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = jsi.h; sourceTree = "<group>"; };
 		5707F2E406F929CD8CB23B124041CC50 /* RNSVGPainter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGPainter.h; sourceTree = "<group>"; };
-		5721B3524EB5FB40F9F97663CC45E2EC /* RNCClipboard */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNCClipboard; path = libRNCClipboard.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5737DDB4BC95AD399B3206838AB97095 /* RNCAsyncStorage */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNCAsyncStorage; path = libRNCAsyncStorage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5721B3524EB5FB40F9F97663CC45E2EC /* libRNCClipboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNCClipboard.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5737DDB4BC95AD399B3206838AB97095 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNCAsyncStorage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		578250A9A7205FABB518671469395429 /* EXAppLifecycleListener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXAppLifecycleListener.h; sourceTree = "<group>"; };
 		5793D33BB8BF0D5D4C30B0CC94846DC4 /* SanitizeLeak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SanitizeLeak.h; path = folly/memory/SanitizeLeak.h; sourceTree = "<group>"; };
 		57AFC9A1EB19E425897AB4DB3E73FC7C /* JSIConversions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSIConversions.h; sourceTree = "<group>"; };
@@ -3421,9 +3421,9 @@
 		58018541F1E2C8314581EDF00190EEB8 /* RCTEventEmitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTEventEmitter.h; sourceTree = "<group>"; };
 		584EB573FCC9BB9B41A3DC105757AC20 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5862F01DABEFBE55C13D69759CEEC92B /* ProducerConsumerQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ProducerConsumerQueue.h; path = folly/ProducerConsumerQueue.h; sourceTree = "<group>"; };
-		5868279839278475B7AAE3A5535A508C /* ExpoModulesCore */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = ExpoModulesCore; path = libExpoModulesCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5868279839278475B7AAE3A5535A508C /* libExpoModulesCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libExpoModulesCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		58749638252EEB3D8F0D9246B1005AE1 /* RNSVGCGFCRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGCGFCRule.h; sourceTree = "<group>"; };
-		58926B83684F42641928AA071B863676 /* Expo */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = Expo; path = libExpo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		58926B83684F42641928AA071B863676 /* libExpo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libExpo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A2AF8F3C036164C03422A2ABCECA39 /* RCTShadowView+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCTShadowView+Internal.h"; sourceTree = "<group>"; };
 		58B5FAB29AEF89F40CEE5E1BB7A8843E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		58FB917AAD09B59CE8C70E05247C3419 /* ExpoReactDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExpoReactDelegate.swift; sourceTree = "<group>"; };
@@ -3497,19 +3497,19 @@
 		65915B421EAA404A00917976707A4313 /* dynamic.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = dynamic.cpp; path = folly/dynamic.cpp; sourceTree = "<group>"; };
 		65B53049EE6B2975F4B0A854B163C15E /* RNDeviceInfo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNDeviceInfo-dummy.m"; sourceTree = "<group>"; };
 		65B5473D06E819EE7C0F3F4D76AD57B5 /* EnvironmentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EnvironmentUtil.h; path = ios/RNDeviceInfo/EnvironmentUtil.h; sourceTree = "<group>"; };
-		65D0A19C165FA1126B1360680FE6DB12 /* Yoga */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = Yoga; path = libYoga.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		65D0A19C165FA1126B1360680FE6DB12 /* libYoga.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYoga.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D9631C02E8A6B9794CB9E0C06C0461 /* Yoga.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Yoga.modulemap; sourceTree = "<group>"; };
 		660DD9E50F5A1FD24EE39106DF6A58A6 /* Yoga-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yoga-prefix.pch"; sourceTree = "<group>"; };
 		66248502150A1C1F3E6BFA1811BCA0FA /* EXFileSystem-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "EXFileSystem-xcframeworks.sh"; sourceTree = "<group>"; };
 		663095C0DAABD650CF386BD829AC09EC /* RCTSurfaceRootShadowViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSurfaceRootShadowViewDelegate.h; sourceTree = "<group>"; };
 		664AF5E161557BD41DC06E5794FDD37C /* RCTObjcExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTObjcExecutor.h; sourceTree = "<group>"; };
 		6664C292BA74421621E07CDC020927CA /* EXConstantsInstallationIdProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXConstantsInstallationIdProvider.h; path = EXConstants/EXConstantsInstallationIdProvider.h; sourceTree = "<group>"; };
-		666E72807891C591E025A75410CD2A26 /* React-perflogger */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-perflogger"; path = "libReact-perflogger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		666E72807891C591E025A75410CD2A26 /* libReact-perflogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-perflogger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F25EF8842B9A35B2E99319AA5271B1 /* EvilIcons.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = EvilIcons.ttf; path = Fonts/EvilIcons.ttf; sourceTree = "<group>"; };
 		66F51180EE6D0B76F7B76289974CCDB8 /* RCTSliderManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSliderManager.h; sourceTree = "<group>"; };
 		673DB4BF327CD900BCAA9D046C846E2A /* RNSVGRadialGradientManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNSVGRadialGradientManager.m; sourceTree = "<group>"; };
 		67436111070E86B1FD66052E41326600 /* RNCClipboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNCClipboard-dummy.m"; sourceTree = "<group>"; };
-		6771D231F4C8C5976470A369C474B32E /* React-CoreModules */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-CoreModules"; path = "libReact-CoreModules.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6771D231F4C8C5976470A369C474B32E /* libReact-CoreModules.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-CoreModules.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6786A09C106E67C76F94039258AC0686 /* RCTStyleAnimatedNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTStyleAnimatedNode.h; sourceTree = "<group>"; };
 		67B70B63A50D0507E33EC3A32EBD6EBD /* EXFontScaler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXFontScaler.m; path = EXFont/EXFontScaler.m; sourceTree = "<group>"; };
 		67ED302A005F6710CF36BE3A07043733 /* SocketAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SocketAddress.h; path = folly/SocketAddress.h; sourceTree = "<group>"; };
@@ -3521,7 +3521,7 @@
 		68731AED419CB086662EEF309CE2651C /* RNSVGRenderableManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGRenderableManager.h; sourceTree = "<group>"; };
 		68816793B4E53C6254A2739546D42283 /* NetworkSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NetworkSocket.h; path = folly/net/NetworkSocket.h; sourceTree = "<group>"; };
 		6882D8322307658D76AB73AAB00D4F39 /* ExpoModulesCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ExpoModulesCore-prefix.pch"; sourceTree = "<group>"; };
-		68A021577E10AFA0713A0CA31BC560F8 /* react-native-randombytes */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "react-native-randombytes"; path = "libreact-native-randombytes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68A021577E10AFA0713A0CA31BC560F8 /* libreact-native-randombytes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libreact-native-randombytes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B5E92E392072D4B8F6FF5E5B272C28 /* Builtins.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Builtins.h; path = folly/portability/Builtins.h; sourceTree = "<group>"; };
 		68E80648BF786C7DA95EC968A8B7F4AE /* FormatArg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormatArg.h; path = folly/FormatArg.h; sourceTree = "<group>"; };
 		6919550AF43761C19826C1D58AFE862B /* NetOps.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = NetOps.cpp; path = folly/net/NetOps.cpp; sourceTree = "<group>"; };
@@ -3549,7 +3549,7 @@
 		6C2F2EB40AB4D8007A9D3AB50C5DD08A /* RCTAlertManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTAlertManager.mm; sourceTree = "<group>"; };
 		6C366847B72D078FE7B1C6481E0B5243 /* RNCPickerManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNCPickerManager.m; path = ios/RNCPickerManager.m; sourceTree = "<group>"; };
 		6C384BAB6855A3A88DD55657D952C49F /* JSIInstaller.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = JSIInstaller.mm; sourceTree = "<group>"; };
-		6C9790F1A25C1E3828E179A8F0850851 /* react-native-camera */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "react-native-camera"; path = "libreact-native-camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C9790F1A25C1E3828E179A8F0850851 /* libreact-native-camera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libreact-native-camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C9B8340CB1AD09A4AC43355947717D9 /* EXSessionDownloadTaskDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXSessionDownloadTaskDelegate.h; sourceTree = "<group>"; };
 		6CB45B4617CF6C4F4E8B2CC6EE4C2170 /* EXSplashScreen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EXSplashScreen.debug.xcconfig; sourceTree = "<group>"; };
 		6CC4C4E539F63795E687670EADAF1C35 /* FaceDetectorManagerMlkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FaceDetectorManagerMlkit.h; path = ios/RN/FaceDetectorManagerMlkit.h; sourceTree = "<group>"; };
@@ -3568,7 +3568,7 @@
 		6EAFDA27F63CB5C8505BA24BAE2FDD49 /* RCTInputAccessoryShadowView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTInputAccessoryShadowView.h; sourceTree = "<group>"; };
 		6F3107AE50245795C135DFC271D90364 /* React-jsinspector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-jsinspector.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB7598A56861682F5A25B85C0EA851F /* React-RCTAnimation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "React-RCTAnimation-prefix.pch"; sourceTree = "<group>"; };
-		6FFB7B2992BB53405E6B771A5BA1E97D /* DoubleConversion */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = DoubleConversion; path = libDoubleConversion.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FFB7B2992BB53405E6B771A5BA1E97D /* libDoubleConversion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDoubleConversion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		700C0E9B26120BB770D5B2D4442FF4E5 /* RCTShadowView+Layout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCTShadowView+Layout.h"; sourceTree = "<group>"; };
 		70118DEC3B7214DB1C023D51EA38C766 /* RCTPackagerClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTPackagerClient.h; sourceTree = "<group>"; };
 		70319FBC40AB768DDDDF4EDFCB461A75 /* JsArgumentHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JsArgumentHelpers.h; sourceTree = "<group>"; };
@@ -3596,7 +3596,7 @@
 		73AFAEF91E00CEA693BACFB95D9DFDB7 /* Yoga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Yoga.release.xcconfig; sourceTree = "<group>"; };
 		73C2526D53C92DE5F4A3D8EBC42F14A3 /* EXSessionUploadTaskDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXSessionUploadTaskDelegate.h; sourceTree = "<group>"; };
 		73C44E52B82F19369372F8DF72018774 /* LockTraits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LockTraits.h; path = folly/LockTraits.h; sourceTree = "<group>"; };
-		73C456539F2BBF03C2BF5D9FFC227BBD /* Pods-ScaffoldWallet */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-ScaffoldWallet"; path = "libPods-ScaffoldWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73C456539F2BBF03C2BF5D9FFC227BBD /* libPods-ScaffoldWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScaffoldWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CC5AE7385AD995713E288B04C8906E /* CxxModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CxxModule.h; sourceTree = "<group>"; };
 		740E61E3CDFFC32FACCE733F822EEC59 /* Unicode.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Unicode.cpp; path = folly/Unicode.cpp; sourceTree = "<group>"; };
 		7435E9D18CE46EA53EE734A697A0A2E7 /* RCTValueAnimatedNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTValueAnimatedNode.m; sourceTree = "<group>"; };
@@ -3614,7 +3614,7 @@
 		768A208D7B5593B032144F0805553C6B /* double-conversion.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = "double-conversion.cc"; path = "double-conversion/double-conversion.cc"; sourceTree = "<group>"; };
 		76ACC2BECB2AF56075464C18CEB24699 /* React-CoreModules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-CoreModules.release.xcconfig"; sourceTree = "<group>"; };
 		7762649426778CE48EFDFC7D409858A3 /* RNSVGMaskManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGMaskManager.h; sourceTree = "<group>"; };
-		778C1572AE22EE933ACA12594B6DF949 /* RNPermissions */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNPermissions; path = libRNPermissions.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		778C1572AE22EE933ACA12594B6DF949 /* libRNPermissions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNPermissions.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		779CFB992A8F629F8D991E597A5A9471 /* RCTActionSheetManager.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTActionSheetManager.mm; sourceTree = "<group>"; };
 		77EE9F25CC8250D0F7320EEE7FBC6D26 /* React-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-Core.release.xcconfig"; sourceTree = "<group>"; };
 		782F489A2363AE9B34AD4E1BA8E42135 /* GroupVarint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GroupVarint.h; path = folly/GroupVarint.h; sourceTree = "<group>"; };
@@ -3664,7 +3664,7 @@
 		7F7BFAB8C7EF30219FB611F4FB8CFE4A /* RCTCameraManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTCameraManager.h; path = ios/RCT/RCTCameraManager.h; sourceTree = "<group>"; };
 		7FE4869EAA4A59C6A0B5A1575015E42A /* RCTSurfaceStage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTSurfaceStage.m; sourceTree = "<group>"; };
 		800E276AB0F276063AEED41F536F180C /* RCTJavaScriptExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTJavaScriptExecutor.h; sourceTree = "<group>"; };
-		802121F5B756ACBFDD6D08C36246DADD /* React-RCTLinking */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTLinking"; path = "libReact-RCTLinking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		802121F5B756ACBFDD6D08C36246DADD /* libReact-RCTLinking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTLinking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		805B38E4DDE4118F3F8A1034015E8E26 /* vlog_is_on.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = vlog_is_on.h; path = src/glog/vlog_is_on.h; sourceTree = "<group>"; };
 		80801585F11165BFA19084A631E5296A /* YGEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YGEnums.h; path = yoga/YGEnums.h; sourceTree = "<group>"; };
 		80847254A249A94EA1566879761B28B6 /* RCTManagedPointer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTManagedPointer.h; sourceTree = "<group>"; };
@@ -3723,7 +3723,7 @@
 		894778B770D4B50B980378FE7132D9CA /* RCTVirtualTextViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTVirtualTextViewManager.h; sourceTree = "<group>"; };
 		8958973A5C5A89ADB8E7B29243039C45 /* RCTPlatform.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTPlatform.mm; sourceTree = "<group>"; };
 		897B5AC65BB87F7988962378201F583E /* FBLazyVector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBLazyVector.release.xcconfig; sourceTree = "<group>"; };
-		8998273719FDD789E6F9C7541AFD0B33 /* RNVectorIcons */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNVectorIcons; path = libRNVectorIcons.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8998273719FDD789E6F9C7541AFD0B33 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNVectorIcons.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A8FE12015FD1083ECB9BBFF8366311 /* String.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = String.h; path = folly/portability/String.h; sourceTree = "<group>"; };
 		89C57FB6904C036F97A52B4AF9E047E1 /* RCTDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTDatePicker.h; sourceTree = "<group>"; };
 		89FAA6225E9CEC636D9EFAE7D38D0384 /* RCTSourceCode.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTSourceCode.mm; sourceTree = "<group>"; };
@@ -3755,7 +3755,7 @@
 		8D88207D6AAB9F245C48942CC1190201 /* RCTI18nUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTI18nUtil.m; sourceTree = "<group>"; };
 		8D892D294B52931B271E31347A0D9145 /* RNCAsyncStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RNCAsyncStorage.debug.xcconfig; sourceTree = "<group>"; };
 		8D8B2D0D7C1B5C8AF81D248EAC1CCEB7 /* ExpoModulesProxySpec.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = ExpoModulesProxySpec.mm; sourceTree = "<group>"; };
-		8DF63376066E2275FF26820B3A512A9B /* react-native-webview */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "react-native-webview"; path = "libreact-native-webview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF63376066E2275FF26820B3A512A9B /* libreact-native-webview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libreact-native-webview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0DCD42C4BE1B668101610C31EDF3BB /* boost-for-react-native.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "boost-for-react-native.debug.xcconfig"; sourceTree = "<group>"; };
 		8E21624348D4E258129C2BA4A046C8C3 /* RCTResizeMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTResizeMode.m; sourceTree = "<group>"; };
 		8E2471D8D2ED9BDCB2C3D52387355430 /* Demangle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Demangle.h; path = folly/Demangle.h; sourceTree = "<group>"; };
@@ -3777,7 +3777,7 @@
 		901478A260758D404AAEB385C6175D9C /* RNPermissions-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RNPermissions-dummy.m"; sourceTree = "<group>"; };
 		9061B9B49999C087A6A95F6FEE332E71 /* RCTExceptionsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTExceptionsManager.h; path = React/CoreModules/RCTExceptionsManager.h; sourceTree = "<group>"; };
 		90825329006A9D0191463E1BB7CCDD11 /* RNSVGEllipse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNSVGEllipse.m; sourceTree = "<group>"; };
-		90EE8D3C082C157169540FC8F5913DAD /* RNSVG */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNSVG; path = libRNSVG.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90EE8D3C082C157169540FC8F5913DAD /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSVG.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FBBCD28B1D367176DE91AF96939AFA /* React-RCTLinking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "React-RCTLinking-dummy.m"; sourceTree = "<group>"; };
 		917664B90FFED538DCC351D8A116E760 /* react-native-udp.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "react-native-udp.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		918563FC1BB6715E00CA27656C15F6E9 /* RCTCamera.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTCamera.h; path = ios/RCT/RCTCamera.h; sourceTree = "<group>"; };
@@ -3794,7 +3794,7 @@
 		9290A10800D196051E2BA08591EB470C /* RCTSpringAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSpringAnimation.h; sourceTree = "<group>"; };
 		92910A5C394BCCB70D04B4E63C827376 /* EXFaceDetectorManagerInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXFaceDetectorManagerInterface.h; sourceTree = "<group>"; };
 		92E7E34B6E26795FA981F2CB27AE6BF2 /* F14Policy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = F14Policy.h; path = folly/container/detail/F14Policy.h; sourceTree = "<group>"; };
-		9311D14EE470834D0E1A7E684D52BB29 /* RNKeychain */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNKeychain; path = libRNKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9311D14EE470834D0E1A7E684D52BB29 /* libRNKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		93128219CF026A444ADC29131A94857C /* react-native-camera.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "react-native-camera.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9312CC1219E85699ED54E11E55255F4E /* RNSVGSymbol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGSymbol.h; sourceTree = "<group>"; };
 		93C24B1C663588DE8F8A70C91B25EED8 /* RCTTiming.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTTiming.mm; sourceTree = "<group>"; };
@@ -3910,7 +3910,7 @@
 		A61B1F12DA9C54937E35465FC26F3BAA /* RCTTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTTextView.h; sourceTree = "<group>"; };
 		A63A21AABE4E71C57D44DB2B127AB72F /* RNSVGRenderable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSVGRenderable.h; path = apple/RNSVGRenderable.h; sourceTree = "<group>"; };
 		A6401721E0DE39BE4378E633301C0932 /* RCTConvert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTConvert.h; sourceTree = "<group>"; };
-		A68E5A9B69A3BA0FD52CAF7A354EC93B /* React-RCTNetwork */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTNetwork"; path = "libReact-RCTNetwork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68E5A9B69A3BA0FD52CAF7A354EC93B /* libReact-RCTNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTNetwork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F73E245AAE998FF87AA6E7DA5860D /* RCTCxxModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTCxxModule.h; sourceTree = "<group>"; };
 		A71BD0E095C33E150E6D06353CA92E05 /* RNSVGImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGImageManager.h; sourceTree = "<group>"; };
 		A745D0CCAF625FD8BFC24110B1B85067 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -3947,7 +3947,7 @@
 		AB5AA1966054EA951BEF15DF628CC0CC /* RCTDivisionAnimatedNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTDivisionAnimatedNode.m; sourceTree = "<group>"; };
 		ABA6E050F8C56258EA6A46DC61D33B2B /* RCTReloadCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTReloadCommand.m; sourceTree = "<group>"; };
 		ABBD5B64CFAC9F4F19CD9783D9EF9441 /* MPMCPipeline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPMCPipeline.h; path = folly/MPMCPipeline.h; sourceTree = "<group>"; };
-		ABFEEA82A6C346B22843FBE0B0582182 /* FBReactNativeSpec */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = FBReactNativeSpec; path = libFBReactNativeSpec.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABFEEA82A6C346B22843FBE0B0582182 /* libFBReactNativeSpec.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFBReactNativeSpec.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC62459535C49B4A4379B9C86831808F /* EXConstantsService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXConstantsService.h; path = EXConstants/EXConstantsService.h; sourceTree = "<group>"; };
 		AC6DB082E799A4F93307C07046BAD53E /* EXAppDefines.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EXAppDefines.m; sourceTree = "<group>"; };
 		AC75675ADAB358FBD9DE2ADC12755E09 /* React-jsinspector-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "React-jsinspector-prefix.pch"; sourceTree = "<group>"; };
@@ -4014,7 +4014,7 @@
 		B663ED7F27126CD47470A5218D33AB26 /* RNSVGSymbol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RNSVGSymbol.m; sourceTree = "<group>"; };
 		B70741702795F12ECFC334E99073B41C /* RCTModuleData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTModuleData.h; sourceTree = "<group>"; };
 		B70CB2394B3F06C9C01162BE9BEA387B /* NetOps.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NetOps.h; path = folly/net/NetOps.h; sourceTree = "<group>"; };
-		B740A6180FEC5D035EB189406AB474DD /* RNOS */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNOS; path = libRNOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B740A6180FEC5D035EB189406AB474DD /* libRNOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B751066F56DF41512D782C46E4D8499C /* FBReactNativeSpec-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBReactNativeSpec-dummy.m"; sourceTree = "<group>"; };
 		B793ED38D4985E85042DD71800496BEE /* BarcodeDetectorManagerMlkit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BarcodeDetectorManagerMlkit.m; path = ios/RN/BarcodeDetectorManagerMlkit.m; sourceTree = "<group>"; };
 		B7E735CA8E7D40F4E482DE12A29183D4 /* RNCWebView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNCWebView.m; path = apple/RNCWebView.m; sourceTree = "<group>"; };
@@ -4024,7 +4024,7 @@
 		B941A00651FEFD256AE3113A29160BF4 /* TurboModulePerfLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TurboModulePerfLogger.h; sourceTree = "<group>"; };
 		B952FE8FAB2063D4B81EE211BB25616E /* Hash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Hash.h; path = folly/Hash.h; sourceTree = "<group>"; };
 		B99F29E3A4241B69D9BFFD4287A967C0 /* RCT-Folly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "RCT-Folly.release.xcconfig"; sourceTree = "<group>"; };
-		B9A8343068CE43CDCE59118C59FBBAF3 /* EXFont */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = EXFont; path = libEXFont.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A8343068CE43CDCE59118C59FBBAF3 /* libEXFont.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEXFont.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4B42836D2F55F2D645FF1AF4A9EFF /* RCTSurfaceHostingProxyRootView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSurfaceHostingProxyRootView.h; sourceTree = "<group>"; };
 		BA2769D6B260E1B481567EA7D9A7A8F0 /* RCTTextShadowView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTTextShadowView.m; sourceTree = "<group>"; };
 		BA630BA03B9C041B19610D809881FA3E /* RCTDevLoadingViewProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTDevLoadingViewProtocol.h; sourceTree = "<group>"; };
@@ -4035,7 +4035,7 @@
 		BAD6BC0E182DA2DF0752C792D5CBD527 /* EXFileSystem.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; path = EXFileSystem.xcframework; sourceTree = "<group>"; };
 		BAECA1ACDE7680067862EC805A73CBA3 /* RNKeychainManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNKeychainManager.h; path = RNKeychainManager/RNKeychainManager.h; sourceTree = "<group>"; };
 		BAEF2B0C375E03FF0A6E2016FDBA64CF /* React-CoreModules.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "React-CoreModules.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BB1D7880F01CE5024CE360F0D72A6DE3 /* Permission-Camera */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Permission-Camera"; path = "libPermission-Camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1D7880F01CE5024CE360F0D72A6DE3 /* libPermission-Camera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPermission-Camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB26BCB739216D5C1F9AD12CE00F9DC3 /* RCTCxxBridge.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTCxxBridge.mm; sourceTree = "<group>"; };
 		BB3C85D8C5C0BB8DA0E043E6EE20182E /* Bits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Bits.h; path = folly/lang/Bits.h; sourceTree = "<group>"; };
 		BB3D55E2D5FF36CD04156F06A6207D63 /* JSBundleType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSBundleType.h; sourceTree = "<group>"; };
@@ -4052,7 +4052,7 @@
 		BCDB12C3A95436D2D9500073F10852F7 /* React-RCTImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-RCTImage.debug.xcconfig"; sourceTree = "<group>"; };
 		BCF8FF21A3DBB169A1912B26EE337411 /* EXReactLogHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXReactLogHandler.h; sourceTree = "<group>"; };
 		BD0E42AD33805DC58EBFBED3FA0201E6 /* SystraceSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SystraceSection.h; sourceTree = "<group>"; };
-		BD71E2539823621820F84384064C253A /* React-Core */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-Core"; path = "libReact-Core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD71E2539823621820F84384064C253A /* libReact-Core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-Core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD22F8667661B4D890B484ADCB54780 /* NativeToJsBridge.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; path = NativeToJsBridge.cpp; sourceTree = "<group>"; };
 		BDDB3472776C7921E62C6DE357FBB7C3 /* JSCExecutorFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSCExecutorFactory.h; sourceTree = "<group>"; };
 		BE22443B39C0661786E460EFC3086163 /* JSBigString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSBigString.h; sourceTree = "<group>"; };
@@ -4061,7 +4061,7 @@
 		BE8EF74362BEA297D11EEF1208DC4398 /* RCTBlobCollector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTBlobCollector.h; sourceTree = "<group>"; };
 		BF02520372AF45C49E24B35D24F83DA1 /* RCTTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTTextView.m; sourceTree = "<group>"; };
 		BF3BF789FAC8CCF2504EA4B441572818 /* NSDataBigString.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = NSDataBigString.mm; sourceTree = "<group>"; };
-		BF48C3621F3E066A8662B97149F1C7E5 /* react-native-udp */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "react-native-udp"; path = "libreact-native-udp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF48C3621F3E066A8662B97149F1C7E5 /* libreact-native-udp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libreact-native-udp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA368C276821C2F6D66664644A4166C /* RCTPointerEvents.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTPointerEvents.h; sourceTree = "<group>"; };
 		BFB29A72BE893252295A54749AED0109 /* React-jsinspector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-jsinspector.release.xcconfig"; sourceTree = "<group>"; };
 		BFBEF86095F41DE493CC198E72B304FE /* CoreModulesPlugins.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CoreModulesPlugins.h; path = React/CoreModules/CoreModulesPlugins.h; sourceTree = "<group>"; };
@@ -4082,7 +4082,7 @@
 		C173DB90A7223383C83A854FFC5A7338 /* ReactCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReactCommon.release.xcconfig; sourceTree = "<group>"; };
 		C191EF2471370924BC2DBF924666C888 /* ScopeGuard.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = ScopeGuard.cpp; path = folly/ScopeGuard.cpp; sourceTree = "<group>"; };
 		C19B28FFC7605CC0CD786DD8E510E819 /* RCTRedBoxSetEnabled.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTRedBoxSetEnabled.h; sourceTree = "<group>"; };
-		C1A919103EAC9813D236486C34FC0A21 /* React-RCTVibration */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTVibration"; path = "libReact-RCTVibration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1A919103EAC9813D236486C34FC0A21 /* libReact-RCTVibration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTVibration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C0A84FD0AD7FB562AFEFD8590B74D6 /* RCTInputAccessoryViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTInputAccessoryViewManager.m; sourceTree = "<group>"; };
 		C1CAEC7E1AA10B5137B5443151AE0E2E /* Malloc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Malloc.h; path = folly/portability/Malloc.h; sourceTree = "<group>"; };
 		C207EF73DE2D18AB8EE577810D7F0F61 /* RCTImageLoaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageLoaderProtocol.h; path = Libraries/Image/RCTImageLoaderProtocol.h; sourceTree = "<group>"; };
@@ -4133,7 +4133,7 @@
 		C838B82F62D95C9FCD42F32D17F6EF21 /* UTF8String.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UTF8String.h; path = folly/UTF8String.h; sourceTree = "<group>"; };
 		C84A2EC21C3AEFA7853A9D99EFBF76F3 /* Dirent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Dirent.h; path = folly/portability/Dirent.h; sourceTree = "<group>"; };
 		C873C0743294795B2BEBCE8BB6784967 /* FixedString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FixedString.h; path = folly/FixedString.h; sourceTree = "<group>"; };
-		C88D8F609983AB0002AA796EE4C108C4 /* react-native-get-random-values */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "react-native-get-random-values"; path = "libreact-native-get-random-values.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C88D8F609983AB0002AA796EE4C108C4 /* libreact-native-get-random-values.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libreact-native-get-random-values.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A6167D4E7BCEDD0B74F7B798256028 /* RCTRedBox.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTRedBox.mm; sourceTree = "<group>"; };
 		C8BC5AEC7A1CEC1134A5FFE768CBEF51 /* ReactCommon.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ReactCommon.modulemap; sourceTree = "<group>"; };
 		C8EE38D45A00D5783991490F69CCF7E3 /* ViewManagerDefinitionBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewManagerDefinitionBuilder.swift; sourceTree = "<group>"; };
@@ -4199,7 +4199,7 @@
 		D4CDEFD7367B07BAA52CFA4065A07EBC /* UIView+React.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+React.m"; sourceTree = "<group>"; };
 		D50606C6CF7003081A866B640081C343 /* RCTInspector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTInspector.mm; sourceTree = "<group>"; };
 		D545A92B126089FA035A40EF8D62F01B /* RCTSinglelineTextInputViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTSinglelineTextInputViewManager.h; sourceTree = "<group>"; };
-		D5C775614AC76D44CECB6BE08B022F1F /* ReactCommon */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = ReactCommon; path = libReactCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5C775614AC76D44CECB6BE08B022F1F /* libReactCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D4812C0A714C26EF7974EE87DCD032 /* RCTVirtualTextViewManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTVirtualTextViewManager.m; sourceTree = "<group>"; };
 		D62D1222211CDDD0E189275E8BC45D57 /* RNKeychain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RNKeychain.debug.xcconfig; sourceTree = "<group>"; };
 		D66CE18E9A40DE418AED6FEDF4A7F807 /* Pretty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Pretty.h; path = folly/lang/Pretty.h; sourceTree = "<group>"; };
@@ -4232,7 +4232,7 @@
 		D9D0849EA3C7DF5377620D0DD8758879 /* YGStyle.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGStyle.cpp; path = yoga/YGStyle.cpp; sourceTree = "<group>"; };
 		D9D2BFDA80A2A285255369246CC27809 /* UniqueInstance.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = UniqueInstance.cpp; path = folly/detail/UniqueInstance.cpp; sourceTree = "<group>"; };
 		D9D9166B18968941EF34DCE406EE6723 /* String.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = String.h; path = folly/String.h; sourceTree = "<group>"; };
-		D9F334F2E90E3EE462FC4192AF5C03BD /* React-jsi */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-jsi"; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9F334F2E90E3EE462FC4192AF5C03BD /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0003B1F7B62744AF534111485E7CE1 /* ArgumentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ArgumentType.swift; sourceTree = "<group>"; };
 		DA03C4A3CBEB4FAF695E32771F148582 /* Time.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Time.h; path = folly/portability/Time.h; sourceTree = "<group>"; };
 		DA1BC17446DDC192040C29C4068AF618 /* JSModulesUnbundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSModulesUnbundle.h; sourceTree = "<group>"; };
@@ -4279,7 +4279,7 @@
 		E09477574AF3D5D00DE4F32B591469FF /* RCTReloadCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTReloadCommand.h; sourceTree = "<group>"; };
 		E0B1AFD5C52DF7733C0DE7CD0FA121BC /* EXFontProcessorInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXFontProcessorInterface.h; sourceTree = "<group>"; };
 		E0D8627A1CD773D964A183E14290B3CF /* YGConfig.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGConfig.cpp; path = yoga/YGConfig.cpp; sourceTree = "<group>"; };
-		E0FE6533198104C97DB047DD5CD8AC67 /* RNDeviceInfo */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RNDeviceInfo; path = libRNDeviceInfo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0FE6533198104C97DB047DD5CD8AC67 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNDeviceInfo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E170BD7EA0C9AA574144375A59E0B520 /* RCTMultipartStreamReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTMultipartStreamReader.m; sourceTree = "<group>"; };
 		E17848491A07B3CD83D0BBAB1FCCEE22 /* RNSVGPathManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGPathManager.h; sourceTree = "<group>"; };
 		E19D0B4E3B38FDDE94DF0E7D220E7D0C /* Yoga-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yoga-umbrella.h"; sourceTree = "<group>"; };
@@ -4313,7 +4313,7 @@
 		E6175CA7656CE03798C47D5644808EB3 /* CustomizationPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CustomizationPoint.h; path = folly/lang/CustomizationPoint.h; sourceTree = "<group>"; };
 		E69BBC5F51E17CFAB12AE39C1C9C964E /* EXModuleRegistryAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = EXModuleRegistryAdapter.m; sourceTree = "<group>"; };
 		E69C5BBEAFE53EDCA844D5CB244C189D /* EXLogHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXLogHandler.h; sourceTree = "<group>"; };
-		E6A16705C69FC7DE11C2469A4A0F8358 /* React-RCTText */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTText"; path = "libReact-RCTText.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6A16705C69FC7DE11C2469A4A0F8358 /* libReact-RCTText.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTText.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6A94FE01DBB125F7C8F014B857EF04D /* RNDeviceInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNDeviceInfo.m; path = ios/RNDeviceInfo/RNDeviceInfo.m; sourceTree = "<group>"; };
 		E6BBAD043327DA77A297BA0A451BFC07 /* RNRandomBytes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNRandomBytes.h; sourceTree = "<group>"; };
 		E6BEBB07384AF0C55A7B5658B2BF92C7 /* TurboCxxModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TurboCxxModule.h; sourceTree = "<group>"; };
@@ -4373,7 +4373,7 @@
 		EE6E4FC9D47F7844ED159B71226169E5 /* RNSVG-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RNSVG-prefix.pch"; sourceTree = "<group>"; };
 		EEA94ED3856789563FCC7A0AFBADCB98 /* RCTTiming.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTTiming.h; path = React/CoreModules/RCTTiming.h; sourceTree = "<group>"; };
 		EED355658165C4F688AB564E58A2006D /* Expo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Expo.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		EEDBF403E8E0B3885E65C2741B536BC5 /* React-RCTImage */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTImage"; path = "libReact-RCTImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEDBF403E8E0B3885E65C2741B536BC5 /* libReact-RCTImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF3D247084266FE9240CEAEF70187DB3 /* RCT-Folly-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RCT-Folly-dummy.m"; sourceTree = "<group>"; };
 		EF9E064B4701D3783EC72294069BF17D /* TypeList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TypeList.h; path = folly/detail/TypeList.h; sourceTree = "<group>"; };
 		EFE5216FA59A281433AFE079FF9E7F07 /* RCTImageLoaderLoggable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageLoaderLoggable.h; path = Libraries/Image/RCTImageLoaderLoggable.h; sourceTree = "<group>"; };
@@ -4396,7 +4396,7 @@
 		F24A9480EA8A28FA39B8B79F65298A35 /* React-runtimeexecutor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-runtimeexecutor.release.xcconfig"; sourceTree = "<group>"; };
 		F259E1C1759DF3216CDD5C5C3BD9E1AE /* RCTLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTLayout.m; sourceTree = "<group>"; };
 		F2CFFFAF215ABB45CF37F17B8C63B487 /* RCTTextViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTTextViewManager.h; sourceTree = "<group>"; };
-		F2E7C88DFCD460A4B46B913ADEB8A641 /* React-jsiexecutor */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-jsiexecutor"; path = "libReact-jsiexecutor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2E7C88DFCD460A4B46B913ADEB8A641 /* libReact-jsiexecutor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-jsiexecutor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E8737C0B32ADE71DAC07AEE863F6B3 /* RCTTouchEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTTouchEvent.m; sourceTree = "<group>"; };
 		F2F39BB1FB522E33905630757BE36815 /* RNSVGTopAlignedLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGTopAlignedLabel.h; sourceTree = "<group>"; };
 		F2FA2100874CD5D9D16D72961E8B38CF /* EXFont.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EXFont.debug.xcconfig; sourceTree = "<group>"; };
@@ -4429,7 +4429,7 @@
 		F69400FC222932E20DC404D423AA09BB /* Format.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Format.cpp; path = folly/Format.cpp; sourceTree = "<group>"; };
 		F6C962EE4F9B8BFD7527940BFCE11224 /* EXBarcodeScannerProviderInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXBarcodeScannerProviderInterface.h; sourceTree = "<group>"; };
 		F6D896B6F957854DEFD6543D93E1E2E2 /* RNSVGTextManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RNSVGTextManager.h; sourceTree = "<group>"; };
-		F71EBF73F354B475D465FF6DE9A66707 /* React-RCTBlob */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTBlob"; path = "libReact-RCTBlob.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71EBF73F354B475D465FF6DE9A66707 /* libReact-RCTBlob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTBlob.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F723031DA4932BDAE4B958435FB25596 /* EXUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXUtilities.h; sourceTree = "<group>"; };
 		F77B0CAFDC7E3C0A1F0FB1CD7F3D72AA /* React-RCTNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "React-RCTNetwork.debug.xcconfig"; sourceTree = "<group>"; };
 		F77E315AA48B6B855F54E07B7DB62AD3 /* RCTConvert+RNSVG.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+RNSVG.m"; sourceTree = "<group>"; };
@@ -4448,7 +4448,7 @@
 		F90211990A9138D5E46CCEFADE80390A /* RCTSliderManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTSliderManager.m; sourceTree = "<group>"; };
 		F935DCAF4A3CE71AE928C4160E9642E0 /* Indestructible.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Indestructible.h; path = folly/Indestructible.h; sourceTree = "<group>"; };
 		F936EA2502F4DA8538389C4629D789F3 /* ExpoModulesCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ExpoModulesCore.h; sourceTree = "<group>"; };
-		F958876A082BF810B342435CE3FB5AF6 /* RCTTypeSafety */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = RCTTypeSafety; path = libRCTTypeSafety.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F958876A082BF810B342435CE3FB5AF6 /* libRCTTypeSafety.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTTypeSafety.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95A3193E042704F133F82631C43201F /* GMock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GMock.h; path = folly/portability/GMock.h; sourceTree = "<group>"; };
 		F992A0FF55A915AB496FCD8A3093F418 /* RCTParserUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTParserUtils.h; sourceTree = "<group>"; };
 		F99562DD5FED4C008B86C6C5D15A678B /* EXNativeModulesProxy.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; path = EXNativeModulesProxy.mm; sourceTree = "<group>"; };
@@ -4485,7 +4485,7 @@
 		FE69A24C57AEBE3C71C4E8B7BB6337C2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FE6D792B6328AAF68E46924D7F466631 /* AccessibilityResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccessibilityResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7444B7F97C68E47B237A7D76089A97 /* React-RCTBlob.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "React-RCTBlob.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		FE7B9294FF05AAFD1653E2104E10844A /* React-RCTAnimation */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "React-RCTAnimation"; path = "libReact-RCTAnimation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE7B9294FF05AAFD1653E2104E10844A /* libReact-RCTAnimation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libReact-RCTAnimation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE891A4A27C87B826BF8A67CE4F6F737 /* Pods-ScaffoldWallet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ScaffoldWallet-umbrella.h"; sourceTree = "<group>"; };
 		FEB3A43DE9111F5218657A421EA521BF /* EXAccelerometerInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = EXAccelerometerInterface.h; sourceTree = "<group>"; };
 		FECD8E7CDD7A2362B25AB57047F8AA93 /* RCTBaseTextInputView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTBaseTextInputView.h; sourceTree = "<group>"; };
@@ -7542,54 +7542,54 @@
 		99949D043D1347324F7982192E29ABB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FFB7B2992BB53405E6B771A5BA1E97D /* DoubleConversion */,
-				0AE30817DC70B7BDE99523E2FB47404C /* EXApplication */,
-				220361FF3B2778F8F38C2C4DCC5B49FD /* EXConstants */,
+				6FFB7B2992BB53405E6B771A5BA1E97D /* libDoubleConversion.a */,
+				0AE30817DC70B7BDE99523E2FB47404C /* libEXApplication.a */,
+				220361FF3B2778F8F38C2C4DCC5B49FD /* libEXConstants.a */,
 				8373770623C36DC1B0469DD50C6F763C /* EXConstants.bundle */,
-				B9A8343068CE43CDCE59118C59FBBAF3 /* EXFont */,
-				09B5856105EF7C6447B9EC57E7E36B34 /* EXKeepAwake */,
-				58926B83684F42641928AA071B863676 /* Expo */,
-				5868279839278475B7AAE3A5535A508C /* ExpoModulesCore */,
-				ABFEEA82A6C346B22843FBE0B0582182 /* FBReactNativeSpec */,
-				3CA7A9404CCDD6BA22C97F8348CE3209 /* glog */,
-				BB1D7880F01CE5024CE360F0D72A6DE3 /* Permission-Camera */,
-				73C456539F2BBF03C2BF5D9FFC227BBD /* Pods-ScaffoldWallet */,
-				1936453FF2A7E3A13063C4917C4D5598 /* RCT-Folly */,
-				F958876A082BF810B342435CE3FB5AF6 /* RCTTypeSafety */,
-				BD71E2539823621820F84384064C253A /* React-Core */,
+				B9A8343068CE43CDCE59118C59FBBAF3 /* libEXFont.a */,
+				09B5856105EF7C6447B9EC57E7E36B34 /* libEXKeepAwake.a */,
+				58926B83684F42641928AA071B863676 /* libExpo.a */,
+				5868279839278475B7AAE3A5535A508C /* libExpoModulesCore.a */,
+				ABFEEA82A6C346B22843FBE0B0582182 /* libFBReactNativeSpec.a */,
+				3CA7A9404CCDD6BA22C97F8348CE3209 /* libglog.a */,
+				BB1D7880F01CE5024CE360F0D72A6DE3 /* libPermission-Camera.a */,
+				73C456539F2BBF03C2BF5D9FFC227BBD /* libPods-ScaffoldWallet.a */,
+				1936453FF2A7E3A13063C4917C4D5598 /* libRCT-Folly.a */,
+				F958876A082BF810B342435CE3FB5AF6 /* libRCTTypeSafety.a */,
+				BD71E2539823621820F84384064C253A /* libReact-Core.a */,
 				FE6D792B6328AAF68E46924D7F466631 /* AccessibilityResources.bundle */,
-				6771D231F4C8C5976470A369C474B32E /* React-CoreModules */,
-				37592FDAD45752511010F4B06AC57355 /* React-cxxreact */,
-				D9F334F2E90E3EE462FC4192AF5C03BD /* React-jsi */,
-				F2E7C88DFCD460A4B46B913ADEB8A641 /* React-jsiexecutor */,
-				2577F299FCB0A19824FE989BE77B8E8F /* React-jsinspector */,
-				6C9790F1A25C1E3828E179A8F0850851 /* react-native-camera */,
-				C88D8F609983AB0002AA796EE4C108C4 /* react-native-get-random-values */,
-				68A021577E10AFA0713A0CA31BC560F8 /* react-native-randombytes */,
-				2AE9C51AC524FAF90F73601566183A95 /* react-native-restart */,
-				BF48C3621F3E066A8662B97149F1C7E5 /* react-native-udp */,
-				8DF63376066E2275FF26820B3A512A9B /* react-native-webview */,
-				666E72807891C591E025A75410CD2A26 /* React-perflogger */,
-				FE7B9294FF05AAFD1653E2104E10844A /* React-RCTAnimation */,
-				F71EBF73F354B475D465FF6DE9A66707 /* React-RCTBlob */,
-				EEDBF403E8E0B3885E65C2741B536BC5 /* React-RCTImage */,
-				802121F5B756ACBFDD6D08C36246DADD /* React-RCTLinking */,
-				A68E5A9B69A3BA0FD52CAF7A354EC93B /* React-RCTNetwork */,
-				269BE773C9482484B70949A40F4EA525 /* React-RCTSettings */,
-				E6A16705C69FC7DE11C2469A4A0F8358 /* React-RCTText */,
-				C1A919103EAC9813D236486C34FC0A21 /* React-RCTVibration */,
-				D5C775614AC76D44CECB6BE08B022F1F /* ReactCommon */,
-				5737DDB4BC95AD399B3206838AB97095 /* RNCAsyncStorage */,
-				5721B3524EB5FB40F9F97663CC45E2EC /* RNCClipboard */,
-				1DC66AC6FB5802B9BA94177EDB54263D /* RNCPicker */,
-				E0FE6533198104C97DB047DD5CD8AC67 /* RNDeviceInfo */,
-				9311D14EE470834D0E1A7E684D52BB29 /* RNKeychain */,
-				B740A6180FEC5D035EB189406AB474DD /* RNOS */,
-				778C1572AE22EE933ACA12594B6DF949 /* RNPermissions */,
-				90EE8D3C082C157169540FC8F5913DAD /* RNSVG */,
-				8998273719FDD789E6F9C7541AFD0B33 /* RNVectorIcons */,
-				2B15C85B4A3938B4B5731F022B40C0CA /* TcpSockets */,
-				65D0A19C165FA1126B1360680FE6DB12 /* Yoga */,
+				6771D231F4C8C5976470A369C474B32E /* libReact-CoreModules.a */,
+				37592FDAD45752511010F4B06AC57355 /* libReact-cxxreact.a */,
+				D9F334F2E90E3EE462FC4192AF5C03BD /* libReact-jsi.a */,
+				F2E7C88DFCD460A4B46B913ADEB8A641 /* libReact-jsiexecutor.a */,
+				2577F299FCB0A19824FE989BE77B8E8F /* libReact-jsinspector.a */,
+				6C9790F1A25C1E3828E179A8F0850851 /* libreact-native-camera.a */,
+				C88D8F609983AB0002AA796EE4C108C4 /* libreact-native-get-random-values.a */,
+				68A021577E10AFA0713A0CA31BC560F8 /* libreact-native-randombytes.a */,
+				2AE9C51AC524FAF90F73601566183A95 /* libreact-native-restart.a */,
+				BF48C3621F3E066A8662B97149F1C7E5 /* libreact-native-udp.a */,
+				8DF63376066E2275FF26820B3A512A9B /* libreact-native-webview.a */,
+				666E72807891C591E025A75410CD2A26 /* libReact-perflogger.a */,
+				FE7B9294FF05AAFD1653E2104E10844A /* libReact-RCTAnimation.a */,
+				F71EBF73F354B475D465FF6DE9A66707 /* libReact-RCTBlob.a */,
+				EEDBF403E8E0B3885E65C2741B536BC5 /* libReact-RCTImage.a */,
+				802121F5B756ACBFDD6D08C36246DADD /* libReact-RCTLinking.a */,
+				A68E5A9B69A3BA0FD52CAF7A354EC93B /* libReact-RCTNetwork.a */,
+				269BE773C9482484B70949A40F4EA525 /* libReact-RCTSettings.a */,
+				E6A16705C69FC7DE11C2469A4A0F8358 /* libReact-RCTText.a */,
+				C1A919103EAC9813D236486C34FC0A21 /* libReact-RCTVibration.a */,
+				D5C775614AC76D44CECB6BE08B022F1F /* libReactCommon.a */,
+				5737DDB4BC95AD399B3206838AB97095 /* libRNCAsyncStorage.a */,
+				5721B3524EB5FB40F9F97663CC45E2EC /* libRNCClipboard.a */,
+				1DC66AC6FB5802B9BA94177EDB54263D /* libRNCPicker.a */,
+				E0FE6533198104C97DB047DD5CD8AC67 /* libRNDeviceInfo.a */,
+				9311D14EE470834D0E1A7E684D52BB29 /* libRNKeychain.a */,
+				B740A6180FEC5D035EB189406AB474DD /* libRNOS.a */,
+				778C1572AE22EE933ACA12594B6DF949 /* libRNPermissions.a */,
+				90EE8D3C082C157169540FC8F5913DAD /* libRNSVG.a */,
+				8998273719FDD789E6F9C7541AFD0B33 /* libRNVectorIcons.a */,
+				2B15C85B4A3938B4B5731F022B40C0CA /* libTcpSockets.a */,
+				65D0A19C165FA1126B1360680FE6DB12 /* libYoga.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -9895,7 +9895,7 @@
 			);
 			name = EXKeepAwake;
 			productName = EXKeepAwake;
-			productReference = 09B5856105EF7C6447B9EC57E7E36B34 /* EXKeepAwake */;
+			productReference = 09B5856105EF7C6447B9EC57E7E36B34 /* libEXKeepAwake.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		0F782E65C434CB2F920719FC727833DC /* EXConstants-EXConstants */ = {
@@ -9929,7 +9929,7 @@
 			);
 			name = DoubleConversion;
 			productName = DoubleConversion;
-			productReference = 6FFB7B2992BB53405E6B771A5BA1E97D /* DoubleConversion */;
+			productReference = 6FFB7B2992BB53405E6B771A5BA1E97D /* libDoubleConversion.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		2B25F90D819B9ADF2AF2D8733A890333 /* Yoga */ = {
@@ -9946,7 +9946,7 @@
 			);
 			name = Yoga;
 			productName = Yoga;
-			productReference = 65D0A19C165FA1126B1360680FE6DB12 /* Yoga */;
+			productReference = 65D0A19C165FA1126B1360680FE6DB12 /* libYoga.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		337D49CFF8C109DC1CC07F326439084E /* Expo */ = {
@@ -9964,7 +9964,7 @@
 			);
 			name = Expo;
 			productName = Expo;
-			productReference = 58926B83684F42641928AA071B863676 /* Expo */;
+			productReference = 58926B83684F42641928AA071B863676 /* libExpo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3CD3155462D155602FDD5DC39C3DA0D5 /* react-native-udp */ = {
@@ -9982,7 +9982,7 @@
 			);
 			name = "react-native-udp";
 			productName = "react-native-udp";
-			productReference = BF48C3621F3E066A8662B97149F1C7E5 /* react-native-udp */;
+			productReference = BF48C3621F3E066A8662B97149F1C7E5 /* libreact-native-udp.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		3ED96FB9FE1D18D5F1239C60A109F98C /* react-native-restart */ = {
@@ -10000,7 +10000,7 @@
 			);
 			name = "react-native-restart";
 			productName = "react-native-restart";
-			productReference = 2AE9C51AC524FAF90F73601566183A95 /* react-native-restart */;
+			productReference = 2AE9C51AC524FAF90F73601566183A95 /* libreact-native-restart.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		463F41A7E8B252F8AC5024DA1F4AF6DA /* React-cxxreact */ = {
@@ -10026,7 +10026,7 @@
 			);
 			name = "React-cxxreact";
 			productName = "React-cxxreact";
-			productReference = 37592FDAD45752511010F4B06AC57355 /* React-cxxreact */;
+			productReference = 37592FDAD45752511010F4B06AC57355 /* libReact-cxxreact.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		4F265533AAB7C8985856EC78A33164BB /* React-RCTImage */ = {
@@ -10050,7 +10050,7 @@
 			);
 			name = "React-RCTImage";
 			productName = "React-RCTImage";
-			productReference = EEDBF403E8E0B3885E65C2741B536BC5 /* React-RCTImage */;
+			productReference = EEDBF403E8E0B3885E65C2741B536BC5 /* libReact-RCTImage.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		53D121F9F9BB0F8AC1C94A12C5A8572F /* React-RCTVibration */ = {
@@ -10072,7 +10072,7 @@
 			);
 			name = "React-RCTVibration";
 			productName = "React-RCTVibration";
-			productReference = C1A919103EAC9813D236486C34FC0A21 /* React-RCTVibration */;
+			productReference = C1A919103EAC9813D236486C34FC0A21 /* libReact-RCTVibration.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		595D947437C9FBB775B0E27D94E843B1 /* TcpSockets */ = {
@@ -10090,7 +10090,7 @@
 			);
 			name = TcpSockets;
 			productName = TcpSockets;
-			productReference = 2B15C85B4A3938B4B5731F022B40C0CA /* TcpSockets */;
+			productReference = 2B15C85B4A3938B4B5731F022B40C0CA /* libTcpSockets.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		5FFD5B0A9F194A28928B41601CEEEF72 /* react-native-randombytes */ = {
@@ -10108,7 +10108,7 @@
 			);
 			name = "react-native-randombytes";
 			productName = "react-native-randombytes";
-			productReference = 68A021577E10AFA0713A0CA31BC560F8 /* react-native-randombytes */;
+			productReference = 68A021577E10AFA0713A0CA31BC560F8 /* libreact-native-randombytes.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		610FC7E417637BE9134A858CB4D7F9A4 /* ExpoModulesCore */ = {
@@ -10128,7 +10128,7 @@
 			);
 			name = ExpoModulesCore;
 			productName = ExpoModulesCore;
-			productReference = 5868279839278475B7AAE3A5535A508C /* ExpoModulesCore */;
+			productReference = 5868279839278475B7AAE3A5535A508C /* libExpoModulesCore.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		651511D7DA7F07F9FC9AA40A2E86270D /* React-RCTNetwork */ = {
@@ -10151,7 +10151,7 @@
 			);
 			name = "React-RCTNetwork";
 			productName = "React-RCTNetwork";
-			productReference = A68E5A9B69A3BA0FD52CAF7A354EC93B /* React-RCTNetwork */;
+			productReference = A68E5A9B69A3BA0FD52CAF7A354EC93B /* libReact-RCTNetwork.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		680299219D3A48D42A648AF6706275A9 /* React-RCTSettings */ = {
@@ -10174,7 +10174,7 @@
 			);
 			name = "React-RCTSettings";
 			productName = "React-RCTSettings";
-			productReference = 269BE773C9482484B70949A40F4EA525 /* React-RCTSettings */;
+			productReference = 269BE773C9482484B70949A40F4EA525 /* libReact-RCTSettings.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		6C1893932A69822CBE3502F2E0BCFB6D /* EXConstants */ = {
@@ -10194,7 +10194,7 @@
 			);
 			name = EXConstants;
 			productName = EXConstants;
-			productReference = 220361FF3B2778F8F38C2C4DCC5B49FD /* EXConstants */;
+			productReference = 220361FF3B2778F8F38C2C4DCC5B49FD /* libEXConstants.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		6FE9147F8AAA4DE676C190F680F47AE2 /* React-RCTLinking */ = {
@@ -10215,7 +10215,7 @@
 			);
 			name = "React-RCTLinking";
 			productName = "React-RCTLinking";
-			productReference = 802121F5B756ACBFDD6D08C36246DADD /* React-RCTLinking */;
+			productReference = 802121F5B756ACBFDD6D08C36246DADD /* libReact-RCTLinking.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		730404A8DD175FF6B60B6A43DC6E554B /* react-native-camera */ = {
@@ -10233,7 +10233,7 @@
 			);
 			name = "react-native-camera";
 			productName = "react-native-camera";
-			productReference = 6C9790F1A25C1E3828E179A8F0850851 /* react-native-camera */;
+			productReference = 6C9790F1A25C1E3828E179A8F0850851 /* libreact-native-camera.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		7A020DAB6F3F0BA0A6D9946E84B38B7F /* React-Core-AccessibilityResources */ = {
@@ -10276,7 +10276,7 @@
 			);
 			name = "React-Core";
 			productName = "React-Core";
-			productReference = BD71E2539823621820F84384064C253A /* React-Core */;
+			productReference = BD71E2539823621820F84384064C253A /* libReact-Core.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		807428FE76D80865C9F59F3502600E89 /* RNDeviceInfo */ = {
@@ -10294,7 +10294,7 @@
 			);
 			name = RNDeviceInfo;
 			productName = RNDeviceInfo;
-			productReference = E0FE6533198104C97DB047DD5CD8AC67 /* RNDeviceInfo */;
+			productReference = E0FE6533198104C97DB047DD5CD8AC67 /* libRNDeviceInfo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		89F573A6B1292B3B2296B2206BFDC3D7 /* RNCAsyncStorage */ = {
@@ -10312,7 +10312,7 @@
 			);
 			name = RNCAsyncStorage;
 			productName = RNCAsyncStorage;
-			productReference = 5737DDB4BC95AD399B3206838AB97095 /* RNCAsyncStorage */;
+			productReference = 5737DDB4BC95AD399B3206838AB97095 /* libRNCAsyncStorage.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		8D18C49071FC5370C25F5758A85BA5F6 /* react-native-webview */ = {
@@ -10330,7 +10330,7 @@
 			);
 			name = "react-native-webview";
 			productName = "react-native-webview";
-			productReference = 8DF63376066E2275FF26820B3A512A9B /* react-native-webview */;
+			productReference = 8DF63376066E2275FF26820B3A512A9B /* libreact-native-webview.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90B94D4DBCFD756F121D9368AF50E90B /* EXFont */ = {
@@ -10348,7 +10348,7 @@
 			);
 			name = EXFont;
 			productName = EXFont;
-			productReference = B9A8343068CE43CDCE59118C59FBBAF3 /* EXFont */;
+			productReference = B9A8343068CE43CDCE59118C59FBBAF3 /* libEXFont.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90FCC21376F1111702F7D48E658E43A2 /* EXApplication */ = {
@@ -10366,7 +10366,7 @@
 			);
 			name = EXApplication;
 			productName = EXApplication;
-			productReference = 0AE30817DC70B7BDE99523E2FB47404C /* EXApplication */;
+			productReference = 0AE30817DC70B7BDE99523E2FB47404C /* libEXApplication.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		938CCE22F6C4094B3FB6CF1478579E4B /* React-RCTAnimation */ = {
@@ -10389,7 +10389,7 @@
 			);
 			name = "React-RCTAnimation";
 			productName = "React-RCTAnimation";
-			productReference = FE7B9294FF05AAFD1653E2104E10844A /* React-RCTAnimation */;
+			productReference = FE7B9294FF05AAFD1653E2104E10844A /* libReact-RCTAnimation.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		95D75859B40C62BD683A2B358F67837E /* RNCClipboard */ = {
@@ -10407,7 +10407,7 @@
 			);
 			name = RNCClipboard;
 			productName = RNCClipboard;
-			productReference = 5721B3524EB5FB40F9F97663CC45E2EC /* RNCClipboard */;
+			productReference = 5721B3524EB5FB40F9F97663CC45E2EC /* libRNCClipboard.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		95D98F901D07557EF7CA38D3F03832C5 /* React-RCTBlob */ = {
@@ -10430,7 +10430,7 @@
 			);
 			name = "React-RCTBlob";
 			productName = "React-RCTBlob";
-			productReference = F71EBF73F354B475D465FF6DE9A66707 /* React-RCTBlob */;
+			productReference = F71EBF73F354B475D465FF6DE9A66707 /* libReact-RCTBlob.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		96150F524B245896B800F84F369A9A5A /* RNVectorIcons */ = {
@@ -10448,7 +10448,7 @@
 			);
 			name = RNVectorIcons;
 			productName = RNVectorIcons;
-			productReference = 8998273719FDD789E6F9C7541AFD0B33 /* RNVectorIcons */;
+			productReference = 8998273719FDD789E6F9C7541AFD0B33 /* libRNVectorIcons.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		9BD7A29123D78F7001557FC84435A446 /* RNOS */ = {
@@ -10466,7 +10466,7 @@
 			);
 			name = RNOS;
 			productName = RNOS;
-			productReference = B740A6180FEC5D035EB189406AB474DD /* RNOS */;
+			productReference = B740A6180FEC5D035EB189406AB474DD /* libRNOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		9E866C23515FE5ECD1BA9D89C08B5C57 /* Pods-ScaffoldWallet */ = {
@@ -10537,7 +10537,7 @@
 			);
 			name = "Pods-ScaffoldWallet";
 			productName = "Pods-ScaffoldWallet";
-			productReference = 73C456539F2BBF03C2BF5D9FFC227BBD /* Pods-ScaffoldWallet */;
+			productReference = 73C456539F2BBF03C2BF5D9FFC227BBD /* libPods-ScaffoldWallet.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		B6D5DD49633DFF0657B8C3F08EB3ABA9 /* ReactCommon */ = {
@@ -10562,7 +10562,7 @@
 			);
 			name = ReactCommon;
 			productName = ReactCommon;
-			productReference = D5C775614AC76D44CECB6BE08B022F1F /* ReactCommon */;
+			productReference = D5C775614AC76D44CECB6BE08B022F1F /* libReactCommon.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		C21297404131D607701C71A8A9959998 /* react-native-get-random-values */ = {
@@ -10580,7 +10580,7 @@
 			);
 			name = "react-native-get-random-values";
 			productName = "react-native-get-random-values";
-			productReference = C88D8F609983AB0002AA796EE4C108C4 /* react-native-get-random-values */;
+			productReference = C88D8F609983AB0002AA796EE4C108C4 /* libreact-native-get-random-values.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		C3496D0495E700CF08A90C41EA8FA4BB /* FBReactNativeSpec */ = {
@@ -10604,7 +10604,7 @@
 			);
 			name = FBReactNativeSpec;
 			productName = FBReactNativeSpec;
-			productReference = ABFEEA82A6C346B22843FBE0B0582182 /* FBReactNativeSpec */;
+			productReference = ABFEEA82A6C346B22843FBE0B0582182 /* libFBReactNativeSpec.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		C65C717270D55D7179A8CB6B01846C1E /* RNKeychain */ = {
@@ -10622,7 +10622,7 @@
 			);
 			name = RNKeychain;
 			productName = RNKeychain;
-			productReference = 9311D14EE470834D0E1A7E684D52BB29 /* RNKeychain */;
+			productReference = 9311D14EE470834D0E1A7E684D52BB29 /* libRNKeychain.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		CCEE51C8466E443203D1BC72F570EA00 /* Permission-Camera */ = {
@@ -10640,7 +10640,7 @@
 			);
 			name = "Permission-Camera";
 			productName = "Permission-Camera";
-			productReference = BB1D7880F01CE5024CE360F0D72A6DE3 /* Permission-Camera */;
+			productReference = BB1D7880F01CE5024CE360F0D72A6DE3 /* libPermission-Camera.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D00F24222F074B31C56DC6D05E806A35 /* RNCPicker */ = {
@@ -10658,7 +10658,7 @@
 			);
 			name = RNCPicker;
 			productName = RNCPicker;
-			productReference = 1DC66AC6FB5802B9BA94177EDB54263D /* RNCPicker */;
+			productReference = 1DC66AC6FB5802B9BA94177EDB54263D /* libRNCPicker.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D0EFEFB685D97280256C559792236873 /* glog */ = {
@@ -10675,7 +10675,7 @@
 			);
 			name = glog;
 			productName = glog;
-			productReference = 3CA7A9404CCDD6BA22C97F8348CE3209 /* glog */;
+			productReference = 3CA7A9404CCDD6BA22C97F8348CE3209 /* libglog.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D20469A9A1E5CFB26045EAEBE3F88E5E /* RCTTypeSafety */ = {
@@ -10696,7 +10696,7 @@
 			);
 			name = RCTTypeSafety;
 			productName = RCTTypeSafety;
-			productReference = F958876A082BF810B342435CE3FB5AF6 /* RCTTypeSafety */;
+			productReference = F958876A082BF810B342435CE3FB5AF6 /* libRCTTypeSafety.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		DA0709CAAD589C6E7963495210438021 /* React-jsiexecutor */ = {
@@ -10719,7 +10719,7 @@
 			);
 			name = "React-jsiexecutor";
 			productName = "React-jsiexecutor";
-			productReference = F2E7C88DFCD460A4B46B913ADEB8A641 /* React-jsiexecutor */;
+			productReference = F2E7C88DFCD460A4B46B913ADEB8A641 /* libReact-jsiexecutor.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		DBD2D83E10F8B7D3F4E0E34E6A9FCFA6 /* React-RCTText */ = {
@@ -10737,7 +10737,7 @@
 			);
 			name = "React-RCTText";
 			productName = "React-RCTText";
-			productReference = E6A16705C69FC7DE11C2469A4A0F8358 /* React-RCTText */;
+			productReference = E6A16705C69FC7DE11C2469A4A0F8358 /* libReact-RCTText.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		DE32677FA772BFFD0172EB7EE9E4E7E9 /* RNSVG */ = {
@@ -10755,7 +10755,7 @@
 			);
 			name = RNSVG;
 			productName = RNSVG;
-			productReference = 90EE8D3C082C157169540FC8F5913DAD /* RNSVG */;
+			productReference = 90EE8D3C082C157169540FC8F5913DAD /* libRNSVG.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		E16E206437995280D349D4B67695C894 /* React-CoreModules */ = {
@@ -10779,7 +10779,7 @@
 			);
 			name = "React-CoreModules";
 			productName = "React-CoreModules";
-			productReference = 6771D231F4C8C5976470A369C474B32E /* React-CoreModules */;
+			productReference = 6771D231F4C8C5976470A369C474B32E /* libReact-CoreModules.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EC55D52694092A9D0E6A78EB01207EB5 /* RCT-Folly */ = {
@@ -10799,7 +10799,7 @@
 			);
 			name = "RCT-Folly";
 			productName = "RCT-Folly";
-			productReference = 1936453FF2A7E3A13063C4917C4D5598 /* RCT-Folly */;
+			productReference = 1936453FF2A7E3A13063C4917C4D5598 /* libRCT-Folly.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		F06E51757C6AF656F73CEBA4AAE05538 /* RNPermissions */ = {
@@ -10817,7 +10817,7 @@
 			);
 			name = RNPermissions;
 			productName = RNPermissions;
-			productReference = 778C1572AE22EE933ACA12594B6DF949 /* RNPermissions */;
+			productReference = 778C1572AE22EE933ACA12594B6DF949 /* libRNPermissions.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		F1E2583679398CB5F4D2B3272E9B198F /* React-perflogger */ = {
@@ -10834,7 +10834,7 @@
 			);
 			name = "React-perflogger";
 			productName = "React-perflogger";
-			productReference = 666E72807891C591E025A75410CD2A26 /* React-perflogger */;
+			productReference = 666E72807891C591E025A75410CD2A26 /* libReact-perflogger.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		F7D033C4C128EECAA020990641FA985F /* React-jsinspector */ = {
@@ -10851,7 +10851,7 @@
 			);
 			name = "React-jsinspector";
 			productName = "React-jsinspector";
-			productReference = 2577F299FCB0A19824FE989BE77B8E8F /* React-jsinspector */;
+			productReference = 2577F299FCB0A19824FE989BE77B8E8F /* libReact-jsinspector.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		FA877ADC442CB19CF61793D234C8B131 /* React-jsi */ = {
@@ -10872,7 +10872,7 @@
 			);
 			name = "React-jsi";
 			productName = "React-jsi";
-			productReference = D9F334F2E90E3EE462FC4192AF5C03BD /* React-jsi */;
+			productReference = D9F334F2E90E3EE462FC4192AF5C03BD /* libReact-jsi.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -10882,7 +10882,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					0F782E65C434CB2F920719FC727833DC = {
 						DevelopmentTeam = S965UYWD4P;
@@ -13111,13 +13111,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFB29A72BE893252295A54749AED0109 /* React-jsinspector.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-jsinspector/React-jsinspector-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13137,7 +13136,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BAACA78D4462EFBBD3DFC5DDC5B9C4EF /* Expo.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -13162,12 +13160,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 97C6F5E927A38EE3367CFBC29B4417DD /* RNCPicker.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNCPicker/RNCPicker-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13186,12 +13183,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F0004B9CDE21F79F053BEADD2C9F8A9 /* react-native-restart.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-restart/react-native-restart-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13210,13 +13206,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 836E0E030369BE7A684D52DDE17A307F /* React-cxxreact.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-cxxreact/React-cxxreact-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13235,12 +13230,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE992A8732946C1D08CC8CA3C981F609 /* RNCAsyncStorage.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNCAsyncStorage/RNCAsyncStorage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13260,13 +13254,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 55562C08B3F24D0944B433E63B0E9E4A /* RNPermissions.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNPermissions/RNPermissions-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13286,13 +13279,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B26AD94070415171F8D0329589BC33D7 /* glog.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/glog/glog-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13311,7 +13303,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8228196D979661E732AE022D4758DD9 /* EXApplication.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -13336,12 +13327,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3095819A9E0A491BFD4E032EB1CA4923 /* react-native-camera.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-camera/react-native-camera-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13361,13 +13351,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 189D4877CFF233A885AA87CCCA0D1A1C /* React-RCTVibration.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTVibration/React-RCTVibration-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13387,7 +13376,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F019673516BC03942F2883FB051C2240 /* EXConstants.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -13412,10 +13400,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8E0DCD42C4BE1B668101610C31EDF3BB /* boost-for-react-native.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13426,13 +13413,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D864E31D17B411FD8AE6CF56BE68F81B /* React-RCTSettings.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTSettings/React-RCTSettings-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13451,12 +13437,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 071E12DF1F9EAFE2CCABEC82BA440752 /* react-native-randombytes.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-randombytes/react-native-randombytes-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13476,11 +13461,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 75CBEF0143EAE1FA6BA9128ACEF3A578 /* RCTRequired.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13491,13 +13475,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C116E5398F4EED1B2B2A60F6F1CAAFC9 /* React-RCTLinking.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTLinking/React-RCTLinking-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13517,12 +13500,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A085DAE9FC2F5D1998A9560390323F24 /* RNCPicker.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNCPicker/RNCPicker-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13542,12 +13524,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A25BBE450E2C984B7534982B6B52381A /* react-native-randombytes.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-randombytes/react-native-randombytes-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13566,12 +13547,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D82F78D0B244E56DC2C6F627BB42D3AB /* RNOS.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNOS/RNOS-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13590,13 +13570,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 838E7F27CCD10F927FB5E234BC399D58 /* React-CoreModules.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-CoreModules/React-CoreModules-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13646,6 +13625,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -13682,13 +13662,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1351E930EB7815293110EAE464C1AE8A /* Permission-Camera.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/Permission-Camera/Permission-Camera-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13708,7 +13687,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5AA2225E59EE47FFF020F9CE3175A6D3 /* Expo.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -13734,13 +13712,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF207E647EB649B9B01AFC6C5053EFE1 /* React-RCTText.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTText/React-RCTText-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13760,12 +13737,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC7EA1CFA00EA43AA0024CCFD000E3B3 /* RNCClipboard.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNCClipboard/RNCClipboard-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13786,7 +13762,6 @@
 			baseConfigurationReference = 3BE56342155779C977C4C242503E55CD /* Pods-ScaffoldWallet.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -13809,12 +13784,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BFCABC4503362BB5422B5A127C72818 /* react-native-get-random-values.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-get-random-values/react-native-get-random-values-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13833,13 +13807,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6AEF9D2C37D6185FF11794B05D7D6D31 /* Yoga.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/Yoga/Yoga-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = Headers/Public/yoga/Yoga.modulemap;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -13859,7 +13832,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CB45B4617CF6C4F4E8B2CC6EE4C2170 /* EXSplashScreen.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -13874,11 +13846,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB14D629E383E34AEC6C0853557661AA /* React-RCTActionSheet.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13890,13 +13861,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59D35F1312F09CA8F1453EB9809BFF45 /* React-perflogger.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-perflogger/React-perflogger-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13916,7 +13886,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 766D08B162C57AF3CDED11D036245327 /* ExpoModulesCore.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -13943,11 +13912,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A76862ACB09719D8C1F43E404CC5615 /* React-callinvoker.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13959,13 +13927,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9BCA661A83B3FAA63EC7F626DAA1E03 /* FBReactNativeSpec.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/FBReactNativeSpec/FBReactNativeSpec-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -13985,12 +13952,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B99F29E3A4241B69D9BFFD4287A967C0 /* RCT-Folly.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RCT-Folly/RCT-Folly-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14010,7 +13976,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 980AB6FD9265D80ACE11ABC552ED6F67 /* EXKeepAwake.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -14035,7 +14000,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE00D7F957940B983E8056F2BD98C08F /* EXSplashScreen.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -14051,13 +14015,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6DC4A84687C3DDC56767A1C2EE4D15C2 /* React-jsi.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-jsi/React-jsi-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14077,13 +14040,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F3107AE50245795C135DFC271D90364 /* React-jsinspector.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-jsinspector/React-jsinspector-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14102,7 +14064,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86876771993E4B0C057ECAD60E590091 /* EXFont.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -14128,13 +14089,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D94F7DA2B04A816F489D38CC68BCF8CA /* React-perflogger.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-perflogger/React-perflogger-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14184,6 +14144,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -14215,13 +14176,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 16B376DBA54778CCFF4ED399B01F31E9 /* glog.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/glog/glog-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14241,12 +14201,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3626B9FFC761E191A759A6896B8B73F9 /* TcpSockets.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/TcpSockets/TcpSockets-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14266,7 +14225,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3787075CDA1AEA7FEE3D2DBE72F1FBFB /* EXFileSystem.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -14282,12 +14240,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2ACB9381173B5BD9E6459FC8A847FF7 /* RNVectorIcons.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNVectorIcons/RNVectorIcons-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14306,7 +14263,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84F73194BDDF4A0C0BCFDBDFDE75172F /* EXKeepAwake.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -14332,13 +14288,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 961323358F04CA9906D5CE41536E643B /* React-jsiexecutor.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-jsiexecutor/React-jsiexecutor-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14358,13 +14313,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76ACC2BECB2AF56075464C18CEB24699 /* React-CoreModules.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-CoreModules/React-CoreModules-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14384,13 +14338,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7A94CE1F0AB2FF25CEA6B0857630032 /* Permission-Camera.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/Permission-Camera/Permission-Camera-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14409,13 +14362,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB56AB37B1FF528BFDAB48680133DFE2 /* FBReactNativeSpec.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/FBReactNativeSpec/FBReactNativeSpec-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14434,11 +14386,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3254EFE818A33C782C86393CB721B0AF /* React-runtimeexecutor.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -14466,12 +14417,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D62D1222211CDDD0E189275E8BC45D57 /* RNKeychain.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNKeychain/RNKeychain-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14490,12 +14440,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB881CEAFC1674D529B097FA582A6616 /* TcpSockets.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/TcpSockets/TcpSockets-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14514,13 +14463,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AEA8B668CC5BCB585599241FBC1C14D /* DoubleConversion.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/DoubleConversion/DoubleConversion-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14540,13 +14488,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF93B7FAD046E269ECB5632C5294C7E1 /* React-RCTVibration.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTVibration/React-RCTVibration-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14565,12 +14512,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 54B0F8F88D948745190B9740F09174EC /* react-native-webview.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-webview/react-native-webview-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14589,13 +14535,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AB4694516DE1C3CFD772B64EF4D027C /* React-RCTBlob.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTBlob/React-RCTBlob-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14614,12 +14559,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFFB7AF2624BE1178259CE5A327C1058 /* react-native-udp.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-udp/react-native-udp-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14639,11 +14583,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0045E71BC810817E20A0F976780CDF6 /* React-RCTActionSheet.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -14654,12 +14597,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF81520E8323B8CBD0824966FCE5B168 /* RNDeviceInfo.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNDeviceInfo/RNDeviceInfo-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14678,11 +14620,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D6992462D76177892F9F71C9313EAE4 /* React-callinvoker.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -14693,7 +14634,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D98DF02C54EE7838BE7FDB40517182F /* EXConstants.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -14719,12 +14659,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49EDBE77B269CC7394B988B98D99F1C4 /* react-native-webview.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-webview/react-native-webview-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14744,7 +14683,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4DABF998539A29A34907BDF6CF8729E1 /* EXFileSystem.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -14759,12 +14697,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6D792F2EEA4A1C56F30498B6F16427E /* RNVectorIcons.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNVectorIcons/RNVectorIcons-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14784,13 +14721,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3BCCFEFFAA991F36E9F70BED20AB3165 /* React-RCTAnimation.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTAnimation/React-RCTAnimation-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14810,12 +14746,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B44ADB0E8D6FE2496D4E309F724083C9 /* RNDeviceInfo.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNDeviceInfo/RNDeviceInfo-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14852,13 +14787,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F77B0CAFDC7E3C0A1F0FB1CD7F3D72AA /* React-RCTNetwork.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTNetwork/React-RCTNetwork-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14877,11 +14811,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F24A9480EA8A28FA39B8B79F65298A35 /* React-runtimeexecutor.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -14893,12 +14826,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5551DF5ECF87CB176D015ADEAA789A5 /* RCT-Folly.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RCT-Folly/RCT-Folly-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14917,11 +14849,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F5759D29D358FC1021A2450C62D95197 /* RCTRequired.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -14933,7 +14864,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D71B97F8C24DCC8C9008A9039ADE4526 /* EXApplication.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -14959,12 +14889,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D892D294B52931B271E31347A0D9145 /* RNCAsyncStorage.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNCAsyncStorage/RNCAsyncStorage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -14983,13 +14912,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8835BC41238E35D451FE87443CD1522 /* RCTTypeSafety.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RCTTypeSafety/RCTTypeSafety-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15009,7 +14937,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2FA2100874CD5D9D16D72961E8B38CF /* EXFont.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -15034,13 +14961,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 62D3BACA3CF2895AA2501F3605F31D60 /* React-RCTSettings.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTSettings/React-RCTSettings-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15060,13 +14986,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FBF15CEFBAD666E183DDF031F5E89A4 /* React-RCTBlob.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTBlob/React-RCTBlob-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15086,12 +15011,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED9FB369A53E7877FEF0A23ADA318D1F /* react-native-udp.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-udp/react-native-udp-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15110,12 +15034,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F598A8442AF5CE3715FA74217A2A2737 /* RNSVG.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNSVG/RNSVG-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15135,13 +15058,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BFB126591CFBA530433814FE0CF4A8C /* React-jsiexecutor.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-jsiexecutor/React-jsiexecutor-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15160,13 +15082,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F22CECF53D1A2A5662DF21EE652E7EB /* RCTTypeSafety.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RCTTypeSafety/RCTTypeSafety-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15185,13 +15106,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8910514F43F028D2453BA6785ED4D9FF /* React-Core.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-Core/React-Core-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = "Headers/Public/React-Core/React/React-Core.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -15211,13 +15131,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C173DB90A7223383C83A854FFC5A7338 /* ReactCommon.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/ReactCommon/ReactCommon-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = Headers/Public/ReactCommon/ReactCommon.modulemap;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -15238,10 +15157,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 102741CDF838597E7D73B44987F4EF3F /* boost-for-react-native.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -15253,11 +15171,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 897B5AC65BB87F7988962378201F583E /* FBLazyVector.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -15269,13 +15186,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B5A8C0A30B6AE93EA1D92AC1D9B84E88 /* RNPermissions.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNPermissions/RNPermissions-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15298,7 +15214,7 @@
 				DEVELOPMENT_TEAM = S965UYWD4P;
 				IBSC_MODULE = React;
 				INFOPLIST_FILE = "Target Support Files/React-Core/ResourceBundle-AccessibilityResources-React-Core-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = AccessibilityResources;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -15311,12 +15227,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2206B4F011E3D356EF446869165BBB5F /* react-native-restart.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-restart/react-native-restart-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15336,11 +15251,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AEA17950661CE7ECDA35305C536E8A5D /* React.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -15355,7 +15269,7 @@
 				DEVELOPMENT_TEAM = S965UYWD4P;
 				IBSC_MODULE = React;
 				INFOPLIST_FILE = "Target Support Files/React-Core/ResourceBundle-AccessibilityResources-React-Core-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = AccessibilityResources;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -15368,12 +15282,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C9D14FFF94F69DDA8C7EF44566C23BA2 /* RNOS.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNOS/RNOS-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15393,12 +15306,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6BE268935A3E32E4A763FF650F19A85D /* RNSVG.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNSVG/RNSVG-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15417,13 +15329,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D688E603F398F0DF413569C6C9DBF0CD /* React-RCTText.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTText/React-RCTText-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15442,13 +15353,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 294172343D372B30A0FAE153D023021D /* DoubleConversion.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/DoubleConversion/DoubleConversion-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15467,13 +15377,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 73AFAEF91E00CEA693BACFB95D9DFDB7 /* Yoga.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/Yoga/Yoga-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = Headers/Public/yoga/Yoga.modulemap;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -15494,13 +15403,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77EE9F25CC8250D0F7320EEE7FBC6D26 /* React-Core.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-Core/React-Core-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = "Headers/Public/React-Core/React/React-Core.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -15521,12 +15429,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CFBE9740AB43B024B0B831E34C3AB75A /* react-native-get-random-values.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-get-random-values/react-native-get-random-values-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15546,13 +15453,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2084F06C0BCCEE34D01487741BB4A61B /* React-RCTAnimation.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTAnimation/React-RCTAnimation-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15571,12 +15477,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD0C7C3C41380AFAD7BAFF3EB5D327C6 /* react-native-camera.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/react-native-camera/react-native-camera-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15595,11 +15500,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BF619ECE794B75CBCDB4E95385BED8D /* React.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -15611,12 +15515,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34336938F7E4721249975F4E2DBE7833 /* RNKeychain.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNKeychain/RNKeychain-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15636,7 +15539,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20F19FB5E8398016C7E24FBE64E80021 /* ExpoModulesCore.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -15662,13 +15564,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 393200C14BF9077D5AE5823278E41256 /* React-RCTImage.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTImage/React-RCTImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15688,13 +15589,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F1D1EACDE30C45BEF843C7E8953E2987 /* React-RCTNetwork.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTNetwork/React-RCTNetwork-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15714,13 +15614,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40E1FAE5E02BF4354EB32E6BB02B8918 /* React-jsi.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-jsi/React-jsi-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15739,13 +15638,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7ED9246A94668AC3E92F28E6D61144F /* React-RCTLinking.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTLinking/React-RCTLinking-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15764,13 +15662,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06E368F8AB63D73123BBBAB0849783CB /* React-cxxreact.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-cxxreact/React-cxxreact-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15790,11 +15687,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7B172EADF5DD78CB2ED8E4F1B758DC3 /* FBLazyVector.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -15805,12 +15701,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3FEABE0B8A9BD985140E21694A879F5C /* RNCClipboard.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/RNCClipboard/RNCClipboard-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15829,13 +15724,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCDB12C3A95436D2D9500073F10852F7 /* React-RCTImage.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/React-RCTImage/React-RCTImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -15854,13 +15748,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4991585E1A7B7F47B6F4C0E7820E477 /* ReactCommon.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/ReactCommon/ReactCommon-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULEMAP_FILE = Headers/Public/ReactCommon/ReactCommon.modulemap;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -15881,7 +15774,6 @@
 			baseConfigurationReference = 2691FACB7CD36122A404995468A7A33C /* Pods-ScaffoldWallet.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
