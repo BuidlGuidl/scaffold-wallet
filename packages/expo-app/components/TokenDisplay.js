@@ -26,7 +26,7 @@ function TokenDisplay(props) {
           </View>
         </View>
 
-        <Text style={styles.dollarBalance}>${formattedDollarBalance}</Text>
+        <Text style={styles.dollarBalance}>{formattedDollarBalance}<Text style={styles.dollarSymbol}> USD</Text> </Text>
       </View>
     </View>
   );
@@ -39,17 +39,22 @@ const styles = StyleSheet.create({
     width: "90%",
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center",
     fontSize: 24,
-  },
-  separator:{
-    height: 1,
-    width: "100%",
-    backgroundColor: "gray"
-  },    
+    backgroundColor:"#fff",
+    paddingLeft:16,
+    paddingRight:16,
+    paddingTop:16,
+    paddingBottom:16,
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    borderRadius:10
+  },  
   title:{
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: "600",
+    color:"#a8a7b9"
   },
   row: {
     display: "flex",
@@ -58,7 +63,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     fontSize: 24,
-    marginTop: 20
+    marginTop: 20,
+    
   },
   left: {
     display: "flex",
@@ -72,8 +78,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   tokenName: { fontSize: 18, color: "#888" },
-  tokenBalance: { fontSize: 20 },
-  dollarBalance: { fontSize: 24 },
+  tokenBalance: { fontSize: 20, fontWeight:"700" },
+  dollarBalance: { fontSize: 24, fontWeight:"700" },
+  dollarSymbol:{
+    fontWeight:"300"
+  }
 });
 
 export default React.memo(TokenDisplay);
