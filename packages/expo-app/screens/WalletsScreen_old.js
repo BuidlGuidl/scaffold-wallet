@@ -8,7 +8,8 @@ import { generateNewPrivateKeyAndWallet, loadAllWalletAddresses, saveImportedWal
 import Blockie from "../components/Blockie";
 import { ethers } from "ethers";
 
-const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
+const WalletsScreenOld = (props) => {
+    const { wallet, setWallet, setAddress } = props
 
     const [loading, setLoading] = useState(false);
     const [walletAddresses, setWalletAddresses] = useState([]);
@@ -92,6 +93,7 @@ const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
     const toggleReveal = () => setReveal(!reveal)
 
     return <View
+        onPress={props.hide}
         style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#fff", flexDirection: 'column' }}>
 
         {showImport === false ?
@@ -110,7 +112,7 @@ const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
                     {walletAddresses.map((walletAddress, index) => {
                         let displayAddress = truncateAddress(walletAddress);
                         return <View style={{ marginVertical: 18 }} key={index}>
-                            {walletAddress === address ?
+                            {walletAddress === props.address ?
                                 <View>
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
                                         <Blockie address={walletAddress} size={36} />
@@ -155,7 +157,7 @@ const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
                     </View>
                     <View style={{ marginTop: 4 }}>
                         <Button
-                            onPress={() => {}}
+                            onPress={props.hide}
                             title="Close" />
                     </View>
                 </View>
@@ -209,4 +211,4 @@ const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
     </View>
 }
 
-export default WalletsScreen
+export default WalletsScreenOld
