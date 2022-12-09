@@ -401,7 +401,11 @@ export default function App() {
               tokenSymbol={nativeTokenSymbol}
               tokenLogo={nativeTokenLogo}
               tokenPrice={price}
-              
+              openBlockExplorer={openBlockExplorer}
+              disconnect={disconnect} 
+              wallectConnectConnector={wallectConnectConnector} 
+              setWalletConnectUrl={setWalletConnectUrl} 
+              walletConnectUrl={walletConnectUrl} 
               />
             )}
           </AppStack.Screen>

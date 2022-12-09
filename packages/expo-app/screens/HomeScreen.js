@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Linking,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
@@ -67,17 +68,39 @@ const providers = [
   "https://rpc.scaffoldeth.io:48544",
 ];
 
-
-export const HomeScreen = ({navigation, address, tokenBalance, tokenName, tokenSymbol, tokenLogo, tokenPrice}) => {
+export const HomeScreen = ({
+  navigation,
+  address,
+  tokenBalance,
+  tokenName,
+  tokenSymbol,
+  tokenLogo,
+  tokenPrice,
+  openBlockExplorer,
+  disconnect,
+  wallectConnectConnector,
+  setWalletConnectUrl,
+  walletConnectUrl,
+}) => {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
-      
       <AddressDisplay
         address={address}
         showQR={() => navigation.navigate("QrShow")}
         showWallet={() => navigation.navigate("Wallet")}
+        openBlockExplorer={() => openBlockExplorer()}
       />
-      <TokenDisplay tokenBalance={tokenBalance} tokenName={tokenName} tokenSymbol={tokenSymbol} tokenLogo={tokenLogo} tokenPrice={tokenPrice} />
+
+      <TokenDisplay
+        tokenBalance={tokenBalance}
+        tokenName={tokenName}
+        tokenSymbol={tokenSymbol}
+        tokenLogo={tokenLogo}
+        tokenPrice={tokenPrice}
+      />
+
+      
+
       <FloatingButton onPress={() => navigation.navigate("Send")} right={20}>
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
@@ -89,8 +112,6 @@ export const HomeScreen = ({navigation, address, tokenBalance, tokenName, tokenS
     </View>
   );
 };
-
-
 
 var styles = StyleSheet.create({
   linearGradient: {
