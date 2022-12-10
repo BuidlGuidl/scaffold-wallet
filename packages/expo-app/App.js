@@ -44,8 +44,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Screens and Components
 import { QRScannerScreen } from "./screens/QRScannerScreen";
 import { QRScreen } from "./screens/QRScreen";
-import {WalletsScreen} from "./screens/WalletsScreen";
-import SendScreen from "./screens/SendScreen";
+import { WalletsScreen } from "./screens/WalletsScreen";
+import {SendScreen} from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
 import { extractJSONRPCMessage, loadOrGenerateWallet } from "./helpers/utils";
@@ -450,10 +450,25 @@ export default function App() {
           <AppStack.Screen
             name="Send"
             options={({ navigation, route }) => ({
-              headerShown: false,
             })}
-            component={SendScreen}
-          />
+          >
+            {({ navigation }) => (
+              <SendScreen
+              tokenSymbol={nativeTokenSymbol}
+              hide={hideSend}
+              balance={yourLocalBalance}
+              price={price}
+              gasPrice={gasPrice}
+              showScanner={showScanner}
+              tokenName={nativeTokenName}
+              tokenLogo={nativeTokenLogo}
+              toAddress={toAddress}
+              setToAddress={setToAddress}
+              sendEth={sendEth}
+              navigation={navigation}
+              />
+            )}
+          </AppStack.Screen>
         </AppStack.Group>
       </AppStack.Navigator>
     </NavigationContainer>

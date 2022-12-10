@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
   View,
-  Text,
-  Button,
-  Image,
   StyleSheet,
-  Linking,
-  TouchableOpacity,
-  TextInput,
 } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
