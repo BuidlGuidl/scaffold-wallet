@@ -1,7 +1,7 @@
 import { usePoller } from 'eth-hooks';
 import { ethers } from 'ethers';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View , StyleSheet} from 'react-native';
 import { getStorageTransactions, setStorageTransactions, updateStorageTransaction } from '../helpers/Transactions';
 
 export const TransactionsDisplay = (props) => {
@@ -99,16 +99,22 @@ export const TransactionsDisplay = (props) => {
 
     usePoller(pollUnconfirmedTransactions, 5000);
 
-    return <View style={{ marginTop: 24 }}>
-        {unconfirmedTransactions.map(txn => {
+    return <View style={styles.container}>
+           <Text style={styles.title}>Transactions</Text>
+        {unconfirmedTransactions.map((txn, i) => {
             const maxFeePerGasInGwei = Number(ethers.utils.formatUnits(txn.maxFeePerGas, 'gwei')).toFixed(1)
-            return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }} key={txn.nonce}>
-                <View>
-                    <Text style={{ fontSize: 16 }}>Transaction <Text style={{ fontWeight: '600' }}>#{txn.nonce}</Text> Pending</Text>
-                    <Text style={{ fontSize: 16 }}>maxFeePerGas: <Text style={{ fontWeight: '600' }}>{maxFeePerGasInGwei} Gwei</Text></Text>
-                </View>
 
-                <TouchableOpacity
+            return <View style={styles.row} key={i}>
+            <View style={styles.left}>
+              <View>
+                <Text style={styles.nonce}>#{txn.nonce} <Text style={styles.status}>Pending...</Text></Text>
+                <Text style={styles.maxfeed}>
+                maxFeePerGas: <Text style={styles.gwei}>{maxFeePerGasInGwei} Gwei</Text>
+                </Text>
+              </View>
+            </View>
+    
+            <TouchableOpacity
                     style={{ flexDirection: 'row', alignItems: 'center' }}
                     onPress={() => handleSpeedUp(txn.nonce)}
                 >
@@ -119,7 +125,65 @@ export const TransactionsDisplay = (props) => {
                         color: '#0E76FD',
                     }]}>Speed Up 20%</Text>
                 </TouchableOpacity>
-            </View>
+          </View>
+
         })}
     </View>
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+      display: "flex",
+      marginTop: 24,
+      width: "90%",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      fontSize: 24,
+      backgroundColor:"#fff",
+      paddingLeft:16,
+      paddingRight:16,
+      paddingTop:16,
+      paddingBottom:16,
+      shadowColor: '#171717',
+      shadowOffset: {width: -2, height: 4},
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      borderRadius:10
+    },  
+    title:{
+      fontSize: 22,
+      fontWeight: "600",
+      color:"#a8a7b9"
+    },
+    row: {
+      display: "flex",
+      width: "100%",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      fontSize: 24,
+      marginTop: 20,
+      
+    },
+    left: {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    logo: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      marginRight: 10,
+    },
+    nonce: { fontSize: 18, fontWeight:"800", color: "#888" },
+    maxfeed: { fontSize: 14, fontWeight:"400", color: "#888" },
+    gwei:{
+        fontSize: 14, fontWeight:"400",
+    },
+    status: { fontSize: 14, fontWeight:"500", fontStyle:"italic" },
+    dollarSymbol:{
+      fontWeight:"300"
+    }
+  });

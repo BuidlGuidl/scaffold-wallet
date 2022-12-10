@@ -13,7 +13,7 @@ function TokenDisplay(props) {
 
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Balance</Text>
+      <Text style={styles.title}>Balance</Text>
       <View style={styles.row}>
         <View style={styles.left}>
           <Image style={styles.logo} source={{ uri: logoURL }} />
@@ -25,7 +25,10 @@ function TokenDisplay(props) {
           </View>
         </View>
 
-        <Text style={styles.dollarBalance}>{formattedDollarBalance}<Text style={styles.dollarSymbol}> USD</Text> </Text>
+        <Text style={styles.dollarBalance}>
+          {formattedDollarBalance}
+          <Text style={styles.dollarSymbol}> USD</Text>{" "}
+        </Text>
       </View>
     </View>
   );
@@ -39,21 +42,21 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     fontSize: 24,
-    backgroundColor:"#fff",
-    paddingLeft:16,
-    paddingRight:16,
-    paddingTop:16,
-    paddingBottom:16,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    backgroundColor: "#fff",
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    borderRadius:10
-  },  
-  title:{
+    borderRadius: 10,
+  },
+  title: {
     fontSize: 22,
     fontWeight: "600",
-    color:"#a8a7b9"
+    color: "#a8a7b9",
   },
   row: {
     display: "flex",
@@ -63,7 +66,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     fontSize: 24,
     marginTop: 20,
-    
   },
   left: {
     display: "flex",
@@ -77,11 +79,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   tokenName: { fontSize: 18, color: "#888" },
-  tokenBalance: { fontSize: 20, fontWeight:"700" },
-  dollarBalance: { fontSize: 24, fontWeight:"700" },
-  dollarSymbol:{
-    fontWeight:"300"
-  }
+  tokenBalance: { fontSize: 20, fontWeight: "700" },
+  dollarBalance: { fontSize: 24, fontWeight: "700" },
+  dollarSymbol: {
+    fontWeight: "300",
+  },
 });
 
 export default React.memo(TokenDisplay);

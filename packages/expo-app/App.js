@@ -415,6 +415,9 @@ export default function App() {
                 wallectConnectConnector={wallectConnectConnector}
                 setWalletConnectUrl={setWalletConnectUrl}
                 walletConnectUrl={walletConnectUrl}
+                wallet={wallet}
+                pendingTransaction={pendingTransaction}
+                provider={localProvider}
               />
             )}
           </AppStack.Screen>

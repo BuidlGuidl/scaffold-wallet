@@ -16,7 +16,6 @@ import TokenDisplay from "../components/TokenDisplay";
 import LinearGradient from "react-native-linear-gradient";
 
 export const SendScreen = ({
-  address,
   tokenSymbol,
   balance,
   price,
@@ -43,12 +42,11 @@ export const SendScreen = ({
       Number(amount) + transferCostInETH > formattedEthBalance;
   }
 
-  const validToAddress = toAddress ? ethers.utils.isAddress(address) : false;
+  const validToAddress = toAddress ? ethers.utils.isAddress(toAddress) : false;
   const validAmount = !isNaN(amount) && amount !== 0;
-
   const send = async () => {
     setLoading(true);
-    await sendEth(amount, toAddress);
+    await sendEth(amount.toString(), toAddress);
     setLoading(false);
     navigation.goBack();
   };
@@ -79,16 +77,6 @@ export const SendScreen = ({
         </TouchableOpacity>
         <Button title="Paste" onPress={pasteToPkInput} color={"#4580eb"} />
       </View>
-      <View style={styles.balanceContainer}>
-        <TokenDisplay
-          tokenBalance={balance}
-          tokenName={tokenName}
-          tokenSymbol={tokenSymbol}
-          tokenLogo={tokenLogo}
-          tokenPrice={price}
-        />
-      </View>
-
       <View style={styles.ammoutContainer}>
         <TextInput
           style={{ fontSize: 50, minWidth: 70, marginRight: 10 }}
@@ -111,6 +99,15 @@ export const SendScreen = ({
         </Text>
       </View>
 
+      <View style={styles.balanceContainer}>
+        <TokenDisplay
+          tokenBalance={balance}
+          tokenName={tokenName}
+          tokenSymbol={tokenSymbol}
+          tokenLogo={tokenLogo}
+          tokenPrice={price}
+        />
+      </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity
           style={styles.buttonMain}
@@ -158,7 +155,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   addressContainerText: {
-    flex: 1,
+    marginRight:8,
     fontSize: 22,
     fontWeight: "800",
     color: "#888",

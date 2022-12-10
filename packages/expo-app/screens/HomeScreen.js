@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  View,
-  StyleSheet,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
 import AntIcon from "react-native-vector-icons/AntDesign";
@@ -71,6 +68,9 @@ export const HomeScreen = ({
   tokenLogo,
   tokenPrice,
   openBlockExplorer,
+  wallet,
+  pendingTransaction,
+  provider,
   disconnect,
   wallectConnectConnector,
   setWalletConnectUrl,
@@ -92,6 +92,13 @@ export const HomeScreen = ({
         tokenLogo={tokenLogo}
         tokenPrice={tokenPrice}
       />
+      <TransactionsDisplay
+        provider={provider}
+        wallet={wallet}
+        address={address}
+        pendingTransaction={pendingTransaction}
+      />
+
       <FloatingButton onPress={() => navigation.navigate("Send")} right={20}>
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
