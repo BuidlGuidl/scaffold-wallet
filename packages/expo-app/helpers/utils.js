@@ -5,7 +5,7 @@ import { getAccessControlOptions, loadKeychainValue, saveKeychainValue } from '.
 
 export const truncateAddress = (address) => {
     if (!address) return ''
-    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+    return `${address.slice(0, 8)}...${address.slice(-6)}`;
 }
 export const extractJSONRPCMessage = (rawString) => {
     const start = rawString.indexOf(`(body="`)

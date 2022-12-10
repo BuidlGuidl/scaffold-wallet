@@ -4,7 +4,6 @@ import {
   Text,
   Button,
   Image,
-  TouchableHighlight,
   StyleSheet,
   Linking,
   TouchableOpacity,
@@ -88,7 +87,7 @@ export const HomeScreen = ({
       <AddressDisplay
         address={address}
         showQR={() => navigation.navigate("QrShow")}
-        showWallet={() => navigation.navigate("Wallet")}
+        showWallet={() => navigation.navigate("Wallets")}
         openBlockExplorer={() => openBlockExplorer()}
       />
 

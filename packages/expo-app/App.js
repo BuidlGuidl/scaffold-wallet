@@ -10,7 +10,6 @@ import {
   Linking,
   Image,
   StatusBar,
-  TouchableHighlight,
 } from "react-native";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
@@ -45,7 +44,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Screens and Components
 import { QRScannerScreen } from "./screens/QRScannerScreen";
 import { QRScreen } from "./screens/QRScreen";
-import WalletsScreen from "./screens/WalletsScreen";
+import {WalletsScreen} from "./screens/WalletsScreen";
 import SendScreen from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
@@ -392,13 +391,13 @@ export default function App() {
               ),
               // Add a placeholder button without the `onPress` to avoid flicker
               headerRight: () => (
-                <TouchableHighlight
+                <TouchableOpacity
                   onPress={() => navigation.navigate("QrScanner")}
                 >
                   <View>
                     <AntIcon name="scan1" size={30} color="#619EFD" />
                   </View>
-                </TouchableHighlight>
+                </TouchableOpacity>
               ),
             })}
           >
@@ -419,7 +418,7 @@ export default function App() {
               />
             )}
           </AppStack.Screen>
-          <AppStack.Screen name="Wallet">
+          <AppStack.Screen name="Wallets">
             {({ navigation }) => (
               <WalletsScreen
                 wallet={wallet}
