@@ -14,7 +14,6 @@ function TokenDisplay(props) {
   return (
     <View style={styles.container}>
         <Text style={styles.title}>Balance</Text>
-        <View style={styles.separator}></View>
       <View style={styles.row}>
         <View style={styles.left}>
           <Image style={styles.logo} source={{ uri: logoURL }} />

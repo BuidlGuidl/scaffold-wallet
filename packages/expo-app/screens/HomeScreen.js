@@ -58,6 +58,7 @@ import { updateStorageTransaction } from "../helpers/Transactions";
 import useExchangePrice from "../hooks/ExchangePrice";
 import useBalance from "../hooks/Balance";
 import ErrorDisplay from "../components/ErrorDisplay";
+import { NetworkDisplay } from "../components/NetworkDisplay";
 
 const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -98,9 +99,6 @@ export const HomeScreen = ({
         tokenLogo={tokenLogo}
         tokenPrice={tokenPrice}
       />
-
-      
-
       <FloatingButton onPress={() => navigation.navigate("Send")} right={20}>
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
@@ -126,5 +124,4 @@ var styles = StyleSheet.create({
     marginLeft: -4,
     color: "#fff",
   },
-  logo: { width: 30, height: 30, borderRadius: 50 },
 });

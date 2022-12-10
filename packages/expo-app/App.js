@@ -60,6 +60,7 @@ import useBalance from "./hooks/Balance";
 import ErrorDisplay from "./components/ErrorDisplay";
 import { NavigationContainer } from "@react-navigation/native";
 import { HomeScreen } from "./screens/HomeScreen";
+import { NetworkDisplay } from "./components/NetworkDisplay";
 
 const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -381,7 +382,14 @@ export default function App() {
               headerLeft: (props) => (
                 <Image style={styles.logo} source={ScaffoldEthWalletLogo} />
               ),
-              headerTitle: "",
+              headerTitle: () => (
+                <NetworkDisplay
+                  selectedNetwork={selectedNetwork}
+                  setSelectedNetwork={setSelectedNetwork}
+                  updateStorageTransaction={updateStorageTransaction}
+                  networkOptions={DROPDOWN_NETWORK_OPTIONS}
+                />
+              ),
               // Add a placeholder button without the `onPress` to avoid flicker
               headerRight: () => (
                 <TouchableHighlight
@@ -395,17 +403,19 @@ export default function App() {
             })}
           >
             {({ navigation }) => (
-              <HomeScreen address={address} navigation={navigation}
-              tokenBalance={yourLocalBalance}
-              tokenName={nativeTokenName}
-              tokenSymbol={nativeTokenSymbol}
-              tokenLogo={nativeTokenLogo}
-              tokenPrice={price}
-              openBlockExplorer={openBlockExplorer}
-              disconnect={disconnect} 
-              wallectConnectConnector={wallectConnectConnector} 
-              setWalletConnectUrl={setWalletConnectUrl} 
-              walletConnectUrl={walletConnectUrl} 
+              <HomeScreen
+                address={address}
+                navigation={navigation}
+                tokenBalance={yourLocalBalance}
+                tokenName={nativeTokenName}
+                tokenSymbol={nativeTokenSymbol}
+                tokenLogo={nativeTokenLogo}
+                tokenPrice={price}
+                openBlockExplorer={openBlockExplorer}
+                disconnect={disconnect}
+                wallectConnectConnector={wallectConnectConnector}
+                setWalletConnectUrl={setWalletConnectUrl}
+                walletConnectUrl={walletConnectUrl}
               />
             )}
           </AppStack.Screen>
@@ -434,7 +444,7 @@ export default function App() {
               headerShown: false,
             })}
           >
-             {({ navigation }) => (
+            {({ navigation }) => (
               <QRScreen address={address} navigation={navigation} />
             )}
           </AppStack.Screen>
