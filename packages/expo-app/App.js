@@ -45,7 +45,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { QRScannerScreen } from "./screens/QRScannerScreen";
 import { QRScreen } from "./screens/QRScreen";
 import { WalletsScreen } from "./screens/WalletsScreen";
-import {SendScreen} from "./screens/SendScreen";
+import { SendScreen } from "./screens/SendScreen";
 import TokenDisplay from "./components/TokenDisplay";
 import AddressDisplay from "./components/AddressDisplay";
 import { extractJSONRPCMessage, loadOrGenerateWallet } from "./helpers/utils";
@@ -231,7 +231,7 @@ export default function App() {
           value,
           data,
         };
-        
+
         console.log("tx", tx);
         let hash;
         if (method === SEND_TRANSACTION) {
@@ -446,8 +446,16 @@ export default function App() {
             options={({ navigation, route }) => ({
               headerShown: false,
             })}
-            component={QRScannerScreen}
-          />
+          >
+            {({ navigation }) => (
+              <QRScannerScreen
+                setWalletConnectUrl={setWalletConnectUrl}
+                setToAddress={setToAddress}
+                navigation={navigation}
+              />
+            )}
+          </AppStack.Screen>
+
           <AppStack.Screen
             name="QrShow"
             options={({ navigation, route }) => ({
@@ -460,23 +468,22 @@ export default function App() {
           </AppStack.Screen>
           <AppStack.Screen
             name="Send"
-            options={({ navigation, route }) => ({
-            })}
+            options={({ navigation, route }) => ({})}
           >
             {({ navigation }) => (
               <SendScreen
-              tokenSymbol={nativeTokenSymbol}
-              hide={hideSend}
-              balance={yourLocalBalance}
-              price={price}
-              gasPrice={gasPrice}
-              showScanner={showScanner}
-              tokenName={nativeTokenName}
-              tokenLogo={nativeTokenLogo}
-              toAddress={toAddress}
-              setToAddress={setToAddress}
-              sendEth={sendEth}
-              navigation={navigation}
+                tokenSymbol={nativeTokenSymbol}
+                hide={hideSend}
+                balance={yourLocalBalance}
+                price={price}
+                gasPrice={gasPrice}
+                showScanner={showScanner}
+                tokenName={nativeTokenName}
+                tokenLogo={nativeTokenLogo}
+                toAddress={toAddress}
+                setToAddress={setToAddress}
+                sendEth={sendEth}
+                navigation={navigation}
               />
             )}
           </AppStack.Screen>

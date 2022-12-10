@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
 import AntIcon from "react-native-vector-icons/AntDesign";
@@ -83,8 +83,10 @@ export const HomeScreen = ({
   setWalletConnectUrl,
   walletConnectUrl,
 }) => {
+  const WCIcon = walletConnectParams ? walletConnectParams.peerMeta.icons[0] : null
+  const WCUrl = walletConnectParams ? walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '') : ''
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <ScrollView contentContainerStyle={{ flex: 1, alignItems: "center" }}>
       <AddressDisplay
         address={address}
         showQR={() => navigation.navigate("QrShow")}
@@ -127,9 +129,8 @@ export const HomeScreen = ({
           wallectConnectConnector && (
             <>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={[styles.textButton, { color: "green" }]}>
-                  hola
-                </Text>
+              {WCIcon && <Image style={{ width: 36, height: 36, marginRight: 4 }} source={{ uri: WCIcon }} />}
+              <Text style={[styles.textButton, { color: 'green' }]}>{WCUrl}</Text>
               </View>
               <TouchableOpacity onPress={disconnect}>
                 <Text
@@ -157,7 +158,7 @@ export const HomeScreen = ({
           cancelTransaction={cancelTransaction}
         />
       )}
-    </View>
+    </ScrollView>
   );
 };
 
