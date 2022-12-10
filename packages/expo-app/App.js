@@ -231,6 +231,7 @@ export default function App() {
           value,
           data,
         };
+        
         console.log("tx", tx);
         let hash;
         if (method === SEND_TRANSACTION) {
@@ -418,6 +419,13 @@ export default function App() {
                 wallet={wallet}
                 pendingTransaction={pendingTransaction}
                 provider={localProvider}
+                gasPrice={gasPrice}
+                showTransactionScreen={showTransactionScreen}
+                walletConnectParams={walletConnectParams}
+                network={walletConnectNetwork}
+                hideTransaction={hideTransaction}
+                confirmTransaction={confirmTransaction}
+                cancelTransaction={cancelTransaction}
               />
             )}
           </AppStack.Screen>

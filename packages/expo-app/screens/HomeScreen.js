@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
 import AntIcon from "react-native-vector-icons/AntDesign";
@@ -69,8 +69,15 @@ export const HomeScreen = ({
   tokenPrice,
   openBlockExplorer,
   wallet,
+  gasPrice,
   pendingTransaction,
   provider,
+  showTransactionScreen,
+  walletConnectNetwork,
+  walletConnectParams,
+  hideTransaction,
+  cancelTransaction,
+  confirmTransaction,
   disconnect,
   wallectConnectConnector,
   setWalletConnectUrl,
@@ -107,6 +114,49 @@ export const HomeScreen = ({
           <FontAwesomeIcon name="send" size={24} style={styles.buttonIcon} />
         </LinearGradient>
       </FloatingButton>
+      <View
+        style={{
+          width: "100%",
+          marginTop: 12,
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {
+          wallectConnectConnector && (
+            <>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text style={[styles.textButton, { color: "green" }]}>
+                  hola
+                </Text>
+              </View>
+              <TouchableOpacity onPress={disconnect}>
+                <Text
+                  style={[styles.textButton, { marginTop: 12, color: "red" }]}
+                >
+                  <FontAwesomeIcon name="close" size={18} /> Disconnect
+                </Text>
+              </TouchableOpacity>
+            </>
+          )
+        }
+      </View>
+      {showTransactionScreen && (
+        <TransactionScreen
+          address={address}
+          tokenSymbol={tokenSymbol}
+          balance={tokenBalance}
+          price={tokenPrice}
+          gasPrice={gasPrice}
+          pendingTransaction={pendingTransaction}
+          walletConnectParams={walletConnectParams}
+          network={walletConnectNetwork}
+          hideTransaction={hideTransaction}
+          confirmTransaction={confirmTransaction}
+          cancelTransaction={cancelTransaction}
+        />
+      )}
     </View>
   );
 };

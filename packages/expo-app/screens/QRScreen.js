@@ -1,11 +1,22 @@
 import { Text, TouchableOpacity, View } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import QRCode from 'react-native-qrcode-svg';
 import Blockie from "../components/Blockie";
 let whiteLogo = require('../assets/white.png');
 export const QRScreen = ({address, navigation}) => {
     return <TouchableOpacity
     onPress={() => navigation.goBack()}
-    style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#333", flexDirection: 'column', justifyContent: 'center' }}>
+    style={{height: '100%', width: '100%', flexDirection: 'column', justifyContent: 'center' }}>
+         <LinearGradient
+          colors={["#05bcff", "#249ff5","#4580eb" ]}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+          }}
+        >
     <View style={{
         display: 'flex', justifyContent: 'center', alignItems: 'center',
         position: 'relative'
@@ -34,5 +45,6 @@ export const QRScreen = ({address, navigation}) => {
     }}>
         {address}
     </Text>
+    </LinearGradient>
 </TouchableOpacity>
 }

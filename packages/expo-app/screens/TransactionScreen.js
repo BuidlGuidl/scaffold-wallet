@@ -5,7 +5,7 @@ import { truncateAddress } from "../helpers/utils";
 import { PERSONAL_SIGN, SEND_TRANSACTION, SIGN_TRANSACTION } from "../constants";
 
 const TransactionScreen = (props) => {
-    const { address, tokenSymbol, balance, price, gasPrice, pendingTransaction, hideTransaction, walletConnectParams, network } = props
+    const { address, tokenSymbol, balance, price, gasPrice, pendingTransaction, navigation, walletConnectParams, network } = props
 
     const WCUrl = walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '')
     const WCIcon = walletConnectParams.peerMeta.icons[0]
@@ -54,13 +54,13 @@ const TransactionScreen = (props) => {
         setLoading(true)
         await props.confirmTransaction()
         setLoading(false)
-        hideTransaction()
+        navigation.goBack()
     }
     const reject = async () => {
         setLoading(true)
         await props.cancelTransaction()
         setLoading(false)
-        hideTransaction()
+        navigation.goBack()
     }
 
     return <SafeAreaView style={{ position: 'absolute', height: '100%', width: '100%' }}>
