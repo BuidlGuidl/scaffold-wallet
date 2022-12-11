@@ -12,8 +12,8 @@ function TokenDisplay(props) {
   const logoURL = props.tokenLogo;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Balance</Text>
+    <View style={[styles.container, !props.hideShadow ? styles.withShadow : ""]}>
+      {!props.hideShadow && <Text style={styles.title}>Balance</Text>}
       <View style={styles.row}>
         <View style={styles.left}>
           <Image style={styles.logo} source={{ uri: logoURL }} />
@@ -37,21 +37,24 @@ function TokenDisplay(props) {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    marginTop: 24,
     width: "90%",
     flexDirection: "column",
     justifyContent: "space-between",
     fontSize: 24,
     backgroundColor: "#fff",
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 16,
-    paddingBottom: 16,
+    borderRadius: 10,
+  },
+  withShadow:{
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    borderRadius: 10,
+    marginTop: 24,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+
   },
   title: {
     fontSize: 22,

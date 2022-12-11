@@ -98,7 +98,9 @@ export const TransactionsDisplay = (props) => {
     }
 
     usePoller(pollUnconfirmedTransactions, 5000);
-
+    if(unconfirmedTransactions.length == 0){
+        return<></>
+    }
     return <View style={styles.container}>
            <Text style={styles.title}>Transactions</Text>
         {unconfirmedTransactions.map((txn, i) => {

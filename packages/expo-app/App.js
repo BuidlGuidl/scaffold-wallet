@@ -379,6 +379,7 @@ export default function App() {
           <AppStack.Screen
             name="Home"
             options={({ navigation, route }) => ({
+              headerShown: !showTransactionScreen,
               headerLeft: (props) => (
                 <Image style={styles.logo} source={ScaffoldEthWalletLogo} />
               ),

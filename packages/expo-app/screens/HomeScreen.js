@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, TextInput } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
 import AntIcon from "react-native-vector-icons/AntDesign";
@@ -85,6 +85,7 @@ export const HomeScreen = ({
 }) => {
   const WCIcon = walletConnectParams ? walletConnectParams.peerMeta.icons[0] : null
   const WCUrl = walletConnectParams ? walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '') : ''
+
   return (
     <ScrollView contentContainerStyle={{ flex: 1, alignItems: "center" }}>
       <AddressDisplay
@@ -125,6 +126,7 @@ export const HomeScreen = ({
           alignItems: "center",
         }}
       >
+        
         {
           wallectConnectConnector && (
             <>
@@ -143,10 +145,13 @@ export const HomeScreen = ({
           )
         }
       </View>
+
       {showTransactionScreen && (
         <TransactionScreen
           address={address}
           tokenSymbol={tokenSymbol}
+          tokenName={tokenName}
+          tokenLogo={tokenLogo}
           balance={tokenBalance}
           price={tokenPrice}
           gasPrice={gasPrice}
