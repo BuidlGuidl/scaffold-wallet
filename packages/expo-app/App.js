@@ -316,11 +316,7 @@ export default function App() {
       connect(url);
     }
   }, [walletConnectUrl]);
-
-  const gasPriceInGwei = gasPrice
-    ? parseFloat(ethers.utils.formatUnits(gasPrice, "gwei")).toFixed(1)
-    : 0;
-
+  
   const openBlockExplorer = () =>
     Linking.openURL(`${targetNetwork.blockExplorer}address/${address}`);
 

@@ -20,52 +20,16 @@ import "@ethersproject/shims";
 import {
   NETWORKS,
   ALCHEMY_KEY,
-  SEND_TRANSACTION,
-  PERSONAL_SIGN,
-  SIGN_TRANSACTION,
-  SIGN,
-  DROPDOWN_NETWORK_OPTIONS,
-  SIGN_TYPED_DATA_V4,
-  SIGN_TYPED_DATA,
 } from "../constants";
 // Polyfill for localStorage
 import "../helpers/windows";
 import { ethers } from "ethers";
-import { arrayify } from "@ethersproject/bytes";
-import { useStaticJsonRPC } from "../hooks";
-import useGasPrice from "../hooks/GasPrice";
-import WalletConnect from "@walletconnect/client";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import RNPickerSelect from "react-native-picker-select";
-import RNRestart from "react-native-restart";
-import { signTypedData } from "@metamask/eth-sig-util";
-import { toBuffer } from "ethereumjs-util";
-
-// Screens and Components
-import { QRScannerScreen } from "./QRScannerScreen";
-import { QRScreen } from "./QRScreen";
-import WalletsScreen from "./WalletsScreen";
-import SendScreen from "./SendScreen";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import TokenDisplay from "../components/TokenDisplay";
 import AddressDisplay from "../components/AddressDisplay";
-import { extractJSONRPCMessage, loadOrGenerateWallet } from "../helpers/utils";
 import TransactionScreen from "./TransactionScreen";
 import { TransactionsDisplay } from "../components/TransactionsDisplay";
-import { updateStorageTransaction } from "../helpers/Transactions";
-import useExchangePrice from "../hooks/ExchangePrice";
-import useBalance from "../hooks/Balance";
-import ErrorDisplay from "../components/ErrorDisplay";
-import { NetworkDisplay } from "../components/NetworkDisplay";
 import WalletConnectDisplay from "../components/WalletConnectDisplay";
-
-const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
-
-// 🛰 providers
-const providers = [
-  "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406",
-  `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
-  "https://rpc.scaffoldeth.io:48544",
-];
 
 export const HomeScreen = ({
   navigation,
@@ -97,12 +61,30 @@ export const HomeScreen = ({
         .replace("https://", "")
         .replace("http://", "")
     : "";
-  const paddingTop = !wallectConnectConnector || !!pendingTransaction ? 110 : 40;
+  const gasPriceInGwei = gasPrice
+    ? parseFloat(ethers.utils.formatUnits(gasPrice, "gwei")).toFixed(1)
+    : 0;
+
+  const paddingTop =
+    !wallectConnectConnector || !!pendingTransaction ? 110 : 40;
   return (
     <>
       <ScrollView
-        contentContainerStyle={{ alignItems: "center", paddingBottom: paddingTop }}
+        contentContainerStyle={{
+          alignItems: "center",
+          paddingBottom: paddingTop,
+        }}
       >
+        <View style={{ marginTop: 10, display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center" }}>
+          <FontAwesome5
+            name="gas-pump"
+            size={16}
+            style={styles.buttonIconGwei}
+          />
+          <Text style={{ fontSize: 14, fontWeight: "700"}}> {gasPriceInGwei} Gwei</Text>
+          
+        </View>
+
         <AddressDisplay
           address={address}
           showQR={() => navigation.navigate("QrShow")}
@@ -110,11 +92,11 @@ export const HomeScreen = ({
           openBlockExplorer={() => openBlockExplorer()}
         />
         {wallectConnectConnector && (
-            <WalletConnectDisplay
-              wCIcon={WCIcon}
-              wCUrl={WCUrl}
-              disconnect={disconnect}
-            />
+          <WalletConnectDisplay
+            wCIcon={WCIcon}
+            wCUrl={WCUrl}
+            disconnect={disconnect}
+          />
         )}
         <TokenDisplay
           tokenBalance={tokenBalance}
@@ -183,4 +165,5 @@ var styles = StyleSheet.create({
     marginLeft: -4,
     color: "#fff",
   },
+  buttonIconGwei: {},
 });
