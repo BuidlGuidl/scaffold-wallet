@@ -88,8 +88,6 @@ export const HomeScreen = ({
   confirmTransaction,
   disconnect,
   wallectConnectConnector,
-  setWalletConnectUrl,
-  walletConnectUrl,
 }) => {
   const WCIcon = walletConnectParams
     ? walletConnectParams.peerMeta.icons[0]

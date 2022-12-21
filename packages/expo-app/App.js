@@ -373,7 +373,9 @@ export default function App() {
     : "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png";
 
   return (
+    <>
     <NavigationContainer>
+      <ErrorDisplay message={errorMessage} />
       <AppStack.Navigator>
         <AppStack.Group>
           <AppStack.Screen
@@ -415,8 +417,6 @@ export default function App() {
                 openBlockExplorer={openBlockExplorer}
                 disconnect={disconnect}
                 wallectConnectConnector={wallectConnectConnector}
-                setWalletConnectUrl={setWalletConnectUrl}
-                walletConnectUrl={walletConnectUrl}
                 wallet={wallet}
                 pendingTransaction={pendingTransaction}
                 provider={localProvider}
@@ -491,6 +491,7 @@ export default function App() {
         </AppStack.Group>
       </AppStack.Navigator>
     </NavigationContainer>
+    </>
   );
 }
 
