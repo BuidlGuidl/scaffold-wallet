@@ -18,17 +18,15 @@ function TokenDisplay(props) {
         <View style={styles.left}>
           <Image style={styles.logo} source={{ uri: logoURL }} />
           <View>
-            <Text style={styles.tokenName}>{props.tokenName}</Text>
-            <Text style={styles.tokenBalance}>
-              {formattedTokenBalance} {props.tokenSymbol}
+          <Text style={styles.tokenBalance}>
+              {parseFloat(formattedTokenBalance.toFixed(9))} {props.tokenSymbol}
             </Text>
+            <Text style={styles.tokenName}>{formattedDollarBalance} USD</Text>
+
           </View>
         </View>
 
-        <Text style={styles.dollarBalance}>
-          {formattedDollarBalance}
-          <Text style={styles.dollarSymbol}> USD</Text>{" "}
-        </Text>
+        
       </View>
     </View>
   );

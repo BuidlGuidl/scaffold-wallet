@@ -83,7 +83,7 @@ export const SendScreen = ({
           value={!!amount ? `${amount}` : null}
           keyboardType="numeric"
           maxLength={8}
-          onChangeText={(val) => setAmount(parseFloat(val))}
+          onChangeText={(val) => setAmount(parseFloat(val.replace(",", ".")))}
           placeholder="0.0"
         />
         <Text style={styles.tokenSymbol}>{tokenSymbol}</Text>
@@ -91,7 +91,7 @@ export const SendScreen = ({
       <View style={styles.feedContainer}>
         <Text style={{ fontSize: 22 }}>
           <Text style={{ fontSize: 22 }}>Total USD: </Text>
-          {(amount * price).toFixed(2)}
+          {(amount|| 0 * price).toFixed(2)}
         </Text>
         <Text style={{ fontSize: 16, marginTop: 10 }}>
           Est. Fee:{" "}

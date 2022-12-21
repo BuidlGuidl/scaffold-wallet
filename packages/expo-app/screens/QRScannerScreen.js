@@ -15,7 +15,10 @@ export const QRScannerScreen = ({ navigation, setWalletConnectUrl, setToAddress 
     }
     // Handle Address QRs
     else if (data && data.indexOf("ethereum:") === 0) {
-        const cleanAddress = data.slice(9)
+        let cleanAddress = data.slice(9)
+        if(cleanAddress.indexOf("@") != -1){
+          cleanAddress = cleanAddress.split("@")[0]
+        }
         setToAddress(cleanAddress)
         navigation.goBack()
     } else if (data && ethers.utils.isAddress(data)) {
