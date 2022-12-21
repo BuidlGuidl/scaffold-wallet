@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView, TextInput } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+} from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
 import AntIcon from "react-native-vector-icons/AntDesign";
@@ -49,6 +56,7 @@ import useExchangePrice from "../hooks/ExchangePrice";
 import useBalance from "../hooks/Balance";
 import ErrorDisplay from "../components/ErrorDisplay";
 import { NetworkDisplay } from "../components/NetworkDisplay";
+import WalletConnectDisplay from "../components/WalletConnectDisplay";
 
 const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -83,32 +91,75 @@ export const HomeScreen = ({
   setWalletConnectUrl,
   walletConnectUrl,
 }) => {
-  const WCIcon = walletConnectParams ? walletConnectParams.peerMeta.icons[0] : null
-  const WCUrl = walletConnectParams ? walletConnectParams.peerMeta.url.replace('https://', '').replace('http://', '') : ''
+  const WCIcon = walletConnectParams
+    ? walletConnectParams.peerMeta.icons[0]
+    : null;
+  const WCUrl = walletConnectParams
+    ? walletConnectParams.peerMeta.url
+        .replace("https://", "")
+        .replace("http://", "")
+    : "";
 
   return (
-    <ScrollView contentContainerStyle={{ flex: 1, alignItems: "center" }}>
-      <AddressDisplay
-        address={address}
-        showQR={() => navigation.navigate("QrShow")}
-        showWallet={() => navigation.navigate("Wallets")}
-        openBlockExplorer={() => openBlockExplorer()}
-      />
+    <>
+      <ScrollView
+        contentContainerStyle={{ alignItems: "center", paddingBottom: 40 }}
+      >
+        <AddressDisplay
+          address={address}
+          showQR={() => navigation.navigate("QrShow")}
+          showWallet={() => navigation.navigate("Wallets")}
+          openBlockExplorer={() => openBlockExplorer()}
+        />
+        {wallectConnectConnector && (
+            <WalletConnectDisplay
+              wCIcon={WCIcon}
+              wCUrl={WCUrl}
+              disconnect={disconnect}
+            />
+        )}
+        <TokenDisplay
+          tokenBalance={tokenBalance}
+          tokenName={tokenName}
+          tokenSymbol={tokenSymbol}
+          tokenLogo={tokenLogo}
+          tokenPrice={tokenPrice}
+        />
+        <TransactionsDisplay
+          provider={provider}
+          wallet={wallet}
+          address={address}
+          pendingTransaction={pendingTransaction}
+        />
 
-      <TokenDisplay
-        tokenBalance={tokenBalance}
-        tokenName={tokenName}
-        tokenSymbol={tokenSymbol}
-        tokenLogo={tokenLogo}
-        tokenPrice={tokenPrice}
-      />
-      <TransactionsDisplay
-        provider={provider}
-        wallet={wallet}
-        address={address}
-        pendingTransaction={pendingTransaction}
-      />
+        <View
+          style={{
+            width: "100%",
+            marginTop: 12,
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        ></View>
 
+        {showTransactionScreen && (
+          <TransactionScreen
+            address={address}
+            tokenSymbol={tokenSymbol}
+            tokenName={tokenName}
+            tokenLogo={tokenLogo}
+            balance={tokenBalance}
+            price={tokenPrice}
+            gasPrice={gasPrice}
+            pendingTransaction={pendingTransaction}
+            walletConnectParams={walletConnectParams}
+            network={walletConnectNetwork}
+            hideTransaction={hideTransaction}
+            confirmTransaction={confirmTransaction}
+            cancelTransaction={cancelTransaction}
+          />
+        )}
+      </ScrollView>
       <FloatingButton onPress={() => navigation.navigate("Send")} right={20}>
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
@@ -117,53 +168,7 @@ export const HomeScreen = ({
           <FontAwesomeIcon name="send" size={24} style={styles.buttonIcon} />
         </LinearGradient>
       </FloatingButton>
-      <View
-        style={{
-          width: "100%",
-          marginTop: 12,
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        
-        {
-          wallectConnectConnector && (
-            <>
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-              {WCIcon && <Image style={{ width: 36, height: 36, marginRight: 4 }} source={{ uri: WCIcon }} />}
-              <Text style={[styles.textButton, { color: 'green' }]}>{WCUrl}</Text>
-              </View>
-              <TouchableOpacity onPress={disconnect}>
-                <Text
-                  style={[styles.textButton, { marginTop: 12, color: "red" }]}
-                >
-                  <FontAwesomeIcon name="close" size={18} /> Disconnect
-                </Text>
-              </TouchableOpacity>
-            </>
-          )
-        }
-      </View>
-
-      {showTransactionScreen && (
-        <TransactionScreen
-          address={address}
-          tokenSymbol={tokenSymbol}
-          tokenName={tokenName}
-          tokenLogo={tokenLogo}
-          balance={tokenBalance}
-          price={tokenPrice}
-          gasPrice={gasPrice}
-          pendingTransaction={pendingTransaction}
-          walletConnectParams={walletConnectParams}
-          network={walletConnectNetwork}
-          hideTransaction={hideTransaction}
-          confirmTransaction={confirmTransaction}
-          cancelTransaction={cancelTransaction}
-        />
-      )}
-    </ScrollView>
+    </>
   );
 };
 

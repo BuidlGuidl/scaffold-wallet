@@ -1,35 +1,25 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { ethers } from "ethers";
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
-function TokenDisplay(props) {
-  const formattedTokenBalance =
-    Math.round(ethers.utils.formatEther(props.tokenBalance) * 1e4) / 1e4;
-  const formattedDollarBalance = (
-    Number(ethers.utils.formatEther(props.tokenBalance)) * props.tokenPrice
-  ).toFixed(2);
-
-  const logoURL = props.tokenLogo;
-
+function WalletConnectDisplay(props) {
   return (
-    <View style={[styles.container, !props.hideShadow ? styles.withShadow : ""]}>
-      {!props.hideShadow && <Text style={styles.title}>Balance</Text>}
+    <View style={styles.container}>
+    <Text style={styles.title}>Dapp Connected</Text>
       <View style={styles.row}>
         <View style={styles.left}>
-          <Image style={styles.logo} source={{ uri: logoURL }} />
+          <Image style={styles.logo} source={{ uri: props.wCIcon }}/>
           <View>
-            <Text style={styles.tokenName}>{props.tokenName}</Text>
-            <Text style={styles.tokenBalance}>
-              {formattedTokenBalance} {props.tokenSymbol}
-            </Text>
+            <Text style={styles.tokenName}>{props.wCUrl}</Text>
           </View>
         </View>
 
-        <Text style={styles.dollarBalance}>
-          {formattedDollarBalance}
-          <Text style={styles.dollarSymbol}> USD</Text>{" "}
-        </Text>
+        <TouchableOpacity onPress={props.disconnect} style={styles.disconnect}>
+          <FontAwesomeIcon  name="power-off" size={20} color={"red"} />
+        </TouchableOpacity> 
       </View>
+  
     </View>
   );
 }
@@ -43,8 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     backgroundColor: "#fff",
     borderRadius: 10,
-  },
-  withShadow:{
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
@@ -54,7 +42,6 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingTop: 16,
     paddingBottom: 16,
-
   },
   title: {
     fontSize: 18,
@@ -76,17 +63,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: 20,
     marginRight: 10,
   },
-  tokenName: { fontSize: 18, color: "#888" },
-  tokenBalance: { fontSize: 20, fontWeight: "700" },
-  dollarBalance: { fontSize: 24, fontWeight: "700" },
-  dollarSymbol: {
-    fontWeight: "300",
-  },
+  disconnect: { padding:10},
 });
 
-export default React.memo(TokenDisplay);
+export default React.memo(WalletConnectDisplay);
