@@ -392,12 +392,12 @@ var styles = StyleSheet.create({
   address: {
     marginLeft: 6,
     fontWeight: "400",
-    fontSize: 20,
+    fontSize: 16,
   },
   selectedAddress: {
     marginLeft: 6,
     fontWeight: "600",
-    fontSize: 24,
+    fontSize: 18,
   },
   container: {
     flex: 1,

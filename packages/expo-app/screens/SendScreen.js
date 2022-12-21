@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   Button,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -58,7 +59,7 @@ export const SendScreen = ({
   };
 
   return (
-    <View style={styles.mainContainer}>
+    <ScrollView contentContainerStyle={styles.mainContainer}>
       <View style={styles.addressContainer}>
         <Text style={styles.addressContainerText}>To:</Text>
         {validToAddress && toAddress.length === 42 && (
@@ -136,13 +137,12 @@ export const SendScreen = ({
           <Text style={styles.cancelText}>Cancel</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: "100%",
     width: "100%",
     backgroundColor: "#fff",
     flexDirection: "column",
