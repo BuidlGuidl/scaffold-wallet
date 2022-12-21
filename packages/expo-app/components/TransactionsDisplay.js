@@ -122,7 +122,7 @@ export const TransactionsDisplay = (props) => {
                 >
                     <Text style={[{
                         textAlign: 'right',
-                        fontSize: 16,
+                        fontSize: 12,
                         fontWeight: "700",
                         color: '#0E76FD',
                     }]}>Speed Up 20%</Text>

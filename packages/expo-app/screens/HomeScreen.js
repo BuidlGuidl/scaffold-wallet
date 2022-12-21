@@ -97,11 +97,11 @@ export const HomeScreen = ({
         .replace("https://", "")
         .replace("http://", "")
     : "";
-
+  const paddingTop = !wallectConnectConnector || !!pendingTransaction ? 110 : 40;
   return (
     <>
       <ScrollView
-        contentContainerStyle={{ alignItems: "center", paddingBottom: 40 }}
+        contentContainerStyle={{ alignItems: "center", paddingBottom: paddingTop }}
       >
         <AddressDisplay
           address={address}
