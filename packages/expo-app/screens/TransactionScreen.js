@@ -15,6 +15,9 @@ import {
   SEND_TRANSACTION,
   SIGN_TRANSACTION,
 } from "../constants";
+import Blockie from "../components/Blockie";
+import TokenDisplay from "../components/TokenDisplay";
+import LinearGradient from "react-native-linear-gradient";
 
 const TransactionScreen = (props) => {
   const {
@@ -111,7 +114,7 @@ const TransactionScreen = (props) => {
           fontSize: 20,
           fontWeight: "600",
           textAlign: "center",
-          marginTop: 100,
+          marginTop: 30,
         }}
       >
         {isTransaction ? "Transaction Request" : "Message Signing Request"}
