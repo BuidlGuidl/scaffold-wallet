@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
-  SafeAreaView,
-  Button,
   StyleSheet,
-  Text,
-  TextInput,
   TouchableOpacity,
   View,
   Linking,
   Image,
-  StatusBar,
 } from "react-native";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
@@ -34,7 +29,6 @@ import { useStaticJsonRPC } from "./hooks";
 import useGasPrice from "./hooks/GasPrice";
 import WalletConnect from "@walletconnect/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import RNPickerSelect from "react-native-picker-select";
 import AntIcon from "react-native-vector-icons/AntDesign";
 import RNRestart from "react-native-restart";
 import { signTypedData } from "@metamask/eth-sig-util";
@@ -46,13 +40,7 @@ import { QRScannerScreen } from "./screens/QRScannerScreen";
 import { QRScreen } from "./screens/QRScreen";
 import { WalletsScreen } from "./screens/WalletsScreen";
 import { SendScreen } from "./screens/SendScreen";
-import TokenDisplay from "./components/TokenDisplay";
-import AddressDisplay from "./components/AddressDisplay";
 import { extractJSONRPCMessage, loadOrGenerateWallet } from "./helpers/utils";
-import TransactionScreen from "./screens/TransactionScreen";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import { FloatingButton } from "./components/FloatingButton";
-import { TransactionsDisplay } from "./components/TransactionsDisplay";
 import { updateStorageTransaction } from "./helpers/Transactions";
 import useExchangePrice from "./hooks/ExchangePrice";
 import useBalance from "./hooks/Balance";
@@ -87,24 +75,6 @@ export default function App() {
   const price = useExchangePrice(targetNetwork, mainnetProvider, 30000);
   const gasPrice = useGasPrice(targetNetwork, 10000);
   const yourLocalBalance = useBalance(targetNetwork, address, 10000);
-
-  // Different Screens and functions to show/hide
-  // Note the useCallback to prevent excessive re-eval/rendering in child components since so much state is in App.js
-  const [showQRScanner, setShowQRScanner] = useState(false);
-  const showScanner = useCallback(() => setShowQRScanner(true), []);
-  const hideScanner = useCallback(() => setShowQRScanner(false), []);
-
-  const [showWalletScreen, setShowWalletScreen] = useState(false);
-  const showWallet = useCallback(() => setShowWalletScreen(true), []);
-  const hideWallet = useCallback(() => setShowWalletScreen(false), []);
-
-  const [showQRDisplayScreen, setShowQRDisplayScreen] = useState(false);
-  const showQR = useCallback(() => setShowQRDisplayScreen(true), []);
-  const hideQR = useCallback(() => setShowQRDisplayScreen(false), []);
-
-  const [showSendScreen, setShowSendScreen] = useState(false);
-  const showSend = useCallback(() => setShowSendScreen(true), []);
-  const hideSend = useCallback(() => setShowSendScreen(false), []);
 
   const [showTransactionScreen, setShowTransactionScreen] = useState(false);
   // const showTransaction = useCallback(() => setShowTransactionScreen(true), [])
@@ -350,14 +320,6 @@ export default function App() {
   const gasPriceInGwei = gasPrice
     ? parseFloat(ethers.utils.formatUnits(gasPrice, "gwei")).toFixed(1)
     : 0;
-  const WCIcon = walletConnectParams
-    ? walletConnectParams.peerMeta.icons[0]
-    : null;
-  const WCUrl = walletConnectParams
-    ? walletConnectParams.peerMeta.url
-        .replace("https://", "")
-        .replace("http://", "")
-    : "";
 
   const openBlockExplorer = () =>
     Linking.openURL(`${targetNetwork.blockExplorer}address/${address}`);
@@ -474,11 +436,9 @@ export default function App() {
             {({ navigation }) => (
               <SendScreen
                 tokenSymbol={nativeTokenSymbol}
-                hide={hideSend}
                 balance={yourLocalBalance}
                 price={price}
                 gasPrice={gasPrice}
-                showScanner={showScanner}
                 tokenName={nativeTokenName}
                 tokenLogo={nativeTokenLogo}
                 toAddress={toAddress}

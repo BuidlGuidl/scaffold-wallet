@@ -1,16 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Clipboard from "@react-native-clipboard/clipboard";
-import QRCode from "react-native-qrcode-svg";
 import Blockie from "../components/Blockie";
 import AntIcon from "react-native-vector-icons/AntDesign";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 import { truncateAddress } from "../helpers/utils";
-import { FloatingButton } from "./FloatingButton";
 import LinearGradient from "react-native-linear-gradient";
-let whiteLogo = require("../assets/white.png");
 
 const AddressDisplay = ({ showQR, address, showWallet, openBlockExplorer }) => {
   if (!address) return <></>;
@@ -63,14 +60,20 @@ const AddressDisplay = ({ showQR, address, showWallet, openBlockExplorer }) => {
       </View>
 
       <View style={styles.section}>
-        <TouchableOpacity style={styles.secondaryButton} onPress={() => showQR()}>
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={() => showQR()}
+        >
           <Text style={styles.textButton}>
             <FontAwesomeIcon name="qrcode" size={18} color="#4580eb" /> View QR
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryButton} onPress={() => openBlockExplorer()}>
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={() => openBlockExplorer()}
+        >
           <Text style={styles.textButton}>
-            <AntIcon name="search1" size={18} color="#4580eb" />  Explorer
+            <AntIcon name="search1" size={18} color="#4580eb" /> Explorer
           </Text>
         </TouchableOpacity>
       </View>
@@ -96,9 +99,9 @@ const styles = StyleSheet.create({
   buttonIcon: {
     color: "#fff",
   },
-  secondaryButton:{
-    width: "50%"
-  },  
+  secondaryButton: {
+    width: "50%",
+  },
   blockieRow: {
     display: "flex",
     justifyContent: "center",

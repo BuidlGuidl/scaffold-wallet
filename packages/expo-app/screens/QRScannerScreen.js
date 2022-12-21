@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity,StyleSheet, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import QRCodeScanner from "react-native-qrcode-scanner";
+import { ethers } from "ethers";
 
 export const QRScannerScreen = ({ navigation, setWalletConnectUrl, setToAddress }) => {
   const onSuccess = e => {

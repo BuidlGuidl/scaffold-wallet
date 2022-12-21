@@ -23,7 +23,6 @@ export const SendScreen = ({
   gasPrice,
   tokenName,
   tokenLogo,
-  showScanner,
   toAddress,
   setToAddress,
   sendEth,
@@ -73,7 +72,7 @@ export const SendScreen = ({
           onChangeText={setToAddress}
           value={toAddress}
         />
-        <TouchableOpacity onPress={showScanner} style={{ marginLeft: -24 }}>
+        <TouchableOpacity onPress={()=>navigation.navigate("QrScanner")} style={{ marginLeft: -24 }}>
           <AntIcon name="scan1" size={24} color={"#4580eb"} />
         </TouchableOpacity>
         <Button title="Paste" onPress={pasteToPkInput} color={"#4580eb"} />
