@@ -14,8 +14,9 @@ packages/expo-app/contracts/*
 packages/hardhat/cache*
 packages/**/data
 !packages/expo-app/contracts/contracts.js
-
-
+packages/expo-app/ios/expoapp.xcworkspace/xcuserdata/*
+packages/expo-app/ios/ScaffoldWallet.xcodeproj/xcuserdata/*
+packages/expo-app/ios/Pods
 # ts
 packages/hardhat-ts/cache
 # secrets

@@ -19,13 +19,13 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](htt
 > clone/fork the repo:
 
 ```bash
-git clone https://github.com/danielkhoo/scaffold-eth-react-native-wallet.git
+git clone https://github.com/BuidlGuidl/scaffold-wallet.git
 ```
 
 > install all dependencies:
 
 ```bash
-cd scaffold-eth-expo/expo-app
+cd scaffold-wallet/packages/expo-app
 yarn install
 ```
 
@@ -50,20 +50,21 @@ yarn ios
 Alternatively, to test on an iOS device (requires Apple Developer Account) open and run the project with XCode.
 
 # Features
+
 - Multiple Network Support (Ethereum / Optimism / Arbitrum / Gnosis / Polygon)
 - Testnet Support ( Kovan / Rinkeby / Ropsten / Goerli / Mumbai)
 - Wallet Generation / Import / Export
 - Keychain Storage of Private Keys w/ Biometrics
 - Wallet Connect
-- Sending / Signing Transactions 
+- Sending / Signing Transactions
 - Pending Transaction Speed up
 - QR Scanning
 
 # TODOs
+
 - Transaction Cancel
 - Transaction History
 - Push Notifications
-
 
 # 💌 P.S.
 

@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.punkwallet"
+      "bundleIdentifier": "eth.scaffoldwallet"
     },
     "android": {
       "adaptiveIcon": {
