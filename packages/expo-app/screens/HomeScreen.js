@@ -140,12 +140,12 @@ export const HomeScreen = ({
           />
         )}
       </ScrollView>
-      <FloatingButton onPress={() => navigation.navigate("Send")} right={20}>
+      <FloatingButton onPress={() => navigation.navigate("QrScanner")} right={20}>
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
           style={styles.linearGradient}
         >
-          <FontAwesomeIcon name="send" size={24} style={styles.buttonIcon} />
+          <AntIcon name="scan1" size={34} style={styles.buttonIcon} />
         </LinearGradient>
       </FloatingButton>
     </>
@@ -162,7 +162,6 @@ var styles = StyleSheet.create({
     borderRadius: 50,
   },
   buttonIcon: {
-    marginLeft: -4,
     color: "#fff",
   },
   buttonIconGwei: {},

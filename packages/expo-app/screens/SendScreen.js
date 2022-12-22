@@ -48,7 +48,7 @@ export const SendScreen = ({
     setLoading(true);
     await sendEth(amount.toString(), toAddress);
     setLoading(false);
-    navigation.goBack();
+    navigation.popToTop();
   };
   const pasteToPkInput = async () => {
     const pk = await Clipboard.getString();
@@ -131,7 +131,10 @@ export const SendScreen = ({
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.buttonMain}
-          onPress={() => navigation.goBack()}
+          onPress={() => {
+            navigation.popToTop();
+            navigation.goBack(null);
+          }}
         >
           <Text style={styles.cancelText}>Cancel</Text>
         </TouchableOpacity>

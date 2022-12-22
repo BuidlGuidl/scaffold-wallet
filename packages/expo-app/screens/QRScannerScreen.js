@@ -20,10 +20,10 @@ export const QRScannerScreen = ({ navigation, setWalletConnectUrl, setToAddress 
           cleanAddress = cleanAddress.split("@")[0]
         }
         setToAddress(cleanAddress)
-        navigation.goBack()
+        navigation.navigate("Send")
     } else if (data && ethers.utils.isAddress(data)) {
         setToAddress(data)
-        navigation.goBack()
+        navigation.navigate("Send")
     }
 
 }

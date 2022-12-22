@@ -352,15 +352,7 @@ export default function App() {
                 />
               ),
               // Add a placeholder button without the `onPress` to avoid flicker
-              headerRight: () => (
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("QrScanner")}
-                >
-                  <View>
-                    <AntIcon name="scan1" size={30} color="#619EFD" />
-                  </View>
-                </TouchableOpacity>
-              ),
+              headerRight: null,
             })}
           >
             {({ navigation }) => (
