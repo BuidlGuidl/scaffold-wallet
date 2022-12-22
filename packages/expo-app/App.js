@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
-  TouchableOpacity,
   View,
   Linking,
   Image,
+  Text,
 } from "react-native";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
@@ -40,7 +40,11 @@ import { QRScannerScreen } from "./screens/QRScannerScreen";
 import { QRScreen } from "./screens/QRScreen";
 import { WalletsScreen } from "./screens/WalletsScreen";
 import { SendScreen } from "./screens/SendScreen";
-import { extractJSONRPCMessage, loadOrGenerateWallet } from "./helpers/utils";
+import {
+  extractJSONRPCMessage,
+  generateWallet,
+  loadWallet,
+} from "./helpers/utils";
 import { updateStorageTransaction } from "./helpers/Transactions";
 import useExchangePrice from "./hooks/ExchangePrice";
 import useBalance from "./hooks/Balance";
@@ -48,6 +52,7 @@ import ErrorDisplay from "./components/ErrorDisplay";
 import { NavigationContainer } from "@react-navigation/native";
 import { HomeScreen } from "./screens/HomeScreen";
 import { NetworkDisplay } from "./components/NetworkDisplay";
+import LinearGradient from "react-native-linear-gradient";
 
 const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
@@ -91,7 +96,7 @@ export default function App() {
   const [wallectConnectConnector, setWallectConnectConnector] = useState();
   const [walletConnectParams, setWalletConnectParams] = useState();
   const [walletConnectNetwork, setWalletConnectNetwork] = useState();
-
+  const [loadingStatus, setLoadingStatus] = useState("started");
   const refreshApp = () => RNRestart.Restart();
 
   const sendEth = async (ethAmount, to) => {
@@ -294,7 +299,12 @@ export default function App() {
   useEffect(() => {
     console.log("useEffect App");
     const loadAccountAndNetwork = async () => {
-      const activeWallet = await loadOrGenerateWallet();
+      let activeWallet = await loadWallet();
+      if (!activeWallet) {
+        setLoadingStatus("generating");
+        activeWallet = await generateWallet();
+      }
+      setLoadingStatus(null);
       setWallet(activeWallet);
       setAddress(activeWallet.address);
 
@@ -316,7 +326,7 @@ export default function App() {
       connect(url);
     }
   }, [walletConnectUrl]);
-  
+
   const openBlockExplorer = () =>
     Linking.openURL(`${targetNetwork.blockExplorer}address/${address}`);
 
@@ -330,119 +340,174 @@ export default function App() {
     ? targetNetwork.nativeCurrency.logoURI
     : "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png";
 
+  if (
+    loadingStatus === "started" ||
+    !address ||
+    loadingStatus === "generating"
+  ) {
+    return (
+      <View style={{ height: "100%", width: "100%" }}>
+        <LinearGradient
+          colors={["#4580eb", "#249ff5", "#05bcff"]}
+          style={styles.linearGradient}
+        >
+          <View style={styles.mainButtons}>
+            <View style={styles.icons}>
+              <AntIcon name="wallet" size={40} color="#fff" />
+            </View>
+            <Text style={styles.buttonText}>
+              {loadingStatus === "started" ? "Loading..." : "Generating..."}
+            </Text>
+          </View>
+        </LinearGradient>
+      </View>
+    );
+  }
+
   return (
     <>
-    <NavigationContainer>
-      <ErrorDisplay message={errorMessage} />
-      <AppStack.Navigator>
-        <AppStack.Group>
-          <AppStack.Screen
-            name="Home"
-            options={({ navigation, route }) => ({
-              headerShown: !showTransactionScreen,
-              headerLeft: (props) => (
-                <Image style={styles.logo} source={ScaffoldEthWalletLogo} />
-              ),
-              headerTitle: () => (
-                <NetworkDisplay
-                  selectedNetwork={selectedNetwork}
-                  setSelectedNetwork={setSelectedNetwork}
-                  updateStorageTransaction={updateStorageTransaction}
-                  networkOptions={DROPDOWN_NETWORK_OPTIONS}
+      <NavigationContainer>
+        <ErrorDisplay message={errorMessage} />
+        <AppStack.Navigator>
+          <AppStack.Group>
+            <AppStack.Screen
+              name="Home"
+              options={({ navigation, route }) => ({
+                headerShown: !showTransactionScreen,
+                headerLeft: (props) => (
+                  <Image style={styles.logo} source={ScaffoldEthWalletLogo} />
+                ),
+                headerTitle: () => (
+                  <NetworkDisplay
+                    selectedNetwork={selectedNetwork}
+                    setSelectedNetwork={setSelectedNetwork}
+                    updateStorageTransaction={updateStorageTransaction}
+                    networkOptions={DROPDOWN_NETWORK_OPTIONS}
+                  />
+                ),
+                // Add a placeholder button without the `onPress` to avoid flicker
+                headerRight: null,
+              })}
+            >
+              {({ navigation }) => (
+                <HomeScreen
+                  address={address}
+                  navigation={navigation}
+                  tokenBalance={yourLocalBalance}
+                  tokenName={nativeTokenName}
+                  tokenSymbol={nativeTokenSymbol}
+                  tokenLogo={nativeTokenLogo}
+                  tokenPrice={price}
+                  openBlockExplorer={openBlockExplorer}
+                  disconnect={disconnect}
+                  wallectConnectConnector={wallectConnectConnector}
+                  wallet={wallet}
+                  pendingTransaction={pendingTransaction}
+                  provider={localProvider}
+                  gasPrice={gasPrice}
+                  showTransactionScreen={showTransactionScreen}
+                  walletConnectParams={walletConnectParams}
+                  network={walletConnectNetwork}
+                  hideTransaction={hideTransaction}
+                  confirmTransaction={confirmTransaction}
+                  cancelTransaction={cancelTransaction}
                 />
-              ),
-              // Add a placeholder button without the `onPress` to avoid flicker
-              headerRight: null,
-            })}
-          >
-            {({ navigation }) => (
-              <HomeScreen
-                address={address}
-                navigation={navigation}
-                tokenBalance={yourLocalBalance}
-                tokenName={nativeTokenName}
-                tokenSymbol={nativeTokenSymbol}
-                tokenLogo={nativeTokenLogo}
-                tokenPrice={price}
-                openBlockExplorer={openBlockExplorer}
-                disconnect={disconnect}
-                wallectConnectConnector={wallectConnectConnector}
-                wallet={wallet}
-                pendingTransaction={pendingTransaction}
-                provider={localProvider}
-                gasPrice={gasPrice}
-                showTransactionScreen={showTransactionScreen}
-                walletConnectParams={walletConnectParams}
-                network={walletConnectNetwork}
-                hideTransaction={hideTransaction}
-                confirmTransaction={confirmTransaction}
-                cancelTransaction={cancelTransaction}
-              />
-            )}
-          </AppStack.Screen>
-          <AppStack.Screen name="Wallets">
-            {({ navigation }) => (
-              <WalletsScreen
-                wallet={wallet}
-                address={address}
-                setWallet={(newWallet) => setWallet(newWallet)}
-                setAddress={(newAddress) => setAddress(newAddress)}
-              />
-            )}
-          </AppStack.Screen>
-        </AppStack.Group>
-        <AppStack.Group screenOptions={{ presentation: "modal" }}>
-          <AppStack.Screen
-            name="QrScanner"
-            options={({ navigation, route }) => ({
-              headerShown: false,
-            })}
-          >
-            {({ navigation }) => (
-              <QRScannerScreen
-                setWalletConnectUrl={setWalletConnectUrl}
-                setToAddress={setToAddress}
-                navigation={navigation}
-              />
-            )}
-          </AppStack.Screen>
+              )}
+            </AppStack.Screen>
+            <AppStack.Screen name="Wallets">
+              {({ navigation }) => (
+                <WalletsScreen
+                  wallet={wallet}
+                  address={address}
+                  setWallet={(newWallet) => setWallet(newWallet)}
+                  setAddress={(newAddress) => setAddress(newAddress)}
+                />
+              )}
+            </AppStack.Screen>
+          </AppStack.Group>
+          <AppStack.Group screenOptions={{ presentation: "modal" }}>
+            <AppStack.Screen
+              name="QrScanner"
+              options={({ navigation, route }) => ({
+                headerShown: false,
+              })}
+            >
+              {({ navigation }) => (
+                <QRScannerScreen
+                  setWalletConnectUrl={setWalletConnectUrl}
+                  setToAddress={setToAddress}
+                  navigation={navigation}
+                />
+              )}
+            </AppStack.Screen>
 
-          <AppStack.Screen
-            name="QrShow"
-            options={({ navigation, route }) => ({
-              headerShown: false,
-            })}
-          >
-            {({ navigation }) => (
-              <QRScreen address={address} navigation={navigation} />
-            )}
-          </AppStack.Screen>
-          <AppStack.Screen
-            name="Send"
-            options={({ navigation, route }) => ({})}
-          >
-            {({ navigation }) => (
-              <SendScreen
-                tokenSymbol={nativeTokenSymbol}
-                balance={yourLocalBalance}
-                price={price}
-                gasPrice={gasPrice}
-                tokenName={nativeTokenName}
-                tokenLogo={nativeTokenLogo}
-                toAddress={toAddress}
-                setToAddress={setToAddress}
-                sendEth={sendEth}
-                navigation={navigation}
-              />
-            )}
-          </AppStack.Screen>
-        </AppStack.Group>
-      </AppStack.Navigator>
-    </NavigationContainer>
+            <AppStack.Screen
+              name="QrShow"
+              options={({ navigation, route }) => ({
+                headerShown: false,
+              })}
+            >
+              {({ navigation }) => (
+                <QRScreen address={address} navigation={navigation} />
+              )}
+            </AppStack.Screen>
+            <AppStack.Screen
+              name="Send"
+              options={({ navigation, route }) => ({})}
+            >
+              {({ navigation }) => (
+                <SendScreen
+                  tokenSymbol={nativeTokenSymbol}
+                  balance={yourLocalBalance}
+                  price={price}
+                  gasPrice={gasPrice}
+                  tokenName={nativeTokenName}
+                  tokenLogo={nativeTokenLogo}
+                  toAddress={toAddress}
+                  setToAddress={setToAddress}
+                  sendEth={sendEth}
+                  navigation={navigation}
+                />
+              )}
+            </AppStack.Screen>
+          </AppStack.Group>
+        </AppStack.Navigator>
+      </NavigationContainer>
     </>
   );
 }
 
 var styles = StyleSheet.create({
   logo: { width: 30, height: 30, borderRadius: 50 },
+  linearGradient: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+  },
+  icons: {
+    position: "relative",
+  },
+  buttonPlus: {
+    position: "absolute",
+    top: -6,
+    right: -10,
+  },
+  buttonText: {
+    marginTop: 2,
+    fontWeight: "600",
+    fontSize: 30,
+    textAlign: "center",
+    color: "#fff",
+  },
+  mainButtons: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
 });
