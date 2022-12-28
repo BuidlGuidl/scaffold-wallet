@@ -299,7 +299,7 @@ export default function App() {
     let networkEtherScan = ethers.providers.getNetwork(targetNetwork.chainId);
     let etherScanProvider = new ethers.providers.EtherscanProvider(
       networkEtherScan,
-      "PT52T7NWIVH6TFXMECYM2ZCHVUGQWKKW7S"
+      "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8"
     );
     return await etherScanProvider
       .getHistory(address, block10Days, currentBlock)
@@ -338,7 +338,7 @@ export default function App() {
   }, [walletConnectUrl]);
 
   useEffect(() => {
-    if (!address) {
+    if (!address || isFetchingHistoryData) {
       return;
     }
     isFetchingHistoryData = true;
@@ -347,14 +347,19 @@ export default function App() {
       isFetchingHistoryData = false;
     });
 
-    return () => {};
+    return () => {
+      isFetchingHistoryData = false;
+    };
   }, [address, targetNetwork]);
 
   useEffect(() => {
-    if (isFetchingHistoryData) {
+    if (!address || isFetchingHistoryData) {
       return;
     }
     isFetchingHistoryData = true;
+    getHistoricalData().then((result) => {
+      setTransactionHistory(result);
+    });
     setTimeout(() => {
       getHistoricalData().then((result) => {
         setTransactionHistory(result);
@@ -362,7 +367,9 @@ export default function App() {
       });
     }, 10000);
 
-    return () => {};
+    return () => {
+      isFetchingHistoryData = false;
+    };
   }, [yourLocalBalance]);
 
   const openBlockExplorer = (entity, element) =>
