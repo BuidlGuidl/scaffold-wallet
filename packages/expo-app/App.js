@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  StyleSheet,
-  View,
-  Linking,
-  Image,
-  Text,
-} from "react-native";
+import { StyleSheet, View, Linking, Image, Text } from "react-native";
 // Import the crypto getRandomValues shim (**BEFORE** the shims)
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
@@ -80,7 +74,7 @@ export default function App() {
   const price = useExchangePrice(targetNetwork, mainnetProvider, 30000);
   const gasPrice = useGasPrice(targetNetwork, 10000);
   const yourLocalBalance = useBalance(targetNetwork, address, 10000);
-
+  let isFetchingHistoryData = false;
   const [showTransactionScreen, setShowTransactionScreen] = useState(false);
   // const showTransaction = useCallback(() => setShowTransactionScreen(true), [])
   const hideTransaction = useCallback(
@@ -91,6 +85,8 @@ export default function App() {
   const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
   const [pendingTransaction, setPendingTransaction] = useState();
+  const [transactionHistory, setTransactionHistory] = useState([]);
+
   const [errorMessage, setErrorMessage] = useState(null);
   const [walletConnectUrl, setWalletConnectUrl] = useState();
   const [wallectConnectConnector, setWallectConnectConnector] = useState();
@@ -292,9 +288,23 @@ export default function App() {
 
   const displayErrorMessage = useCallback((msg) => {
     setErrorMessage(msg);
-    setTimeout(() => setErrorMessage(null), 10000);
+    console.log(msg);
+    setTimeout(() => setErrorMessage(null), 5000);
   }, []);
 
+  const getHistoricalData = async () => {
+    const currentBlock = await localProvider.getBlockNumber();
+    const blockTime = 15; // ETH block time is 15 seconds
+    const block10Days = currentBlock - (10 * 60 * 60 * 60) / blockTime;
+    let networkEtherScan = ethers.providers.getNetwork(targetNetwork.chainId);
+    let etherScanProvider = new ethers.providers.EtherscanProvider(
+      networkEtherScan,
+      "PT52T7NWIVH6TFXMECYM2ZCHVUGQWKKW7S"
+    );
+    return await etherScanProvider
+      .getHistory(address, block10Days, currentBlock)
+      .then((result) => result.reverse());
+  };
   // On App Load useEffect, check async storage for an existing wallet, else generate a 🔥 burner wallet.
   useEffect(() => {
     console.log("useEffect App");
@@ -327,8 +337,36 @@ export default function App() {
     }
   }, [walletConnectUrl]);
 
-  const openBlockExplorer = () =>
-    Linking.openURL(`${targetNetwork.blockExplorer}address/${address}`);
+  useEffect(() => {
+    if (!address) {
+      return;
+    }
+    isFetchingHistoryData = true;
+    getHistoricalData().then((result) => {
+      setTransactionHistory(result);
+      isFetchingHistoryData = false;
+    });
+
+    return () => {};
+  }, [address, targetNetwork]);
+
+  useEffect(() => {
+    if (isFetchingHistoryData) {
+      return;
+    }
+    isFetchingHistoryData = true;
+    setTimeout(() => {
+      getHistoricalData().then((result) => {
+        setTransactionHistory(result);
+        isFetchingHistoryData = false;
+      });
+    }, 10000);
+
+    return () => {};
+  }, [yourLocalBalance]);
+
+  const openBlockExplorer = (entity, element) =>
+    Linking.openURL(`${targetNetwork.blockExplorer}${entity}/${element}`);
 
   const nativeTokenName = targetNetwork.nativeCurrency
     ? targetNetwork.nativeCurrency.name
@@ -363,7 +401,6 @@ export default function App() {
       </View>
     );
   }
-
   return (
     <>
       <NavigationContainer>
@@ -396,6 +433,7 @@ export default function App() {
                   tokenBalance={yourLocalBalance}
                   tokenName={nativeTokenName}
                   tokenSymbol={nativeTokenSymbol}
+                  transactionHistory={transactionHistory}
                   tokenLogo={nativeTokenLogo}
                   tokenPrice={price}
                   openBlockExplorer={openBlockExplorer}

@@ -49,6 +49,7 @@ export const HomeScreen = ({
   walletConnectParams,
   hideTransaction,
   cancelTransaction,
+  transactionHistory,
   confirmTransaction,
   disconnect,
   wallectConnectConnector,
@@ -89,7 +90,7 @@ export const HomeScreen = ({
           address={address}
           showQR={() => navigation.navigate("QrShow")}
           showWallet={() => navigation.navigate("Wallets")}
-          openBlockExplorer={() => openBlockExplorer()}
+          openBlockExplorer={() => openBlockExplorer("address", address)}
         />
         {wallectConnectConnector && (
           <WalletConnectDisplay
@@ -107,11 +108,13 @@ export const HomeScreen = ({
         />
         <TransactionsDisplay
           provider={provider}
+          tokenSymbol={tokenSymbol}
+          transactionHistory={transactionHistory}
           wallet={wallet}
           address={address}
+          openBlockExplorer={(txHash) => openBlockExplorer("tx", txHash)}
           pendingTransaction={pendingTransaction}
         />
-
         <View
           style={{
             width: "100%",
