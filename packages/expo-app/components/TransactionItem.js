@@ -1,5 +1,4 @@
-import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { TouchableOpacity, View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 import { truncateAddress } from "../helpers/utils";
@@ -23,7 +22,7 @@ export const TransactionItem = ({
     >
       {isPending ? (
         <View style={styles.transactionIcon}>
-          <FontAwesome5 name="sync-alt" size={16} color="#249ff5" />
+          <ActivityIndicator size="small" color="#249ff5" />
         </View>
       ) : (
         <View style={styles.transactionIcon}>
