@@ -1,4 +1,10 @@
-import { TouchableOpacity, View, Text, StyleSheet, ActivityIndicator } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+} from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 import { truncateAddress } from "../helpers/utils";
@@ -15,28 +21,30 @@ export const TransactionItem = ({
   isSender,
 }) => {
   const isPending = handleSpeedUp != null;
+  const isContract = txn.data.length > 3;
+
+  const TransactionIcon = () => {
+    if (isPending) {
+      return <ActivityIndicator size="small" color="#249ff5" />;
+    }
+    if (isContract) {
+      return <FontAwesomeIcon name="file-code-o" size={20} color="#4580eb" />;
+    }
+    if (isSender) {
+      return <FontAwesomeIcon name="arrow-circle-o-up" size={20} color="red" />;
+    }
+    return (
+      <FontAwesomeIcon name="arrow-circle-o-down" size={20} color="green" />
+    );
+  };
   return (
     <TouchableOpacity
       style={styles.completedRow}
       onPress={() => openBlockExplorer(txn.hash)}
     >
-      {isPending ? (
-        <View style={styles.transactionIcon}>
-          <ActivityIndicator size="small" color="#249ff5" />
-        </View>
-      ) : (
-        <View style={styles.transactionIcon}>
-          {isSender ? (
-            <FontAwesomeIcon name="arrow-circle-o-up" size={20} color="red" />
-          ) : (
-            <FontAwesomeIcon
-              name="arrow-circle-o-down"
-              size={20}
-              color="green"
-            />
-          )}
-        </View>
-      )}
+      <View style={styles.transactionIcon}>
+        <TransactionIcon/>
+      </View>
 
       <View style={styles.column}>
         {isSender && (
