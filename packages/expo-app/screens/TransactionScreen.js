@@ -26,6 +26,8 @@ const TransactionScreen = (props) => {
     balance,
     price,
     gasPrice,
+    tokenName, 
+    tokenLogo,
     pendingTransaction,
     navigation,
     walletConnectParams,

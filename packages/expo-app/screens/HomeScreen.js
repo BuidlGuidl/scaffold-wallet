@@ -52,6 +52,7 @@ export const HomeScreen = ({
   transactionHistory,
   confirmTransaction,
   disconnect,
+  network,
   wallectConnectConnector,
 }) => {
   const WCIcon = walletConnectParams
@@ -136,7 +137,7 @@ export const HomeScreen = ({
             gasPrice={gasPrice}
             pendingTransaction={pendingTransaction}
             walletConnectParams={walletConnectParams}
-            network={walletConnectNetwork}
+            network={network}
             hideTransaction={hideTransaction}
             confirmTransaction={confirmTransaction}
             cancelTransaction={cancelTransaction}
