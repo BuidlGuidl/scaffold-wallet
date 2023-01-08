@@ -31,7 +31,7 @@ export const TransactionItem = ({
       return <FontAwesomeIcon name="file-code-o" size={20} color="#4580eb" />;
     }
     if (isSender) {
-      return <FontAwesomeIcon name="arrow-circle-o-up" size={20} color="red" />;
+      return <FontAwesomeIcon name="arrow-circle-o-up" size={20} color="#4580eb" />;
     }
     return (
       <FontAwesomeIcon name="arrow-circle-o-down" size={20} color="green" />
