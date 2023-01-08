@@ -72,7 +72,12 @@ export const SendScreen = ({
           onChangeText={setToAddress}
           value={toAddress}
         />
-        <TouchableOpacity onPress={()=>navigation.navigate("QrScanner")} style={{ marginLeft: -24 }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("QrScanner", {
+            target:"address"
+          })}
+          style={{ marginLeft: -24 }}
+        >
           <AntIcon name="scan1" size={24} color={"#4580eb"} />
         </TouchableOpacity>
         <Button title="Paste" onPress={pasteToPkInput} color={"#4580eb"} />
@@ -90,24 +95,26 @@ export const SendScreen = ({
       </View>
       <View style={styles.feedContainer}>
         <Text style={{ fontSize: 22 }}>
-          <Text style={{ fontSize: 22 }}>Total USD: </Text>
-          {(amount|| 0 * price).toFixed(2)}
+          <Text style={{ fontSize: 22 }}>
+            {" "}
+            {(amount || 0 * price).toFixed(2)} USD{" "}
+          </Text>
         </Text>
-        <Text style={{ fontSize: 16, marginTop: 10 }}>
-          Est. Fee:{" "}
-          <Text style={{ fontSize: 16 }}>{transferCostInUSD} USD</Text>
-        </Text>
+    
+        <View style={styles.balanceContainer}>
+          <Text style={{ fontSize: 16}}>
+            Est. Fee:{" "}
+            <Text style={{ fontSize: 16 }}>{transferCostInUSD} USD</Text>
+          </Text>
+        </View>
+        <View style={styles.balanceContainer}>
+          <Text style={styles.tokenBalance}>
+            Balance:
+            {parseFloat(formattedEthBalance.toFixed(9))} {tokenSymbol}
+          </Text>
+        </View>
       </View>
 
-      <View style={styles.balanceContainer}>
-        <TokenDisplay
-          tokenBalance={balance}
-          tokenName={tokenName}
-          tokenSymbol={tokenSymbol}
-          tokenLogo={tokenLogo}
-          tokenPrice={price}
-        />
-      </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity
           style={styles.buttonMain}
@@ -133,7 +140,6 @@ export const SendScreen = ({
           style={styles.buttonMain}
           onPress={() => {
             navigation.popToTop();
-            navigation.goBack(null);
           }}
         >
           <Text style={styles.cancelText}>Cancel</Text>
@@ -146,6 +152,7 @@ export const SendScreen = ({
 const styles = StyleSheet.create({
   mainContainer: {
     width: "100%",
+    height:"100%",
     backgroundColor: "#fff",
     flexDirection: "column",
     paddingHorizontal: 15,
@@ -157,7 +164,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   addressContainerText: {
-    marginRight:8,
+    marginRight: 8,
     fontSize: 22,
     fontWeight: "800",
     color: "#888",
@@ -172,14 +179,14 @@ const styles = StyleSheet.create({
   },
   balanceContainer: {
     width: "100%",
-    marginTop: 16,
+    marginTop: 4,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
   ammoutContainer: {
     width: "100%",
-    marginTop: 36,
+    marginTop: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -190,7 +197,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   feedContainer: {
-    marginTop: 20,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
