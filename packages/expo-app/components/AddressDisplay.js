@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import Clipboard from "@react-native-clipboard/clipboard";
 import Blockie from "../components/Blockie";
 import AntIcon from "react-native-vector-icons/AntDesign";
@@ -8,8 +8,15 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 import { truncateAddress } from "../helpers/utils";
 import LinearGradient from "react-native-linear-gradient";
+const WalletConnectIcon = require("../assets/walletConnect.png");
 
-const AddressDisplay = ({ showQR, address, showWallet, openBlockExplorer }) => {
+const AddressDisplay = ({
+  showQR,
+  address,
+  showWallet,
+  showWalletConnectScreen,
+  sendEth,
+}) => {
   if (!address) return <></>;
   const displayAddress = truncateAddress(address);
 
@@ -62,19 +69,30 @@ const AddressDisplay = ({ showQR, address, showWallet, openBlockExplorer }) => {
       <View style={styles.section}>
         <TouchableOpacity
           style={styles.secondaryButton}
-          onPress={() => showQR()}
+          onPress={() => showWalletConnectScreen()}
+        >
+          <Image style={styles.logo} source={WalletConnectIcon} />
+
+          <Text style={styles.textButton}>Connect</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={() => sendEth()}
         >
           <Text style={styles.textButton}>
-            <FontAwesomeIcon name="qrcode" size={18} color="#4580eb" /> View QR
+            <FontAwesomeIcon name="send" size={20} color="#249ff5" />
           </Text>
+          <Text style={styles.textButton}>Send</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.secondaryButton}
-          onPress={() => openBlockExplorer()}
+          onPress={() => showQR()}
         >
           <Text style={styles.textButton}>
-            <AntIcon name="search1" size={18} color="#4580eb" /> Explorer
+            <FontAwesomeIcon name="qrcode" size={20} color="#249ff5" />
           </Text>
+          <Text style={styles.textButton}>Receive</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -86,7 +104,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 30,
+    marginTop: 20,
   },
   linearGradient: {
     borderRadius: 50,
@@ -100,7 +118,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   secondaryButton: {
-    width: "50%",
+    width: 100,
   },
   blockieRow: {
     display: "flex",
@@ -114,6 +132,7 @@ const styles = StyleSheet.create({
     top: 25,
     right: -15,
   },
+  logo: { height: 20,width:40, alignSelf:"center" },
   addressRow: {
     flexDirection: "row",
     justifyContent: "center",
@@ -135,7 +154,7 @@ const styles = StyleSheet.create({
   },
   section: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     width: "100%",
     marginTop: 20,
   },

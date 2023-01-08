@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from "react-native";
 import { ethers } from "ethers";
 
 function TokenDisplay(props) {
@@ -12,22 +12,47 @@ function TokenDisplay(props) {
   const logoURL = props.tokenLogo;
 
   return (
-    <View style={[styles.container, !props.hideShadow ? styles.withShadow : ""]}>
+    <View
+      style={[styles.container, !props.hideShadow ? styles.withShadow : ""]}
+    >
       {!props.hideShadow && <Text style={styles.title}>Balance</Text>}
+      <TouchableWithoutFeedback onPress={() => !props.hideShadow ? props.openBlockExplorer() : null}>
       <View style={styles.row}>
         <View style={styles.left}>
-          <Image style={styles.logo} source={{ uri: logoURL }} />
-          <View>
-          <Text style={styles.tokenBalance}>
-              {parseFloat(formattedTokenBalance.toFixed(9))} {props.tokenSymbol}
-            </Text>
-            <Text style={styles.tokenName}>{formattedDollarBalance} USD</Text>
-
-          </View>
+          {!!props.isLoading ? (
+            <>
+              <View style={[styles.logo, { backgroundColor: "#ddd" }]}></View>
+              <View>
+                <View
+                  style={{
+                    backgroundColor: "#ddd",
+                    width: 80,
+                    height: 20,
+                    marginBottom: 5,
+                  }}
+                ></View>
+                <View
+                  style={{ backgroundColor: "#ddd", width: 120, height: 20 }}
+                ></View>
+              </View>
+            </>
+          ) : (
+            <>
+              <Image style={styles.logo} source={{ uri: logoURL }} />
+              <View>
+                <Text style={styles.tokenBalance}>
+                  {parseFloat(formattedTokenBalance.toFixed(9))}{" "}
+                  {props.tokenSymbol}
+                </Text>
+                <Text style={styles.tokenName}>
+                  {formattedDollarBalance} USD
+                </Text>
+              </View>
+            </>
+          )}
         </View>
-
-        
       </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 }
@@ -42,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
   },
-  withShadow:{
+  withShadow: {
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
@@ -52,7 +77,6 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingTop: 16,
     paddingBottom: 16,
-
   },
   title: {
     fontSize: 18,

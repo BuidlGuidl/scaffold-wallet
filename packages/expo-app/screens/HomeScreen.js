@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FloatingButton } from "../components/FloatingButton";
@@ -17,10 +18,7 @@ import LinearGradient from "react-native-linear-gradient";
 import "react-native-get-random-values";
 // Import the the ethers shims (**BEFORE** ethers)
 import "@ethersproject/shims";
-import {
-  NETWORKS,
-  ALCHEMY_KEY,
-} from "../constants";
+import { NETWORKS, ALCHEMY_KEY } from "../constants";
 // Polyfill for localStorage
 import "../helpers/windows";
 import { ethers } from "ethers";
@@ -42,6 +40,7 @@ export const HomeScreen = ({
   openBlockExplorer,
   wallet,
   gasPrice,
+  isLoading,
   pendingTransaction,
   provider,
   showTransactionScreen,
@@ -77,37 +76,33 @@ export const HomeScreen = ({
           paddingBottom: paddingTop,
         }}
       >
-        <View style={{ marginTop: 10, display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"center" }}>
-          <FontAwesome5
-            name="gas-pump"
-            size={16}
-            style={styles.buttonIconGwei}
-          />
-          <Text style={{ fontSize: 14, fontWeight: "700"}}> {gasPriceInGwei} Gwei</Text>
-          
-        </View>
-
         <AddressDisplay
           address={address}
           showQR={() => navigation.navigate("QrShow")}
+          sendEth={() => navigation.navigate("Send")}
           showWallet={() => navigation.navigate("Wallets")}
-          openBlockExplorer={() => openBlockExplorer("address", address)}
+          showWalletConnectScreen={() => navigation.navigate("WalletConnect")}
+          openBlockExplorer={() => openBlockExplorer("address", address)} //TODO MISSING INTERACTION
         />
+        
         {wallectConnectConnector && (
           <WalletConnectDisplay
             wCIcon={WCIcon}
             wCUrl={WCUrl}
             disconnect={disconnect}
           />
-        )}
+        )}       
         <TokenDisplay
           tokenBalance={tokenBalance}
+          isLoading={isLoading}
+          openBlockExplorer={() => openBlockExplorer("address", address)}
           tokenName={tokenName}
           tokenSymbol={tokenSymbol}
           tokenLogo={tokenLogo}
           tokenPrice={tokenPrice}
         />
         <TransactionsDisplay
+          isLoading={isLoading}
           provider={provider}
           tokenSymbol={tokenSymbol}
           transactionHistory={transactionHistory}
@@ -144,7 +139,17 @@ export const HomeScreen = ({
           />
         )}
       </ScrollView>
-      <FloatingButton onPress={() => navigation.navigate("QrScanner")} right={20}>
+      <View style={styles.gasContainer}>
+        <FontAwesome5 name="gas-pump" size={16} style={styles.buttonIconGwei} />
+        <Text style={{ fontSize: 14, fontWeight: "700" }}>
+          {" "}
+          {gasPriceInGwei} Gwei
+        </Text>
+      </View>
+      <FloatingButton
+        onPress={() => navigation.navigate("QrScanner", {target:"both"})}
+        right={20}
+      >
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
           style={styles.linearGradient}
@@ -169,4 +174,22 @@ var styles = StyleSheet.create({
     color: "#fff",
   },
   buttonIconGwei: {},
+  gasContainer: {
+    padding:10,
+    paddingRight:20,
+    paddingLeft:20,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom:54,
+    backgroundColor: "#fff",
+    borderTopRightRadius:50,
+    borderBottomRightRadius:50,
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
 });

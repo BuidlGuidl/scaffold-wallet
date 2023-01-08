@@ -45,6 +45,7 @@ import useBalance from "./hooks/Balance";
 import ErrorDisplay from "./components/ErrorDisplay";
 import { NavigationContainer } from "@react-navigation/native";
 import { HomeScreen } from "./screens/HomeScreen";
+import { WalletConnectScreen } from "./screens/WalletConnectScreen";
 import { NetworkDisplay } from "./components/NetworkDisplay";
 import LinearGradient from "react-native-linear-gradient";
 
@@ -84,6 +85,8 @@ export default function App() {
 
   const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
   const [pendingTransaction, setPendingTransaction] = useState();
   const [transactionHistory, setTransactionHistory] = useState([]);
 
@@ -342,16 +345,23 @@ export default function App() {
       return;
     }
     isFetchingHistoryData = true;
+    setTransactionHistory([]);
     getHistoricalData().then((result) => {
       setTransactionHistory(result);
       isFetchingHistoryData = false;
     });
-
     return () => {
       isFetchingHistoryData = false;
     };
   }, [address, targetNetwork]);
 
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => {};
+  }, [address, targetNetwork]);
   useEffect(() => {
     if (!address || isFetchingHistoryData) {
       return;
@@ -366,7 +376,6 @@ export default function App() {
         isFetchingHistoryData = false;
       });
     }, 10000);
-
     return () => {
       isFetchingHistoryData = false;
     };
@@ -436,12 +445,14 @@ export default function App() {
               {({ navigation }) => (
                 <HomeScreen
                   address={address}
+                  isLoading={isLoading}
                   navigation={navigation}
                   tokenBalance={yourLocalBalance}
                   tokenName={nativeTokenName}
                   tokenSymbol={nativeTokenSymbol}
                   transactionHistory={transactionHistory}
                   tokenLogo={nativeTokenLogo}
+                  isFetchingHistoryData={isFetchingHistoryData}
                   tokenPrice={price}
                   openBlockExplorer={openBlockExplorer}
                   disconnect={disconnect}
@@ -477,8 +488,9 @@ export default function App() {
                 headerShown: false,
               })}
             >
-              {({ navigation }) => (
+              {({ navigation, route }) => (
                 <QRScannerScreen
+                  route={route}
                   setWalletConnectUrl={setWalletConnectUrl}
                   setToAddress={setToAddress}
                   navigation={navigation}
@@ -511,6 +523,20 @@ export default function App() {
                   toAddress={toAddress}
                   setToAddress={setToAddress}
                   sendEth={sendEth}
+                  navigation={navigation}
+                />
+              )}
+            </AppStack.Screen>
+            <AppStack.Screen
+              name="WalletConnect"
+              options={({ navigation, route }) => ({
+                headerShown: false,
+              })}
+            >
+              {({ navigation }) => (
+                <WalletConnectScreen
+                  walletConnectUrl={walletConnectUrl}
+                  setWalletConnectUrl={setWalletConnectUrl}
                   navigation={navigation}
                 />
               )}

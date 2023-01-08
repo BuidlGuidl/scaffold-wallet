@@ -41,16 +41,15 @@ export const QRScreen = ({ address, navigation }) => {
         </View>
 
         <View style={styles.addressTextContainer}>
-          <TouchableOpacity onPress={copyToClipboard}>
-            <Text style={styles.addressText}>{address}</Text>
+          <TouchableOpacity style={{display:"flex", flexDirection:"row", alignItems:"center"}} onPress={copyToClipboard}>
             <Text style={styles.copyText}>
               {copied ? (
                 <FontAwesomeIcon name="check" size={20} color="white" />
               ) : (
                 <FontAwesomeIcon name="copy" size={20} color="white" />
               )}{" "}
-              Copy Address
             </Text>
+            <Text style={styles.addressText}>{address}</Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -86,13 +85,14 @@ var styles = StyleSheet.create({
     color: "#fff",
     fontSize: 14,
     fontWeight: "600",
-    textAlign: "center",
+    textAlign: "left",
+    maxWidth:"90%"
   },
   copyText: {
     color: "#fff",
     fontSize: 14,
     fontWeight: "600",
     textAlign: "center",
-    marginTop: 20,
+    marginRight: 10,
   },
 });

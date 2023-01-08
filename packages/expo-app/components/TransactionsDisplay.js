@@ -2,11 +2,7 @@ import { usePoller } from "eth-hooks";
 import { ethers } from "ethers";
 
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import {
   getStorageTransactions,
   setStorageTransactions,
@@ -19,6 +15,7 @@ export const TransactionsDisplay = (props) => {
     provider,
     wallet,
     address,
+    isLoading,
     transactionHistory,
     tokenSymbol,
     openBlockExplorer,
@@ -122,13 +119,112 @@ export const TransactionsDisplay = (props) => {
   };
 
   usePoller(pollUnconfirmedTransactions, 5000);
+
+  if (!!isLoading) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Transactions</Text>
+        <View style={styles.completedRow}>
+          <View
+            style={{ backgroundColor: "#ddd", width: 20, height: 20 }}
+          ></View>
+          <View style={styles.column}>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+          </View>
+        </View>
+        <View style={styles.completedRow}>
+          <View
+            style={{ backgroundColor: "#ddd", width: 20, height: 20 }}
+          ></View>
+          <View style={styles.column}>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#ddd",
+                marginLeft: 10,
+                marginBottom: 4,
+                width: "90%",
+                height: 10,
+              }}
+            ></View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
   if (unconfirmedTransactions.length == 0 && transactionHistory.length == 0) {
-    return <></>;
+    return <View style={styles.container}>
+      <Text style={styles.title}>Transactions</Text>
+      <Text style={[styles.maxfeed, {marginTop:10, marginLeft: 5}]}>No Transactions Yet</Text>
+    </View>;
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Transactions</Text>
+
       {unconfirmedTransactions.map((txn, i) => {
         const maxFeePerGasInGwei = Number(
           ethers.utils.formatUnits(txn.maxFeePerGas, "gwei")
@@ -204,6 +300,15 @@ const styles = StyleSheet.create({
     marginRight: 15,
     marginTop: 20,
   },
+  column: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    fontSize: 24,
+    marginTop: 20,
+    flex: 1,
+  },
   title: {
     fontSize: 22,
     fontWeight: "600",
@@ -225,6 +330,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     fontSize: 24,
+    marginTop: 20,
   },
   column: {
     display: "flex",
