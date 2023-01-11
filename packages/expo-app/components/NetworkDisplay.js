@@ -10,7 +10,8 @@ const NETWORK_IMAGES = {
   gnosis:require("../assets/gnosis.png"),
   polygon:require("../assets/polygon.png"),
   goerli: require("../assets/goerli.png"),
-  mumbai: require("../assets/mumbai.png")
+  mumbai: require("../assets/mumbai.png"),
+  zksyncTestnet: require("../assets/zksync.png")
 }
 export const NetworkDisplay = ({
   selectedNetwork,
