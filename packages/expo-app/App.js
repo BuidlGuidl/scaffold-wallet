@@ -296,6 +296,29 @@ export default function App() {
   }, []);
 
   const getHistoricalData = async () => {
+    if (targetNetwork.chainId == 280) {
+      // return fetch(
+      //   `https://api.zksync.io/api/v0.2/accounts/${address}/transactions?from=latest&limit=20&direction=older`
+      // )
+      //   .then((response) => response.json())
+      //   .then((data) => data.result.list.map(txn => ({
+      //     data:[],
+      //     hash:txn.txHash,
+      //     nonce:txn.op.nonce,
+      //     from:txn.op.from,
+      //     to:txn.op.to,
+      //     timestamp:txn.createdAt,
+      //     type:0,
+      //     value:{
+      //       _hex: 0
+      //     }
+      //   })))
+      const myPromise = new Promise((resolve, reject) => {
+        resolve([]);
+      });
+      return myPromise
+    }
+
     const currentBlock = await localProvider.getBlockNumber();
     const blockTime = 15; // ETH block time is 15 seconds
     const block10Days = currentBlock - (10 * 60 * 60 * 60) / blockTime;
@@ -304,6 +327,7 @@ export default function App() {
       networkEtherScan,
       "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8"
     );
+
     return await etherScanProvider
       .getHistory(address, block10Days, currentBlock)
       .then((result) => result.reverse());
@@ -362,6 +386,7 @@ export default function App() {
     }, 3000);
     return () => {};
   }, [address, targetNetwork]);
+
   useEffect(() => {
     if (!address || isFetchingHistoryData) {
       return;
@@ -450,7 +475,7 @@ export default function App() {
                   tokenBalance={yourLocalBalance}
                   tokenName={nativeTokenName}
                   tokenSymbol={nativeTokenSymbol}
-                  transactionHistory={transactionHistory}
+                  transactionHistory={targetNetwork.chainId !== 280 ? transactionHistory: []}
                   tokenLogo={nativeTokenLogo}
                   isFetchingHistoryData={isFetchingHistoryData}
                   tokenPrice={price}
@@ -473,6 +498,7 @@ export default function App() {
             <AppStack.Screen name="Wallets">
               {({ navigation }) => (
                 <WalletsScreen
+                  navigation={navigation}
                   wallet={wallet}
                   address={address}
                   setWallet={(newWallet) => setWallet(newWallet)}

@@ -1,6 +1,7 @@
 import {
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   StyleSheet,
   View,
   Button,
@@ -18,13 +19,14 @@ export const WalletConnectScreen = ({
   walletConnectUrl,
 }) => {
   return (
-    <View
-      style={{
-        height: "100%",
-        width: "100%",
-        flexDirection: "column",
-      }}
-    >
+    <TouchableWithoutFeedback
+    onPress={() => navigation.goBack()}
+    style={{
+      height: "100%",
+      width: "100%",
+      flexDirection: "column",
+    }}
+  >
       <LinearGradient
         colors={["#05bcff", "#249ff5", "#4580eb"]}
         style={styles.linearGradient}
@@ -48,8 +50,11 @@ export const WalletConnectScreen = ({
         >
           <AntIcon name="scan1" size={34} />
         </TouchableOpacity>
+        <Text style={{ fontSize: 18, fontWeight: "600", color: "#fff", position:"absolute", bottom:80 }}>
+                Close
+              </Text>
       </LinearGradient>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

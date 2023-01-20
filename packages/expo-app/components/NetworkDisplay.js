@@ -37,12 +37,14 @@ export const NetworkDisplay = ({
             marginTop: 2,
             fontSize: 20,
             fontWeight: "600",
+            width:"100%",
+            marginRight:25
           },
         }}
         placeholder={{}}
-        Icon={null}
+        Icon={() => <AntIcon style={styles.chev} name="down" size={16} />}
       />
-      <AntIcon style={styles.chev} name="down" size={16} />
+      
     </View>
   );
 };
@@ -50,7 +52,7 @@ export const NetworkDisplay = ({
 const styles = StyleSheet.create({
   networkSelectorContainer: {
     display: "flex",
-    width: 180,
+
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -71,7 +73,8 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 6,
   },
-  chev: {
-    marginLeft:6
-  },
+chev:{
+  marginTop:8,
+  paddingRight:5
+}
 });

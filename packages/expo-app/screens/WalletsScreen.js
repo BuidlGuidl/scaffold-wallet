@@ -24,13 +24,8 @@ import Blockie from "../components/Blockie";
 import { ethers } from "ethers";
 import AntIcon from "react-native-vector-icons/AntDesign";
 
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
-  </TouchableOpacity>
-);
 
-export const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
+export const WalletsScreen = ({ wallet, setWallet, setAddress, address, navigation }) => {
   const [loading, setLoading] = useState(false);
   const [walletAddresses, setWalletAddresses] = useState([]);
   const [reveal, setReveal] = useState(false);
@@ -39,22 +34,6 @@ export const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
   const [showImport, setShowImport] = useState(false);
   const [pkToImport, setPkToImport] = useState("");
   const pkInput = useRef();
-
-  const [selectedId, setSelectedId] = useState(null);
-
-  const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
-    const color = item.id === selectedId ? "white" : "black";
-
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
-      />
-    );
-  };
 
   const copyToClipboard = (key) => {
     setCopied(true);
@@ -106,12 +85,12 @@ export const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
       setPkToImport("");
       setShowImport(false);
     } catch (err) {
-        Alert.alert(
-            'Error',
-            'The private key is not valid',
-            [{text: 'Try again',}],
-            {cancelable: false},
-          );
+      Alert.alert(
+        "Error",
+        "The private key is not valid",
+        [{ text: "Try again" }],
+        { cancelable: false }
+      );
     }
   };
 
@@ -120,6 +99,7 @@ export const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
     const existingWallet = await switchActiveWallet(walletAddresses[index]);
     setWallet(existingWallet);
     setAddress(existingWallet.address);
+    navigation.goBack();
   };
 
   const deleteWallet = async (index) => {
@@ -248,17 +228,18 @@ export const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
             return <View key={index}></View>;
           }
           return (
-            <View key={index} style={[styles.accountCard]}>
-              <TouchableOpacity
-                onPress={() => switchToWallet(index)}
-                style={styles.unselectedAccount}
-              >
+            <TouchableOpacity
+              key={index}
+              onPress={() => switchToWallet(index)}
+              style={styles.unselectedAccount}
+            >
+              <View style={[styles.accountCard]}>
                 <>
                   <Blockie address={walletAddress} size={36} />
                   <Text style={styles.address}>{displayAddress}</Text>
                 </>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableOpacity>
           );
         })}
       </View>
@@ -280,11 +261,7 @@ export const WalletsScreen = ({ wallet, setWallet, setAddress, address }) => {
             label="Import"
             onPress={() => importWallet()}
             disabled={pkToImport.length != 66}
-            style={
-                pkToImport.length != 66
-                ? styles.disabled
-                : ""
-            }
+            style={pkToImport.length != 66 ? styles.disabled : ""}
           />
         )}
       </Dialog.Container>
@@ -322,8 +299,8 @@ var styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 16,
   },
-  disabled:{
-    color:"#888"
+  disabled: {
+    color: "#888",
   },
   icons: {
     position: "relative",

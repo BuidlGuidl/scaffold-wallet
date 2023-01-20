@@ -73,7 +73,7 @@ export const NETWORKS = {
     rpcUrl: `https://goerli.infura.io/v3/${INFURA_ID}`,
   },
   zksyncTestnet: {
-    name: "zkSync alpha testnet",
+    name: "zkSync Alpha",
     color: "#333333",
     chainId: 280,
     rpcUrl: `https://zksync2-testnet.zksync.dev`,

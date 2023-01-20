@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, View, TouchableWithoutFeedback } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import QRCodeScanner from "react-native-qrcode-scanner";
 import { ethers } from "ethers";
@@ -38,13 +38,14 @@ export const QRScannerScreen = ({
     }
   };
   return (
-    <View
+    <TouchableWithoutFeedback
       style={{
         height: "100%",
         width: "100%",
         flexDirection: "column",
         justifyContent: "center",
       }}
+      onPress={() => navigation.goBack()}
     >
       <LinearGradient
         colors={["#05bcff", "#249ff5", "#4580eb"]}
@@ -62,23 +63,13 @@ export const QRScannerScreen = ({
             </Text>
           }
           bottomContent={
-            <TouchableOpacity
-              style={{
-                width: 80,
-                height: 36,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onPress={() => navigation.goBack()}
-            >
-              <Text style={{ fontSize: 18, fontWeight: "600", color: "#fff" }}>
+            <Text style={{ fontSize: 18, fontWeight: "600", color: "#fff" }}>
                 Close
               </Text>
-            </TouchableOpacity>
           }
         />
       </LinearGradient>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

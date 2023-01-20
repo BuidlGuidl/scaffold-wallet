@@ -119,7 +119,6 @@ export const TransactionsDisplay = (props) => {
   };
 
   usePoller(pollUnconfirmedTransactions, 5000);
-
   if (!!isLoading) {
     return (
       <View style={styles.container}>
@@ -247,7 +246,6 @@ export const TransactionsDisplay = (props) => {
           />
         );
       })}
-
       {transactionHistory
         .filter((item) => item.type == 0)
         .map((txn, i) => {

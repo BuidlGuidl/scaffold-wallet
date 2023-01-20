@@ -119,6 +119,11 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     width: 100,
+    display: "flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    alignItems:"center",
+    padding: 10
   },
   blockieRow: {
     display: "flex",
@@ -132,7 +137,7 @@ const styles = StyleSheet.create({
     top: 25,
     right: -15,
   },
-  logo: { height: 20,width:40, alignSelf:"center" },
+  logo: { height: 20,width:40 },
   addressRow: {
     flexDirection: "row",
     justifyContent: "center",
@@ -153,15 +158,15 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   section: {
+    display:"flex",
     flexDirection: "row",
     justifyContent: "center",
-    width: "100%",
+    alignItems:"center",
     marginTop: 20,
   },
   textButton: {
     fontSize: 18,
     fontWeight: "600",
-    textAlign: "center",
   },
 });
 

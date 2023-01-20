@@ -52,6 +52,9 @@ export const QRScreen = ({ address, navigation }) => {
             <Text style={styles.addressText}>{address}</Text>
           </TouchableOpacity>
         </View>
+        <Text style={{ fontSize: 18, fontWeight: "600", color: "#fff", position:"absolute", bottom:80 }}>
+                Close
+              </Text>
       </LinearGradient>
     </TouchableOpacity>
   );
