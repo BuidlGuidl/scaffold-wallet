@@ -1,8 +1,8 @@
 // MY INFURA_ID, SWAP IN YOURS FROM https://infura.io/dashboard/ethereum
-export const INFURA_ID = "95ff362df12840c98fa418bcd4b27c8a";
+export const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
 
 // MY ETHERSCAN_ID, SWAP IN YOURS FROM https://etherscan.io/myapikey
-export const ETHERSCAN_KEY = "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8";
+export const ETHERSCAN_KEY = "V1N231J2EK2NGEWBE9F12KIZFMKB67YSXI";
 
 // BLOCKNATIVE ID FOR Notify.js:
 export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
@@ -71,6 +71,13 @@ export const NETWORKS = {
     faucet: "https://goerli-faucet.slock.it/",
     blockExplorer: "https://goerli.etherscan.io/",
     rpcUrl: `https://goerli.infura.io/v3/${INFURA_ID}`,
+  },
+  zksyncTestnet: {
+    name: "zkSync Alpha",
+    color: "#333333",
+    chainId: 280,
+    rpcUrl: `https://zksync2-testnet.zksync.dev`,
+    blockExplorer: "https://goerli.explorer.zksync.io/",
   },
   mumbai: {
     name: "mumbai",
@@ -150,7 +157,7 @@ export const NETWORK = chainId => {
 export const DROPDOWN_NETWORK_OPTIONS = [];
 for (const id in NETWORKS) {
   DROPDOWN_NETWORK_OPTIONS.push(
-    { label: NETWORKS[id].name, value: NETWORKS[id].name }
+    { label: NETWORKS[id].name, value: id }
   );
 }
 

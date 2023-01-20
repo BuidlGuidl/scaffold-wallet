@@ -1,214 +1,396 @@
-
-
 import { useState, useEffect, useRef } from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
-import Clipboard from '@react-native-clipboard/clipboard';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { generateNewPrivateKeyAndWallet, loadAllWalletAddresses, saveImportedWallet, switchActiveWallet, truncateAddress, updateWalletAddresses } from "../helpers/utils";
+import Dialog from "react-native-dialog";
+
+import {
+  Button,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Alert,
+  ScrollView,
+} from "react-native";
+import Clipboard from "@react-native-clipboard/clipboard";
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import {
+  generateNewPrivateKeyAndWallet,
+  loadAllWalletAddresses,
+  saveImportedWallet,
+  switchActiveWallet,
+  truncateAddress,
+  updateWalletAddresses,
+} from "../helpers/utils";
 import Blockie from "../components/Blockie";
 import { ethers } from "ethers";
+import AntIcon from "react-native-vector-icons/AntDesign";
 
-const WalletsScreen = (props) => {
-    const { wallet, setWallet, setAddress } = props
 
-    const [loading, setLoading] = useState(false);
-    const [walletAddresses, setWalletAddresses] = useState([]);
-    const [reveal, setReveal] = useState(false);
-    const [copied, setCopied] = useState(false);
+export const WalletsScreen = ({ wallet, setWallet, setAddress, address, navigation }) => {
+  const [loading, setLoading] = useState(false);
+  const [walletAddresses, setWalletAddresses] = useState([]);
+  const [reveal, setReveal] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-    const [showImport, setShowImport] = useState(false);
-    const toggleShowImport = () => setShowImport(!showImport)
-    const [pkToImport, setPkToImport] = useState('');
-    const pkInput = useRef();
+  const [showImport, setShowImport] = useState(false);
+  const [pkToImport, setPkToImport] = useState("");
+  const pkInput = useRef();
 
-    const copyToClipboard = (key) => {
-        setCopied(true)
-        Clipboard.setString(key);
+  const copyToClipboard = (key) => {
+    setCopied(true);
+    Clipboard.setString(key);
 
-        setTimeout(() => setCopied(false), 1000)
+    setTimeout(() => setCopied(false), 1000);
+  };
+
+  const pasteToPkInput = async () => {
+    const pk = await Clipboard.getString();
+    setPkToImport(pk);
+  };
+
+  useEffect(() => {
+    if (pkInput && pkInput.current) pkInput.current.focus();
+  }, [showImport]);
+
+  useEffect(() => {
+    const loadAllAccounts = async () => {
+      const walletList = await loadAllWalletAddresses();
+      setWalletAddresses(walletList);
     };
+    loadAllAccounts();
+  }, []);
 
-    const pasteToPkInput = async () => {
-        const pk = await Clipboard.getString()
-        setPkToImport(pk)
+  const generateNewWallet = async () => {
+    setLoading(true);
+    const { generatedWallet, walletAddresses: walletList } =
+      await generateNewPrivateKeyAndWallet();
+    setWallet(generatedWallet);
+    setAddress(generatedWallet.address);
+    setWalletAddresses(walletList);
+    setLoading(false);
+  };
+
+  const importWallet = async () => {
+    const validPk = pkToImport.length === 66;
+    if (!validPk) {
+      console.log("error");
+      return;
     }
 
-    useEffect(() => {
-        if (pkInput && pkInput.current) pkInput.current.focus()
-    }, [showImport])
-
-    useEffect(() => {
-        const loadAllAccounts = async () => {
-            const walletList = await loadAllWalletAddresses()
-            setWalletAddresses(walletList)
-        }
-        loadAllAccounts()
-    }, []);
-
-    const generateNewWallet = async () => {
-        setLoading(true)
-        const { generatedWallet, walletAddresses: walletList } = await generateNewPrivateKeyAndWallet()
-        setWallet(generatedWallet)
-        setAddress(generatedWallet.address)
-        setWalletAddresses(walletList)
-        setLoading(false)
+    try {
+      const importedWallet = new ethers.Wallet(pkToImport);
+      const walletList = await saveImportedWallet(importedWallet);
+      setWallet(importedWallet);
+      setAddress(importedWallet.address);
+      setWalletAddresses(walletList);
+      setPkToImport("");
+      setShowImport(false);
+    } catch (err) {
+      Alert.alert(
+        "Error",
+        "The private key is not valid",
+        [{ text: "Try again" }],
+        { cancelable: false }
+      );
     }
+  };
 
-    const importWallet = async () => {
-        const validPk = pkToImport.length === 66
-        if (!validPk) return
+  const switchToWallet = async (index) => {
+    console.log("switch", index, walletAddresses, walletAddresses[index]);
+    const existingWallet = await switchActiveWallet(walletAddresses[index]);
+    setWallet(existingWallet);
+    setAddress(existingWallet.address);
+    navigation.goBack();
+  };
 
-        try {
-            const importedWallet = new ethers.Wallet(pkToImport)
-            const walletList = await saveImportedWallet(importedWallet)
-            setWallet(importedWallet)
-            setAddress(importedWallet.address)
-            setWalletAddresses(walletList)
-            setPkToImport('')
-            toggleShowImport()
-        } catch (err) {
-            console.log(err);
-        }
-    }
+  const deleteWallet = async (index) => {
+    if (walletAddresses.length < 2) return;
 
-    const switchToWallet = async (index) => {
-        console.log('switch', index, walletAddresses, walletAddresses[index]);
-        const existingWallet = await switchActiveWallet(walletAddresses[index])
-        setWallet(existingWallet)
-        setAddress(existingWallet.address)
-    }
+    const walletList = walletAddresses.filter(
+      (item) => item !== walletAddresses[index]
+    );
+    await updateWalletAddresses(walletList);
+    setWalletAddresses(walletList);
 
-    const deleteWallet = async (index) => {
-        if (walletAddresses.length < 2) return
+    const existingWallet = await switchActiveWallet(walletList[0]);
+    setWallet(existingWallet);
+    setAddress(existingWallet.address);
+  };
 
-        const walletList = walletAddresses.filter(item => item !== walletAddresses[index])
-        await updateWalletAddresses(walletList)
-        setWalletAddresses(walletList)
+  const toggleReveal = () => setReveal(!reveal);
 
-        const existingWallet = await switchActiveWallet(walletList[0])
-        setWallet(existingWallet)
-        setAddress(existingWallet.address)
-    }
+  const createTwoButtonAlert = (index) =>
+    Alert.alert(
+      "Warning",
+      `Are you sure you want to delete the account: \n${walletAddresses[index]}`,
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "I'm sure",
+          onPress: () => deleteWallet(index),
+          style: "destructive",
+        },
+      ]
+    );
+  const activeWalletIndex = walletAddresses.findIndex(
+    (element) => element == address
+  );
 
-    const toggleReveal = () => setReveal(!reveal)
-
-    return <View
-        onPress={props.hide}
-        style={{ position: 'absolute', height: '100%', width: '100%', backgroundColor: "#fff", flexDirection: 'column' }}>
-
-        {showImport === false ?
-            <View style={{ display: 'flex', height: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                <Text style={{
-                    marginVertical: 32,
-                    marginHorizontal: 32,
-                    fontSize: 18,
-                    fontWeight: "600",
-                    textAlign: "center",
-                }}>
-                    Wallets
-                </Text>
-
-                <View style={{ width: '80%', marginHorizontal: 32 }}>
-                    {walletAddresses.map((walletAddress, index) => {
-                        let displayAddress = truncateAddress(walletAddress);
-                        return <View style={{ marginVertical: 18 }} key={index}>
-                            {walletAddress === props.address ?
-                                <View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                        <Blockie address={walletAddress} size={36} />
-                                        <Text style={{ fontSize: 24, fontWeight: '500', marginLeft: 12 }}>{displayAddress} (Active)</Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                        {<Button title={reveal ? "Hide Private Key" : "Reveal Private Key"} color="#c92a2a" onPress={toggleReveal} />}
-                                        <Button title="Delete" color="#c92a2a" disabled={walletAddresses.length < 2} onPress={() => deleteWallet(index)} />
-                                    </View>
-                                    {reveal && <View>
-                                        <Text style={{ margin: 8, fontSize: 24, backgroundColor: '#ddd', padding: 12 }}>{wallet.privateKey}</Text>
-                                        <TouchableOpacity
-                                            onPress={() => copyToClipboard(wallet.privateKey)}>
-                                            <Text
-                                                style={{ marginTop: 8, fontSize: 20, textAlign: 'center' }}>
-                                                <FontAwesomeIcon name="copy" size={18} />
-                                                {copied ? ' Copied' : ' Copy'}
-                                            </Text>
-                                        </TouchableOpacity>
-                                    </View>}
-                                </View> :
-                                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'flex-end' }} onPress={() => switchToWallet(index)}>
-                                    <Blockie address={walletAddress} size={36} />
-                                    <Text style={{ fontSize: 24, fontWeight: '500', marginLeft: 12 }}>{displayAddress}</Text>
-                                </TouchableOpacity>
-                            }
-                        </View>
-                    })}
-                </View>
-
-                <View style={{ marginTop: 12, flexDirection: 'column' }}>
-                    <Button
-                        onPress={generateNewWallet}
-                        title={loading ? "Generating..." : "Generate New Wallet"}
-                        disabled={loading}
-                    />
-
-                    <View style={{ marginTop: 4 }}>
-                        <Button
-                            onPress={toggleShowImport}
-                            title="Import Private Key" />
-                    </View>
-                    <View style={{ marginTop: 4 }}>
-                        <Button
-                            onPress={props.hide}
-                            title="Close" />
-                    </View>
-                </View>
+  return (
+    <ScrollView contentContainerStyle={styles.pageContainer}>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity
+          onPress={() => generateNewWallet()}
+          disabled={loading}
+        >
+          <View style={styles.mainButtons}>
+            <View style={styles.icons}>
+              <AntIcon name="wallet" size={40} color="#619EFD" />
+              <AntIcon
+                style={styles.buttonPlus}
+                name="pluscircle"
+                size={20}
+                color="#619EFD"
+              />
             </View>
-            :
-            <View style={{ display: 'flex', height: '100%', justifyContent: 'flex-start', alignItems: 'center' }}>
-                <Text style={{
-                    marginVertical: 32,
-                    marginHorizontal: 32,
-                    fontSize: 18,
-                    fontWeight: "600",
-                    textAlign: "center",
-                }}>
-                    Import Wallet
-                </Text>
-                <TextInput
-                    placeholder="private key"
-                    ref={pkInput}
-                    style={{
-                        height: 36,
-                        width: '80%',
-                        textAlign: 'center',
-                        // borderBottomWidth: 1,
-                        borderBottomColor: '#ccc',
-                        fontSize: 18,
-                    }}
-                    onChangeText={setPkToImport}
-                    value={pkToImport}
+            <Text style={styles.buttonText}>
+              {loading ? "Generating..." : "Generate New Wallet"}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setShowImport(true)}
+          disabled={loading}
+        >
+          <View style={styles.mainButtons}>
+            <View style={styles.icons}>
+              <AntIcon name="key" size={40} color="#619EFD" />
+              <FontAwesomeIcon
+                style={styles.buttonPlus}
+                name="arrow-circle-down"
+                size={22}
+                color="#619EFD"
+              />
+            </View>
+            <Text style={styles.buttonText}>Import Private Key</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.listContainer}>
+        <View style={[styles.accountCard, styles.selected]}>
+          <View>
+            <View style={styles.selectedAccount}>
+              <Blockie address={walletAddresses[activeWalletIndex]} size={40} />
+              <Text style={styles.selectedAddress}>
+                {truncateAddress(walletAddresses[activeWalletIndex])}
+              </Text>
+              <TouchableOpacity
+                onPress={() => createTwoButtonAlert(activeWalletIndex)}
+                disabled={walletAddresses.length < 2}
+                style={styles.positionedTrash}
+              >
+                <View style={styles.button}>
+                  <AntIcon name="delete" size={30} color="#e70505" />
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.selectedAccountOptions}>
+              <View style={styles.optionButton}>
+                <Button
+                  title={reveal ? "Hide Private Key" : "Show Private Key"}
+                  onPress={() => toggleReveal()}
                 />
-                <View style={{ marginTop: 12 }}>
-
-                    {pkToImport.length === 0 ?
-                        <Button
-                            title="Paste"
-                            onPress={pasteToPkInput}
-                        />
-                        :
-                        <Button
-                            onPress={importWallet}
-                            title="Import" />
-                    }
-                    <View style={{ marginTop: 4 }}>
-                        <Button
-                            onPress={toggleShowImport}
-                            title="Cancel" />
-                    </View>
-                </View>
+              </View>
             </View>
-        }
+            {reveal && (
+              <View style={styles.privateKeyContainer}>
+                <Text style={styles.privateKey}>{wallet.privateKey}</Text>
+                <TouchableOpacity
+                  onPress={() => copyToClipboard(wallet.privateKey)}
+                  style={styles.copyContainer}
+                >
+                  <Text style={styles.copyText}>
+                    <FontAwesomeIcon color="#619EFD" name="copy" size={18} />
+                    {copied ? " Copied" : " Copy"}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          </View>
+        </View>
+        {walletAddresses.map((walletAddress, index) => {
+          let displayAddress = truncateAddress(walletAddress);
+          if (walletAddress === address) {
+            return <View key={index}></View>;
+          }
+          return (
+            <TouchableOpacity
+              key={index}
+              onPress={() => switchToWallet(index)}
+              style={styles.unselectedAccount}
+            >
+              <View style={[styles.accountCard]}>
+                <>
+                  <Blockie address={walletAddress} size={36} />
+                  <Text style={styles.address}>{displayAddress}</Text>
+                </>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      <Dialog.Container visible={showImport}>
+        <Dialog.Title>Import Private Key</Dialog.Title>
+        <Dialog.Description>
+          Introduce the private key you want to import
+        </Dialog.Description>
+        <Dialog.Input
+          textInputRef={pkInput}
+          onChangeText={setPkToImport}
+          value={pkToImport}
+        />
+        <Dialog.Button label="Cancel" onPress={() => setShowImport(false)} />
+        {pkToImport.length === 0 ? (
+          <Dialog.Button label="Paste" onPress={() => pasteToPkInput()} />
+        ) : (
+          <Dialog.Button
+            label="Import"
+            onPress={() => importWallet()}
+            disabled={pkToImport.length != 66}
+            style={pkToImport.length != 66 ? styles.disabled : ""}
+          />
+        )}
+      </Dialog.Container>
+    </ScrollView>
+  );
+};
 
-    </View>
-}
-
-export default WalletsScreen
+var styles = StyleSheet.create({
+  pageContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonsContainer: {
+    marginTop: 20,
+    flexDirection: "row",
+    height: 100,
+    width: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  mainButtons: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
+  button: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
+  disabled: {
+    color: "#888",
+  },
+  icons: {
+    position: "relative",
+  },
+  buttonPlus: {
+    position: "absolute",
+    top: -6,
+    right: -10,
+  },
+  buttonText: {
+    marginTop: 2,
+    width: 100,
+    fontWeight: "600",
+    fontSize: 14,
+    textAlign: "center",
+  },
+  accountCard: {
+    alignItems: "center",
+    marginTop: 24,
+    width: "100%",
+    flexDirection: "row",
+    fontSize: 24,
+    backgroundColor: "#F8F8F8",
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    borderRadius: 10,
+  },
+  selected: {
+    backgroundColor: "#fff",
+  },
+  unselectedAccount: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  listContainer: {
+    flexDirection: "column",
+    width: "90%",
+  },
+  selectedAccount: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  address: {
+    marginLeft: 6,
+    fontWeight: "400",
+    fontSize: 16,
+  },
+  selectedAddress: {
+    marginLeft: 6,
+    fontWeight: "600",
+    fontSize: 18,
+  },
+  container: {
+    flex: 1,
+  },
+  selectedAccountOptions: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  optionButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    marginTop: 10,
+  },
+  positionedTrash: {
+    position: "absolute",
+    right: -20,
+    top: -13,
+  },
+  privateKeyContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  privateKey: {
+    fontWeight: "500",
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  copyText: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+});
