@@ -153,6 +153,17 @@ export const NETWORK = chainId => {
     }
   }
 };
+export const NETWORK_IMAGES = {
+  ethereum: require("./assets/eth.png"),
+  optimism:require("./assets/op.png"),
+  arbitrum: require("./assets/arb.png"),
+  gnosis:require("./assets/gnosis.png"),
+  polygon:require("./assets/polygon.png"),
+  goerli: require("./assets/goerli.png"),
+  mumbai: require("./assets/mumbai.png"),
+  zksyncTestnet: require("./assets/zksync.png")
+}
+
 
 export const DROPDOWN_NETWORK_OPTIONS = [];
 for (const id in NETWORKS) {

@@ -10,8 +10,8 @@ import {
   SEND_TRANSACTION,
   PERSONAL_SIGN,
   SIGN_TRANSACTION,
+  NETWORK_IMAGES,
   SIGN,
-  DROPDOWN_NETWORK_OPTIONS,
   SIGN_TYPED_DATA_V4,
   SIGN_TYPED_DATA,
 } from "./constants";
@@ -455,23 +455,21 @@ export default function App() {
                 headerLeft: (props) => (
                   <Image style={styles.logo} source={ScaffoldEthWalletLogo} />
                 ),
-                headerTitle: () => (
-                  <NetworkDisplay
-                    selectedNetwork={selectedNetwork}
-                    setSelectedNetwork={setSelectedNetwork}
-                    updateStorageTransaction={updateStorageTransaction}
-                    networkOptions={DROPDOWN_NETWORK_OPTIONS}
-                  />
-                ),
+                headerTitle: "Scaffold Wallet",
                 // Add a placeholder button without the `onPress` to avoid flicker
-                headerRight: null,
+                headerRight: (props) => (
+                  <Image style={styles.logo} source={NETWORK_IMAGES[selectedNetwork]} />
+                ),
               })}
             >
               {({ navigation }) => (
                 <HomeScreen
+                  updateStorageTransaction={updateStorageTransaction}
                   address={address}
                   isLoading={isLoading}
                   navigation={navigation}
+                  selectedNetwork={selectedNetwork}
+                  setSelectedNetwork={(newValue) => setSelectedNetwork(newValue)}
                   tokenBalance={yourLocalBalance}
                   tokenName={nativeTokenName}
                   tokenSymbol={nativeTokenSymbol}
@@ -488,6 +486,7 @@ export default function App() {
                   gasPrice={gasPrice}
                   showTransactionScreen={showTransactionScreen}
                   walletConnectParams={walletConnectParams}
+
                   network={walletConnectNetwork}
                   hideTransaction={hideTransaction}
                   confirmTransaction={confirmTransaction}
