@@ -1,7 +1,7 @@
 import { usePoller } from "eth-hooks";
 import { ethers } from "ethers";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import {
   getStorageTransactions,
@@ -66,6 +66,18 @@ export const TransactionsDisplay = (props) => {
     }
   };
 
+
+  useEffect(() => {
+    if(unconfirmedTransactions.length > 0){
+      if(transactionHistory.map(item => item.nonce).includes(unconfirmedTransactions[0].nonce)){
+        setUnconfirmedTransactions([]);
+        setStorageTransactions({});
+      }
+    }
+    
+  }, [transactionHistory])
+
+
   const pollUnconfirmedTransactions = async () => {
     // console.log('pollUnconfirmedTransactions', address);
 
@@ -85,8 +97,6 @@ export const TransactionsDisplay = (props) => {
       }
     });
     if (transactionArray.length === 0) {
-      setUnconfirmedTransactions([]);
-      setStorageTransactions({});
       return;
     }
 
