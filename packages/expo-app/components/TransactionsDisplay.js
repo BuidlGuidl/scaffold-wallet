@@ -1,7 +1,7 @@
 import { usePoller } from "eth-hooks";
 import { ethers } from "ethers";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import {
   getStorageTransactions,
@@ -18,9 +18,9 @@ export const TransactionsDisplay = (props) => {
     isLoading,
     transactionHistory,
     tokenSymbol,
+    isChainIdBlocked,
     openBlockExplorer,
   } = props;
-
   const [unconfirmedTransactions, setUnconfirmedTransactions] = useState([]);
 
   const updateGasPrice = (gasPrice, speedUpPercentage) => {
@@ -66,6 +66,18 @@ export const TransactionsDisplay = (props) => {
     }
   };
 
+
+  useEffect(() => {
+    if(unconfirmedTransactions.length > 0){
+      if(transactionHistory.map(item => item.nonce).includes(unconfirmedTransactions[0].nonce)){
+        setUnconfirmedTransactions([]);
+        setStorageTransactions({});
+      }
+    }
+    
+  }, [transactionHistory])
+
+
   const pollUnconfirmedTransactions = async () => {
     // console.log('pollUnconfirmedTransactions', address);
 
@@ -85,8 +97,10 @@ export const TransactionsDisplay = (props) => {
       }
     });
     if (transactionArray.length === 0) {
-      setUnconfirmedTransactions([]);
-      setStorageTransactions({});
+      if(isChainIdBlocked){
+        setUnconfirmedTransactions([]);
+        setStorageTransactions({});
+      }
       return;
     }
 
@@ -117,7 +131,29 @@ export const TransactionsDisplay = (props) => {
 
     setUnconfirmedTransactions(updatedTransactionArray);
   };
+  const getTxnMaxFeesPerGas = (txn) => {
+    if(txn.maxFeePerGas?._hex){
+      return txn.maxFeePerGas._hex;
+    }
+    if(txn.maxFeePerGas?.hex){
+      return txn.maxFeePerGas.hex;
+    }
+    if(txn.gasPrice?._hex){
+      return txn.gasPrice._hex;
+    }
+    return 0;
+  }
 
+
+  const getTxnValue = (txn) => {
+    if(txn.value?._hex){
+      return txn.value._hex;
+    }
+    if(txn.value?.hex){
+      return txn.value.hex;
+    }
+    return 0
+  }
   usePoller(pollUnconfirmedTransactions, 5000);
   if (!!isLoading) {
     return (
@@ -219,17 +255,16 @@ export const TransactionsDisplay = (props) => {
       <Text style={[styles.maxfeed, {marginTop:10, marginLeft: 5}]}>No Transactions Yet</Text>
     </View>;
   }
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Transactions</Text>
-
+      
       {unconfirmedTransactions.map((txn, i) => {
         const maxFeePerGasInGwei = Number(
-          ethers.utils.formatUnits(txn.maxFeePerGas, "gwei")
+          ethers.utils.formatUnits(getTxnMaxFeesPerGas(txn), "gwei")
         ).toFixed(1);
         const formattedTokenBalance =
-          Math.round(ethers.utils.formatEther(txn.value._hex) * 1e4) / 1e4;
+          Math.round(ethers.utils.formatEther(getTxnValue(txn)) * 1e4) / 1e4;
         const transactionDate = new Date();
         return (
           <TransactionItem

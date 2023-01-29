@@ -28,7 +28,8 @@ import AddressDisplay from "../components/AddressDisplay";
 import TransactionScreen from "./TransactionScreen";
 import { TransactionsDisplay } from "../components/TransactionsDisplay";
 import WalletConnectDisplay from "../components/WalletConnectDisplay";
-
+import { DROPDOWN_NETWORK_OPTIONS } from "../constants";
+import { NetworkDisplay } from "../components/NetworkDisplay";
 export const HomeScreen = ({
   navigation,
   address,
@@ -37,6 +38,9 @@ export const HomeScreen = ({
   tokenSymbol,
   tokenLogo,
   tokenPrice,
+  selectedNetwork,
+  setSelectedNetwork,
+  updateStorageTransaction,
   openBlockExplorer,
   wallet,
   gasPrice,
@@ -45,6 +49,7 @@ export const HomeScreen = ({
   provider,
   showTransactionScreen,
   walletConnectNetwork,
+  isChainIdBlocked,
   walletConnectParams,
   hideTransaction,
   cancelTransaction,
@@ -84,14 +89,14 @@ export const HomeScreen = ({
           showWalletConnectScreen={() => navigation.navigate("WalletConnect")}
           openBlockExplorer={() => openBlockExplorer("address", address)} //TODO MISSING INTERACTION
         />
-        
+
         {wallectConnectConnector && (
           <WalletConnectDisplay
             wCIcon={WCIcon}
             wCUrl={WCUrl}
             disconnect={disconnect}
           />
-        )}       
+        )}
         <TokenDisplay
           tokenBalance={tokenBalance}
           isLoading={isLoading}
@@ -104,6 +109,7 @@ export const HomeScreen = ({
         <TransactionsDisplay
           isLoading={isLoading}
           provider={provider}
+          isChainIdBlocked={isChainIdBlocked}
           tokenSymbol={tokenSymbol}
           transactionHistory={transactionHistory}
           wallet={wallet}
@@ -139,22 +145,31 @@ export const HomeScreen = ({
           />
         )}
       </ScrollView>
-      <View style={styles.gasContainer}>
+      <View style={styles.networkContainer}>
+        <NetworkDisplay
+          selectedNetwork={selectedNetwork}
+          setSelectedNetwork={setSelectedNetwork}
+          updateStorageTransaction={updateStorageTransaction}
+          networkOptions={DROPDOWN_NETWORK_OPTIONS}
+        />
+        <View style={styles.gasContainer}>
         <FontAwesome5 name="gas-pump" size={16} style={styles.buttonIconGwei} />
         <Text style={{ fontSize: 14, fontWeight: "700" }}>
           {" "}
           {gasPriceInGwei} Gwei
         </Text>
+        </View>
+        
       </View>
       <FloatingButton
-        onPress={() => navigation.navigate("QrScanner", {target:"both"})}
+        onPress={() => navigation.navigate("QrScanner", { target: "both" })}
         right={20}
       >
         <LinearGradient
           colors={["#4580eb", "#249ff5", "#05bcff"]}
           style={styles.linearGradient}
         >
-          <AntIcon name="scan1" size={34} style={styles.buttonIcon} />
+          <AntIcon name="scan1" size={40} style={styles.buttonIcon} />
         </LinearGradient>
       </FloatingButton>
     </>
@@ -173,23 +188,31 @@ var styles = StyleSheet.create({
   buttonIcon: {
     color: "#fff",
   },
-  buttonIconGwei: {},
-  gasContainer: {
-    padding:10,
-    paddingRight:20,
-    paddingLeft:20,
+  networkContainer: {
+    padding: 10,
+    paddingRight: 20,
+    paddingLeft: 20,
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
     position: "absolute",
-    bottom:54,
+    bottom: 40,
     backgroundColor: "#fff",
-    borderTopRightRadius:50,
-    borderBottomRightRadius:50,
+    borderTopRightRadius: 50,
+    borderBottomRightRadius: 50,
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
+  },
+  gasContainer: {
+    paddingBottom: 2,
+    paddingTop: 10,
+    paddingLeft:3,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

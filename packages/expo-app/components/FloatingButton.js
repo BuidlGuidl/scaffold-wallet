@@ -8,13 +8,17 @@ export const FloatingButton = (props) => {
         style={{
             position: 'absolute',
             backgroundColor: '#0E76FD',
-            width: 70,
-            height: 70,
+            width: 75,
+            height: 75,
             alignItems: 'center',
             justifyContent: 'center',
             right: props.right,
             bottom: 40,
-            borderRadius: 35
+            borderRadius: 100,
+            shadowColor: "#171717",
+            shadowOffset: { width: -2, height: 4 },
+            shadowOpacity: 0.2,
+            shadowRadius: 3,
         }}>
         {props.children}
     </TouchableOpacity>

@@ -91,13 +91,14 @@ export const SendScreen = ({
           onChangeText={(val) => setAmount(parseFloat(val.replace(",", ".")))}
           placeholder="0.0"
         />
+        
         <Text style={styles.tokenSymbol}>{tokenSymbol}</Text>
       </View>
       <View style={styles.feedContainer}>
         <Text style={{ fontSize: 22 }}>
           <Text style={{ fontSize: 22 }}>
             {" "}
-            {(amount || 0 * price).toFixed(2)} USD{" "}
+            {((amount ? amount : 0) * price).toFixed(2)} USD{" "}
           </Text>
         </Text>
     
