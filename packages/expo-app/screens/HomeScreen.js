@@ -49,6 +49,7 @@ export const HomeScreen = ({
   provider,
   showTransactionScreen,
   walletConnectNetwork,
+  isChainIdBlocked,
   walletConnectParams,
   hideTransaction,
   cancelTransaction,
@@ -108,6 +109,7 @@ export const HomeScreen = ({
         <TransactionsDisplay
           isLoading={isLoading}
           provider={provider}
+          isChainIdBlocked={isChainIdBlocked}
           tokenSymbol={tokenSymbol}
           transactionHistory={transactionHistory}
           wallet={wallet}

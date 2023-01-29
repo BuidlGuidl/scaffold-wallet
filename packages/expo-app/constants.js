@@ -1,13 +1,13 @@
 // MY INFURA_ID, SWAP IN YOURS FROM https://infura.io/dashboard/ethereum
-export const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
+export const INFURA_ID = "**********";
 
 // MY ETHERSCAN_ID, SWAP IN YOURS FROM https://etherscan.io/myapikey
-export const ETHERSCAN_KEY = "V1N231J2EK2NGEWBE9F12KIZFMKB67YSXI";
+export const ETHERSCAN_KEY = "**********";
 
 // BLOCKNATIVE ID FOR Notify.js:
-export const BLOCKNATIVE_DAPPID = "0b58206a-f3c0-4701-a62f-73c7243e8c77";
+export const BLOCKNATIVE_DAPPID = "**********";
 
-export const ALCHEMY_KEY = "ILgLjMfyYWzqAYmOGlJxz0DHo_EFwHN_";
+export const ALCHEMY_KEY = "**********";
 
 export const NETWORKS = {
   ethereum: {
@@ -15,6 +15,14 @@ export const NETWORKS = {
     color: "#333333",
     chainId: 1,
     rpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
+    blockExplorer: "https://etherscan.io/",
+  },
+  buidlguidl: {
+    name: "buidlguidl",
+    color: "#1785ff",
+    chainId: 80216,
+    price: 1000,
+    rpcUrl: `https://chain.buidlguidl.com:8545`,
     blockExplorer: "https://etherscan.io/",
   },
   optimism: {
@@ -161,7 +169,8 @@ export const NETWORK_IMAGES = {
   polygon:require("./assets/polygon.png"),
   goerli: require("./assets/goerli.png"),
   mumbai: require("./assets/mumbai.png"),
-  zksyncTestnet: require("./assets/zksync.png")
+  zksyncTestnet: require("./assets/zksync.png"),
+  buidlguidl: require("./assets/buidlguidl.png"),
 }
 
 
@@ -179,3 +188,6 @@ export const SIGN = 'eth_sign';
 export const SIGN_TRANSACTION = 'eth_signTransaction';
 export const SIGN_TYPED_DATA = 'eth_signTypedData';
 export const SIGN_TYPED_DATA_V4 = 'eth_signTypedData_v4';
+export const isChainIdHistoryBlocked = (chainId) => {
+  return chainId === 280 || chainId === 80216;
+};

@@ -14,6 +14,7 @@ import {
   SIGN,
   SIGN_TYPED_DATA_V4,
   SIGN_TYPED_DATA,
+  isChainIdHistoryBlocked
 } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
@@ -296,7 +297,7 @@ export default function App() {
   }, []);
 
   const getHistoricalData = async () => {
-    if (targetNetwork.chainId == 280) {
+    if (isChainIdHistoryBlocked(targetNetwork.chainId)) {
       // return fetch(
       //   `https://api.zksync.io/api/v0.2/accounts/${address}/transactions?from=latest&limit=20&direction=older`
       // )
@@ -316,7 +317,7 @@ export default function App() {
       const myPromise = new Promise((resolve, reject) => {
         resolve([]);
       });
-      return myPromise
+      return myPromise;
     }
 
     const currentBlock = await localProvider.getBlockNumber();
@@ -458,7 +459,10 @@ export default function App() {
                 headerTitle: "Scaffold Wallet",
                 // Add a placeholder button without the `onPress` to avoid flicker
                 headerRight: (props) => (
-                  <Image style={styles.logo} source={NETWORK_IMAGES[selectedNetwork]} />
+                  <Image
+                    style={styles.logo}
+                    source={NETWORK_IMAGES[selectedNetwork]}
+                  />
                 ),
               })}
             >
@@ -469,11 +473,16 @@ export default function App() {
                   isLoading={isLoading}
                   navigation={navigation}
                   selectedNetwork={selectedNetwork}
-                  setSelectedNetwork={(newValue) => setSelectedNetwork(newValue)}
+                  setSelectedNetwork={(newValue) =>
+                    setSelectedNetwork(newValue)
+                  }
                   tokenBalance={yourLocalBalance}
                   tokenName={nativeTokenName}
                   tokenSymbol={nativeTokenSymbol}
-                  transactionHistory={targetNetwork.chainId !== 280 ? transactionHistory: []}
+                  transactionHistory={
+                    !isChainIdHistoryBlocked(targetNetwork.chainId)? transactionHistory : []
+                  }
+                  isChainIdBlocked={isChainIdHistoryBlocked(targetNetwork.chainId)}
                   tokenLogo={nativeTokenLogo}
                   isFetchingHistoryData={isFetchingHistoryData}
                   tokenPrice={price}
@@ -486,7 +495,6 @@ export default function App() {
                   gasPrice={gasPrice}
                   showTransactionScreen={showTransactionScreen}
                   walletConnectParams={walletConnectParams}
-
                   network={walletConnectNetwork}
                   hideTransaction={hideTransaction}
                   confirmTransaction={confirmTransaction}
