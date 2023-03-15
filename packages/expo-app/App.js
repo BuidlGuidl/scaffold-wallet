@@ -40,6 +40,7 @@ import {
   generateWallet,
   loadWallet,
 } from "./helpers/utils";
+import { LogBox } from 'react-native';
 import { updateStorageTransaction } from "./helpers/Transactions";
 import useExchangePrice from "./hooks/ExchangePrice";
 import useBalance from "./hooks/Balance";
@@ -62,6 +63,8 @@ const ScaffoldEthWalletLogo = require("./assets/scaffoldEthWalletLogo.png");
 
 const AppStack = createNativeStackNavigator();
 export default function App() {
+ 
+  LogBox.ignoreLogs(['Setting a timer']); // Ignore log notification by message
   const [address, setAddress] = useState();
   const [selectedNetwork, setSelectedNetwork] = useState(initialNetwork.name);
 

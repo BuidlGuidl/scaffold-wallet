@@ -11,13 +11,13 @@ export const NetworkDisplay = ({
   updateStorageTransaction,
   networkOptions,
 }) => {
-  console.log("Fran",NETWORK_IMAGES[selectedNetwork])
   return (
     <View style={styles.networkSelectorContainer}>
       <Image style={styles.logo} source={NETWORK_IMAGES[selectedNetwork]} />
 
       <RNPickerSelect
         value={selectedNetwork}
+        useNativeAndroidPickerStyle={false}
         onValueChange={async (value) => {
           await AsyncStorage.setItem("network", value);
           setSelectedNetwork(value);
@@ -27,6 +27,13 @@ export const NetworkDisplay = ({
         items={networkOptions}
         style={{
           inputIOS: {
+            marginTop: 2,
+            fontSize: 20,
+            fontWeight: "600",
+            width:"100%",
+            marginRight:25
+          },
+          inputAndroid: {
             marginTop: 2,
             fontSize: 20,
             fontWeight: "600",
@@ -49,12 +56,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     fontSize: 24,
-
   },
   networkSelector: {
     fontSize: 22,
     fontWeight: "600",
-    color: "red",
   },
   logo: {
     width: 20,
