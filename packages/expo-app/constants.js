@@ -1,13 +1,13 @@
 // MY INFURA_ID, SWAP IN YOURS FROM https://infura.io/dashboard/ethereum
-export const INFURA_ID = "**********";
+export const INFURA_ID = "";
 
 // MY ETHERSCAN_ID, SWAP IN YOURS FROM https://etherscan.io/myapikey
-export const ETHERSCAN_KEY = "**********";
+export const ETHERSCAN_KEY = "";
 
 // BLOCKNATIVE ID FOR Notify.js:
-export const BLOCKNATIVE_DAPPID = "**********";
+export const BLOCKNATIVE_DAPPID = "";
 
-export const ALCHEMY_KEY = "**********";
+export const ALCHEMY_KEY = "";
 
 export const NETWORKS = {
   ethereum: {
