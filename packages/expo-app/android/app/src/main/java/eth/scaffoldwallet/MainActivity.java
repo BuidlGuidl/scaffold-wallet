@@ -1,4 +1,4 @@
-package io.punkwallet;
+package eth.scaffoldwallet;
 
 import android.os.Build;
 import android.os.Bundle;

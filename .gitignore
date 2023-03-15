@@ -17,6 +17,7 @@ packages/**/data
 packages/expo-app/ios/expoapp.xcworkspace/xcuserdata/*
 packages/expo-app/ios/ScaffoldWallet.xcodeproj/xcuserdata/*
 packages/expo-app/ios/Pods
+packages/expo-app/android/.gradle
 # ts
 packages/hardhat-ts/cache
 # secrets
