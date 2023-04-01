@@ -76,11 +76,20 @@ export const SendScreen = ({
           onPress={() => navigation.navigate("QrScanner", {
             target:"address"
           })}
-          style={{ marginLeft: -24 }}
+          style={{
+            paddingLeft:20,
+            paddingRight:20,
+          }}
         >
-          <AntIcon name="scan1" size={24} color={"#4580eb"} />
+          <AntIcon name="scan1" size={24} color={"#05bcff"} />
         </TouchableOpacity>
-        <Button title="Paste" onPress={pasteToPkInput} color={"#4580eb"} />
+        <View style={styles.buttonContainer}>
+        <TouchableOpacity
+         onPress={pasteToPkInput}
+        >
+          <Text style={{color:"#05bcff", fontSize:20}}>Paste</Text>
+        </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.ammoutContainer}>
         <TextInput
@@ -178,6 +187,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 4,
   },
+  buttonContainer:{
+    display:"flex",
+    justifyContent:"space-between",
+  },
   balanceContainer: {
     width: "100%",
     marginTop: 4,
@@ -216,7 +229,7 @@ const styles = StyleSheet.create({
   cancelText: {
     fontSize: 21,
     fontWeight: "500",
-    color: "#0084ff",
+    color: "red",
     textAlign: "center",
   },
   confirmText: {
