@@ -71,3 +71,4 @@ yarn-error.log*
 
 # doc directory
 /doc
+packages/expo-app/android/gradle.properties

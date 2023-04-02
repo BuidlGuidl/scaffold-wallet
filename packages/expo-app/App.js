@@ -585,7 +585,7 @@ export default function App() {
 }
 
 var styles = StyleSheet.create({
-  logo: { width: 30, height: 30, borderRadius: 50 },
+  logo: { width: 30, height: 30, borderRadius: 50, marginRight: 6 },
   linearGradient: {
     flex: 1,
     justifyContent: "center",

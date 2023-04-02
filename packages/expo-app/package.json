@@ -1,10 +1,11 @@
 {
-  "name": "@scaffold-eth/expo-app",
+  "name": "@scaffold-eth/scaffold-wallet",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
+    "jetify":"npx jetify",
     "ios": "expo run:ios",
     "web": "expo start --web",
     "eject": "expo eject",
