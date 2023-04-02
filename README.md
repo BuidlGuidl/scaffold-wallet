@@ -2,7 +2,12 @@
 
 > everything you need to build an Ethereum Wallet with Scaffold-Eth and React Native! 🚀
 
-<img width="1590" alt="image" src="https://user-images.githubusercontent.com/4507317/167762848-6d95c1d7-0d29-416d-b8c0-368a0bccf60d.png">
+<img width="150px" alt="image" src="./appImages/screenshot1.jpeg" >
+<img width="150px" alt="image" src="./appImages/screenshot2.jpeg" >
+<img width="150px" alt="image" src="./appImages/screenshot3.jpeg" >
+<img width="150px" alt="image" src="./appImages/screenshot4.jpeg" >
+<img width="150px" alt="image" src="./appImages/screenshot5.jpeg" >
+
 
 ## Overview
 
