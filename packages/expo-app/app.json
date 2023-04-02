@@ -1,8 +1,9 @@
 {
   "expo": {
     "entryPoint": "./index.js",
-    "name": "expo-app",
-    "slug": "expo-app",
+    "name": "scaffold wallet",
+    "displayName":"scaffold wallet",
+    "slug": "scaffold-wallet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
