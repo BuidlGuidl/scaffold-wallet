@@ -2,7 +2,7 @@
     <item>
         <bitmap
             android:src="@color/splashscreen_background"
-            android:gravity="fill"
+            android:gravity="top"
             />
     </item>
     
