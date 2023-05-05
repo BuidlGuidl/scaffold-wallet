@@ -41,6 +41,13 @@ export const NETWORKS = {
     rpcUrl: `https://arb1.arbitrum.io/rpc`,
     gasPrice: 0,
   },
+  sepolia: {
+    name: "sepolia",
+    color: "#67b1d4",
+    chainId: 11155111,
+    rpcUrl: `https://rpc2.sepolia.org`,
+    blockExplorer: "https://sepolia.etherscan.io/",
+  },
   gnosis: {
     name: "gnosis",
     color: "#48a9a6",
@@ -171,6 +178,7 @@ export const NETWORK_IMAGES = {
   mumbai: require("./assets/mumbai.png"),
   zksyncTestnet: require("./assets/zksync.png"),
   buidlguidl: require("./assets/buidlguidl.png"),
+  sepolia: require("./assets/sepolia.png"),
 }
 
 
@@ -189,5 +197,5 @@ export const SIGN_TRANSACTION = 'eth_signTransaction';
 export const SIGN_TYPED_DATA = 'eth_signTypedData';
 export const SIGN_TYPED_DATA_V4 = 'eth_signTypedData_v4';
 export const isChainIdHistoryBlocked = (chainId) => {
-  return chainId === 280 || chainId === 80216;
+  return chainId === 280 || chainId === 80216
 };
