@@ -546,7 +546,18 @@ export default function App() {
             </AppStack.Screen>
             <AppStack.Screen
               name="Send"
-              options={({ navigation, route }) => ({})}
+
+              options={({ navigation, route }) => ({
+                headerRight: (props) => (
+                  <View style={styles.networkSendContainer}>
+                  <Text style={styles.networkSendText}>{selectedNetwork}</Text>
+                  <Image
+                    style={styles.logo}
+                    source={NETWORK_IMAGES[selectedNetwork]}
+                  />
+                </View>
+                ),
+              })}
             >
               {({ navigation }) => (
                 <SendScreen
@@ -600,6 +611,18 @@ var styles = StyleSheet.create({
     position: "absolute",
     top: -6,
     right: -10,
+  },
+  networkSendContainer:{
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center",
+    fontWeight: "600",
+    fontSize: 30,
+  },
+  networkSendText:{
+    fontWeight: "600",
+    fontSize: 14,
+    marginRight:4
   },
   buttonText: {
     marginTop: 2,
