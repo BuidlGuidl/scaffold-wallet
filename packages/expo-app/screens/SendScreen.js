@@ -67,7 +67,7 @@ export const SendScreen = ({
         <TextInput
           placeholder="Address"
           style={styles.addressInput}
-          color={!toAddress ? "#888" : null}
+          color={"#888"}
           fontWeight={"800"}
           onChangeText={setToAddress}
           value={toAddress}
