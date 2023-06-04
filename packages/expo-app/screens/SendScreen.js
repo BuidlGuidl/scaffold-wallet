@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -13,7 +12,6 @@ import Clipboard from "@react-native-clipboard/clipboard";
 
 import AntIcon from "react-native-vector-icons/AntDesign";
 import Blockie from "../components/Blockie";
-import TokenDisplay from "../components/TokenDisplay";
 import LinearGradient from "react-native-linear-gradient";
 
 export const SendScreen = ({
@@ -21,8 +19,6 @@ export const SendScreen = ({
   balance,
   price,
   gasPrice,
-  tokenName,
-  tokenLogo,
   toAddress,
   setToAddress,
   sendEth,
@@ -30,7 +26,7 @@ export const SendScreen = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState(0);
-
+  const [unit, setUnit] = useState("USD");
   const formattedEthBalance =
     Math.round(ethers.utils.formatEther(balance) * 1e4) / 1e4;
 
@@ -41,6 +37,13 @@ export const SendScreen = ({
     insufficientFunds =
       Number(amount) + transferCostInETH > formattedEthBalance;
   }
+
+  useEffect(() => {
+    setUnit(tokenSymbol);
+    return ()=> {
+      setToAddress(undefined);
+    }
+  },[tokenSymbol])
 
   const validToAddress = toAddress ? ethers.utils.isAddress(toAddress) : false;
   const validAmount = !isNaN(amount) && amount !== 0;
@@ -57,6 +60,25 @@ export const SendScreen = ({
     }
   };
 
+  const toggleUnit = () => {
+    setUnit(unit === "USD" ? tokenSymbol : "USD");
+  };
+  const currentAmmount =
+    unit === "USD" ? ((amount ? amount.toFixed(4) : 0) * price).toFixed() : amount;
+
+  const onValueChange = (value) => {
+    
+    const parsedValue = parseFloat(value.replace(",", "."));
+    if (unit === "USD") {
+      const amountInEth = ((parsedValue ? parsedValue : 0) / price);
+      setAmount(amountInEth);
+      return;
+    }
+    setAmount(parsedValue);
+  };
+
+  const transformedValueToken = unit !== "USD" ? "USD" : tokenSymbol;
+  const transformedValue = unit !== "USD" ? ((amount ? amount.toFixed(4) : 0) * price).toFixed(2) : amount;
   return (
     <ScrollView contentContainerStyle={styles.mainContainer}>
       <View style={styles.addressContainer}>
@@ -73,46 +95,51 @@ export const SendScreen = ({
           value={toAddress}
         />
         <TouchableOpacity
-          onPress={() => navigation.navigate("QrScanner", {
-            target:"address"
-          })}
+          onPress={() =>
+            navigation.navigate("QrScanner", {
+              target: "address",
+            })
+          }
           style={{
-            paddingLeft:20,
-            paddingRight:20,
+            paddingLeft: 20,
+            paddingRight: 20,
           }}
         >
           <AntIcon name="scan1" size={24} color={"#05bcff"} />
         </TouchableOpacity>
         <View style={styles.buttonContainer}>
-        <TouchableOpacity
-         onPress={pasteToPkInput}
-        >
-          <Text style={{color:"#05bcff", fontSize:20}}>Paste</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={pasteToPkInput}>
+            <Text style={{ color: "#05bcff", fontSize: 20 }}>Paste</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.ammoutContainer}>
         <TextInput
           style={{ fontSize: 50, minWidth: 70, marginRight: 10 }}
-          value={!!amount ? `${amount}` : null}
+          value={!!currentAmmount ? `${currentAmmount}` : null}
           keyboardType="numeric"
           maxLength={8}
-          onChangeText={(val) => setAmount(parseFloat(val.replace(",", ".")))}
+          onChangeText={(val) => onValueChange(val)}
           placeholder="0.0"
         />
+        <Text style={styles.tokenSymbol}>{unit}</Text>
         
-        <Text style={styles.tokenSymbol}>{tokenSymbol}</Text>
       </View>
+      <View style={styles.swapContainer}>
+        <TouchableOpacity onPress={toggleUnit} style={styles.unitButton}>
+          <AntIcon name="swap" size={44} color={"#05bcff"} />
+        </TouchableOpacity>
+        </View>
       <View style={styles.feedContainer}>
         <Text style={{ fontSize: 22 }}>
           <Text style={{ fontSize: 22 }}>
             {" "}
-            {((amount ? amount : 0) * price).toFixed(2)} USD{" "}
+            {transformedValue} {transformedValueToken}{" "}
           </Text>
         </Text>
-    
+        <View />
         <View style={styles.balanceContainer}>
-          <Text style={{ fontSize: 16}}>
+          <Text style={{ fontSize: 16 }}>
             Est. Fee:{" "}
             <Text style={{ fontSize: 16 }}>{transferCostInUSD} USD</Text>
           </Text>
@@ -162,7 +189,7 @@ export const SendScreen = ({
 const styles = StyleSheet.create({
   mainContainer: {
     width: "100%",
-    height:"100%",
+    height: "100%",
     backgroundColor: "#fff",
     flexDirection: "column",
     paddingHorizontal: 15,
@@ -187,9 +214,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 4,
   },
-  buttonContainer:{
-    display:"flex",
-    justifyContent:"space-between",
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "space-between",
   },
   balanceContainer: {
     width: "100%",
@@ -214,6 +241,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+  },
+  swapContainer: {
+    height:80,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom:10
   },
   buttonsContainer: {
     marginTop: 48,
