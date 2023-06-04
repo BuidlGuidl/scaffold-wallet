@@ -45,6 +45,7 @@ export const HomeScreen = ({
   wallet,
   gasPrice,
   isLoading,
+  ensName,
   pendingTransaction,
   provider,
   showTransactionScreen,
@@ -83,6 +84,7 @@ export const HomeScreen = ({
       >
         <AddressDisplay
           address={address}
+          ensName={ensName}
           showQR={() => navigation.navigate("QrShow")}
           sendEth={() => navigation.navigate("Send")}
           showWallet={() => navigation.navigate("Wallets")}
