@@ -13,8 +13,9 @@ import {
   NETWORK_IMAGES,
   SIGN,
   SIGN_TYPED_DATA_V4,
+  ETHERSCAN_KEY,
   SIGN_TYPED_DATA,
-  isChainIdHistoryBlocked
+  isChainIdHistoryBlocked,
 } from "./constants";
 // Polyfill for localStorage
 import "./helpers/windows";
@@ -40,7 +41,7 @@ import {
   generateWallet,
   loadWallet,
 } from "./helpers/utils";
-import { LogBox } from 'react-native';
+import { LogBox } from "react-native";
 import { updateStorageTransaction } from "./helpers/Transactions";
 import useExchangePrice from "./hooks/ExchangePrice";
 import useBalance from "./hooks/Balance";
@@ -48,7 +49,6 @@ import ErrorDisplay from "./components/ErrorDisplay";
 import { NavigationContainer } from "@react-navigation/native";
 import { HomeScreen } from "./screens/HomeScreen";
 import { WalletConnectScreen } from "./screens/WalletConnectScreen";
-import { NetworkDisplay } from "./components/NetworkDisplay";
 import LinearGradient from "react-native-linear-gradient";
 
 const initialNetwork = NETWORKS.ethereum; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -63,9 +63,9 @@ const ScaffoldEthWalletLogo = require("./assets/scaffoldEthWalletLogo.png");
 
 const AppStack = createNativeStackNavigator();
 export default function App() {
- 
-  LogBox.ignoreLogs(['Setting a timer']); // Ignore log notification by message
+  LogBox.ignoreLogs(["Setting a timer"]); // Ignore log notification by message
   const [address, setAddress] = useState();
+  const [ensName, setEnsName] = useState();
   const [selectedNetwork, setSelectedNetwork] = useState(initialNetwork.name);
 
   const targetNetwork = NETWORKS[selectedNetwork];
@@ -86,9 +86,18 @@ export default function App() {
     () => setShowTransactionScreen(false),
     []
   );
+  const lookupAddress = async (addressToCheck) => {
+    const ensResult = await mainnetProvider.lookupAddress(
+      addressToCheck
+    );
+    return ensResult
+  };
+
+
 
   const [wallet, setWallet] = useState();
   const [toAddress, setToAddress] = useState();
+  const [ensNameToAddress, setEnsNameToAddress] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const [pendingTransaction, setPendingTransaction] = useState();
@@ -101,6 +110,8 @@ export default function App() {
   const [walletConnectNetwork, setWalletConnectNetwork] = useState();
   const [loadingStatus, setLoadingStatus] = useState("started");
   const refreshApp = () => RNRestart.Restart();
+
+
 
   const sendEth = async (ethAmount, to) => {
     const signer = wallet.connect(localProvider);
@@ -181,6 +192,30 @@ export default function App() {
       });
     }
   };
+  const modifyToAddress = (newAddress) => {
+    if(!newAddress){
+      setEnsNameToAddress(undefined) 
+      setToAddress(undefined)
+      return
+    }
+    setToAddress(newAddress)
+    const validToAddress = newAddress ? ethers.utils.isAddress(newAddress) : false;
+    if(!validToAddress){
+      if(newAddress.includes(".eth")){
+        mainnetProvider.getResolver(newAddress).then((res) =>{
+          setEnsNameToAddress(res.name)
+          setToAddress(res.address)
+        })
+        return
+      }
+      setEnsNameToAddress()
+      return
+    }
+    lookupAddress(newAddress).then((ensResult)=>{
+      setEnsNameToAddress(ensResult)
+    })
+    
+  }
 
   const disconnect = async () => {
     try {
@@ -329,13 +364,14 @@ export default function App() {
     let networkEtherScan = ethers.providers.getNetwork(targetNetwork.chainId);
     let etherScanProvider = new ethers.providers.EtherscanProvider(
       networkEtherScan,
-      "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8"
+      ETHERSCAN_KEY
     );
 
     return await etherScanProvider
       .getHistory(address, block10Days, currentBlock)
       .then((result) => result.reverse());
   };
+
   // On App Load useEffect, check async storage for an existing wallet, else generate a 🔥 burner wallet.
   useEffect(() => {
     console.log("useEffect App");
@@ -348,7 +384,7 @@ export default function App() {
       setLoadingStatus(null);
       setWallet(activeWallet);
       setAddress(activeWallet.address);
-
+  
       const cachedNetwork = await AsyncStorage.getItem("network");
       if (cachedNetwork) setSelectedNetwork(cachedNetwork);
     };
@@ -378,6 +414,7 @@ export default function App() {
       setTransactionHistory(result);
       isFetchingHistoryData = false;
     });
+    
     return () => {
       isFetchingHistoryData = false;
     };
@@ -399,6 +436,9 @@ export default function App() {
     getHistoricalData().then((result) => {
       setTransactionHistory(result);
     });
+    lookupAddress(address).then((ensResult)=>{
+      setEnsName(ensResult);
+    })
     setTimeout(() => {
       getHistoricalData().then((result) => {
         setTransactionHistory(result);
@@ -474,6 +514,7 @@ export default function App() {
                   updateStorageTransaction={updateStorageTransaction}
                   address={address}
                   isLoading={isLoading}
+                  ensName={ensName}
                   navigation={navigation}
                   selectedNetwork={selectedNetwork}
                   setSelectedNetwork={(newValue) =>
@@ -483,9 +524,13 @@ export default function App() {
                   tokenName={nativeTokenName}
                   tokenSymbol={nativeTokenSymbol}
                   transactionHistory={
-                    !isChainIdHistoryBlocked(targetNetwork.chainId)? transactionHistory : []
+                    !isChainIdHistoryBlocked(targetNetwork.chainId)
+                      ? transactionHistory
+                      : []
                   }
-                  isChainIdBlocked={isChainIdHistoryBlocked(targetNetwork.chainId)}
+                  isChainIdBlocked={isChainIdHistoryBlocked(
+                    targetNetwork.chainId
+                  )}
                   tokenLogo={nativeTokenLogo}
                   isFetchingHistoryData={isFetchingHistoryData}
                   tokenPrice={price}
@@ -528,7 +573,7 @@ export default function App() {
                 <QRScannerScreen
                   route={route}
                   setWalletConnectUrl={setWalletConnectUrl}
-                  setToAddress={setToAddress}
+                  setToAddress={modifyToAddress}
                   navigation={navigation}
                 />
               )}
@@ -546,7 +591,6 @@ export default function App() {
             </AppStack.Screen>
             <AppStack.Screen
               name="Send"
-
               options={({ navigation, route }) => ({
                 headerRight: (props) => (
                   <View style={styles.networkSendContainer}>
@@ -568,7 +612,8 @@ export default function App() {
                   tokenName={nativeTokenName}
                   tokenLogo={nativeTokenLogo}
                   toAddress={toAddress}
-                  setToAddress={setToAddress}
+                  setToAddress={modifyToAddress}
+                  ensNameToAddress={ensNameToAddress}
                   sendEth={sendEth}
                   navigation={navigation}
                 />
@@ -612,17 +657,17 @@ var styles = StyleSheet.create({
     top: -6,
     right: -10,
   },
-  networkSendContainer:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center",
+  networkSendContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
     fontWeight: "600",
     fontSize: 30,
   },
-  networkSendText:{
+  networkSendText: {
     fontWeight: "600",
     fontSize: 14,
-    marginRight:4
+    marginRight: 4,
   },
   buttonText: {
     marginTop: 2,

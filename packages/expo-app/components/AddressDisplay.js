@@ -13,6 +13,7 @@ const WalletConnectIcon = require("../assets/walletConnect.png");
 const AddressDisplay = ({
   showQR,
   address,
+  ensName,
   showWallet,
   showWalletConnectScreen,
   sendEth,
@@ -46,7 +47,7 @@ const AddressDisplay = ({
       </View>
       <View style={styles.addressRow}>
         <TouchableOpacity onPress={copyToClipboard}>
-          <Text style={styles.text}>{displayAddress}</Text>
+          <Text style={styles.text}>{ensName ? ensName : displayAddress}</Text>
 
           {copied ? (
             <FontAwesomeIcon

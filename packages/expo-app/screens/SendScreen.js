@@ -20,6 +20,7 @@ export const SendScreen = ({
   price,
   gasPrice,
   toAddress,
+  ensNameToAddress,
   setToAddress,
   sendEth,
   navigation,
@@ -92,7 +93,7 @@ export const SendScreen = ({
           color={"#888"}
           fontWeight={"800"}
           onChangeText={setToAddress}
-          value={toAddress}
+          value={ensNameToAddress ? ensNameToAddress : toAddress}
         />
         <TouchableOpacity
           onPress={() =>
